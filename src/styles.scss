@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+// Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+// Font Awesome
+$fa-font-path : '../node_modules/font-awesome/fonts';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+body {
+  background-image: url('assets/images/background-image.png');
+  background-size: cover;
+}
