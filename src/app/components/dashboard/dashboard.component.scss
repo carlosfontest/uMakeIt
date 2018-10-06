@@ -1,0 +1,67 @@
+.foto {
+  width: 100%;
+}
+
+.divFoto {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.container-completo {
+  height: 100%;
+  background: #2B2923;
+  color: white;
+  font-family: 'Amaranth', sans-serif;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.filtros {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.container-fill {
+  height: 100%;
+  background: #2B2923;
+  color: white;
+  font-family: 'Amaranth', sans-serif;
+  font-size: 1.4rem;
+}
+
+.filtros div {
+  width: 100%;
+  font-size: 50%;
+  text-align: center;
+  border: 2px solid #F8C822;
+  border-top: 4px solid #F8C822;
+  border-bottom: 4px solid #F8C822;
+  font-family: 'Amaranth', sans-serif;
+}
+
+// Estilos del botón
+.btn {
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-primary {
+  background: rgb(36, 34, 26);
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background: rgba(248, 202, 34, 0.692);
+}
+
+.btn-primary:active, .btn-primary.active {
+  background: rgb(36, 34, 26);
+  box-shadow: none;
+}
