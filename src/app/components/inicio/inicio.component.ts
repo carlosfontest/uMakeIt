@@ -11,7 +11,7 @@ export class InicioComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.login = true;
+    this.login = false;
   }
 
 }
