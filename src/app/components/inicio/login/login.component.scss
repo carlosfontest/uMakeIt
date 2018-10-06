@@ -33,13 +33,16 @@ hr {
   background-color: transparent;
   color: whitesmoke;
   border-color: white;
-  width: 80%;
+  width: 93%;
   margin: auto;
   border-radius: 0;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgba(248, 200, 34, 1);
 }
 
 .form-control:focus {
-  box-shadow: 0 0 0 0.2rem rgba(248, 200, 34, 1);
+  box-shadow: 0 0 0 0.2rem rgba(248, 200, 34, 0);
 }
 
 // Estilos del botón
@@ -59,7 +62,7 @@ hr {
   background: rgba(248, 200, 34, 1);
   color: #ffffff;
   border-radius: 0;
-  margin-top: 15%;
+  margin-top: 13%;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {

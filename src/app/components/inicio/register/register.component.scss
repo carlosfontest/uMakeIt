@@ -33,13 +33,16 @@ hr {
   background-color: transparent;
   color: whitesmoke;
   border-color: white;
-  width: 80%;
+  width: 93%;
   margin: auto;
   border-radius: 0;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid rgba(248, 200, 34, 1);
 }
 
 .form-control:focus {
-  box-shadow: 0 0 0 0.2rem rgba(248, 200, 34, 1);
+  box-shadow: 0 0 0 0.2rem rgba(248, 200, 34, 0);
 }
 
 // Estilos del botón
@@ -69,4 +72,21 @@ hr {
 .btn-primary:active, .btn-primary.active {
   background: rgba(248, 200, 34, 1);
   box-shadow: none;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.junto {
+  width: 85%;width: 85%;
+  margin: auto;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {  
+  .junto {
+
+  }
 }
