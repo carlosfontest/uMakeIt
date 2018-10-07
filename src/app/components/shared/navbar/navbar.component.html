@@ -1,6 +1,20 @@
 <nav class="navbar navbar-dark">
-  <a class="navbar-brand flex-center" href="#">
+  <!-- Logo de uMakeIt junto con el nombre -->
+  <a class="navbar-brand" href="#">
     <img src="../../../../assets/images/logo.png" height="40" class="d-inline-block align-top" alt="">
     <span class="ml-4 align-content-center titulo">uMakeIt!</span>
   </a>
+
+  <!-- Opciones de usuario -->
+  <div class="btn-group" dropdown placement="bottom right">
+    <button id="dropdown-basic" class="navbar-toggler boton" type="button" dropdownToggle aria-controls="dropdown-basic">
+      <span class="nameUser">Carlos Fontes</span><i class="fa fa-bars ml-2"></i>  <!-- TODO-->
+    </button>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="button-basic">
+      <li role="menuitem"><a class="dropdown-item" href="#">Dashboard</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Change Password</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Logout</a></li>
+    </ul>
+  </div>
+  
 </nav>
