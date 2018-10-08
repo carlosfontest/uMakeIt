@@ -43,9 +43,21 @@ ul {
   text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.6);
 }
 
+.logout, .fa-sign-out {
+  color: rgba(248, 200, 34, 1);
+}
+
 //  Cuando sea vista movil
 @media (max-width: 500px) {  
   .titulo {
     font-size: 0;
+  }
+
+  .nameUser {
+    font-size: 20px;
+  }
+
+  .dropdown-item {
+    font-size: 12px;
   }
 }

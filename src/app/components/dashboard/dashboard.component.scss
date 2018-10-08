@@ -13,6 +13,7 @@
 .divFoto {
   margin-top: 20px;
   margin-bottom: 20px;
+  box-shadow: 1px 7px 5px rgba(0, 0, 0, 0.6);
 }
 
 .container-completo {
@@ -63,24 +64,6 @@
   width: 100%;
 }
 
-
-//  Cuando sea vista movil
-@media (max-width: 575px) {  
-  .divFoto {
-    margin-top: 10px;
-    margin-bottom: 10px; 
-    padding: 0;
-  }
-
-  .divMenu {
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-  }
-}
-
-
-
 // Estilos del botón
 .btn {
   border: 0 none;
@@ -110,3 +93,26 @@
   background: rgb(36, 34, 26);
   box-shadow: none;
 }
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {  
+  .divFoto {
+    margin-top: 0;
+    margin-bottom: 0; 
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  .divMenu {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+
+
