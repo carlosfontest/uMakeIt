@@ -66,6 +66,7 @@ hr {
   border: 2px solid rgba(248, 200, 34, 1);
   font-family: 'Ubuntu', sans-serif;
   margin-top: 10%;
+  text-shadow: 2px 2px 2px #000000;
 }
 
 .btn::before,
@@ -79,6 +80,7 @@ hr {
 .btn:hover {
   color: #000;
   border: 0;
+  text-shadow: none;
 }
 
 .btn-primary {
@@ -98,5 +100,10 @@ hr {
 .btn-primary:hover:after {
   height: 100%;
   width: 135%;
+}
+
+.btn-primary:active {
+  background: transparent !important;
+  color: #000 !important;
 }
 

@@ -23,3 +23,9 @@ a:hover {
   font-weight: bold;
   color: black;
 }
+
+@media (max-width: 575px) {  
+  nav {
+    font-size: 15px;
+  }
+}

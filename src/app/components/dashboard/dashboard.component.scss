@@ -1,5 +1,13 @@
+.container {
+  padding: 0;
+}
+
 .foto {
   width: 100%;
+}
+
+.row {
+  margin: 0;
 }
 
 .divFoto {
@@ -12,8 +20,9 @@
   background: rgb(37, 36, 31);
   color: white;
   font-family: 'Amaranth', sans-serif;
-  font-size: 3rem;
+  font-size: 2.4rem;
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .filtros {
@@ -22,31 +31,55 @@
   justify-content: space-around;
 }
 
+.filtro-activo {
+  background-color: rgb(37, 36, 31) !important;
+}
+
 .container-fill {
   height: 100%;
   color: white;
-  font-size: 1.4rem;
+  box-shadow: 1px 7px 5px rgba(0, 0, 0, 0.6);
 }
 
 .filtros div {
+  font-size: 90%;
   width: 100%;
-  font-size: 50%;
   text-align: center;
-  border-right: 2px solid #F8C822;
-  border-left: 2px solid #F8C822;
-  font-family: 'Ubuntu', sans-serif;
-  height: 30px;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  height: 36px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
-.filtros div:nth-child(1) {
-  border: 0;
-  border-right: 2px solid #F8C822;
+.divMenu {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  background: #3A3731;
+  height: 400px;
+  width: 100%;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
 }
 
-.filtros div:nth-child(5) {
-  border: 0;
-  border-left: 2px solid #F8C822;
+.spanPlato {
+  width: 100%;
 }
+
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {  
+  .divFoto {
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    padding: 0;
+  }
+
+  .divMenu {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+
 
 // Estilos del botón
 .btn {
@@ -60,13 +93,17 @@
 }
 
 .btn-primary {
-  background: rgb(54, 53, 46);
+  background: rgb(68, 67, 59);
   color: #ffffff;
   border-radius: 0;
 }
 
+.btn-primary:active {
+  background: rgb(37, 36, 31) !important;
+}
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-  background: rgb(26, 24, 18);
+  background: rgb(37, 36, 31);
 }
 
 .btn-primary:active, .btn-primary.active {
