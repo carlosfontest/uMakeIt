@@ -7,11 +7,11 @@ import { BsDropdownModule, PopoverModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { LoginComponent } from './components/inicio/login/login.component';
-import { InicioComponent } from './components/inicio/inicio.component';
-import { RegisterComponent } from './components/inicio/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DishCardComponent } from './components/dashboard/dish-card/dish-card.component';
+import { LoginComponent } from './components/home/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/home/register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { DishCardComponent } from './components/dashboard/dish-card/dish-card.co
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    InicioComponent,
+    HomeComponent,
     RegisterComponent,
     DashboardComponent,
     DishCardComponent
