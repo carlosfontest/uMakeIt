@@ -51,24 +51,8 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
-  showPizzas() {
-    this.typeDishShow = 'Pizzas';
-  }
-
-  showFishes() {
-    this.typeDishShow = 'Fishes';
-  }
-
-  showSoups() {
-    this.typeDishShow = 'Soups';
-  }
-
-  showPastas() {
-    this.typeDishShow = 'Pastas';
-  }
-
-  showOthers() {
-    this.typeDishShow = 'Others';
+  showDish(dish: string) {
+    this.typeDishShow = dish;
   }
 
 }

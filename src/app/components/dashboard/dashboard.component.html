@@ -10,11 +10,11 @@
 
 <div class="container-fill">
   <div class="filtros">
-    <div class="btn btn-primary" (click)="showPizzas()" [ngClass]="{'filtro-activo': typeDishShow == 'Pizzas'}">Pizzas</div>
-    <div class="btn btn-primary" (click)="showFishes()" [ngClass]="{'filtro-activo': typeDishShow == 'Fishes'}">Fishes</div>
-    <div class="btn btn-primary" (click)="showSoups()" [ngClass]="{'filtro-activo': typeDishShow == 'Soups'}">Soups</div>
-    <div class="btn btn-primary" (click)="showPastas()" [ngClass]="{'filtro-activo': typeDishShow == 'Pastas'}">Pastas</div>
-    <div class="btn btn-primary" (click)="showOthers()" [ngClass]="{'filtro-activo': typeDishShow == 'Others'}">Others</div>
+    <div class="btn btn-primary" (click)="showDish('Pizzas')" [ngClass]="{'filtro-activo': typeDishShow == 'Pizzas'}">Pizzas</div>
+    <div class="btn btn-primary" (click)="showDish('Fishes')" [ngClass]="{'filtro-activo': typeDishShow == 'Fishes'}">Fishes</div>
+    <div class="btn btn-primary" (click)="showDish('Soups')" [ngClass]="{'filtro-activo': typeDishShow == 'Soups'}">Soups</div>
+    <div class="btn btn-primary" (click)="showDish('Pastas')" [ngClass]="{'filtro-activo': typeDishShow == 'Pastas'}">Pastas</div>
+    <div class="btn btn-primary" (click)="showDish('Others')" [ngClass]="{'filtro-activo': typeDishShow == 'Others'}">Others</div>
   </div>
 </div>
 
@@ -28,6 +28,5 @@
         </div>
       </ng-container>
     </div>
-
   </div>
 </div>
