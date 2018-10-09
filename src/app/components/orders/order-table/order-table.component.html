@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center mt-3">
   <div class="col-12 col-8-md">
     <div class="table-responsive">
-      <table class="table table-gray table-bordered">
+      <table class="table format table-bordered">
         <thead>
           <tr>
             <th scope="col">Product</th>
@@ -49,5 +49,14 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end mx-4 format">
+  <div>
+    {{price | currency}}  
+  </div>
+  <div>
+    <button type="button" class="btn btn-secondary">Checkout</button>
   </div>
 </div>

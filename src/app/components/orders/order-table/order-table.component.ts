@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class OrderTableComponent implements OnInit {
 
   list: any[] = [];
+  price: number;
 
   constructor() { }
 
@@ -16,6 +17,8 @@ export class OrderTableComponent implements OnInit {
     this.list.push({name: 'Pasta', quantity: '3', price: '50'});
     this.list.push({name: 'Pasta', quantity: '3', price: '50'});
     this.list.push({name: 'Pasta', quantity: '3', price: '50'});
+
+    this.price = 200;
   }
 
 }
