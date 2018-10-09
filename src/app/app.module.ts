@@ -14,7 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { OrderTableComponent } from './components/orders/order-table/order-table.component'
+import { CartComponent } from './components/orders/cart/cart.component';
+import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrderTableComponent } from './components/orders/order-table/order-table
     DishCardComponent,
     TitleBannerComponent,
     ChangePasswordComponent,
-    OrderTableComponent,
+    CartComponent,
+    PurchaseHistoryComponent,
   ],
   imports: [
     BrowserModule,
