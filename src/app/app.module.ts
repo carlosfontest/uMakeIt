@@ -13,6 +13,8 @@ import { LoginComponent } from './components/home/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { OrderViewComponent } from './components/order-view/order-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TitleBannerComponent } from './components/shared/title-banner/title-ban
     RegisterComponent,
     DashboardComponent,
     DishCardComponent,
-    TitleBannerComponent
+    TitleBannerComponent,
+    ChangePasswordComponent,
+    OrderViewComponent
   ],
   imports: [
     BrowserModule,
