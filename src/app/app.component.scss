@@ -6,4 +6,10 @@
     .main-container{
         min-height: calc(100vh - 60px - 150px);
     }
-  }
+}
+
+@media (min-width: 1500px) {
+    .main-container{
+        min-height: calc(100vh - 120px - 90px);
+    }
+}

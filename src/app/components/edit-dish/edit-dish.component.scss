@@ -33,6 +33,7 @@
 
 .dishView img{
   width: 60%;
+  max-width: 200px;
 }
 
 .titleDish, .priceDish {
@@ -57,6 +58,7 @@ hr {
   background: #23211a;
   box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
   width: 70%;
+  max-width: 200px;
   margin-bottom: 20px;
   margin: auto;
   margin-bottom: 20px;
@@ -64,14 +66,17 @@ hr {
 
 .thumbnailSideDish img{
   width: 100%;
+  max-width: 200px;
 }
 
 .botonesAdd {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 15px;
   padding-left: 18px;
   padding-right: 18px;
+  max-width: 200px;
+  margin: auto;
+  margin-bottom: 15px;
 }
 
 .cantidad {

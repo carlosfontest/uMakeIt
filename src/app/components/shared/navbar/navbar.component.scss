@@ -62,3 +62,27 @@ ul {
     font-size: 12px;
   }
 }
+
+// Cuando sea mayor a 1500px
+@media (min-width: 1500px) {
+  nav {
+    height: 120px;
+  }
+
+  a img {
+    width: 130px;
+    height: 90px;
+  }
+
+  .nameUser, .titulo {
+    font-size: 60px;
+  }
+
+  .fa {
+    font-size: 45px;
+  }
+
+  a {
+    font-size: 30px;
+  }
+}

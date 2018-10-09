@@ -26,9 +26,20 @@ a:hover {
   color: black;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   nav {
-    font-size: 15px;
+    font-size: 20px;
     height: 150px;
+  }
+}
+
+@media (min-width: 1500px) {
+  nav {
+    font-size: 35px;
+    height: 90px;
+  }
+
+  a img {
+    width: 35px;
   }
 }
