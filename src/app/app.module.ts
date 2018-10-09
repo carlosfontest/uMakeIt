@@ -12,6 +12,10 @@ import { DishCardComponent } from './components/dashboard/dish-card/dish-card.co
 import { LoginComponent } from './components/home/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/home/register/register.component';
+import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { CartComponent } from './components/orders/cart/cart.component';
+import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { RegisterComponent } from './components/home/register/register.component
     HomeComponent,
     RegisterComponent,
     DashboardComponent,
-    DishCardComponent
+    DishCardComponent,
+    TitleBannerComponent,
+    ChangePasswordComponent,
+    CartComponent,
+    PurchaseHistoryComponent,
   ],
   imports: [
     BrowserModule,
