@@ -15,7 +15,8 @@ import { RegisterComponent } from './components/home/register/register.component
 import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { CartComponent } from './components/orders/cart/cart.component';
-import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component'
+import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { EditDishComponent } from './components/edit-dish/edit-dish.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PurchaseHistoryComponent } from './components/orders/purchase-history/p
     ChangePasswordComponent,
     CartComponent,
     PurchaseHistoryComponent,
+    EditDishComponent,
   ],
   imports: [
     BrowserModule,
