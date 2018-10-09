@@ -84,4 +84,55 @@ hr {
   padding-right: 10px;
 }
 
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .title1 {
+    margin: 0;
+  }
+
+  .row {
+    margin-bottom: 0;
+  }
+
+  .col-lg-9 {
+    padding-right: 0;
+    padding-left: 10px;;
+  }
+
+  .col-lg-3 {
+    padding-right: 0;
+    padding-left: 10px;
+  }
+
+}
+
+//  Cuando sea vista movil
+@media (max-width: 992px) {
+  .title1 {
+    margin: 0;
+  }
+
+  .row {
+    margin-bottom: 0;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  .divDishes, .divView {
+    margin: 0;
+  }
+
+  .col-lg-9 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .col-lg-3 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
 
