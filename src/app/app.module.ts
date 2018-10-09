@@ -1,7 +1,7 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BsDropdownModule, PopoverModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
 
 // Components
 import { AppComponent } from './app.component';
@@ -15,7 +15,8 @@ import { RegisterComponent } from './components/home/register/register.component
 import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { CartComponent } from './components/orders/cart/cart.component';
-import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component'
+import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { AdminComponent } from './components/admin/admin.component'
 
 @NgModule({
   declarations: [
@@ -31,11 +32,13 @@ import { PurchaseHistoryComponent } from './components/orders/purchase-history/p
     ChangePasswordComponent,
     CartComponent,
     PurchaseHistoryComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     BsDropdownModule.forRoot(),
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
