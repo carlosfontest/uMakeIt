@@ -12,6 +12,7 @@ import { DishCardComponent } from './components/dashboard/dish-card/dish-card.co
 import { LoginComponent } from './components/home/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/home/register/register.component';
+import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './components/home/register/register.component
     HomeComponent,
     RegisterComponent,
     DashboardComponent,
-    DishCardComponent
+    DishCardComponent,
+    TitleBannerComponent
   ],
   imports: [
     BrowserModule,
