@@ -1,0 +1,19 @@
+<div class="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 foto">
+        <p>Sign Up and make your first order NOW!</p>
+        <p>Choose a dish, customize it to your own taste and enjoy the best quality food</p>
+        <div class="botones mb-5 text-center">  
+          <a href="#" class="btn btn-one ml-2" (click)="login = true"><span>Sign In</span></a>
+          <a href="#" class="btn btn-one ml-2" (click)="login = false"><span>Sign Up</span></a>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12 formulario">
+        <!-- Se mostrará una vista diferente dependiendo de si el user querrá logearse o registrarse -->
+        <app-login *ngIf="login"></app-login>
+        <app-register *ngIf="!login"></app-register>
+      </div>
+    </div>
+  </div>
+</div>

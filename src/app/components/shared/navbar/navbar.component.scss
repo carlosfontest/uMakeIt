@@ -1,0 +1,63 @@
+nav {
+  background: #23211A;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.titulo {
+  font-family: 'Amaranth', sans-serif;
+  font-size: 1.6rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.boton {
+  border: 0;
+  outline: 0;
+}
+
+.nameUser {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 25px;
+  color: whitesmoke;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.6);
+}
+
+ul {
+  font-family: 'Ubuntu', sans-serif;
+  background: rgb(63, 60, 50);
+}
+
+.dropdown-item {
+  color: whitesmoke;
+}
+
+.dropdown-item:hover {
+  background: #23211A;
+}
+
+.fa {
+  color: whitesmoke;
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.6);
+}
+
+.logout, .fa-sign-out {
+  color: rgba(248, 200, 34, 1);
+}
+
+//  Cuando sea vista movil
+@media (max-width: 500px) {  
+  .titulo {
+    font-size: 0;
+  }
+
+  .nameUser {
+    font-size: 20px;
+  }
+
+  .dropdown-item {
+    font-size: 12px;
+  }
+}

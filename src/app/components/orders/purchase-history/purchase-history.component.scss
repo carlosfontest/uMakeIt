@@ -1,0 +1,19 @@
+.format{
+    background-color: #23211A;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+table td, table thead tr{
+    color: white;
+}
+
+.white{
+    color: white;
+}
+.mirror{
+    -moz-transform: scaleX(-1);    /* Gecko */
+    -o-transform: scaleX(-1);      /* Opera */
+    -webkit-transform: scaleX(-1); /* Webkit */
+    transform: scaleX(-1);         /* Standard */
+    filter: FlipH;                 /* IE 6/7/8 */
+}

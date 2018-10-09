@@ -1,16 +1,44 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
 
+// Components
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DishCardComponent } from './components/dashboard/dish-card/dish-card.component';
+import { LoginComponent } from './components/home/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './components/home/register/register.component';
+import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { CartComponent } from './components/orders/cart/cart.component';
+import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    LoginComponent,
+    HomeComponent,
+    RegisterComponent,
+    DashboardComponent,
+    DishCardComponent,
+    TitleBannerComponent,
+    ChangePasswordComponent,
+    CartComponent,
+    PurchaseHistoryComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    PopoverModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
