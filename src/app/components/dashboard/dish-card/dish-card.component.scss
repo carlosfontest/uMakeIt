@@ -1,3 +1,142 @@
-* {
-  color: white;
+img {
+  width: 80%;
+}
+
+.divFoto {
+  background: #54504a;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.divInfo {
+  background: #2b2923;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 100%;
+}
+
+.col-4, .col-8 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nameDish {
+  color: whitesmoke;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 200%;
+  text-align: left;
+  padding-left: 15px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.row {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 0px;
+  margin-right: 0px;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(248, 200, 34, 1);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.iconOpciones {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+.fa {
+  color: rgb(184, 174, 174);
+  text-shadow: 4px 4px 4px #000000;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 370%;
+}
+
+.dishPrice {
+  color: rgba(248, 200, 34, 1);
+  text-shadow: 4px 4px 4px #000000;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 7vw;
+  font-family: 'Fjalla One', sans-serif;
+  padding: 5px;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .nameDish {
+    font-size: 140%;
+  }
+
+  .fa {
+    font-size: 9vw;
+  }
+
+  .dishPrice {
+    font-size: 7vw;
+  }
+
+  .divInfo {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+// Cuando sea mayor a 992px
+@media (min-width: 992px) {
+  .dishPrice {
+    font-size: 3vw;
+  }
+}
+
+// Cuando sea mayor a 768px y menor a 992px
+@media (min-width: 768px) and (max-width: 992px) {
+  .fa {
+    font-size: 9vw;
+  }
+
+  .dishPrice {
+    font-size: 8vw;
+  }
+}
+
+// Cuando sea mayor a 1500px y menor a 2000px
+@media (min-width: 1500px) and (max-width: 2000px) {
+  .fa {
+    font-size: 6.5vw;
+  }
+
+  .dishPrice {
+    font-size: 4.5vw;
+  }
+
+  .nameDish {
+    font-size: 220%;
+  }
+}
+
+// Cuando sea mayor a 2000px
+@media (min-width: 2000px) {
+  .fa {
+    font-size: 130px;
+  }
+
+  .dishPrice {
+    font-size: 100px;
+  }
+
+  .nameDish {
+    font-size: 270%;
+  }
 }

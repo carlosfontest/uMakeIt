@@ -55,7 +55,7 @@
   margin-bottom: 40px;
   margin-top: 40px;
   background: #3A3731;
-  height: 400px;
+  height: 100%;
   width: 100%;
   box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
 }
@@ -95,10 +95,10 @@
 }
 
 //  Cuando sea vista movil
-@media (max-width: 575px) {  
+@media (max-width: 575px) {
   .divFoto {
     margin-top: 0;
-    margin-bottom: 0; 
+    margin-bottom: 0;
     padding: 0;
     box-shadow: none;
   }
@@ -114,5 +114,11 @@
   }
 }
 
+//  Cuando sea mayor a 1200px
+@media (min-width: 1500px) {
+  .container {
+    max-width: 2000px;
+  }
+}
 
 

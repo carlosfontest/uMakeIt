@@ -1,1 +1,22 @@
-<p>{{ dish.name }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <!-- Thumbnail del plato -->
+      <div class="divFoto">
+        <img [src]="dish.thumbnail" alt="">
+      </div>
+    </div>
+    <div class="col-8">
+      <!-- Información del plato -->
+      <div class="divInfo">
+        <p class="nameDish">{{ dish.name }}</p>
+        <hr>
+        <div class="iconOpciones">
+          <i class="fa fa-edit fa-5x"></i>
+          <i class="fa fa-cart-plus fa-5x"></i>
+          <span class="dishPrice">{{ dish.price | currency : "USD" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
