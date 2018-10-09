@@ -1,5 +1,9 @@
 .main-container{
-    min-height:90vh;
-    padding-top:5vh;
-    padding-bottom:5vh;
+    min-height: calc(100vh - 60px - 50px);
 }
+
+@media (max-width: 575px) {
+    .main-container{
+        min-height: calc(100vh - 60px - 150px);
+    }
+  }
