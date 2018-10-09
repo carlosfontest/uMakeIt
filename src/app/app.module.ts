@@ -17,6 +17,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { CartComponent } from './components/orders/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { EditDishComponent } from './components/edit-dish/edit-dish.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AdminComponent } from './components/admin/admin.component';
     CartComponent,
     PurchaseHistoryComponent,
     AdminComponent,
+    EditDishComponent,
   ],
   imports: [
     BrowserModule,

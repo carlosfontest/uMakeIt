@@ -1,0 +1,138 @@
+.titleBanner {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.row {
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.divDishes {
+  background: #38362d;
+  margin-right: 5px;
+  height: 100%;
+}
+
+.divView {
+  background: #23211a;
+  margin-left: 5px;
+  height: 100%;
+}
+
+.sideDishes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dishView {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.dishView img{
+  width: 60%;
+}
+
+.titleDish, .priceDish {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 15px;
+  color: white;
+  text-align: center;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(248, 200, 34, 1);
+  margin-top: 0;
+  margin-bottom: 5px;
+  width: 98%;
+}
+
+.thumbnailSideDish {
+  background: #23211a;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+  width: 70%;
+  margin-bottom: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.thumbnailSideDish img{
+  width: 100%;
+}
+
+.botonesAdd {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.cantidad {
+  color: white;
+  font-size: 15px;
+}
+
+.btn {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .title1 {
+    margin: 0;
+  }
+
+  .row {
+    margin-bottom: 0;
+  }
+
+  .col-lg-9 {
+    padding-right: 0;
+    padding-left: 10px;;
+  }
+
+  .col-lg-3 {
+    padding-right: 0;
+    padding-left: 10px;
+  }
+
+}
+
+//  Cuando sea vista movil
+@media (max-width: 992px) {
+  .title1 {
+    margin: 0;
+  }
+
+  .row {
+    margin-bottom: 0;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+
+  .divDishes, .divView {
+    margin: 0;
+  }
+
+  .col-lg-9 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .col-lg-3 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+

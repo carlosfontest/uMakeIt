@@ -102,12 +102,24 @@
     margin: 0;
     box-shadow: none;
   }
+
+  .filtros div {
+    font-size: 90%;
+  }
 }
 
-//  Cuando sea mayor a 1200px
+//  Cuando sea mayor a 1500px
 @media (min-width: 1500px) {
   .container {
     max-width: 2000px;
+  }
+}
+
+//  Cuando sea mayor a 1200px
+@media (min-width: 1200px) {
+  .filtros div {
+    font-size: 2vw;
+    height: 4vw;
   }
 }
 

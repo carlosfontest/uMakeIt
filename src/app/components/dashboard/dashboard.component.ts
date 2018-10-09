@@ -7,8 +7,9 @@ import { Dish } from '../../models/Dish';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  // Tipo de plato que el user quiere que se muestre
   typeDishShow: string;
-
+  // Array de todos los platos que hay en el sistema
   dishes: Dish[];
 
   constructor() { }
@@ -41,6 +42,84 @@ export class DashboardComponent implements OnInit {
         name: 'Pizza Peperonni',
         type: 'Pizzas',
         price: 6
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
+      },
+      {
+        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
+        name: 'Pizza Capressa',
+        type: 'Pizzas',
+        price: 8
       },
       {
         thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
