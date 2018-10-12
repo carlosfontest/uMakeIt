@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Verificamos si hay un user loggeado para que así no pueda acceder al home
     this.authService.getAuth().subscribe(auth => {
       if (auth) {
         this.router.navigate(['/dashboard']);
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    // Loggeamos al user, redirigimos al dashboard y mostramos el mensaje de loggeo satisfactorio
     this.authService.login(this.email, this.password)
       .then(res => {
         this.flashMessage.show('You are now logged in', {
