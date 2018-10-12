@@ -14,7 +14,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Todas las rutas de la App
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'home', component: HomeComponent},
   {path: 'edit-dish/:id', component: EditDishComponent},
   {path: 'admin', component: AdminComponent},

@@ -1,6 +1,8 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
 
 // Firebase and Firestore
@@ -51,13 +53,15 @@ import { DishService } from './services/dish.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
     AccordionModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'umakeit-crr'),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [
     AuthService,
