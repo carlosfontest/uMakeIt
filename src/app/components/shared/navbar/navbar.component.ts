@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   emailUserLoggedIn: string;
   nameUserLoggedIn: string;
+  isAdmin: boolean;
 
   constructor(
     private authService: AuthService,
@@ -26,6 +27,7 @@ export class NavbarComponent implements OnInit {
         this.isLoggedIn = true;
         this.emailUserLoggedIn = auth.email;
         this.nameUserLoggedIn = this.getNameUser();
+        this.isAdmin = this.getAdminCredentials();
       } else {
         this.isLoggedIn = false;
       }
@@ -33,6 +35,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
+    // Hacemos logout al user actual
     this.authService.logout();
     this.flashMessage.show('You are now logged out', {
       cssClass: 'alert-success', timeout: 4000
@@ -44,6 +47,11 @@ export class NavbarComponent implements OnInit {
   getNameUser() {
 
     return 'Carlos Fonte';  // TODO
+  }
+
+  getAdminCredentials() {
+
+    return true;  // TODO
   }
 
 }
