@@ -18,13 +18,12 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'edit/:id', component: EditDishComponent},
   {path: 'admin', component: AdminComponent},
-  {path: 'changepass', component: ChangePasswordComponent},
+  {path: 'change-password', component: ChangePasswordComponent},
   {path: 'cart', component: CartComponent},
   {path: 'purchases', component: PurchaseHistoryComponent},
   {path: '**', component: NotFoundComponent}
 
 ];
-
 
 @NgModule({
   exports: [RouterModule],

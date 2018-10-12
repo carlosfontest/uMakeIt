@@ -1,7 +1,10 @@
+<!-- Navbar que estará en todos los componentes [shared] -->
 <app-navbar></app-navbar>
 
     <div class="main-container">
-        <app-home></app-home>
+        <!-- Outlet de todos los links de la App -->
+        <router-outlet></router-outlet>
+        <!-- <app-home></app-home> -->
         <!-- <app-dashboard></app-dashboard> -->
         <!-- <app-edit-dish></app-edit-dish> -->
         <!-- <app-cart></app-cart> -->
@@ -9,4 +12,5 @@
         <!-- <app-admin></app-admin> -->
     </div>
 
+<!-- Footer que estará en todos los componentes [shared] -->
 <app-footer></app-footer>
