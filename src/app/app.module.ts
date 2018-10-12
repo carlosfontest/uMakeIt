@@ -18,6 +18,8 @@ import { CartComponent } from './components/orders/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +37,14 @@ import { EditDishComponent } from './components/edit-dish/edit-dish.component';
     PurchaseHistoryComponent,
     AdminComponent,
     EditDishComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
