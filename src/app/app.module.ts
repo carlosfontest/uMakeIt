@@ -32,6 +32,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // Services
 import { AuthService } from './services/auth.service';
 import { DishService } from './services/dish.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { DishService } from './services/dish.service';
   ],
   providers: [
     AuthService,
-    DishService
+    DishService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

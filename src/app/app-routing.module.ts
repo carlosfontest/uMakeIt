@@ -12,16 +12,19 @@ import { CartComponent } from './components/orders/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+// Guards para el routing
+import { AuthGuard } from './guards/auth.guard';
+
 // Todas las rutas de la App
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
-  {path: 'edit-dish/:id', component: EditDishComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'change-password', component: ChangePasswordComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'purchases', component: PurchaseHistoryComponent},
+  {path: 'edit-dish/:id', component: EditDishComponent, canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
+  {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+  {path: 'purchases', component: PurchaseHistoryComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 
 ];
@@ -31,6 +34,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes)
   ],
-  providers: [ ]
+  providers: [
+    AuthGuard
+  ]
 })
 export class AppRoutingModule { }
