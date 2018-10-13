@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(): Observable<boolean> {
+    // Verificamos el estado de la sesión, si hay alguien loggeado puede acceder, sino, lo redirige a home
     return this.afAuth.authState.pipe(map(auth => {
       if (!auth) {
         this.router.navigate(['/home']);

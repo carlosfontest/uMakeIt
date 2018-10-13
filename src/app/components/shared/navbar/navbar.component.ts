@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private flashMessage: FlashMessagesService
   ) { }
@@ -26,8 +28,7 @@ export class NavbarComponent implements OnInit {
       if (auth) {
         this.isLoggedIn = true;
         this.emailUserLoggedIn = auth.email;
-        this.nameUserLoggedIn = this.getNameUser();
-        this.isAdmin = this.getAdminCredentials();
+        this.getUserInfo(auth.email); // Obtenemos el nombre y el boolean isAdmin del user actual
       } else {
         this.isLoggedIn = false;
       }
@@ -44,14 +45,15 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  getNameUser() {
-
-    return 'Carlos Fonte';  // TODO
-  }
-
-  getAdminCredentials() {
-
-    return true;  // TODO
+  getUserInfo(email: string) {
+    this.userService.getUsers().subscribe(users => {
+      for (const user of users) {
+        if (user.email === email) {
+          this.nameUserLoggedIn = `${user.firstName} ${user.lastName}`;
+          this.isAdmin = user.isAdmin;
+        }
+      }
+    });
   }
 
 }

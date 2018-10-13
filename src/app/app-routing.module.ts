@@ -14,7 +14,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Guards para el routing
 import { AuthGuard } from './guards/auth.guard';
-import { AdminGuard } from './guards/admin.guard';
 
 // Todas las rutas de la App
 const routes: Routes = [
@@ -22,7 +21,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'edit-dish/:id', component: EditDishComponent, canActivate: [AuthGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [ AdminGuard ]},
+  {path: 'admin', component: AdminComponent, canActivate: [ AuthGuard ]},
   {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
   {path: 'purchases', component: PurchaseHistoryComponent, canActivate: [AuthGuard]},
@@ -36,8 +35,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AuthGuard,
-    AdminGuard
+    AuthGuard
   ]
 })
 export class AppRoutingModule { }

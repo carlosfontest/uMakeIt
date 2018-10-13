@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, Action, DocumentSnapshot } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { map } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    // Get users with the ID
+    // Obtenemos los users de la collection de firebase
     this.users = this.usersCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const user = a.payload.doc.data() as User;

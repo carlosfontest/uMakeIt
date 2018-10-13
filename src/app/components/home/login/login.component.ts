@@ -19,12 +19,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Verificamos si hay un user loggeado para que así no pueda acceder al home
-    this.authService.getAuth().subscribe(auth => {
-      if (auth) {
-        this.router.navigate(['/dashboard']);
-      }
-    });
+    
   }
 
   onSubmit() {
