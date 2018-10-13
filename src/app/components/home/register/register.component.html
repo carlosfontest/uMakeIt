@@ -7,24 +7,24 @@
   <!-- Form de registro -->
   <div>
     <div class="container">
-      <form>
+      <form (submit)="onSubmit()">
         <div class="form-row mb-4">
           <!-- FistName -->
           <div class="col">
-            <input type="text" class="form-control junto" id="firstName" placeholder="First Name">
+            <input type="text" name="firstName" class="form-control junto" id="firstName" placeholder="First Name" [(ngModel)]="firstName" required>
           </div> 
           <!-- LastName -->
           <div class="col">
-            <input type="text" class="form-control junto" id="lastName" placeholder="Last Name">
+            <input type="text" name="lastName" class="form-control junto" id="lastName" placeholder="Last Name" [(ngModel)]="lastName" required>
           </div>
         </div>
         <!-- Email -->
         <div class="form-group mt-4">
-          <input type="email" class="form-control" id="email" placeholder="Email">
+          <input type="email" name="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="email" required>
         </div>
         <!-- Password -->
         <div class="form-group mt-4">
-          <input type="password" class="form-control" id="password" placeholder="Password">
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password" required>
         </div>  
         <!-- Button Submit -->
         <button type="submit" class="btn btn-primary btn-block" popover="By clicking 'Register' you agree to our terms of service" triggers="mouseenter:mouseleave" placement="bottom">Register</button>

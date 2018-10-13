@@ -34,12 +34,12 @@ export class AuthService {
     this.afa.auth.signOut();
   }
 
-  // Método para hacer registrar un usuario al sistema
+  // Método para registrar un usuario al sistema
   register(email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.afa.auth.createUserWithEmailAndPassword(email, password)
         .then(userData => resolve(userData), err => reject(err));
     });
   }
-  
+
 }

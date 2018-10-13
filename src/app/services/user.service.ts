@@ -17,6 +17,7 @@ export class UserService {
     this.usersCollection = this.afs.collection('users', ref => ref.orderBy('lastName', 'asc'));
   }
 
+  // Método para obtener todos los users del collection
   getUsers(): Observable<User[]> {
     // Obtenemos los users de la collection de firebase
     this.users = this.usersCollection.snapshotChanges().pipe(
@@ -28,6 +29,11 @@ export class UserService {
     );
 
     return this.users;
+  }
+
+  // Método para añadir un nuevo user al collection
+  newUser(user: User) {
+    this.usersCollection.add(user);
   }
   
 }

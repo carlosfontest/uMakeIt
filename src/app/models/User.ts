@@ -3,5 +3,5 @@ export interface User {
   firstName: string;
   lastName: string;
   isAdmin: boolean;
-  id: string;
+  id?: string;
 }
