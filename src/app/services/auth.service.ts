@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, from, NEVER } from 'rxjs';
+import { Observable, from, NEVER, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -40,10 +40,9 @@ export class AuthService {
     return this.afa.authState.pipe(
       mergeMap(authState => {
         if (authState) {
-          console.log(from(this.afs.doc(`users/${authState.uid}`).get()));
           return from(this.afs.doc(`users/${authState.uid}`).get());
         } else {
-          return NEVER;
+          return of(null);
         }
       })
     );
