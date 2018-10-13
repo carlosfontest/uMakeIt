@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
           this.flashMessage.show(err.message, {
             cssClass: 'alert-danger', timeout: 4000
           });
-          this.flashMessage.grayOut(true);
         });
   }
 

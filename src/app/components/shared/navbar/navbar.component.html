@@ -16,7 +16,7 @@
       <li role="menuitem"><a class="dropdown-item" routerLink="/change-password"><i class="fa fa-unlock"></i> &nbsp;&nbsp;&nbsp;Change Password</a></li>
       <li role="menuitem" *ngIf="isAdmin"><a class="dropdown-item" routerLink="/admin"><i class="fa fa-cogs"></i> &nbsp;&nbsp;&nbsp;Administrator</a></li>
       <li class="divider dropdown-divider"></li>
-      <li role="menuitem"><a class="dropdown-item logout" (click)="onLogoutClick()" href="#"><i class="fa fa-sign-out"></i> &nbsp;&nbsp;&nbsp;Logout</a></li>
+      <li role="menuitem"><a class="dropdown-item" (click)="onLogoutClick()"><i class="fa fa-sign-out"></i> &nbsp;&nbsp;&nbsp;<span class="logout">Logout</span></a></li>
     </ul>
   </div>
   
