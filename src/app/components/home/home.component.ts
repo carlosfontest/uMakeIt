@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   login: boolean;
+  isLoading: boolean;
 
   constructor(
     private authService: AuthService,
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLoading = true;
     // Empezamos el booleando en true para que aparezca el login abierto
     this.login = true;
   
@@ -24,6 +26,7 @@ export class HomeComponent implements OnInit {
       if (auth) {
         this.router.navigate(['/dashboard']);
       }
+      this.isLoading = false;
     });
 
 

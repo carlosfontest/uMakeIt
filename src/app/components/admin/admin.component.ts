@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  isLoading: boolean;
 
   constructor(
     private authService: AuthService,
@@ -17,6 +18,7 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isLoading = true;
     // Al inicio obtenemos las credenciales de administrador del user actual
     this.authService.getAuth().subscribe(auth => {
       if (auth) {
@@ -36,6 +38,7 @@ export class AdminComponent implements OnInit {
           } 
         }
       }
+      this.isLoading = false;
     });
   }
 

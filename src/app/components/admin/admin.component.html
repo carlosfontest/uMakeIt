@@ -1,139 +1,141 @@
-<app-title-banner [title]="'Admin Menu'"></app-title-banner>
+<div *ngIf="!isLoading">
+    <app-title-banner [title]="'Admin Menu'"></app-title-banner>
 
-<accordion>
-    <accordion-group heading="Add new Product">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                <label class="custom-file-label" for="inputGroupFile02">Choose a photo for your product</label>
+    <accordion>
+        <accordion-group heading="Add new Product">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon2">
             </div>
-            <div class="input-group-append">
-                <span class="input-group-text" id="">Upload</span>
-            </div>
-        </div>
-        <div class="input-group mb-3">
-            <select class="custom-select" id="inputGroupSelect02">
-                <option selected>Choose type of Product</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <div class="input-group-append">
-                <label class="input-group-text" for="inputGroupSelect02">Types</label>
-            </div>
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02">Choose a photo for your product</label>
+                </div>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="">Upload</span>
                 </div>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" [disabled]="true" placeholder="Editable?">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Price of the Product">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <div>
-                <button type="button" class="btn btn-secondary">Submit</button>
-            </div>
-        </div>
-    </accordion-group>
-    <accordion-group heading="Edit existing Products">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon2">
-        </div>
-        <div class="input-group mb-3">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile02">
-                <label class="custom-file-label" for="inputGroupFile02">Choose a photo for your product</label>
-            </div>
-            <div class="input-group-append">
-                <span class="input-group-text" id="">Upload</span>
-            </div>
-        </div>
-        <div class="input-group mb-3">
-            <select class="custom-select" id="inputGroupSelect02">
-                <option selected>Choose type of Product</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <div class="input-group-append">
-                <label class="input-group-text" for="inputGroupSelect02">Types</label>
-            </div>
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
+            <div class="input-group mb-3">
+                <select class="custom-select" id="inputGroupSelect02">
+                    <option selected>Choose type of Product</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text" for="inputGroupSelect02">Types</label>
                 </div>
             </div>
-            <input type="text" class="form-control" aria-label="Text input with checkbox" [disabled]="true" placeholder="Editable?">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" [disabled]="true" placeholder="Editable?">
             </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Price of the Product">
-            <div class="input-group-append">
-                <span class="input-group-text">.00</span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Price of the Product">
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>
             </div>
-        </div>
-        <div class="d-flex justify-content-around">
-            <div>
-                <button type="button" class="btn btn-secondary">Back</button>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <button type="button" class="btn btn-secondary">Submit</button>
+                </div>
             </div>
-            <div>
-                <button type="button" class="btn btn-secondary">Submit</button>
+        </accordion-group>
+        <accordion-group heading="Edit existing Products">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon2">
             </div>
-        </div>
-    </accordion-group>
-    <accordion-group heading="Check and Manage Pending Orders">
-        <div class="d-flex">
-            <div class="col-4">
-                Name of the Product
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02">Choose a photo for your product</label>
+                </div>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="">Upload</span>
+                </div>
             </div>
-            <div class="col-4">
-                Price
+            <div class="input-group mb-3">
+                <select class="custom-select" id="inputGroupSelect02">
+                    <option selected>Choose type of Product</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text" for="inputGroupSelect02">Types</label>
+                </div>
             </div>
-            <div class="col-4 d-flex justify-content-between">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-sign-in"></i>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" [disabled]="true" placeholder="Editable?">
             </div>
-        </div>
-        <div class="d-flex">
-            <div class="col-4">
-                Name of the Product
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Price of the Product">
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>
             </div>
-            <div class="col-4">
-                Price
+            <div class="d-flex justify-content-around">
+                <div>
+                    <button type="button" class="btn btn-secondary">Back</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary">Submit</button>
+                </div>
             </div>
-            <div class="col-4 d-flex justify-content-between">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-sign-in"></i>
+        </accordion-group>
+        <accordion-group heading="Check and Manage Pending Orders">
+            <div class="d-flex">
+                <div class="col-4">
+                    Name of the Product
+                </div>
+                <div class="col-4">
+                    Price
+                </div>
+                <div class="col-4 d-flex justify-content-between">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-sign-in"></i>
+                </div>
             </div>
-        </div>
-        <div class="d-flex">
-            <div class="col-4">
-                Name of the Product
+            <div class="d-flex">
+                <div class="col-4">
+                    Name of the Product
+                </div>
+                <div class="col-4">
+                    Price
+                </div>
+                <div class="col-4 d-flex justify-content-between">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-sign-in"></i>
+                </div>
             </div>
-            <div class="col-4">
-                Price
+            <div class="d-flex">
+                <div class="col-4">
+                    Name of the Product
+                </div>
+                <div class="col-4">
+                    Price
+                </div>
+                <div class="col-4 d-flex justify-content-between">
+                    <i class="fa fa-edit"></i>
+                    <i class="fa fa-sign-in"></i>
+                </div>
             </div>
-            <div class="col-4 d-flex justify-content-between">
-                <i class="fa fa-edit"></i>
-                <i class="fa fa-sign-in"></i>
-            </div>
-        </div>
-    </accordion-group>
-</accordion>
+        </accordion-group>
+    </accordion>
+</div>
