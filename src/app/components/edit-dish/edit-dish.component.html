@@ -13,66 +13,17 @@
               <p class="priceDish">$17.00</p>
             </div>
             <hr>
-            <div class="titleBanner">
+            <div class="titleBanner titleMin">
                 <app-title-banner [title]="'Side Dish'"></app-title-banner>
             </div>
             <div class="dishes">
               <div class="row text-center">
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="thumbnailSideDish">
-                      <img src="../../../assets/images/ingredientes/vista/Camarones.png" alt="">
+                <!-- Mostrar todos los SideDish  -->
+                <ng-container *ngFor="let sideDish of sideDishes">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <app-side-dish-card [sideDish]="sideDish"></app-side-dish-card>
                   </div>
-                  <div class="botonesAdd">
-                    <button class="btn btn-sm btn-success">+</button>
-                    <button class="btn btn-sm btn-warning">-</button>
-                    <p class="cantidad">2</p>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="thumbnailSideDish">
-                      <img src="../../../assets/images/ingredientes/vista/Papas.png" alt="">
-                  </div>
-                  <div class="botonesAdd">
-                    <button class="btn btn-sm btn-success">+</button>
-                    <button class="btn btn-sm btn-warning">-</button>
-                    <p class="cantidad">2</p>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="thumbnailSideDish">
-                    <img src="../../../assets/images/ingredientes/vista/Brocoli.png" alt="">
-                  </div>
-                  <div class="botonesAdd">
-                    <button class="btn btn-sm btn-success">+</button>
-                    <button class="btn btn-sm btn-warning">-</button>
-                    <p class="cantidad">2</p>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="thumbnailSideDish">
-                      <img src="../../../assets/images/ingredientes/vista/PapasFritas.png" alt="">
-                  </div>
-                  <div class="botonesAdd">
-                    <button class="btn btn-sm btn-success">+</button>
-                    <button class="btn btn-sm btn-warning">-</button>
-                    <p class="cantidad">2</p>
-                  </div>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="thumbnailSideDish">
-                      <img src="../../../assets/images/ingredientes/vista/Brocoli.png" alt="">
-                  </div>
-                  <div class="botonesAdd">
-                    <button class="btn btn-sm btn-success">+</button>
-                    <button class="btn btn-sm btn-warning">-</button>
-                    <p class="cantidad">2</p>
-                  </div>
-                </div>
+                </ng-container>
 
               </div>
             </div>

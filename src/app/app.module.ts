@@ -34,6 +34,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthService } from './services/auth.service';
 import { DishService } from './services/dish.service';
 import { UserService } from './services/user.service';
+import { SideDishCardComponent } from './components/edit-dish/side-dish-card/side-dish-card.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UserService } from './services/user.service';
     AdminComponent,
     EditDishComponent,
     NotFoundComponent,
+    SideDishCardComponent,
   ],
   imports: [
     BrowserModule,

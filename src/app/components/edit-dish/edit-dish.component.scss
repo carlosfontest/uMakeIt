@@ -42,6 +42,22 @@
   padding-top: 15px;
   color: white;
   text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 30px;
+  text-shadow: 4px 4px 4px #000000;
+}
+
+.titleMin {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.priceDish {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.titleDish {
+  font-weight: bold;
 }
 
 hr {
@@ -107,6 +123,15 @@ hr {
   .col-lg-3 {
     padding-right: 0;
     padding-left: 10px;
+  }
+
+  .titleDish, .priceDish {
+    font-size: 24px;
+  }
+
+  .titleMin {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
 }

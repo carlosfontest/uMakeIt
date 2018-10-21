@@ -19,3 +19,14 @@ img {
     transform: scaleX(-1);
     filter: FlipH;
 }
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+    .container-completo {
+        font-size: 1.6rem;
+    }
+
+    img {
+        height: 35px;
+    }
+}
