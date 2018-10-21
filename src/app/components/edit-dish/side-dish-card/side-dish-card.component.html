@@ -1,9 +1,17 @@
+<!-- Thumbnail del ingrediente -->
 <div class="thumbnailSideDish">
   <img [src]="sideDish.thumbnail" alt="">
   <p class="textHover">{{ sideDish.name }}</p>
 </div>
+<!-- Botones de subir y bajar cantidad -->
 <div class="botonesAdd">
-  <button class="btn btn-sm btn-success">+</button>
-  <button class="btn btn-sm btn-warning">-</button>
-  <p class="cantidad">2</p>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <button type="button" class="btn btn-danger" (click)="substract()"><i class="fa fa-minus"></i></button>
+    </div>
+    <input type="text" class="form-control text-center" [value]="cant" readonly disabled>
+    <div class="input-group-prepend">
+      <button type="button" class="btn btn-success" (click)="add()"><i class="fa fa-plus"></i></button>
+    </div>
+  </div>
 </div>

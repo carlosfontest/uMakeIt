@@ -8,10 +8,28 @@ import { SideDish } from 'src/app/models/SideDish';
 })
 export class SideDishCardComponent implements OnInit {
   @Input() sideDish: SideDish;
+  cant: number;
 
   constructor() { }
 
   ngOnInit() {
+    this.cant = 0;
+  }
+
+  calculateMax(): number { // TODO
+    return 2;
+  }
+
+  add() {
+    if (this.cant < this.calculateMax()) {
+      this.cant++;
+    }
+  }
+
+  substract() {
+    if (this.cant > 0) {
+      this.cant--;
+    }
   }
 
 }
