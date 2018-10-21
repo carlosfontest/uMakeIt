@@ -6,11 +6,36 @@
   margin-bottom: 20px;
   margin: auto;
   margin-bottom: 20px;
+  position: relative;
+  padding: 4px;
 }
 
 .thumbnailSideDish img{
   width: 100%;
   max-width: 200px;
+  transition: .5s;
+}
+
+.textHover {
+  position: absolute;
+  color: whitesmoke;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 28px;
+  text-align: center;
+  z-index: 1;
+  top: 35%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s;
+  cursor: default;
+}
+
+.thumbnailSideDish:hover img {
+  filter: blur(2px) brightness(50%);
+}
+
+.thumbnailSideDish:hover .textHover {
+  opacity: 1;
 }
 
 .botonesAdd {
