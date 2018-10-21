@@ -78,67 +78,128 @@ hr {
 //  Cuando sea vista movil
 @media (max-width: 575px) {
   .nameDish {
-    font-size: 140%;
+    font-size: 100%;
   }
 
   .fa {
-    font-size: 9vw;
+    font-size: 8.5vw;
   }
 
   .dishPrice {
-    font-size: 7vw;
+    font-size: 6.5vw;
   }
 
   .divInfo {
     padding-top: 5px;
     padding-bottom: 5px;
   }
+
+  .row {
+    margin-bottom: 15px;
+    padding-top: 0px;
+  }
+
+  .divFoto img {
+    width: 65%;
+  }
 }
 
 // Cuando sea mayor a 992px
 @media (min-width: 992px) {
+  .nameDish {
+    font-size: 170%;
+  }
+
+  .fa {
+    font-size: 40px;
+  }
+
   .dishPrice {
-    font-size: 3vw;
+    font-size: 35px;
+  }
+
+  .divFoto img {
+    width: 70%;
   }
 }
 
 // Cuando sea mayor a 768px y menor a 992px
 @media (min-width: 768px) and (max-width: 992px) {
   .fa {
-    font-size: 9vw;
+    font-size: 34px;
   }
 
   .dishPrice {
-    font-size: 8vw;
+    font-size: 25px;
+    margin-left: 2px;
+  }
+
+  .nameDish {
+    font-size: 145%;
+  }
+}
+
+// Cuando sea menor a 1200px
+@media (min-width: 1200px) and (max-width: 1500px) {
+  .fa {
+    font-size: 50px;
+  }
+
+  .dishPrice {
+    font-size: 44px;
+    margin-left: 2px;
+  }
+
+  .nameDish {
+    font-size: 190%;
+  }
+}
+
+// Cuando sea mayor a 575px y menor a 768px
+@media (max-width: 768px) and (min-width: 575px) {
+  .fa {
+    font-size: 44px;
+  }
+
+  .dishPrice {
+    font-size: 40px;
+  }
+
+  .nameDish {
+    font-size: 190%;
+  }
+
+  .divFoto img {
+    width: 70%;
   }
 }
 
 // Cuando sea mayor a 1500px y menor a 2000px
 @media (min-width: 1500px) and (max-width: 2000px) {
   .fa {
-    font-size: 6.5vw;
+    font-size: 5vw;
   }
 
   .dishPrice {
-    font-size: 4.5vw;
+    font-size: 4vw;
   }
 
   .nameDish {
-    font-size: 220%;
+    font-size: 250%;
   }
 }
 
 // Cuando sea mayor a 2000px
 @media (min-width: 2000px) {
   .fa {
-    font-size: 130px;
+    font-size: 90px;
   }
 
   .dishPrice {
-    font-size: 100px;
+    font-size: 80px;
   }
 
   .nameDish {
-    font-size: 270%;
+    font-size: 300%;
   }
 }

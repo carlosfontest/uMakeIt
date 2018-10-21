@@ -21,7 +21,7 @@
     <!-- Platos del menú -->
     <div class="row text-center">
       <ng-container *ngFor="let dish of dishes"> <!-- Esto es porque no se puede usar ngFor y ngIf en el mismo tag-->
-        <div *ngIf="dish.type == typeDishShow" class="col-lg-6 col-sm-12">
+        <div *ngIf="dish.type == typeDishShow" class="col-lg-6 col-md-6 col-sm-12">
           <app-dish-card [dish]="dish"></app-dish-card>
         </div>
       </ng-container>
