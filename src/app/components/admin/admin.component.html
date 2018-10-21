@@ -1,7 +1,14 @@
 <div *ngIf="!isLoading">
-    <app-title-banner [title]="'Admin Menu'"></app-title-banner>
+    <div class="titleBanner">
+        <app-title-banner [title]="'Admin Menu'"></app-title-banner>
+    </div>   
 
-    <accordion>
+    <!-- Info de importancia para el admin -->
+    <div class="container-fluid">
+        <app-stats-section></app-stats-section>
+    </div>
+
+    <!-- <accordion>
         <accordion-group heading="Add new Product">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Product Name" aria-label="Product Name" aria-describedby="basic-addon2">
@@ -137,5 +144,6 @@
                 </div>
             </div>
         </accordion-group>
-    </accordion>
+    </accordion> -->
+
 </div>

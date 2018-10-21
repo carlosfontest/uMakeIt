@@ -1,0 +1,14 @@
+.titleBanner {
+  margin-top: 15px;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .titleBanner {
+    margin: 0;
+  }
+
+  .container-fluid {
+    padding: 0;
+  }
+}
