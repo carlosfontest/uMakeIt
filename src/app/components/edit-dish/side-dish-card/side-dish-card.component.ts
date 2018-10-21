@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { SideDish } from 'src/app/models/SideDish';
 
 @Component({
@@ -8,6 +8,8 @@ import { SideDish } from 'src/app/models/SideDish';
 })
 export class SideDishCardComponent implements OnInit {
   @Input() sideDish: SideDish;
+  @Input() cantSideDishSelected: number;
+  @Output() changeCant: EventEmitter<number> = new EventEmitter();
   cant: number;
 
   constructor() { }
@@ -21,14 +23,16 @@ export class SideDishCardComponent implements OnInit {
   }
 
   add() {
-    if (this.cant < this.calculateMax()) {
+    if (this.cantSideDishSelected < 2) {
       this.cant++;
+      this.changeCant.emit(1);
     }
   }
 
   substract() {
-    if (this.cant > 0) {
+    if (this.cantSideDishSelected > 0 && this.cant > 0) {
       this.cant--;
+      this.changeCant.emit(-1);
     }
   }
 

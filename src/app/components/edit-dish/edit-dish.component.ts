@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SideDish } from 'src/app/models/SideDish';
+import { csLocale } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-edit-dish',
@@ -8,6 +9,7 @@ import { SideDish } from 'src/app/models/SideDish';
 })
 export class EditDishComponent implements OnInit {
   sideDishes: SideDish[];
+  cantSideDishSelected: number;
 
   constructor() { }
 
@@ -31,7 +33,13 @@ export class EditDishComponent implements OnInit {
       }
     ];
 
+    this.cantSideDishSelected = 0;
 
+  }
+
+  onChangeCant(n: number) {
+    // Ingredientes seleccionados en total
+    this.cantSideDishSelected = this.cantSideDishSelected + n;
   }
 
 }
