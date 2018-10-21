@@ -17,23 +17,23 @@ export class EditDishComponent implements OnInit {
     this.sideDishes = [
       {
         thumbnail: '../../../assets/images/ingredientes/vista/Brocoli.png',
-        name: 'Brocoli'
+        name: 'Broccoli'
       },
       {
         thumbnail: '../../../assets/images/ingredientes/vista/Camarones.png',
-        name: 'Camarones'
+        name: 'Shrimp'
       },
       {
         thumbnail: '../../../assets/images/ingredientes/vista/Papas.png',
-        name: 'Papas'
+        name: 'Potatoes'
       },
       {
         thumbnail: '../../../assets/images/ingredientes/vista/PapasFritas.png',
-        name: 'Papas Fritas'
+        name: 'French Fries'
       },
       {
         thumbnail: '../../../assets/images/ingredientes/vista/Salchicha.png',
-        name: 'Salchicha'
+        name: 'Sausage'
       },
       {
         thumbnail: '../../../assets/images/ingredientes/vista/Tostones.png',
@@ -41,7 +41,7 @@ export class EditDishComponent implements OnInit {
       },
       {
         thumbnail: '../../../assets/images/ingredientes/vista/Vegetales.png',
-        name: 'Vegetales'
+        name: 'Vegetables'
       }
     ];
 
