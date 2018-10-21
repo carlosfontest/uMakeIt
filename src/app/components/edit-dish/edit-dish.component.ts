@@ -30,6 +30,18 @@ export class EditDishComponent implements OnInit {
       {
         thumbnail: '../../../assets/images/ingredientes/vista/PapasFritas.png',
         name: 'Papas Fritas'
+      },
+      {
+        thumbnail: '../../../assets/images/ingredientes/vista/Salchicha.png',
+        name: 'Salchicha'
+      },
+      {
+        thumbnail: '../../../assets/images/ingredientes/vista/Tostones.png',
+        name: 'Tostones'
+      },
+      {
+        thumbnail: '../../../assets/images/ingredientes/vista/Vegetales.png',
+        name: 'Vegetales'
       }
     ];
 

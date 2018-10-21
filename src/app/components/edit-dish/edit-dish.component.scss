@@ -20,6 +20,12 @@
   margin-left: 5px;
   height: 100%;
   box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+}
+
+.stickyPanel {
+  position: fixed;
 }
 
 .sideDishes {
@@ -45,7 +51,7 @@
   color: white;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 30px;
+  font-size: 3vw;
   text-shadow: 4px 4px 4px #000000;
   cursor: default;
 }
@@ -71,36 +77,6 @@ hr {
   margin-top: 0;
   margin-bottom: 5px;
   width: 98%;
-}
-
-.thumbnailSideDish {
-  background: #23211a;
-  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
-  width: 70%;
-  max-width: 200px;
-  margin-bottom: 20px;
-  margin: auto;
-  margin-bottom: 20px;
-}
-
-.thumbnailSideDish img{
-  width: 100%;
-  max-width: 200px;
-}
-
-.botonesAdd {
-  justify-content: space-around;
-  display: flex;
-  padding-left: 18px;
-  padding-right: 18px;
-  max-width: 200px;
-  margin: auto;
-  margin-bottom: 15px;
-}
-
-.cantidad {
-  color: white;
-  font-size: 15px;
 }
 
 .btn {
@@ -143,7 +119,7 @@ hr {
 
 }
 
-//  Cuando sea vista movil
+//  Cuando sea máximo 992
 @media (max-width: 992px) {
   .title1 {
     margin: 0;
@@ -161,15 +137,38 @@ hr {
     margin: 0;
   }
 
-  .col-lg-9 {
+  .col-md-9 {
     padding-right: 0;
     padding-left: 0;
   }
 
-  .col-lg-3 {
+  .col-md-3 {
     padding-right: 0;
     padding-left: 0;
   }
+
+  .divView, .divDishes {
+    box-shadow: none;
+  }
+
+  .titleDish, .priceDish {
+    font-size: 21px;
+  }
 }
+
+//  Cuando sea maximo 767px
+@media (max-width: 767px) {
+  .stickyPanel {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .titleDish, .priceDish {
+    font-size: 25px;
+  }
+}
+
+
 
 

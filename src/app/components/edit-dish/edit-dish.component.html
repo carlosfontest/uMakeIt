@@ -6,7 +6,7 @@
   <div class="divSideDish">
     <div class="row">
         <!-- Ingredientes -->
-        <div class="col-lg-9 col-sm-12">
+        <div class="col-md-9 col-sm-12">
           <div class="divDishes">
             <div class="sideDishes">
               <p class="titleDish">ONION SOUP</p>
@@ -20,7 +20,7 @@
               <div class="row text-center">
                 <!-- Mostrar todos los SideDish  -->
                 <ng-container *ngFor="let sideDish of sideDishes">
-                  <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="col-xl-3 col-lg-4 col-sm-6">
                     <app-side-dish-card [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
                   </div>
                 </ng-container>
@@ -30,14 +30,16 @@
           </div>
         </div>
         <!-- Vista del plato -->
-        <div class="col-lg-3 col-sm-12">
+        <div class="col-md-3 col-sm-12">
           <div class="divView text-center">
-            <p class="titleDish">YOUR DISH</p>
-            <hr>
-            <div class="dishView">
-              <img src="../../../assets/images/platos/SopaCebolla.png" alt="">
+            <div class="stickyPanel">
+              <p class="titleDish">YOUR DISH</p>
+              <hr>
+              <div class="dishView">
+                <img src="../../../assets/images/platos/SopaCebolla.png" alt="">
+              </div>
+              <button class="btn mb-4">Add to order</button>
             </div>
-            <button class="btn mb-4">Add to order</button>
           </div>
         </div>
       </div>

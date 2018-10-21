@@ -1,7 +1,7 @@
 nav {
   background: #23211A;
   height: 60px;
-  box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 7px 6px -6px black;
 }
 
 .flex-center {
@@ -68,7 +68,7 @@ ul {
 //  Cuando sea vista movil
 @media (max-width: 575px) {
   nav {
-    box-shadow: none;
+    //box-shadow: none;
   }
 }
 

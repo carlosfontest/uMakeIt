@@ -18,17 +18,15 @@ export class SideDishCardComponent implements OnInit {
     this.cant = 0;
   }
 
-  calculateMax(): number { // TODO
-    return 2;
-  }
-
   add() {
+    // Aumentamos la cantidad del actual ingrediente y aumentamos el total en edit-dish
     if (this.cantSideDishSelected < 2) {
       this.cant++;
       this.changeCant.emit(1);
     }
   }
 
+  // Disminuimos la cantidad del actual ingrediente y disminuimos el total en edit-dish
   substract() {
     if (this.cantSideDishSelected > 0 && this.cant > 0) {
       this.cant--;
