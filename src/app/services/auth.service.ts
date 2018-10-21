@@ -3,24 +3,38 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, from, NEVER, of } from 'rxjs';
 import { mergeMap, switchMap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { User } from '../models/User';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user$: Observable<User>;
+  authState = null;
 
   constructor(
     private afa: AngularFireAuth,
     private afs: AngularFirestore,
-    ) { }
+    ) {
+      this.user$ = afa.authState;
+      this.user$.subscribe((user: User) => {
+        if(user){
+          this.authState = user;
+          this.afs.collection('users').doc(user.uid).valueChanges().subscribe((userInfo: User) => {
+            if(userInfo){
+              this.authState = userInfo;
+            }
+          });
+        }
+      });
+    }
 
   // Método para logear al user al sistema
   login(email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.afa.auth.signInWithEmailAndPassword(email, password)
-        .then(userData => resolve(userData), err => reject(err));
+        .then(userData =>
+          resolve(userData), err => reject(err));
     });
   }
 
@@ -33,13 +47,4 @@ export class AuthService {
   logout() {
     this.afa.auth.signOut();
   }
-
-  // Método para registrar un usuario al sistema
-  register(email: string, password: string) {
-    return new Promise((resolve, reject) => {
-      this.afa.auth.createUserWithEmailAndPassword(email, password)
-        .then(userData => resolve(userData), err => reject(err));
-    });
-  }
-
 }
