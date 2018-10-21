@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     // Verificamos si hay un user loggeado para que no se muestre el nombre si no hay nadie loggeado
     this.authService.getAuth().subscribe(auth => {
+      console.log('%c  Viene el auth','color: orange',auth);
       if (auth) {
         this.isLoggedIn = true;
         this.emailUserLoggedIn = auth.email;

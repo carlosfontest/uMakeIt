@@ -29,27 +29,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // Registramos al user, lo guardamos en el collection de users, 
-    // redirigimos al dashboard y mostramos el mensaje de registro satisfactorio
-    this.authService.register(this.email, this.password)
-      .then(res => {
-        this.flashMessage.show('You are now registered and logged in', {
-          cssClass: 'alert-success', timeout: 4000
-        });
-        // Creamos el nuevo usuario y lo subimos a firestore
-        this.userService.newUser({
+      this.userService.register({
           email: this.email,
           firstName: this.firstName,
           lastName: this.lastName,
           isAdmin: this.isAdmin
-        });
-        this.router.navigate(['/']);
-      })
-        .catch(err => {
+        }, this.email, this.password).catch(err => {
           this.flashMessage.show(err.message, {
             cssClass: 'alert-danger', timeout: 4000
           });
         });
+      this.router.navigate(['/']);
   }
 
 }
