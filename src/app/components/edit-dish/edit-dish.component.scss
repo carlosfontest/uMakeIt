@@ -40,13 +40,13 @@
 }
 
 .dishView img{
-  width: 60%;
+  width: 76%;
   max-width: 200px;
 }
 
 .titleDish, .priceDish {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 14px;
+  margin-right: 14px;
   padding-top: 15px;
   color: white;
   text-align: center;
@@ -168,7 +168,7 @@ hr {
   }
 
   .titleDish, .priceDish {
-    font-size: 25px;
+    font-size: 22px;
   }
 }
 
@@ -227,7 +227,7 @@ hr {
 
 .btn-primary:hover:after {
   height: 100%;
-  width: 135%;
+  width: 145%;
 }
 
 .btn-primary:active {

@@ -139,19 +139,23 @@ hr {
   }
 }
 
-// Cuando sea menor a 1200px
+// Cuando sea mayor a 1200px y menor a 1500px
 @media (min-width: 1200px) and (max-width: 1500px) {
   .fa {
-    font-size: 50px;
+    font-size: 44px;
   }
 
   .dishPrice {
-    font-size: 44px;
+    font-size: 42px;
     margin-left: 2px;
   }
 
   .nameDish {
-    font-size: 190%;
+    font-size: 200%;
+  }
+
+  .divFoto img {
+    width: 72%;
   }
 }
 
