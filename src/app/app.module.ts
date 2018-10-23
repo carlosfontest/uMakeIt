@@ -36,6 +36,7 @@ import { DishService } from './services/dish.service';
 import { UserService } from './services/user.service';
 import { SideDishCardComponent } from './components/edit-dish/side-dish-card/side-dish-card.component';
 import { StatsSectionComponent } from './components/admin/stats-section/stats-section.component';
+import { StickyDishViewComponent } from './components/edit-dish/sticky-dish-view/sticky-dish-view.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { StatsSectionComponent } from './components/admin/stats-section/stats-se
     NotFoundComponent,
     SideDishCardComponent,
     StatsSectionComponent,
+    StickyDishViewComponent,
   ],
   imports: [
     BrowserModule,

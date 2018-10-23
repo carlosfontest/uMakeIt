@@ -1,6 +1,4 @@
-<div class="titleBanner title1">
-    <app-title-banner [title]="'Customize'"></app-title-banner>
-</div>
+<app-title-banner [title]="'Customize'"></app-title-banner>
 
 <div class="container-fluid">
   <div class="divSideDish">
@@ -31,16 +29,7 @@
         </div>
         <!-- Vista del plato -->
         <div class="col-md-3 col-sm-12">
-          <div class="divView text-center">
-            <div class="stickyPanel">
-              <p class="titleDish">YOUR DISH</p>
-              <hr>
-              <div class="dishView">
-                <img src="../../../assets/images/platos/Plato.png" alt="">
-              </div>
-              <button class="btn btn-primary btn-block">Add &nbsp;<i class="fa fa-cart-plus"></i></button>
-            </div>
-          </div>
+            <app-sticky-dish-view></app-sticky-dish-view>
         </div>
       </div>
   </div>
