@@ -1,0 +1,34 @@
+<accordion>
+    <!-- Opciones para añadir un nuevo producto -->
+    <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
+        <div accordion-heading class="forFlex">
+            <p class="titleAccordion">Add new Product</p>
+            <span *ngIf="!newOpen"><i class="fas fa-angle-double-down"></i></span>
+            <span *ngIf="newOpen"><i class="fas fa-angle-double-up"></i></span>
+        </div>
+
+        <app-add-product-accordion></app-add-product-accordion>
+    </accordion-group>
+
+    <!-- Opciones para editar producto existente -->
+    <accordion-group (isOpenChange)="editOpen = !editOpen" class="accordions" [panelClass]="customClass">
+        <div accordion-heading class="forFlex">
+            <p class="titleAccordion">Edit Products</p>
+            <span *ngIf="!editOpen"><i class="fas fa-angle-double-down"></i></span>
+            <span *ngIf="editOpen"><i class="fas fa-angle-double-up"></i></span>
+        </div>
+
+        <app-edit-product-accordion></app-edit-product-accordion>
+    </accordion-group>
+
+    <!-- Opciones para verificar y manejar órdenes pendientes -->
+    <accordion-group (isOpenChange)="pendingOpen = !pendingOpen" class="accordions" [panelClass]="customClass">
+        <div accordion-heading class="forFlex">
+            <p class="titleAccordion">Pending Orders</p>
+            <span *ngIf="!pendingOpen"><i class="fas fa-angle-double-down"></i></span>
+            <span *ngIf="pendingOpen"><i class="fas fa-angle-double-up"></i></span>
+        </div>
+
+        <app-pending-orders-accordion></app-pending-orders-accordion>
+    </accordion-group>
+</accordion>

@@ -37,6 +37,10 @@ import { UserService } from './services/user.service';
 import { SideDishCardComponent } from './components/edit-dish/side-dish-card/side-dish-card.component';
 import { StatsSectionComponent } from './components/admin/stats-section/stats-section.component';
 import { StickyDishViewComponent } from './components/edit-dish/sticky-dish-view/sticky-dish-view.component';
+import { AdminSectionComponent } from './components/admin/admin-section/admin-section.component';
+import { AddProductAccordionComponent } from './components/admin/admin-section/add-product-accordion/add-product-accordion.component';
+import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
+import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { StickyDishViewComponent } from './components/edit-dish/sticky-dish-view
     SideDishCardComponent,
     StatsSectionComponent,
     StickyDishViewComponent,
+    AdminSectionComponent,
+    AddProductAccordionComponent,
+    EditProductAccordionComponent,
+    PendingOrdersAccordionComponent,
   ],
   imports: [
     BrowserModule,

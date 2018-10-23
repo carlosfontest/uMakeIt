@@ -10,3 +10,18 @@ body {
   background-image: url('assets/images/background-image.png');
   background-size: contain;
 }
+
+// Clases para los accordions de admin
+.accordionsClass {
+  border: none;
+}
+
+.accordionsClass .panel-heading {
+  color: whitesmoke;
+  text-shadow: 2px 2px 2px #000000;
+  background: rgb(41, 40, 35);
+}
+
+.accordionsClass .panel-heading .fas {
+  color: #F8C822;
+}

@@ -1,0 +1,32 @@
+.accordions {
+  margin-bottom: 25px;
+}
+
+.forFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fas {
+  font-size: 40px;
+  color: #F8C822;
+  text-shadow: 2px 2px 2px #000000;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.titleAccordion {
+  font-size: 25px;
+  margin-bottom: 0;
+  padding-left: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .titleAccordion {
+    font-size: 23px;
+  }
+}

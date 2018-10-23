@@ -38,6 +38,7 @@
   text-transform: uppercase;
   color: rgb(233, 223, 183);
   margin-bottom: 0;
+  text-shadow: 2px 2px 2px #000000;
   cursor: default;
 }
 
@@ -81,6 +82,11 @@
 
   .ordersDone {
     border-right: solid 1px rgb(223, 194, 90); 
+    border-bottom: solid 1px rgb(223, 194, 90); 
+  }
+
+  .ordersPending {
+    border-bottom: solid 1px rgb(223, 194, 90); 
   }
 
   .col-xs-6 {

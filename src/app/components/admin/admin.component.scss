@@ -2,9 +2,22 @@
   margin-top: 15px;
 }
 
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 30px 30px;
+  padding-bottom: 10px;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+  background: rgb(66, 64, 58);
+}
+
 //  Cuando sea vista movil
 @media (max-width: 575px) {
   .titleBanner {
+    margin: 0;
+  }
+
+  .container {
     margin: 0;
   }
 
