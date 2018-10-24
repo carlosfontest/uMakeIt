@@ -4,17 +4,19 @@
 
 .container-completo {
     height: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
     background: rgb(41, 40, 35);
     color: white;
     font-family: 'Amaranth', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3.8rem;
     text-align: center;
     text-shadow: 2px 2px 4px #000000;
     box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
 }
 
 img {
-    height: 50px;
+    height: 70px;
 }
 
 .img2 {

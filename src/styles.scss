@@ -17,9 +17,15 @@ body {
 }
 
 .accordionsClass .panel-heading {
-  color: whitesmoke;
+  color: rgb(233, 223, 183);
   text-shadow: 2px 2px 2px #000000;
   background: rgb(41, 40, 35);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.accordionsClass .panel-heading:hover {
+  background: rgb(29, 28, 24);
 }
 
 .accordionsClass .panel-heading .fas {
