@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SideDish } from 'src/app/models/SideDish';
 import { csLocale } from 'ngx-bootstrap';
+import { SideDishService } from 'src/app/services/side-dish.service';
 
 @Component({
   selector: 'app-edit-dish',
@@ -10,42 +11,20 @@ import { csLocale } from 'ngx-bootstrap';
 export class EditDishComponent implements OnInit {
   sideDishes: SideDish[];
   cantSideDishSelected: number;
+  // Para saber si ya se cargo la info de la base de datos
+  loaded: boolean;
 
-  constructor() { }
+  constructor(private sideDishService: SideDishService) { }
 
   ngOnInit() {
-    this.sideDishes = [
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/Brocoli.png',
-        name: 'Broccoli'
-      },
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/Camarones.png',
-        name: 'Shrimp'
-      },
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/Papas.png',
-        name: 'Potatoes'
-      },
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/PapasFritas.png',
-        name: 'French Fries'
-      },
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/Salchicha.png',
-        name: 'Sausage'
-      },
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/Tostones.png',
-        name: 'Tostones'
-      },
-      {
-        thumbnail: '../../../assets/images/ingredientes/vista/Vegetales.png',
-        name: 'Vegetables'
-      }
-    ];
-
+    this.loaded = false;
     this.cantSideDishSelected = 0;
+
+    this.sideDishService.getSideDishes().subscribe(data => {
+      this.sideDishes = data;
+      this.loaded = true;
+    });
+    
 
   }
 

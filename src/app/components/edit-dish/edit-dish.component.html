@@ -18,6 +18,13 @@
             </div>
             <div class="dishes">
               <div class="row text-center">
+
+                <!-- Si no se han cargado los platos -->
+                <div *ngIf="!loaded" class="text-center loadingDiv"> 
+                  <h4 class="display-4">LOADING</h4>
+                  <img src="../../../assets/images/loading2.gif" class="mb-2">
+                </div>
+
                 <!-- Mostrar todos los SideDish  -->
                 <ng-container *ngFor="let sideDish of sideDishes">
                   <div class="col-xl-3 col-lg-4 col-sm-6">

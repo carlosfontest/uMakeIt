@@ -18,9 +18,14 @@
 
 <div class="container">
   <div class="divMenu">
+    <!-- Si no se han cargado los platos -->
+    <div *ngIf="!loaded" class="text-center"> 
+      <h4 class="display-4">LOADING</h4>
+      <img src="../../../assets/images/loading.gif" class="mb-2">
+    </div>
     <!-- Platos del menú -->
     <div class="row text-center">
-      <ng-container *ngFor="let dish of dishes"> <!-- Esto es porque no se puede usar ngFor y ngIf en el mismo tag-->
+      <ng-container *ngFor="let dish of dishes">
         <div *ngIf="dish.type == typeDishShow" class="col-lg-6 col-md-6 col-sm-12">
           <app-dish-card [dish]="dish"></app-dish-card>
         </div>

@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
@@ -41,6 +42,7 @@ import { AdminSectionComponent } from './components/admin/admin-section/admin-se
 import { AddProductAccordionComponent } from './components/admin/admin-section/add-product-accordion/add-product-accordion.component';
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
+import { SideDishService } from './services/side-dish.service';
 
 @NgModule({
   declarations: [
@@ -77,12 +79,14 @@ import { PendingOrdersAccordionComponent } from './components/admin/admin-sectio
     AngularFireModule.initializeApp(environment.firebase, 'umakeit-crr'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    PasswordStrengthBarModule
   ],
   providers: [
     AuthService,
     DishService,
-    UserService
+    UserService,
+    SideDishService
   ],
   bootstrap: [AppComponent]
 })

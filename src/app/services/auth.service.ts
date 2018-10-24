@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, from, NEVER, of } from 'rxjs';
-import { mergeMap, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
 
@@ -18,10 +17,10 @@ export class AuthService {
     ) {
       this.user$ = afa.authState;
       this.user$.subscribe((user: User) => {
-        if(user){
+        if (user) {
           this.authState = user;
           this.afs.collection('users').doc(user.uid).valueChanges().subscribe((userInfo: User) => {
-            if(userInfo){
+            if (userInfo) {
               this.authState = userInfo;
             }
           });

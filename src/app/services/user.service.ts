@@ -15,9 +15,11 @@ export class UserService {
   users: Observable<User[]>;
   user: Observable<User>;
 
-  constructor(private afs: AngularFirestore,
+  constructor(
+    private afs: AngularFirestore,
     private afa: AngularFireAuth,
-    private flashMessage: FlashMessagesService) { 
+    private flashMessage: FlashMessagesService
+    ) { 
     this.usersCollection = this.afs.collection('users', ref => ref.orderBy('lastName', 'asc'));
   }
 

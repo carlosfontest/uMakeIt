@@ -28,12 +28,21 @@ app-sticky-dish-view {
   display: block;
   background: #23211a;
   height: 100%;
+  min-height: 420px;
 }
 
 .sideDishes {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.loadingDiv {
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  margin: 10px 50px;
+  color: rgb(233, 223, 183);
+  background: #23211a;
 }
 
 .titleDish, .priceDish {
@@ -131,6 +140,10 @@ hr {
 
   .divDishes {
     box-shadow: none;
+  }
+
+  .display-4 {
+    font-size: 25px;
   }
 }
 

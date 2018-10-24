@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../../models/Dish';
+import { DishService } from 'src/app/services/dish.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,123 +12,20 @@ export class DashboardComponent implements OnInit {
   typeDishShow: string;
   // Array de todos los platos que hay en el sistema
   dishes: Dish[];
+  // Para saber si ya se cargo la info de la base de datos
+  loaded: boolean;
 
-  constructor() { }
+  constructor(private dishService: DishService) { }
 
   ngOnInit() {
     this.typeDishShow = 'Pizzas';
+    this.loaded = false;
 
-    // Platos Hardcode para las vistas
-    this.dishes = [
-      {
-        thumbnail: '../../../assets/images/platos/Ensalada.png',
-        name: 'Salad',
-        type: 'Others',
-        price: 12
-      },
-      {
-        thumbnail: '../../../assets/images/platos/SopaCebolla.png',
-        name: 'Onion Soup',
-        type: 'Soups',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/Raviolis.png',
-        name: 'Raviolis',
-        type: 'Pastas',
-        price: 15
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaPepperonni.png',
-        name: 'Pizza Peperonni',
-        type: 'Pizzas',
-        price: 6
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      },
-      {
-        thumbnail: '../../../assets/images/platos/PizzaCapressa.png',
-        name: 'Pizza Capressa',
-        type: 'Pizzas',
-        price: 8
-      }
-    ];
+    // Le pedimos a firestore los platos
+    this.dishService.getDishes().subscribe(data => {
+      this.dishes = data;
+      this.loaded = true;
+    });
   }
 
   showDish(dish: string) {

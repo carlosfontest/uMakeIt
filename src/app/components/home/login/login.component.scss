@@ -20,6 +20,7 @@
   text-align: center;
   background: rgb(37, 37, 30);
   text-shadow: 4px 4px 4px #000000;
+  cursor: default;
 }
 
 hr {
@@ -73,6 +74,15 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   font-family: 'Ubuntu', sans-serif;
   margin-top: 10%;
   text-shadow: 2px 2px 2px #000000;
+}
+
+button:active {
+  outline: none !important;
+  border: none !important;
+}
+
+button:focus {
+  outline: none !important;
 }
 
 .btn::before,

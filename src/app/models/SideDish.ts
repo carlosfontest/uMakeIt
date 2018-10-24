@@ -1,4 +1,5 @@
 export interface SideDish {
-  thumbnail: string;
+  thumbnailVista: string;
   name: string;
+  id?: string;
 }

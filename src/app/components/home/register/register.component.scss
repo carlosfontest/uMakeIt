@@ -20,6 +20,7 @@
   text-align: center;
   background: rgb(37, 37, 30);
   text-shadow: 4px 4px 4px #000000;
+  cursor: default;
 }
 
 hr {
@@ -75,6 +76,10 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   text-shadow: 2px 2px 2px #000000;
 }
 
+password-strength-meter {
+  width: 100%;
+}
+
 .btn::before,
 .btn::after {
   background: rgba(248, 200, 34, 1);
@@ -87,6 +92,8 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   color: #000;
   border: 0;
   text-shadow: none;
+  outline: 0 none;
+  border: 0;
 }
 
 .btn-primary {
