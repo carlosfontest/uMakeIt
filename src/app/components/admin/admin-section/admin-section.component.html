@@ -2,7 +2,7 @@
     <!-- Opciones para añadir un nuevo producto -->
     <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">Add new Product</p>
+            <p class="titleAccordion">ADD NEW PRODUCT</p>
             <span *ngIf="!newOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="newOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
@@ -13,7 +13,7 @@
     <!-- Opciones para editar producto existente -->
     <accordion-group (isOpenChange)="editOpen = !editOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">Edit Products</p>
+            <p class="titleAccordion">EDIT PRODUCTS</p>
             <span *ngIf="!editOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="editOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
@@ -24,7 +24,7 @@
     <!-- Opciones para verificar y manejar órdenes pendientes -->
     <accordion-group (isOpenChange)="pendingOpen = !pendingOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">Pending Orders</p>
+            <p class="titleAccordion d-flex">PENDING ORDERS <span class="badge badge-secondary">8</span></p>
             <span *ngIf="!pendingOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="pendingOpen"><i class="fas fa-chevron-up"></i></span>
         </div>

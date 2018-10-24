@@ -33,7 +33,7 @@ const routes: Routes = [
 @NgModule({
   exports: [RouterModule],
   imports: [
-  RouterModule.forRoot(routes)
+  RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})
   ],
   providers: [
     AuthGuard

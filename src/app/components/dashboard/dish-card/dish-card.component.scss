@@ -21,7 +21,7 @@ img {
 }
 
 .nameDish {
-  color: whitesmoke;
+  color: rgb(233, 223, 183);
   font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 200%;
   text-align: left;
@@ -57,11 +57,21 @@ hr {
 }
 
 .fa {
-  color: rgb(184, 174, 174);
+  color: rgb(182, 177, 159);
   text-shadow: 4px 4px 4px #000000;
   margin-right: 10px;
   margin-left: 10px;
   font-size: 370%;
+  transition: .4s; 
+}
+
+.fa:hover {
+  color: rgb(119, 111, 111);
+  transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }
 
 .dishPrice {

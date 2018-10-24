@@ -7,11 +7,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
-  color: white;
 }
 
 .title {
   font-family: 'Ubuntu', sans-serif;
+  color: rgb(233, 223, 183);
   font-size: 250%;
   padding-top: 3%;
   width: 100%;
@@ -31,7 +31,7 @@ hr {
 
 .form-control {
   background-color: transparent;
-  color: whitesmoke;
+  color: rgb(233, 223, 183);
   border-color: white;
   width: 93%;
   margin: auto;
@@ -40,6 +40,12 @@ hr {
   outline: 0;
   border-bottom: 1px solid rgb(255, 255, 255);
   font-family: 'Ubuntu', sans-serif;
+}
+
+// Cuando se activa el autocompletado
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+  -webkit-text-fill-color: rgb(233, 223, 183);
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .form-control:focus {

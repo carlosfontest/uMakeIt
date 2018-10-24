@@ -28,6 +28,18 @@ body {
   background: rgb(29, 28, 24);
 }
 
+.accordionsClass .panel-heading:hover .fas {
+  transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+.accordionsClass .panel-body {
+  background: rgb(216, 214, 208);
+}
+
 .accordionsClass .panel-heading .fas {
   color: #F8C822;
 }
