@@ -82,15 +82,9 @@ import { SideDishService } from './services/side-dish.service';
     AddProductAccordionComponent,
     EditProductAccordionComponent,
     PendingOrdersAccordionComponent,
-<<<<<<< HEAD
-    PurchaseCardComponent,
-    RecoverPasswordModalComponent,
-    RecoverPasswordComponent
-=======
     RecoverPasswordModalComponent,
     RecoverPasswordComponent,
     PurchaseCardComponent
->>>>>>> raquintero
   ],
   imports: [
     BrowserModule,

@@ -8,15 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-<<<<<<< HEAD
 import { CartComponent } from './components/cart/cart.component';
-import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-=======
-import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { CartComponent } from './components/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
->>>>>>> raquintero
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Guards para el routing
