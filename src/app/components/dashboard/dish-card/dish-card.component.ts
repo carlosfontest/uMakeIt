@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Dish } from '../../../models/Dish';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DishCardComponent implements OnInit {
   @Input() dish: Dish;
+  @Output() cartEvent: EventEmitter<Dish> = new EventEmitter();
 
   constructor(private router: Router) { }
 
@@ -17,5 +18,9 @@ export class DishCardComponent implements OnInit {
 
   editDish(){
     this.router.navigate(['/edit-dish'], { queryParams: { id : this.dish.id } });
+  }
+
+  addDish(){
+    this.cartEvent.emit(this.dish);
   }
 }

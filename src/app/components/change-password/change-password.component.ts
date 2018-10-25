@@ -40,6 +40,9 @@ export class ChangePasswordComponent implements OnInit {
         this.boolConfirm = true;
       }
     });
+
+    console.log(this.as.currentUser);
+    ;
   }
 
   reAuth({value}){

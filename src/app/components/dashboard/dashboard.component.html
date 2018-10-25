@@ -27,12 +27,21 @@
     <div class="row text-center">
       <ng-container *ngFor="let dish of showingDishes">
         <div class="col-lg-6 col-md-6 col-sm-12">
+<<<<<<< HEAD
           <app-dish-card [dish]="dish"></app-dish-card>
         </div>
       </ng-container>
         <div *ngIf="loaded && !showingDishes[0]" class="w-100">
           <h1 class="notFound display-4 mt-3 mb-3">No dishes of this type yet...</h1>
         </div>
+=======
+          <app-dish-card [dish]="dish" (cartEvent)="addDishToCart($event)" ></app-dish-card>
+        </div>
+      </ng-container>
+      <div *ngIf="loaded && !showingDishes[0]" class="w-100">
+        <h1>No dishes of this type yet...</h1>
+      </div>
+>>>>>>> raquintero
     </div>
   </div>
 </div>
