@@ -90,66 +90,35 @@ hr {
 
 
 // Estilos del botón
-.btn, .btn::after {
-  -webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-	transition: all 0.3s;
-}
-
-.btn {
-  padding: 14px 24px;
-  border: 0 none;
-  font-weight: 700;
+a.btn,.btn {
+  display: inline-block;
+  outline: none;
+  *zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  display: block;
-  position: relative;
-  background: none;
-  border: 2px solid rgba(248, 200, 34, 1);
-  font-family: 'Ubuntu', sans-serif; 
-  width: 90%;
-  margin: auto;
-  margin-bottom: 20px;
-  text-shadow: 4px 4px 4px #000000;
-  padding-left: 10px;
-  padding-right: 10px;
+  vertical-align: middle;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 25px;
+  font-weight: 800;
 }
 
-.btn::before,
-.btn::after {
-  background: rgba(248, 200, 34, 1);
-  content: '';
-  position: absolute;
-  z-index: -1;
+.btn-medium {
+  font-size: 0.8125em;
+  padding: 10px;
 }
 
-.btn:hover {
-  color: #000;
-  border: 0;
-  text-shadow: none;
+.btn-yellow {
+  color: #F8C822;
+  border-color: #F8C822;
 }
-
-.btn-primary {
-  overflow: hidden;
-}
-
-.btn-primary::after {
-  height: 100%;
-  left: -5%;
-  top: 0;
-  transform: skew(50deg);
-  transition-duration: 0.6s;
-  transform-origin: bottom left;
-  width: 0;
-}
-
-.btn-primary:hover:after {
-  height: 100%;
-  width: 145%;
-}
-
-.btn-primary:active {
-  background: transparent !important;
-  color: #000 !important;
+.btn-yellow:hover {
+  background: #F8C822;
+  color: rgb(37, 34, 28);
+  border-color: #F8C822;
 }

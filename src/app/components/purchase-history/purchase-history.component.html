@@ -1,0 +1,11 @@
+<div class="title">
+  <app-title-banner [title]="'Shooping Log'"></app-title-banner>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <ng-container *ngFor="let purchase of purchases">
+      <app-purchase-card [purchase]="purchase"></app-purchase-card>
+    </ng-container>
+  </div>
+</div>

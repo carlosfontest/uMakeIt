@@ -25,12 +25,15 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { CartComponent } from './components/orders/cart/cart.component';
-import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { CartComponent } from './components/cart/cart.component';
+import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -44,8 +47,6 @@ import { AddProductAccordionComponent } from './components/admin/admin-section/a
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
-import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
-import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
     EditProductAccordionComponent,
     PendingOrdersAccordionComponent,
     RecoverPasswordModalComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    PurchaseCardComponent
   ],
   imports: [
     BrowserModule,

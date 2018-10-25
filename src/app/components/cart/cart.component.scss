@@ -1,0 +1,265 @@
+.title {
+    margin: 22px 0;
+}
+
+.products {
+    min-width: 180px;
+}
+
+.totalPri {
+    width: 155px;
+}
+
+.quantityHeader {
+    width: 120px;
+    padding-right: 26px;
+}
+
+.container-fluid {
+    padding-right: 150px; 
+    padding-left: 150px;
+}
+
+.contTable {
+    background: rgb(51, 49, 44);
+    padding: 20px;
+    color: rgb(233, 223, 183);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 25px;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 2px #000000;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    cursor: default;
+}
+
+.dishThumbnail img {
+    max-width: 100px;
+    margin: 10px 0;
+}
+
+.dishPrice, .totalPrice {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.textQuantity {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.totalPrice {
+    font-weight: 800;
+    color: rgb(223, 208, 149);
+}
+
+.deleteItem {
+    font-size: 27px;
+    margin-right: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.deleteItem:hover {
+    color: #ac1e1e;
+}
+
+.flecha {
+    line-height: 38px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.flecha:hover {
+    color: rgb(90, 86, 70);
+}
+
+.quantity {
+    background: rgb(34, 32, 26);
+    width: 90px;
+    border-radius: 500px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+}
+
+.totals {
+    background: rgb(34, 32, 26);
+    width: 94%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.totals.up {
+    border-bottom: solid 1px rgb(39, 37, 33);
+}
+
+.infoTotals {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight: 800;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.infoTotals.inTot {
+    font-size: 35px;
+    color: rgb(160, 147, 98);
+}
+
+.mr-4 {
+    font-family: 'Fjalla One', sans-serif;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: rgb(228, 216, 169);
+}
+
+.mr-4.tot {
+    font-weight: 900;
+    color: rgb(160, 147, 98);
+    font-size: 35px;
+}
+
+.thead {
+    background: rgb(34, 32, 26);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 27px;
+    box-shadow: 0 8px 7px -6px black;
+}
+
+.thead tr th {
+    border: none;
+}
+
+tr td {
+    border-top: 0;
+    border-bottom: solid 1px rgb(34, 32, 26);
+    vertical-align: middle;
+}
+
+thead tr th:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+thead tr th:nth-child(6) {
+    border-radius: 0 5px 5px 0;
+}
+
+//  Cuando sea máximo 1224px
+@media (max-width: 1224px) {
+    .container-fluid {
+        padding-right: 80px; 
+        padding-left: 80px;
+    }
+}
+
+//  Cuando sea máximo 1032px
+@media (max-width: 1032px) {
+    .container-fluid {
+        padding-right: 40px; 
+        padding-left: 40px;
+    }
+}
+
+//  Cuando sea máximo 920px
+@media (max-width: 920px) {
+    .container-fluid {
+        padding-right: 20px; 
+        padding-left: 20px;
+    }
+}
+
+//  Cuando sea máximo 860px
+@media (max-width: 860px) {
+    .container-fluid {
+        padding-right: 0; 
+        padding-left: 0;
+    }
+
+    .title {
+        margin: 0;
+    }
+
+    .contTable {
+        margin-bottom: 0;
+        box-shadow: none;
+    }
+}
+
+//  Cuando sea máximo 800px
+@media (max-width: 800px) {
+    .deleteItem {
+        font-size: 20px;
+    }
+
+    .dishThumbnail img {
+        max-width: 75px;
+    }
+
+    .dishPrice, .totalPrice {
+        font-size: 22px;
+    }
+
+    .dishName {
+        font-size: 22px;
+    }
+
+    .thead {
+        font-size: 22px;
+    }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+    .infoTotals.inTot {
+        font-size: 28px;
+    }
+
+    .mr-4.tot {
+        font-size: 28px;
+    }
+
+    .infoTotals {
+        font-size: 20px;
+    }
+    
+    .mr-4 {
+        font-size: 20px;
+    }
+}
+
+// Estilos del botón
+a.btn,.btn {
+    margin-top: 1.5rem;
+    margin-right: 30px;
+    display: inline-block;
+    outline: none;
+    *zoom: 1;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 300;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.btn-medium {
+    font-size: 0.8125em;
+    padding: 10px;
+}
+
+.btn-yellow {
+	color: #F8C822;
+	border-color: #F8C822;
+}
+.btn-yellow:hover {
+    background: #F8C822;
+    color: rgb(37, 34, 28);
+    border-color: #F8C822;
+}
