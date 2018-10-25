@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
+import { ModalModule } from 'ngx-bootstrap/modal';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
@@ -43,6 +44,8 @@ import { AddProductAccordionComponent } from './components/admin/admin-section/a
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
+import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,8 @@ import { SideDishService } from './services/side-dish.service';
     AddProductAccordionComponent,
     EditProductAccordionComponent,
     PendingOrdersAccordionComponent,
+    RecoverPasswordModalComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,8 @@ import { SideDishService } from './services/side-dish.service';
     AngularFireAuthModule,
     FlashMessagesModule.forRoot(),
     PasswordStrengthBarModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthService,
@@ -89,6 +95,6 @@ import { SideDishService } from './services/side-dish.service';
     UserService,
     SideDishService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, RecoverPasswordModalComponent]
 })
 export class AppModule { }
