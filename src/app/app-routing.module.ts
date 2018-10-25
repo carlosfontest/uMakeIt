@@ -10,6 +10,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { CartComponent } from './components/orders/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Guards para el routing
@@ -26,8 +27,8 @@ const routes: Routes = [
   {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
   {path: 'purchases', component: PurchaseHistoryComponent, canActivate: [AuthGuard]},
+  {path: 'recover-password', component: RecoverPasswordComponent},
   {path: '**', component: NotFoundComponent}
-
 ];
 
 @NgModule({
