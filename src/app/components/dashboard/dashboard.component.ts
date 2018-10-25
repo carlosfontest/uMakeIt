@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Dish } from '../../models/Dish';
 import { DishService } from 'src/app/services/dish.service';
 import { CartService } from './../../services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Cart } from 'src/app/models/Cart';
+import { log } from 'util';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   allDishes: Dish[];
   // Para saber si ya se cargo la info de la base de datos
   loaded: boolean;
+  // Host Listener
+  @HostListener('window:beforeunload') updateCart(){
+    this.cs.getCartDoc(this.uid).update(this.cart);
+  }
 
   constructor(private dishService: DishService, private cs: CartService, private as: AuthService) { }
 
@@ -31,22 +36,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.cs.getCart(this.uid).subscribe(cart => {
       if(!cart){
-        const newCart: Cart = {dishes: [], price: '0'};
+        const newCart: Cart = {dishes: [], price: 0};
         this.cs.createCart(this.uid, newCart).then(()=> {
           console.log('Creado el carrito');
           this.cart = newCart;
-          window.onbeforeunload = (()=>{
-            this.cs.getCartDoc(this.uid).update(this.cart);
-          });
         }).catch((error)=>{
           console.log(error.message);
         })
       }else{
         this.cart = cart;
         console.log('habia carrito', this.cart);
-        window.onbeforeunload = (()=>{
-          this.cs.getCartDoc(this.uid).update(this.cart);
-        });
       }
       // Le pedimos a Firestore los platos
       this.dishService.getDishes().subscribe(data => {
@@ -70,6 +69,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
   showDish(dish: string) {
     this.typeDishShow = dish;
     this.showingDishes = this.allDishes.filter(item => item.type === dish);
+  }
+
+  addDishToCart(dish: Dish){
+    const foundDish = this.cart.dishes.find(u => u.dish.id === dish.id);
+    if(foundDish){
+      foundDish.quantity += 1;
+    }else{
+      this.cart.dishes.push({
+        dish: dish,
+        quantity: 0
+      });
+    }
+    this.cart.price += dish.price;
+    console.log(this.cart, 'updated');
+    
   }
 
 }

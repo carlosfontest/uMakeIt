@@ -2,10 +2,6 @@
     min-height: calc(100vh - 60px - 50px);
 }
 
-.clickable:hover{
-    cursor: pointer;
-};
-
 @media (max-width: 575px) {
     .main-container{
         min-height: calc(100vh - 60px - 150px);

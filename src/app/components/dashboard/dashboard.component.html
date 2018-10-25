@@ -27,7 +27,7 @@
     <div class="row text-center">
       <ng-container *ngFor="let dish of showingDishes">
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <app-dish-card [dish]="dish"></app-dish-card>
+          <app-dish-card [dish]="dish" (cartEvent)="addDishToCart($event)" ></app-dish-card>
         </div>
       </ng-container>
       <div *ngIf="loaded && !showingDishes[0]" class="w-100">

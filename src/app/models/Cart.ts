@@ -1,7 +1,7 @@
 import { Dish } from "./Dish";
 
 export interface Cart {
-    dishes: {dish: Dish, quantity: string}[],
-    price: string
+    dishes: {dish: Dish, quantity: number}[],
+    price: number
   }
   
