@@ -25,9 +25,14 @@
     </div>
     <!-- Platos del menú -->
     <div class="row text-center">
-      <ng-container *ngFor="let dish of dishes">
-        <div *ngIf="dish.type == typeDishShow" class="col-lg-6 col-md-6 col-sm-12">
+      <ng-container *ngFor="let dish of showingDishes">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <app-dish-card [dish]="dish"></app-dish-card>
+        </div>
+      </ng-container>
+      <ng-container>
+        <div *ngIf="loaded && !showingDishes[0]">
+          <h1>No dishes of this type yet...</h1>
         </div>
       </ng-container>
     </div>
