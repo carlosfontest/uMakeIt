@@ -61,4 +61,12 @@ export class AuthService {
     
     return user.reauthenticateAndRetrieveDataWithCredential(credentials);
   }
+
+  passwordResetEmail(email: string){
+    return this.afa.auth.sendPasswordResetEmail(email);
+  }
+
+  recoverPassword(code: string, newPassword: string){
+    return this.afa.auth.confirmPasswordReset(code, newPassword);
+  }
 }
