@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
           isAdmin: this.isAdmin
         }, this.email, this.password).catch(err => {
           this.flashMessage.show(err.message, {
-            cssClass: 'alert-danger', timeout: 4000
+            cssClass: 'alert-danger', timeout: 2000
           });
         });
       this.router.navigate(['/']);

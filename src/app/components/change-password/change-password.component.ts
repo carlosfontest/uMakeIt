@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, Renderer2 } from '@angular
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-change-password',
@@ -15,7 +16,7 @@ export class ChangePasswordComponent implements OnInit {
   credentials: boolean;
   boolConfirm: boolean;
 
-  constructor(private as: AuthService, private fb: FormBuilder, private renderer: Renderer2, private router: Router) { }
+  constructor(private as: AuthService, private fb: FormBuilder, private renderer: Renderer2, private router: Router, private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
     this.credentials = false;
@@ -43,19 +44,27 @@ export class ChangePasswordComponent implements OnInit {
 
   reAuth({value}){
     
-    if(value.length < 5){
+    if(!(value.length >= 6)){
+      this.flashMessage.show('The password minimum length should be 6', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
       return;
     }
 
     this.as.reAuth(value).then(() => {
       this.credentials = true;
-    }).catch(function(error) {
-      alert('Wrong password'); // TODO 
+    }).catch(error => {
+      this.flashMessage.show(error.message, {
+        cssClass: 'alert-danger', timeout: 4000
+      });
     });
   }
 
   changePassword({value}){
     if(!(value.length >= 6)){
+      this.flashMessage.show('The password minimum length should be 6', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
       return;
     }
 
@@ -79,8 +88,10 @@ export class ChangePasswordComponent implements OnInit {
       setTimeout(() => {
         this.router.navigate(['/dashboard']);
       }, 1500);
-    }).catch(function(error) {
-      console.log(error);
+    }).catch(error => {
+      this.flashMessage.show(error.message, {
+        cssClass: 'alert-danger', timeout: 4000
+      });
     });
   }
 
