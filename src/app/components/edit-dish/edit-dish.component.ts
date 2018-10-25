@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SideDish } from 'src/app/models/SideDish';
 import { csLocale } from 'ngx-bootstrap';
 import { SideDishService } from 'src/app/services/side-dish.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Dish } from './../../models/Dish';
 import { DishService } from 'src/app/services/dish.service';
 
@@ -20,7 +20,8 @@ export class EditDishComponent implements OnInit {
 
   constructor(private sideDishService: SideDishService,
     private ar: ActivatedRoute, 
-    private ds: DishService) { }
+    private ds: DishService, 
+    private router: Router) { }
 
   ngOnInit() {
     this.loaded = false;
@@ -33,7 +34,7 @@ export class EditDishComponent implements OnInit {
           this.loaded = true;
         });
       } else{
-        this.loaded = true;
+        this.router.navigate(['**']);
       }
     });
     
