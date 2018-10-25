@@ -1,7 +1,7 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -80,7 +80,8 @@ import { SideDishService } from './services/side-dish.service';
     AngularFirestoreModule,
     AngularFireAuthModule,
     FlashMessagesModule.forRoot(),
-    PasswordStrengthBarModule
+    PasswordStrengthBarModule,
+    ReactiveFormsModule 
   ],
   providers: [
     AuthService,
