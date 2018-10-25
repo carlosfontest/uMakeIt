@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @HostListener('window:beforeunload') updateCart(){
     this.cs.getCartDoc(this.uid).update(this.cart);
   }
+  // Suscription 
+  subscription;
 
   constructor(private dishService: DishService, private cs: CartService, private as: AuthService) { }
 
@@ -34,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.loaded = false;
     this.uid = this.as.currentUser.uid;
 
-    this.cs.getCart(this.uid).subscribe(cart => {
+    this.subscription = this.cs.getCart(this.uid).subscribe(cart => {
       if(!cart){
         const newCart: Cart = {dishes: [], price: 0};
         this.cs.createCart(this.uid, newCart).then(()=> {
@@ -64,6 +66,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }).catch((error)=>{
       console.log(error.message);
     });
+
+    this.subscription.unsubscribe();
   }
 
   showDish(dish: string) {
@@ -78,12 +82,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }else{
       this.cart.dishes.push({
         dish: dish,
-        quantity: 0
+        quantity: 1
       });
     }
     this.cart.price += dish.price;
-    console.log(this.cart, 'updated');
-    
   }
 
 }

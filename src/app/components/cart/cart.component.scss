@@ -147,6 +147,15 @@ thead tr th:nth-child(6) {
     border-radius: 0 5px 5px 0;
 }
 
+.confirm-danger{
+    color: rgb(153, 7, 7);
+    transform: scale(1.5);
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
 //  Cuando sea máximo 1224px
 @media (max-width: 1224px) {
     .container-fluid {
