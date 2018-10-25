@@ -12,7 +12,7 @@
         <p class="nameDish">{{ dish.name }}</p>
         <hr>
         <div class="iconOpciones">
-          <a routerLink="/edit-dish/54"><i class="fa fa-edit fa-5x"></i></a>
+          <a (click)="editDish()"><i class="fa fa-edit fa-5x"></i></a>
           <a routerLink="/cart"><i class="fa fa-cart-plus fa-5x"></i></a>
           <span class="dishPrice">{{ dish.price | currency : "USD" }}</span>
         </div>

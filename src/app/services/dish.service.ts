@@ -10,8 +10,6 @@ import { map } from 'rxjs/operators';
 export class DishService {
   dishesCollection: AngularFirestoreCollection<Dish>;
   dishDoc: AngularFirestoreDocument<Dish>;
-  dishes: Observable<Dish[]>;
-  dish: Observable<Dish>;
 
   constructor(private afs: AngularFirestore) { 
     this.dishesCollection = this.afs.collection('dishes');
@@ -19,7 +17,7 @@ export class DishService {
 
   getDishes(): Observable<Dish[]> {
     // Get dishes with the ID
-    this.dishes = this.dishesCollection.snapshotChanges().pipe(
+    const dishes = this.dishesCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const dish = a.payload.doc.data() as Dish;
         dish.id = a.payload.doc.id;
@@ -27,6 +25,25 @@ export class DishService {
       }))
     );
 
-    return this.dishes;
+    return dishes;
+  }
+
+  getDishById(id: string) {
+    // Get dish with the ID
+    this.dishDoc = this.afs.doc<Dish>(`dishes/${id}`);
+
+    const foundDish = this.dishDoc.snapshotChanges().pipe(
+      map(a => {
+        if (a.payload.exists === false) {
+          return null;
+        } else {
+          const dish = a.payload.data();
+          dish.id = a.payload.id;
+          return dish;
+        }
+      })
+    );
+
+    return foundDish;
   }
 }

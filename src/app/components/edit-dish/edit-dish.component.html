@@ -9,8 +9,8 @@
         <div class="col-md-9 col-sm-12">
           <div class="divDishes">
             <div class="sideDishes">
-              <p class="titleDish">PIZZA PEPPERONNI</p>
-              <p class="priceDish">$17.00</p>
+              <p class="titleDish">{{ dish.name }}</p>
+              <p class="priceDish">{{ dish.price | currency: "USD"}}</p>
             </div>
             <hr>
             <div class="titleBanner titleMin">
@@ -25,11 +25,17 @@
                   <img src="../../../assets/images/loading2.gif" class="mb-2">
                 </div>
 
+                <ng-container *ngIf="loaded && !dish">
+                  <h1>Something went wrong...</h1>
+                </ng-container>
+
                 <!-- Mostrar todos los SideDish  -->
-                <ng-container *ngFor="let sideDish of sideDishes">
-                  <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <app-side-dish-card [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
-                  </div>
+                <ng-container *ngIf="loaded && dish">
+                  <ng-container *ngFor="let sideDish of sideDishes">
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                      <app-side-dish-card [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
+                    </div>
+                  </ng-container>
                 </ng-container>
 
               </div>

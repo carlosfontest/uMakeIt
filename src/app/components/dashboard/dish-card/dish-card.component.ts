@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Dish } from '../../../models/Dish';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dish-card',
@@ -9,9 +10,12 @@ import { Dish } from '../../../models/Dish';
 export class DishCardComponent implements OnInit {
   @Input() dish: Dish;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  editDish(){
+    this.router.navigate(['/edit-dish'], { queryParams: { id : this.dish.id } });
+  }
 }
