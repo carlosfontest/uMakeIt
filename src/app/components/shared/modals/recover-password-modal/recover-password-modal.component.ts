@@ -9,6 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   templateUrl: './recover-password-modal.component.html',
   styleUrls: ['./recover-password-modal.component.scss']
 })
+
 export class RecoverPasswordModalComponent implements OnInit {
   title: string;
   form: FormGroup;

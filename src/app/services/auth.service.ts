@@ -16,7 +16,7 @@ export class AuthService {
     private afa: AngularFireAuth,
     private afs: AngularFirestore,
     ) {
-      this.user$ = afa.authState;
+      this.user$ = this.afa.authState;
       this.user$.subscribe((user: User) => {
         if (user) {
           this.authState = user;
@@ -68,5 +68,9 @@ export class AuthService {
 
   recoverPassword(code: string, newPassword: string){
     return this.afa.auth.confirmPasswordReset(code, newPassword);
+  }
+
+  get currentUser(){
+    return this.afa.auth.currentUser;
   }
 }

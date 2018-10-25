@@ -30,11 +30,9 @@
           <app-dish-card [dish]="dish"></app-dish-card>
         </div>
       </ng-container>
-      <ng-container>
-        <div *ngIf="loaded && !showingDishes[0]">
-          <h1>No dishes of this type yet...</h1>
-        </div>
-      </ng-container>
+      <div *ngIf="loaded && !showingDishes[0]" class="w-100">
+        <h1>No dishes of this type yet...</h1>
+      </div>
     </div>
   </div>
 </div>
