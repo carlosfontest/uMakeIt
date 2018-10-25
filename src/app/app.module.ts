@@ -24,8 +24,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { TitleBannerComponent } from './components/shared/title-banner/title-banner.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { CartComponent } from './components/orders/cart/cart.component';
-import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { CartComponent } from './components/cart/cart.component';
+import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -67,7 +67,7 @@ import { SideDishService } from './services/side-dish.service';
     AdminSectionComponent,
     AddProductAccordionComponent,
     EditProductAccordionComponent,
-    PendingOrdersAccordionComponent,
+    PendingOrdersAccordionComponent
   ],
   imports: [
     BrowserModule,

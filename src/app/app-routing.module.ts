@@ -8,8 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { CartComponent } from './components/orders/cart/cart.component';
-import { PurchaseHistoryComponent } from './components/orders/purchase-history/purchase-history.component';
+import { CartComponent } from './components/cart/cart.component';
+import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Guards para el routing
@@ -22,9 +22,9 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'edit-dish/:id', component: EditDishComponent, canActivate: [AuthGuard]},
-{path: 'admin', component: AdminComponent, canActivate: [ AuthGuard, AdminGuard ]},
+  {path: 'admin', component: AdminComponent, canActivate: [ AuthGuard, AdminGuard ]},
   {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
-  {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+  {path: 'cart', component: CartComponent, canActivate: [/* AuthGuard */]},
   {path: 'purchases', component: PurchaseHistoryComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundComponent}
 
