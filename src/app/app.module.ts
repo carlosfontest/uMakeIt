@@ -43,6 +43,7 @@ import { AddProductAccordionComponent } from './components/admin/admin-section/a
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
+import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { SideDishService } from './services/side-dish.service';
     AdminSectionComponent,
     AddProductAccordionComponent,
     EditProductAccordionComponent,
-    PendingOrdersAccordionComponent
+    PendingOrdersAccordionComponent,
+    PurchaseCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,19 @@
-.format{
-    background-color: #23211A;
-    font-family: 'Ubuntu', sans-serif;
+.title {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-table td, table thead tr{
-    color: white;
+.container-fluid {
+    width: 90%;
+    background: #3A3731;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
 }
 
-.white{
-    color: white;
-}
-.mirror{
-    -moz-transform: scaleX(-1);    /* Gecko */
-    -o-transform: scaleX(-1);      /* Opera */
-    -webkit-transform: scaleX(-1); /* Webkit */
-    transform: scaleX(-1);         /* Standard */
-    filter: FlipH;                 /* IE 6/7/8 */
+
+
+
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+
 }

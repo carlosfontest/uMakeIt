@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Purchase } from 'src/app/models/Purchase';
 
 @Component({
   selector: 'app-purchase-history',
@@ -6,15 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./purchase-history.component.scss']
 })
 export class PurchaseHistoryComponent implements OnInit {
-  list: any[] = [];
+  purchases: Purchase[] = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.list.push({name: 'Oficina 5 Personas', price: '55'});
-    this.list.push({name: 'Oficina 2 Personas', price: '20'});
-    this.list.push({name: 'Almuerzo Familia 4', price: '47.5'});
-    this.list.push({name: 'Reunión Alfredo', price: '35'});
+    this.purchases = [
+      {
+        name: 'Office for five employees',
+        totalPrice: 62
+      },
+      {
+        name: 'Office for three employees',
+        totalPrice: 35
+      },
+      {
+        name: 'Dinner for the family',
+        totalPrice: 102
+      },
+    ];
   }
 
 }
