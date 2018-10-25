@@ -14,6 +14,7 @@
         <div class="form-group mt-4">
           <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" [(ngModel)]="password" required>
         </div>
+        <span>Forgot your password? <a (click)="recoverPasswordModal()" class="clickable">Click here!</a> </span>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
     </div>
