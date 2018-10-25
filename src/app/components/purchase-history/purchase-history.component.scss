@@ -3,10 +3,12 @@
     margin-bottom: 30px;
 }
 
-.container-fluid {
-    width: 90%;
+.container {
     background: #3A3731;
     box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+    padding-bottom: 40px;
+    padding-top: 20px;
+    margin-bottom: 30px;
 }
 
 
@@ -16,4 +18,17 @@
 //  Cuando sea vista movil
 @media (max-width: 575px) {
 
+}
+
+//  Cuando sea máximo 992
+@media (max-width: 992px) {
+    .title {
+        margin: 0;
+    }
+
+    .container {
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

@@ -1,8 +1,10 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AppRoutingModule } from './app-routing.module';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
@@ -28,8 +30,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
-import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
+import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -43,7 +47,7 @@ import { AddProductAccordionComponent } from './components/admin/admin-section/a
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
-import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +73,9 @@ import { PurchaseCardComponent } from './components/purchase-history/purchase-ca
     AddProductAccordionComponent,
     EditProductAccordionComponent,
     PendingOrdersAccordionComponent,
-    PurchaseCardComponent
+    PurchaseCardComponent,
+    RecoverPasswordModalComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +88,9 @@ import { PurchaseCardComponent } from './components/purchase-history/purchase-ca
     AngularFirestoreModule,
     AngularFireAuthModule,
     FlashMessagesModule.forRoot(),
-    PasswordStrengthBarModule
+    PasswordStrengthBarModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthService,
@@ -90,6 +98,6 @@ import { PurchaseCardComponent } from './components/purchase-history/purchase-ca
     UserService,
     SideDishService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, RecoverPasswordModalComponent]
 })
 export class AppModule { }

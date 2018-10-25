@@ -49,13 +49,13 @@ export class UserService {
         .then(credential =>
           this.afs.doc(`users/${credential.user.uid}`).set(newUser).then(success => {
             this.flashMessage.show('You have succesfully registered', {
-              cssClass: 'alert-success', timeout: 4000
+              cssClass: 'alert-success', timeout: 2000
             });
           })
         )
         .catch(err => {
           this.flashMessage.show(err.message, {
-            cssClass: 'alert-danger', timeout: 4000
+            cssClass: 'alert-danger', timeout: 2000
           });
         });
     });

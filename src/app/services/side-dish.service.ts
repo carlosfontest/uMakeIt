@@ -14,7 +14,7 @@ export class SideDishService {
   sideDish: Observable<SideDish>;
 
   constructor(private afs: AngularFirestore) {
-    this.sideDishesCollection = this.afs.collection('sideDish');
+    this.sideDishesCollection = this.afs.collection('sideDishes');
   }
 
   getSideDishes(): Observable<SideDish[]> {

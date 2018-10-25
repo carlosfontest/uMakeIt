@@ -10,6 +10,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PurchaseHistoryComponent } from './components/purchase-history/purchase-history.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // Guards para el routing
@@ -21,13 +22,13 @@ const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
-  {path: 'edit-dish/:id', component: EditDishComponent, canActivate: [AuthGuard]},
-  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'edit-dish', component: EditDishComponent, canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminComponent, canActivate: [ AuthGuard, AdminGuard ]},
   {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
-  {path: 'purchases', component: PurchaseHistoryComponent, canActivate: [/*AuthGuard*/]},
+  {path: 'purchases', component: PurchaseHistoryComponent, canActivate: [AuthGuard]},
+  {path: 'recover-password', component: RecoverPasswordComponent},
   {path: '**', component: NotFoundComponent}
-
 ];
 
 @NgModule({

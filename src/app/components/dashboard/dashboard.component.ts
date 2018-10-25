@@ -10,8 +10,10 @@ import { DishService } from 'src/app/services/dish.service';
 export class DashboardComponent implements OnInit {
   // Tipo de plato que el user quiere que se muestre
   typeDishShow: string;
-  // Array de todos los platos que hay en el sistema
-  dishes: Dish[];
+  // Array de los platos que se muestran en el menú
+  showingDishes: Dish[];
+  // Arrays de los diferentes tipos de platos
+  allDishes: Dish[];
   // Para saber si ya se cargo la info de la base de datos
   loaded: boolean;
 
@@ -21,15 +23,18 @@ export class DashboardComponent implements OnInit {
     this.typeDishShow = 'Pizzas';
     this.loaded = false;
 
-    // Le pedimos a firestore los platos
+    // Le pedimos a Firestore los platos
     this.dishService.getDishes().subscribe(data => {
-      this.dishes = data;
+      this.loaded = false;
+      this.allDishes = data;
+      this.showingDishes = this.allDishes.filter(item => item.type === this.typeDishShow);
       this.loaded = true;
     });
   }
 
   showDish(dish: string) {
     this.typeDishShow = dish;
+    this.showingDishes = this.allDishes.filter(item => item.type === dish);
   }
 
 }

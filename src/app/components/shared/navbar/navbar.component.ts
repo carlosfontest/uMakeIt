@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     
     this.flashMessage.show('You are now logged out', {
-      cssClass: 'alert-success', timeout: 4000
+      cssClass: 'alert-success', timeout: 2000
     });
     
     location.reload();

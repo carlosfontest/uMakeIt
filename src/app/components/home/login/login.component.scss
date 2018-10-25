@@ -30,6 +30,18 @@ hr {
   border-bottom: 4px solid rgba(248, 200, 34, 1);
 }
 
+.clickable {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.forgotPass {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  color: rgb(233, 223, 183);
+  font-size: 12px;
+}
+
 .form-control {
   background-color: transparent;
   color: rgb(233, 223, 183);
@@ -122,4 +134,3 @@ button:focus {
   background: transparent !important;
   color: #000 !important;
 }
-

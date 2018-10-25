@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,27 @@ export class AuthService {
   // Método para hacer logout del sistema
   logout() {
     this.afa.auth.signOut();
+  }
+
+  changePassword(password: string){
+    const user = this.afa.auth.currentUser;
+    const newPassword = password;
+
+    return user.updatePassword(newPassword);
+  }
+
+  reAuth(password: string){
+    const user = this.afa.auth.currentUser;
+    const credentials = firebase.auth.EmailAuthProvider.credential(user.email, password);
+    
+    return user.reauthenticateAndRetrieveDataWithCredential(credentials);
+  }
+
+  passwordResetEmail(email: string){
+    return this.afa.auth.sendPasswordResetEmail(email);
+  }
+
+  recoverPassword(code: string, newPassword: string){
+    return this.afa.auth.confirmPasswordReset(code, newPassword);
   }
 }

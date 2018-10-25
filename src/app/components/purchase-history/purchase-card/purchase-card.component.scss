@@ -1,0 +1,149 @@
+.divCard {
+  background: #2b2923;
+  color: rgb(233, 223, 183);
+  padding-top: 10px;
+  text-shadow: 4px 4px 4px #000000;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+}
+
+.container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 0px;
+}
+
+.botones {
+  text-align:  center;
+}
+
+.far {
+  margin-right: 26px;
+  transition: .3s;
+  font-size: 39px;
+  cursor: pointer;
+}
+
+.far:hover {
+  font-size: 44px;
+  color: rgb(165, 159, 136);
+}
+
+.bloque {
+  display: flex;
+  justify-content: space-between;
+}
+
+.precio {
+  align-self: center;
+  margin-right: 30px;
+  font-weight: 900;
+  color: rgb(160, 147, 98);
+  font-size: 50px;
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 4px 4px 4px #000000;
+  cursor: default;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid rgb(70, 68, 63);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 98%;
+}
+
+.purchaseName {
+  margin-left: 18px;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 35px;
+  cursor: default;
+}
+
+// Estilos del botón
+a.btn,.btn {
+  margin-top: .8rem;
+  margin-bottom: 1.4rem;
+  margin-right: 60px;
+  display: inline-block;
+  outline: none;
+  *zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.btn-medium {
+  font-size: 1.1em;
+  padding: 15px;
+  width: 250px;
+}
+
+.btn-yellow {
+  color: #F8C822;
+  border-color: #F8C822;
+}
+.btn-yellow:hover {
+  background: #F8C822;
+  color: rgb(37, 34, 28);
+  border-color: #F8C822;
+}
+
+
+
+//  Cuando sea vista movil
+@media (max-width: 769px) {
+  .btn-medium {
+    font-size: 1em;
+    width: 180px;
+    margin-right: 20px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (min-width: 380px) and (max-width: 444px) {
+  .btn-medium {
+    font-size: 1em;
+    width: 80px !important;
+  }
+}
+
+//  Cuando sea vista movil
+@media (min-width: 444px) and (max-width: 575px) {
+  .btn-medium {
+    font-size: 1em;
+    width: 110px !important;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .purchaseName {
+    font-size: 26px;
+  }
+
+  .btn-medium {
+    font-size: 0.9em;
+    width: 45px;
+    margin-right: 10px !important;
+  }
+
+  .precio {
+    font-size: 30px;
+    margin-right: 5px;
+    width: 112px;
+  }
+
+  .container {
+    padding-left: 12px;
+  }
+}

@@ -1,45 +1,49 @@
-<div class="title">
-  <app-title-banner [title]="'Customize'"></app-title-banner>
-</div>
-
-<div class="container-fluid">
-  <div class="divSideDish">
-    <div class="row">
-        <!-- Ingredientes -->
-        <div class="col-md-9 col-sm-12">
-          <div class="divDishes">
-            <div class="sideDishes">
-              <p class="titleDish">PIZZA PEPPERONNI</p>
-              <p class="priceDish">$17.00</p>
-            </div>
-            <hr>
-            <div class="titleBanner titleMin">
-                <app-title-banner [title]="'Side Dish'"></app-title-banner>
-            </div>
-            <div class="dishes">
-              <div class="row text-center">
-
-                <!-- Si no se han cargado los platos -->
-                <div *ngIf="!loaded" class="text-center loadingDiv"> 
-                  <h4 class="display-4">LOADING</h4>
-                  <img src="../../../assets/images/loading2.gif" class="mb-2">
-                </div>
-
-                <!-- Mostrar todos los SideDish  -->
-                <ng-container *ngFor="let sideDish of sideDishes">
-                  <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <app-side-dish-card [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
+<ng-container *ngIf="dish">
+  <div class="title">
+    <app-title-banner [title]="'Customize'"></app-title-banner>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="divSideDish">
+      <div class="row">
+          <!-- Ingredientes -->
+          <div class="col-md-9 col-sm-12">
+            <div class="divDishes">
+              <div class="sideDishes">
+                <p class="titleDish">{{ dish.name }}</p>
+                <p class="priceDish">{{ dish.price | currency: "USD"}}</p>
+              </div>
+              <hr>
+              <div class="titleBanner titleMin">
+                  <app-title-banner [title]="'Side Dish'"></app-title-banner>
+              </div>
+              <div class="dishes">
+                <div class="row text-center">
+  
+                  <!-- Si no se han cargado los platos -->
+                  <div *ngIf="!loaded" class="text-center loadingDiv"> 
+                    <h4 class="display-4">LOADING</h4>
+                    <img src="../../../assets/images/loading2.gif" class="mb-2">
                   </div>
-                </ng-container>
-
+  
+                  <!-- Mostrar todos los SideDish  -->
+                  <ng-container *ngIf="loaded">
+                    <ng-container *ngFor="let sideDish of sideDishes">
+                      <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <app-side-dish-card [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+  
+                </div>
               </div>
             </div>
           </div>
+          <!-- Vista del plato -->
+          <div class="col-md-3 col-sm-12">
+              <app-sticky-dish-view></app-sticky-dish-view>
+          </div>
         </div>
-        <!-- Vista del plato -->
-        <div class="col-md-3 col-sm-12">
-            <app-sticky-dish-view></app-sticky-dish-view>
-        </div>
-      </div>
-  </div>
-</div>
+    </div>
+  </div>      
+</ng-container>

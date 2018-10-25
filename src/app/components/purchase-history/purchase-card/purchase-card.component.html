@@ -1,3 +1,25 @@
-<p>
-  purchase-card works!
-</p>
+<div class="container">
+  <div class="divCard">
+    <!-- Nombre de la orden -->
+    <div class="purchaseName d-flex justify-content-between align-items-center">
+      <span>{{ purchase.name }}</span>
+      <i class="far fa-edit"></i>
+    </div>
+
+    <hr>
+    <!-- Otras opciones -->
+    <div class="container">
+
+      <div class="bloque">
+        <div class="botones">
+          <a class="btn btn-medium btn-yellow" href="" popover="View the purchase, edit and re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-pencil-alt"></i></a>
+          <a class="btn btn-medium btn-yellow" href="" popover="Re-order the purchase" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-redo-alt"></i></a>
+        </div>
+        <span class="precio">{{ purchase.totalPrice | currency:'USD' }}</span>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

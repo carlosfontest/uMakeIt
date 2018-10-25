@@ -2,10 +2,14 @@
   <app-title-banner [title]="'Shooping Log'"></app-title-banner>
 </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <ng-container *ngFor="let purchase of purchases">
-      <app-purchase-card [purchase]="purchase"></app-purchase-card>
-    </ng-container>
-  </div>
+<div class="container">
+  <!-- Todas las compras del usuario -->
+  <ng-container *ngFor="let purchase of purchases">
+    <div class="row">
+        <div class="col-sm-12">
+            <app-purchase-card [purchase]="purchase"></app-purchase-card>
+        </div>
+    </div>
+  </ng-container>
+
 </div>
