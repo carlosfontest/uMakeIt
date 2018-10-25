@@ -14,12 +14,10 @@ export class ChangePasswordComponent implements OnInit {
   formOld: FormGroup;
   credentials: boolean;
   boolConfirm: boolean;
-  done: boolean;
 
   constructor(private as: AuthService, private fb: FormBuilder, private renderer: Renderer2, private router: Router) { }
 
   ngOnInit() {
-    this.done = false;
     this.credentials = false;
     this.boolConfirm = true;
 
@@ -34,26 +32,25 @@ export class ChangePasswordComponent implements OnInit {
 
     this.formNew.valueChanges.subscribe(() => {
       if(!this.boolConfirm){
-        this.renderer.removeClass(this.submit.nativeElement,'btn-danger');
-        this.renderer.addClass(this.submit.nativeElement,'btn-secondary');
-        this.submit.nativeElement.innerText = 'Submit';
+        const {nativeElement: boton} = this.submit;
+        this.renderer.removeClass(boton, 'btn-danger');
+        this.renderer.addClass(boton, 'btn-secondary');
+        this.renderer.setProperty(boton,'value', 'Submit');
         this.boolConfirm = true;
       }
     });
   }
 
   reAuth({value}){
-    console.log('pero si entro xd, hay un...');
     
     if(value.length < 5){
-      console.log('error xd');
       return;
     }
 
     this.as.reAuth(value).then(() => {
       this.credentials = true;
     }).catch(function(error) {
-      console.log(error);
+      alert('Wrong password'); // TODO 
     });
   }
 
@@ -62,21 +59,23 @@ export class ChangePasswordComponent implements OnInit {
       return;
     }
 
+    const {nativeElement: boton} = this.submit;
+
     if(this.boolConfirm){
-      const {nativeElement: boton} = this.submit;
       this.renderer.removeClass(boton,'btn-secondary');
       this.renderer.addClass(boton,'btn-danger');
-      boton.innerText = 'Are you Sure?';
+      this.renderer.setProperty(boton,'value','Are you Sure?');
       this.boolConfirm = false;
       return;
     }
 
-    this.renderer.removeClass(this.submit.nativeElement,'btn-danger');
-    this.renderer.addClass(this.submit.nativeElement,'btn-secondary');
-    this.submit.nativeElement.innerText = 'Submitted';
+    this.renderer.removeClass(boton, 'btn-danger');
+    this.renderer.addClass(boton, 'btn-secondary');
+    this.renderer.setProperty(boton,'value', 'Submitted');
 
     this.as.changePassword(value).then(() => {
-      this.done = true;
+      this.password.disable;
+      this.confirm.disable;
       setTimeout(() => {
         this.router.navigate(['/dashboard']);
       }, 1500);
