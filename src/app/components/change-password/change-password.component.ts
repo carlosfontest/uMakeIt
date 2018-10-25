@@ -79,7 +79,7 @@ export class ChangePasswordComponent implements OnInit {
       this.done = true;
       setTimeout(() => {
         this.router.navigate(['/dashboard']);
-      }, 3000);
+      }, 1500);
     }).catch(function(error) {
       console.log(error);
     });
