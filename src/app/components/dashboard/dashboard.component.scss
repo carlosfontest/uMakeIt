@@ -105,10 +105,7 @@
 //  Cuando sea vista movil
 @media (max-width: 575px) {
   .divFoto {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0;
-    box-shadow: none;
+    display: none;
   }
 
   .container-fluid {
