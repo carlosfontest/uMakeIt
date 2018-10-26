@@ -15,10 +15,12 @@ export class CartComponent implements OnInit, OnDestroy {
   subscription;
   clicked: number;
   timer;
+  tax: number;
 
   constructor(private cs: CartService, private as: AuthService, private renderer: Renderer2) { }
 
   ngOnInit() {
+    this.tax = 0.15;
     this.clicked = -1;
     this.loading = true;
     this.uid = this.as.currentUser.uid;
@@ -54,8 +56,8 @@ export class CartComponent implements OnInit, OnDestroy {
   reduceQuantity(i: number, {price}) {
     if (this.cart.dishes[i].quantity >= 2) {
       this.cart.dishes[i].quantity--;
+      this.cart.price -= price;
     }
-    this.cart.price -= price;
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
@@ -63,7 +65,7 @@ export class CartComponent implements OnInit, OnDestroy {
       }).catch((error) => {
         console.log(error.message);
       });
-    },1500);
+    }, 1500);
   }
 
   increaseQuantity(i: number, {price}) {
@@ -76,15 +78,15 @@ export class CartComponent implements OnInit, OnDestroy {
       }).catch((error) => {
         console.log(error.message);
       });
-    },1500);
+    }, 1500);
   }
 
   getTaxes(): number {
-    return this.cart.price * 0.15;
+    return this.cart.price * this.tax;
   }
 
   getTotal(): number {
-    return this.cart.price * 1.15;
+    return this.cart.price * (1 + this.tax);
   }
   
   eraseDish(i: number) {
@@ -103,7 +105,7 @@ export class CartComponent implements OnInit, OnDestroy {
       }).catch((error) => {
         console.log(error.message);
       });
-    },1500);
+    }, 1500);
   }
 
 }
