@@ -22,12 +22,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   allDishes: Dish[];
   // Para saber si ya se cargo la info de la base de datos
   loaded: boolean;
-  // Host Listener
-  @HostListener('window:beforeunload') updateCart() {
-    this.cs.getCartDoc(this.uid).update(this.cart);
-  }
   // Subscription 
   subscription;
+  // Timer for update
+  timer;
 
   constructor(private dishService: DishService, private cs: CartService, private as: AuthService) { }
 
@@ -62,6 +60,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   // Cuando se cierra el componente
   ngOnDestroy() {
+    clearTimeout(this.timer);
+    
     this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
       console.log('updated cart');
     }).catch((error) => {
@@ -89,6 +89,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     }
     this.cart.price += dish.price;
+
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    },1500);
   }
 
 }

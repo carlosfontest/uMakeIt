@@ -14,6 +14,7 @@ export class CartComponent implements OnInit, OnDestroy {
   loading: boolean;
   subscription;
   clicked: number;
+  timer;
 
   constructor(private cs: CartService, private as: AuthService, private renderer: Renderer2) { }
 
@@ -27,17 +28,11 @@ export class CartComponent implements OnInit, OnDestroy {
         this.cs.createCart(this.uid, newCart).then(() => {
           console.log('Creado el carrito');
           this.cart = newCart;
-          window.onbeforeunload = (() => {
-            this.cs.getCartDoc(this.uid).update(this.cart);
-          });
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
         this.cart = cart;
-        window.onbeforeunload = (() => {
-          this.cs.getCartDoc(this.uid).update(this.cart);
-        });
         console.log('habia carrito', this.cart);
       }
       this.loading = false;
@@ -45,6 +40,8 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    clearTimeout(this.timer);
+
     this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
       console.log('updated cart');
     }).catch((error) => {
@@ -59,11 +56,27 @@ export class CartComponent implements OnInit, OnDestroy {
       this.cart.dishes[i].quantity--;
     }
     this.cart.price -= price;
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+        console.log('updated cart');
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    },1500);
   }
 
   increaseQuantity(i: number, {price}) {
     this.cart.dishes[i].quantity++;
     this.cart.price += price;
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+        console.log('updated cart');
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    },1500);
   }
 
   getTaxes(): number {
@@ -83,6 +96,14 @@ export class CartComponent implements OnInit, OnDestroy {
     } else {
       this.clicked = i;
     }
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+        console.log('updated cart');
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    },1500);
   }
 
 }
