@@ -39,7 +39,7 @@
                     </div>
                   </td>
                   <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
-                  <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)" [class.confirm-danger]="i===clicked"></i></td>
+                  <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)" [class.confirm-danger]="i === clicked"></i></td>
                 </tr>
               </ng-container>
       

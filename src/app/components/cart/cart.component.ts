@@ -14,10 +14,12 @@ export class CartComponent implements OnInit, OnDestroy {
   loading: boolean;
   subscription;
   clicked: number;
+  tax: number;
 
   constructor(private cs: CartService, private as: AuthService, private renderer: Renderer2) { }
 
   ngOnInit() {
+    this.tax = 0.15;
     this.clicked = -1;
     this.loading = true;
     this.uid = this.as.currentUser.uid;
@@ -57,8 +59,8 @@ export class CartComponent implements OnInit, OnDestroy {
   reduceQuantity(i: number, {price}) {
     if (this.cart.dishes[i].quantity >= 2) {
       this.cart.dishes[i].quantity--;
+      this.cart.price -= price;
     }
-    this.cart.price -= price;
   }
 
   increaseQuantity(i: number, {price}) {
@@ -67,11 +69,11 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getTaxes(): number {
-    return this.cart.price * 0.15;
+    return this.cart.price * this.tax;
   }
 
   getTotal(): number {
-    return this.cart.price * 1.15;
+    return this.cart.price * (1 + this.tax);
   }
   
   eraseDish(i: number) {
