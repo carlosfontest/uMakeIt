@@ -108,6 +108,25 @@
     color: rgb(160, 147, 98);
 }
 
+.contTable p {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 54px;
+    color: rgba(248, 200, 34, 1);
+    text-shadow: 5px 5px 5px #000000;
+}
+
+.contTable img {
+    width: 300px;
+    margin-top: 40px;
+}
+
+.contTable p:nth-child(3) {
+    font-weight: 900;
+    color: rgb(179, 168, 127);
+    text-shadow: 2px 2px 2px #000000;
+    margin-bottom: 60px;
+}
+
 .mr-4 {
     font-family: 'Fjalla One', sans-serif;
     margin-top: 6px;
@@ -236,6 +255,25 @@ thead tr th:nth-child(6) {
     
     .mr-4 {
         font-size: 20px;
+    }
+
+    .contTable {
+        min-height: 70vh;
+    }
+
+    .contTable p {
+        font-size: 40px;
+        text-shadow: 3px 3px 3px #000000;
+    }
+    
+    .contTable img {
+        width: 200px;
+    }
+    
+    .contTable p:nth-child(3) {
+        font-weight: 900;
+        color: rgb(179, 168, 127);
+        text-shadow: 2px 2px 2px #000000;
     }
 }
 

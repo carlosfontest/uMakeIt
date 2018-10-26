@@ -1,68 +1,84 @@
 <ng-container *ngIf="!loading">
+  <!-- Título de la vista -->
   <div class="title">
     <app-title-banner [title]="'Cart'"></app-title-banner>
   </div>
   
-  <div class="container-fluid">
-    <div class="contTable">
-      <div class="mt-2 mb-4">
-        <app-title-banner [title]="'Content'"></app-title-banner>
-      </div>
-      <!-- Tabla de todos los productos -->
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="thead">
-            <tr>
-              <th scope="col" class="text-center"><i class="fas fa-utensils"></i></th>
-              <th scope="col" class="products">PRODUCT</th>
-              <th scope="col">PRICE</th>
-              <th scope="col" class="quantityHeader">QUANTITY</th>
-              <th scope="col" class="totalPri">TOTAL</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-    
-            <ng-container *ngFor="let item of cart.dishes; let i = index">
+  <!-- En caso de que hayan items en el carrito -->
+  <ng-container *ngIf="cart.dishes[0]">
+    <div class="container-fluid">
+      <div class="contTable">
+        <div class="mt-2 mb-4">
+          <app-title-banner [title]="'Content'"></app-title-banner>
+        </div>
+        <!-- Tabla de todos los productos -->
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead">
               <tr>
-                <td class="dishThumbnail text-center"><img [src]="item.dish.thumbnail" alt=""></td>
-                <td class="dishName">{{ item.dish.name }}</td>
-                <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
-                <td>
-                  <div class="quantity d-flex justify-content-around">
-                    <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i, item.dish)"></i>
-                      <span class="textQuantity">{{ item.quantity }}</span>
-                    <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i, item.dish)"></i>
-                  </div>
-                </td>
-                <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
-                <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)" [class.confirm-danger]="i===clicked"></i></td>
+                <th scope="col" class="text-center"><i class="fas fa-utensils"></i></th>
+                <th scope="col" class="products">PRODUCT</th>
+                <th scope="col">PRICE</th>
+                <th scope="col" class="quantityHeader">QUANTITY</th>
+                <th scope="col" class="totalPri">TOTAL</th>
+                <th scope="col"></th>
               </tr>
-            </ng-container>
-    
-    
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
       
-      <div class="mt-4 mb-4">
-        <app-title-banner [title]="'Totals'"></app-title-banner>
-      </div>
-  
-      <!-- Montos totales -->
-      <div class="totals up">
-        <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ cart.price | currency:'USD' }}</span>
-      </div>
-      <div class="totals up">
-        <span class="infoTotals ml-4">TAXES</span> <span class="mr-4">{{ getTaxes() | currency:'USD' }}</span>
-      </div>
-      <div class="totals">
-        <span class="infoTotals ml-4 inTot">TOTAL</span> <span class="mr-4 tot">{{ getTotal() | currency:'USD' }}</span>
-      </div>
-  
-      <div class="d-flex justify-content-end">
+              <ng-container *ngFor="let item of cart.dishes; let i = index">
+                <tr>
+                  <td class="dishThumbnail text-center"><img [src]="item.dish.thumbnail" alt=""></td>
+                  <td class="dishName">{{ item.dish.name }}</td>
+                  <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
+                  <td>
+                    <div class="quantity d-flex justify-content-around">
+                      <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i, item.dish)"></i>
+                        <span class="textQuantity">{{ item.quantity }}</span>
+                      <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i, item.dish)"></i>
+                    </div>
+                  </td>
+                  <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
+                  <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)" [class.confirm-danger]="i===clicked"></i></td>
+                </tr>
+              </ng-container>
+      
+      
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="mt-4 mb-4">
+          <app-title-banner [title]="'Totals'"></app-title-banner>
+        </div>
+    
+        <!-- Montos totales -->
+        <div class="totals up">
+          <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ cart.price | currency:'USD' }}</span>
+        </div>
+        <div class="totals up">
+          <span class="infoTotals ml-4">TAXES</span> <span class="mr-4">{{ getTaxes() | currency:'USD' }}</span>
+        </div>
+        <div class="totals">
+          <span class="infoTotals ml-4 inTot">TOTAL</span> <span class="mr-4 tot">{{ getTotal() | currency:'USD' }}</span>
+        </div>
+    
+        <div class="d-flex justify-content-end">
           <a class="btn btn-medium btn-yellow" href="#">PROCEED TO CHECKOUT<i class="fas fa-file-invoice-dollar ml-3"></i></a>
+        </div>
+      </div>
+    </div> 
+  </ng-container> 
+
+  <!-- En caso de que no haya nada en el carrito -->
+  <ng-container *ngIf="!cart.dishes[0]">
+    <div class="container-fluid">
+      <div class="contTable text-center">
+        <img src="../../../assets/images/cartEmpty4.png" alt="">
+        <p>Your cart is empty</p>
+        <p>Add something on the Dashboard!</p>
       </div>
     </div>
-  </div>  
+  </ng-container>
+
 </ng-container>

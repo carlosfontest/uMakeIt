@@ -18,36 +18,36 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(private cs: CartService, private as: AuthService, private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.clicked= -1;
+    this.clicked = -1;
     this.loading = true;
     this.uid = this.as.currentUser.uid;
     this.subscription = this.cs.getCart(this.uid).subscribe(cart => {
-      if(!cart){
+      if (!cart) {
         const newCart: Cart = {dishes: [], price: 0};
-        this.cs.createCart(this.uid, newCart).then(()=> {
+        this.cs.createCart(this.uid, newCart).then(() => {
           console.log('Creado el carrito');
           this.cart = newCart;
-          window.onbeforeunload = (()=>{
+          window.onbeforeunload = (() => {
             this.cs.getCartDoc(this.uid).update(this.cart);
-          })
-        }).catch((error)=>{
+          });
+        }).catch((error) => {
           console.log(error.message);
-        })
-      }else{
+        });
+      } else {
         this.cart = cart;
-        window.onbeforeunload = (()=>{
+        window.onbeforeunload = (() => {
           this.cs.getCartDoc(this.uid).update(this.cart);
-        })
+        });
         console.log('habia carrito', this.cart);
       }
       this.loading = false;
     });
   }
 
-  ngOnDestroy(){
-    this.cs.getCartDoc(this.uid).update(this.cart).then(()=>{
+  ngOnDestroy() {
+    this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
       console.log('updated cart');
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log(error.message);
     });
 
@@ -71,14 +71,14 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getTotal(): number {
-    return this.cart.price*1.15;
+    return this.cart.price * 1.15;
   }
   
-  eraseDish(i: number){
-    if(this.clicked === i){
+  eraseDish(i: number) {
+    if (this.clicked === i) {
       const item = this.cart.dishes[i];
       this.cart.price -= (item.quantity * item.dish.price);
-      this.cart.dishes.splice(i,1);
+      this.cart.dishes.splice(i, 1);
       this.clicked = -1;
     } else{
       this.clicked = i;

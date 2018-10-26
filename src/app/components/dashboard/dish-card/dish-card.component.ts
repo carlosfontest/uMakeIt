@@ -16,11 +16,11 @@ export class DishCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  editDish(){
+  editDish() {
     this.router.navigate(['/edit-dish'], { queryParams: { id : this.dish.id } });
   }
 
-  addDish(){
+  addDish() {
     this.cartEvent.emit(this.dish);
   }
 }

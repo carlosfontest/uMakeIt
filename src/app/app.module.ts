@@ -31,15 +31,9 @@ import { PurchaseHistoryComponent } from './components/purchase-history/purchase
 import { AdminComponent } from './components/admin/admin.component';
 import { EditDishComponent } from './components/edit-dish/edit-dish.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-<<<<<<< HEAD
 import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
 import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-=======
-import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
-import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
->>>>>>> raquintero
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -53,10 +47,6 @@ import { AddProductAccordionComponent } from './components/admin/admin-section/a
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
-<<<<<<< HEAD
-
-=======
->>>>>>> raquintero
 
 @NgModule({
   declarations: [

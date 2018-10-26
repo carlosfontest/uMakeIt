@@ -23,10 +23,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // Para saber si ya se cargo la info de la base de datos
   loaded: boolean;
   // Host Listener
-  @HostListener('window:beforeunload') updateCart(){
+  @HostListener('window:beforeunload') updateCart() {
     this.cs.getCartDoc(this.uid).update(this.cart);
   }
-  // Suscription 
+  // Subscription 
   subscription;
 
   constructor(private dishService: DishService, private cs: CartService, private as: AuthService) { }
@@ -37,15 +37,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.uid = this.as.currentUser.uid;
 
     this.subscription = this.cs.getCart(this.uid).subscribe(cart => {
-      if(!cart){
+      if (!cart) {
         const newCart: Cart = {dishes: [], price: 0};
-        this.cs.createCart(this.uid, newCart).then(()=> {
+        this.cs.createCart(this.uid, newCart).then(() => {
           console.log('Creado el carrito');
           this.cart = newCart;
-        }).catch((error)=>{
+        }).catch((error) => {
           console.log(error.message);
-        })
-      }else{
+        });
+      } else {
         this.cart = cart;
         console.log('habia carrito', this.cart);
       }
@@ -60,26 +60,29 @@ export class DashboardComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(){
-    this.cs.getCartDoc(this.uid).update(this.cart).then(()=>{
+  // Cuando se cierra el componente
+  ngOnDestroy() {
+    this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
       console.log('updated cart');
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log(error.message);
     });
 
     this.subscription.unsubscribe();
   }
 
+  // Mostramos el plato en específico que el usuario quiere filtrar
   showDish(dish: string) {
     this.typeDishShow = dish;
     this.showingDishes = this.allDishes.filter(item => item.type === dish);
   }
 
-  addDishToCart(dish: Dish){
+  // Añadir un plato al carrito,
+  addDishToCart(dish: Dish) {
     const foundDish = this.cart.dishes.find(u => u.dish.id === dish.id);
-    if(foundDish){
+    if (foundDish) {
       foundDish.quantity += 1;
-    }else{
+    } else {
       this.cart.dishes.push({
         dish: dish,
         quantity: 1
