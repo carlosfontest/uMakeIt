@@ -2,7 +2,7 @@
     <!-- Opciones para añadir un nuevo producto editable -->
     <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">ADD <span class="font-weight-bold">EDITABLE</span> PRODUCT</p>
+            <p class="titleAccordion">ADD <span class="bold">EDITABLE</span> PRODUCT</p>
             <span *ngIf="!newOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="newOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
@@ -13,12 +13,12 @@
     <!-- Opciones para añadir un nuevo producto no editable -->
     <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">ADD <span class="font-weight-bold">NON-EDITABLE</span> PRODUCT</p>
+            <p class="titleAccordion">ADD <span class="bold">NON-EDITABLE</span> PRODUCT</p>
             <span *ngIf="!newOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="newOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
 
-        <app-add-editable-product-accordion></app-add-editable-product-accordion>
+        <app-add-non-editable-product-accordion></app-add-non-editable-product-accordion>
     </accordion-group>
 
     <!-- Opciones para editar producto existente -->

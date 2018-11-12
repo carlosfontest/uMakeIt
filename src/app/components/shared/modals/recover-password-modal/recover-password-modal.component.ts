@@ -25,21 +25,21 @@ export class RecoverPasswordModalComponent implements OnInit {
     });
   }
 
-  recoverPassword(){
+  recoverPassword() {
     const {value} = this.email;
     this.authService.passwordResetEmail(value).then(() => {
       this.flashMessage.show('Email has been sent. Check your inbox!', {
         cssClass: 'alert-success', timeout: 3000
       });
       this.bsModalRef.hide();
-    }).catch((error)=>{
+    }).catch((error) => {
       this.flashMessage.show(error.message, {
         cssClass: 'alert-danger', timeout: 3000
       });
     });
   }
 
-  get email(){
+  get email() {
     return this.form.get('email');
   }
 

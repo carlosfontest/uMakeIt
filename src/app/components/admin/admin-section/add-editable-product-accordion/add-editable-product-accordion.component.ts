@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './add-editable-product-accordion.component.html',
   styleUrls: ['./add-editable-product-accordion.component.scss']
 })
-export class AddProductAccordionComponent implements OnInit {
+export class AddEditableProductAccordionComponent implements OnInit {
 
   constructor() { }
 
