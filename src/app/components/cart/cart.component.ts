@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, HostListener, Renderer2 } from '@angular/
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Cart } from 'src/app/models/Cart';
+import { SideDish } from 'src/app/models/SideDish';
+import { SideDishService } from 'src/app/services/side-dish.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,8 +18,14 @@ export class CartComponent implements OnInit, OnDestroy {
   clicked: number;
   timer;
   tax: number;
+  sideDishes: SideDish[];
 
-  constructor(private cs: CartService, private as: AuthService, private renderer: Renderer2) { }
+  constructor(
+    private cs: CartService, 
+    private as: AuthService, 
+    private renderer: Renderer2,
+    private sideDishService: SideDishService
+    ) { }
 
   ngOnInit() {
     this.tax = 0.15;
@@ -39,6 +47,14 @@ export class CartComponent implements OnInit, OnDestroy {
       }
       this.loading = false;
     });
+
+    // Cargamos todos los Side-Dishes
+    this.sideDishes = [];
+
+    this.sideDishService.getSideDishes().subscribe(data => {
+      this.sideDishes = data;
+    });
+
   }
 
   ngOnDestroy() {
@@ -106,6 +122,14 @@ export class CartComponent implements OnInit, OnDestroy {
         console.log(error.message);
       });
     }, 1500);
+  }
+
+  buscarSideDish(id: string): string {
+    return this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoArriba;
+  }
+  
+  buscarSideDishDoble(id: string): string {
+    return this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoDoble;
   }
 
 }

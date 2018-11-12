@@ -28,7 +28,27 @@
       
               <ng-container *ngFor="let item of cart.dishes; let i = index">
                 <tr>
-                  <td class="dishThumbnail text-center"><img [src]="item.dish.thumbnail" alt=""></td>
+                  <td class="dishThumbnail text-center">
+                    
+                    <ng-container *ngIf="!item.dish.sideDishes">
+                        <img [src]="item.dish.thumbnail" alt="">
+                    </ng-container>
+                  
+                    <ng-container *ngIf="item.dish.sideDishes">
+                      <img src="../../../../assets/images/platos/Plato.png" class="plato">  <!-- Foto del plato -->
+                      <img [src]="item.dish.thumbnail" class="mainDish">  <!-- Foto del Main-Dish -->
+                      <!-- Si es ingrediente doble -->
+                      <ng-container *ngIf="item.dish.sideDishes[0] == item.dish.sideDishes[1]">
+                        <img [src]="buscarSideDishDoble(item.dish.sideDishes[0])" class="dobleSide">  <!-- Foto del Side-Dish doble-->
+                      </ng-container>
+                      <!-- Si NO es ingrediente doble -->
+                      <ng-container *ngIf="item.dish.sideDishes[0] != item.dish.sideDishes[1]">
+                        <img [src]="buscarSideDish(item.dish.sideDishes[0])" class="primerSide">  <!-- Foto del primer Side-Dish -->
+                        <img [src]="buscarSideDish(item.dish.sideDishes[1])" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
+                      </ng-container>
+                    </ng-container>
+
+                  </td>
                   <td class="dishName">{{ item.dish.name }}</td>
                   <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
                   <td>
