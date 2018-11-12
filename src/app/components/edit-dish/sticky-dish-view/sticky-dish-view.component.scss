@@ -49,6 +49,27 @@ hr {
   width: 98%;
 }
 
+.plato {
+  position: absolute;
+}
+
+.mainDish {
+  position: absolute;
+}
+
+.dobleSide {
+  position: relative;
+}
+
+.primerSide {
+  position: absolute;
+}
+
+.segundoSide {
+  position: relative;
+  transform: rotate(90deg);
+}
+
 //  Cuando sea maximo 767px
 @media (max-width: 767px) {
   .stickyPanel {

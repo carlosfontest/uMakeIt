@@ -3,7 +3,19 @@
     <p class="titleDish">YOUR DISH</p>
     <hr>
     <div class="dishView">
-      <img src="../../../assets/images/platos/Plato.png" alt="">
+        <div class="divFoto" *ngIf="dish.sideDishes">
+            <img src="../../../../assets/images/platos/Plato.png" class="plato">  <!-- Foto del plato -->
+            <img [src]="dish.thumbnail" class="mainDish">  <!-- Foto del Main-Dish -->
+            <!-- Si es ingrediente doble -->
+            <ng-container *ngIf="dish.sideDishes[0] == dish.sideDishes[1]">
+              <img [src]="sideDishes[0].thumbnailPlatoDoble" class="dobleSide">  <!-- Foto del Side-Dish doble-->
+            </ng-container>
+            <!-- Si NO es ingrediente doble -->
+            <ng-container *ngIf="dish.sideDishes[0] != dish.sideDishes[1]">
+              <img [src]="sideDishes[0].thumbnailPlatoArriba" class="primerSide">  <!-- Foto del primer Side-Dish -->
+              <img [src]="sideDishes[1].thumbnailPlatoArriba" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
+            </ng-container>
+          </div>
     </div>
     <div class="d-flex justify-content-end">
         <a class="btn btn-medium btn-yellow btn-block" href="#">ADD<i class="fas fa-shopping-cart ml-3"></i></a>

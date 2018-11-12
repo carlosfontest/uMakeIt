@@ -5,5 +5,5 @@ export interface Dish {
   type: string;
   price: number;
   id?: string;
-  sideDish?: SideDish[];
+  sideDishes?: string[];
 }

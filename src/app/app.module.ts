@@ -35,11 +35,6 @@ import { PurchaseCardComponent } from './components/purchase-history/purchase-ca
 import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { AddNonEditableProductComponent } from './components/admin/admin-section/add-non-editable-product-accordion/add-non-editable-product-accordion.component';
-
-// Services
-import { AuthService } from './services/auth.service';
-import { DishService } from './services/dish.service';
-import { UserService } from './services/user.service';
 import { SideDishCardComponent } from './components/edit-dish/side-dish-card/side-dish-card.component';
 import { StatsSectionComponent } from './components/admin/stats-section/stats-section.component';
 import { StickyDishViewComponent } from './components/edit-dish/sticky-dish-view/sticky-dish-view.component';
@@ -47,6 +42,11 @@ import { AdminSectionComponent } from './components/admin/admin-section/admin-se
 import { AddEditableProductAccordionComponent } from './components/admin/admin-section/add-editable-product-accordion/add-editable-product-accordion.component';
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
+
+// Services
+import { AuthService } from './services/auth.service';
+import { DishService } from './services/dish.service';
+import { UserService } from './services/user.service';
 import { SideDishService } from './services/side-dish.service';
 
 @NgModule({
