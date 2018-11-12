@@ -33,6 +33,10 @@ accordion-group {
   font-family: 'Fjalla One', sans-serif;
 }
 
+.font-weight-bold {
+  font-size: 90%;
+}
+
 @keyframes beat{
 	to { transform: scale(1.10); }
 }
@@ -49,16 +53,37 @@ accordion-group {
 //  Cuando sea vista movil
 @media (max-width: 575px) {
   .titleAccordion {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .fas {
-    font-size: 26px;
+    font-size: 23px;
   }
 
   .badge {
     margin-left: 10px;
     height: 30px;
     line-height: 20px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 400px) {
+  .titleAccordion {
+    font-size: 18px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 370px) {
+  .titleAccordion {
+    font-size: 16px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 350px) {
+  .titleAccordion {
+    font-size: 15px;
   }
 }

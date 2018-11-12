@@ -47,6 +47,7 @@ import { AddProductAccordionComponent } from './components/admin/admin-section/a
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
+import { AddNonEditableProductComponent } from './components/admin/admin-section/add-non-editable-product/add-non-editable-product.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { SideDishService } from './services/side-dish.service';
     PendingOrdersAccordionComponent,
     RecoverPasswordModalComponent,
     RecoverPasswordComponent,
-    PurchaseCardComponent
+    PurchaseCardComponent,
+    AddNonEditableProductComponent
   ],
   imports: [
     BrowserModule,
