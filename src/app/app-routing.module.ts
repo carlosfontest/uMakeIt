@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
-  {path: 'edit-dish', component: EditDishComponent, canActivate: [AuthGuard]},
+  {path: 'edit-dish', component: EditDishComponent, canActivate: [/*AuthGuard*/]},
   {path: 'admin', component: AdminComponent, canActivate: [ AuthGuard, AdminGuard ]},
   {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
