@@ -12,7 +12,7 @@ export class DishService {
   dishDoc: AngularFirestoreDocument<Dish>;
 
   constructor(private afs: AngularFirestore) { 
-    this.dishesCollection = this.afs.collection('dishes');
+    this.dishesCollection = this.afs.collection('dishes', ref => ref.orderBy('name', 'asc'));
   }
 
   getDishes(): Observable<Dish[]> {
