@@ -43,7 +43,7 @@ export class AddEditableProductAccordionComponent implements OnInit {
 
     this.form.patchValue({ type: 'Choose type of Product' , sidedish1: 'Choose default sidedish 1', sidedish2: 'Choose default sidedish 2'});
 
-    this.ss.subjectEdit.subscribe(res => {
+    this.ss.subjectCedit.subscribe(res => {
       this.file = res;
     });
   }

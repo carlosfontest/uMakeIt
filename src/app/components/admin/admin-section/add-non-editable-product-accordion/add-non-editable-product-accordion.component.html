@@ -5,16 +5,16 @@
     </div>
 
     <div class="form-row mb-3 text-center">
-        <input type="file" name="fileMain" class="inputfile" id="noEditThumbnail">
+        <input type="file" name="fileMain" class="inputfile" id="cNEThumbnail">
         <ng-container *ngIf="file">
-            <label for="noEditThumbnail"><i class="fas fa-upload mr-3"></i>
+            <label for="cNEThumbnail"><i class="fas fa-upload mr-3"></i>
                 <span class="bold">
                     {{ file.name.split( '\\').pop() }}
                 </span>
             </label>
         </ng-container>
         <ng-container *ngIf="!file">
-            <label for="noEditThumbnail"><i class="fas fa-upload mr-3"></i>Dish <span class="bold">thumbnail</span></label>
+            <label for="cNEThumbnail"><i class="fas fa-upload mr-3"></i>Dish <span class="bold">thumbnail</span></label>
         </ng-container>
     </div>
 

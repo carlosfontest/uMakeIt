@@ -30,7 +30,7 @@ export class AddNonEditableProductComponent implements OnInit {
 
     this.form.patchValue({ type: 'Choose type of Product' });
 
-    this.ss.subjectNoEdit.subscribe(res => {
+    this.ss.subjectCNEdit.subscribe(res => {
       this.file = res;
     });
   }
@@ -44,9 +44,13 @@ export class AddNonEditableProductComponent implements OnInit {
     dish.type = this.types[this.type];
 
     this.ss.uploadNoEditable(this.file, dish);
+    this.reset();
+  }
 
-    this.form.reset();
+  reset() {
     this.file = null;
+    this.form.reset();
+    this.form.patchValue({ type: 'Choose type of Product' });
   }
 
   get name() {
