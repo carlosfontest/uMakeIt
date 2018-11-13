@@ -48,6 +48,7 @@ import { AddEditableProductAccordionComponent } from './components/admin/admin-s
 import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
 import { SideDishService } from './services/side-dish.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -97,8 +98,10 @@ import { SideDishService } from './services/side-dish.service';
     AuthService,
     DishService,
     UserService,
-    SideDishService
+    SideDishService,
+    StorageService
   ],
-  bootstrap: [AppComponent, RecoverPasswordModalComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RecoverPasswordModalComponent]
 })
 export class AppModule { }

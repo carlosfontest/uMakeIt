@@ -46,4 +46,8 @@ export class DishService {
 
     return foundDish;
   }
+
+  createNonEditableDish(dish: Dish){
+    this.dishesCollection.add(dish);
+  }
 }
