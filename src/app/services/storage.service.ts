@@ -9,6 +9,8 @@ import { DishService } from 'src/app/services/dish.service';
 })
 export class StorageService {
   storage = firebase.storage().ref();
+  subjectCedit: Subject<File> = new Subject();
+  subjectCNEdit: Subject<File> = new Subject();
   subjectEdit: Subject<File> = new Subject();
   subjectNoEdit: Subject<File> = new Subject();
 
@@ -18,9 +20,13 @@ export class StorageService {
     console.log(event, 'servicio dood');
 
     if (event.target.id === 'noEditThumbnail') {
-      this.subjectNoEdit.next(event.target.files.item(0),);
+      this.subjectNoEdit.next(event.target.files.item(0));
     } else if (event.target.id === 'editThumbnail'){
-      this.subjectEdit.next(event.target.files.item(0),);
+      this.subjectEdit.next(event.target.files.item(0));
+    }else if (event.target.id === 'cNEThumbnail'){
+      this.subjectCNEdit.next(event.target.files.item(0));
+    } else if (event.target.id === 'cEThumbnail'){
+      this.subjectCedit.next(event.target.files.item(0),);
     }
   }
 
