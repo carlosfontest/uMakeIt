@@ -38,7 +38,7 @@ export class EditDishComponent implements OnInit {
       if (dish) {
         this.sideDishService.getSideDishes().subscribe(data => {
           this.sideDishes = data;
-          // this.abrirModalInstrucciones();
+          this.abrirModalInstrucciones();
           // Obtenemos los Side-Dishes del plato en caso de que sea editable
           if (this.dish.sideDishes) {
             // Obtenemos el Side-Dish uno
