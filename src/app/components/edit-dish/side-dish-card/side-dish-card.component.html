@@ -7,8 +7,8 @@
 <!-- Botones de subir y bajar cantidad -->
 <div class="botonesAdd">
   <div class="input-group justify-content-center">
-      <button type="button" class="btn btn-danger" (click)="substract()"><i class="fa fa-minus"></i></button>
+      <button type="button" class="btn btn-danger" (click)="substract()" [disabled]="this.cant == 0"><i class="fa fa-minus"></i></button>
     <!-- <input type="text" class="form-control text-center" [value]="cant" readonly disabled> -->
-      <button type="button" class="btn btn-success" (click)="add()"><i class="fa fa-plus"></i></button>
+      <button type="button" class="btn btn-success" (click)="add()" [disabled]="this.cantSideDishSelected == 2 "><i class="fa fa-plus"></i></button>
   </div>
 </div>
