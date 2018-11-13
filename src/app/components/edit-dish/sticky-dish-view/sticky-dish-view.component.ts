@@ -19,6 +19,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   uid: string;
   subscription;
   timer;
+  dishes: Dish[];
 
   constructor(
     private sideDishService: SideDishService,
@@ -66,6 +67,11 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
 
       const foundDish = this.cart.dishes.find(u => u.dish.id === this.dish.id);
       if (foundDish) {
+        if (foundDish.dish.sideDishes.every(sideDish => this.dish.sideDishes.find(sideD => {
+          sideD == sideDish
+        })) ) {
+
+        }
         foundDish.quantity += 1;
       } else {
         this.cart.dishes.push({
