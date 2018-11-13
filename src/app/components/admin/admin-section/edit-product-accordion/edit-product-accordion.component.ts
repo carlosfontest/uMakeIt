@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './edit-product-accordion.component.html',
   styleUrls: ['./edit-product-accordion.component.scss']
 })
-export class EditProductAccordionComponent implements OnInit {
+export class EditProductAccordionComponent implements OnDestroy, OnInit {
   form: FormGroup;
   allDishes: Dish[];
   sideDishes: SideDish[];
