@@ -36,14 +36,12 @@ export class CartComponent implements OnInit, OnDestroy {
       if (!cart) {
         const newCart: Cart = {dishes: [], price: 0};
         this.cs.createCart(this.uid, newCart).then(() => {
-          console.log('Creado el carrito');
           this.cart = newCart;
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
         this.cart = cart;
-        console.log('habia carrito', this.cart);
       }
       this.loading = false;
     });
@@ -61,7 +59,6 @@ export class CartComponent implements OnInit, OnDestroy {
     clearTimeout(this.timer);
 
     this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
-      console.log('updated cart');
     }).catch((error) => {
       console.log(error.message);
     });
@@ -77,7 +74,7 @@ export class CartComponent implements OnInit, OnDestroy {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
-        console.log('updated cart');
+
       }).catch((error) => {
         console.log(error.message);
       });
@@ -90,7 +87,7 @@ export class CartComponent implements OnInit, OnDestroy {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
-        console.log('updated cart');
+
       }).catch((error) => {
         console.log(error.message);
       });
@@ -117,7 +114,7 @@ export class CartComponent implements OnInit, OnDestroy {
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
-        console.log('updated cart');
+
       }).catch((error) => {
         console.log(error.message);
       });
@@ -125,11 +122,11 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   buscarSideDish(id: string): string {
-    return this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoArriba;
+    return this.sideDishes.find(sideDish => sideDish.id === id)? this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoArriba : '';
   }
   
   buscarSideDishDoble(id: string): string {
-    return this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoDoble;
+    return this.sideDishes.find(sideDish => sideDish.id === id)? this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoDoble : '';
   }
 
 }

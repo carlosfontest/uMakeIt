@@ -35,14 +35,12 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
       if (!cart) {
         const newCart: Cart = { dishes: [], price: 0 };
         this.cartService.createCart(this.uid, newCart).then(() => {
-          console.log('Creado el carrito');
           this.cart = newCart;
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
         this.cart = cart;
-        console.log('habia carrito', this.cart);
       }
     });
   }
@@ -52,7 +50,6 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
     clearTimeout(this.timer);
 
     this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
-      console.log('updated cart');
     }).catch((error) => {
       console.log(error.message);
     });
@@ -65,20 +62,58 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
       this.dish.sideDishes[0] = this.sideDishes[0].id;
       this.dish.sideDishes[1] = this.sideDishes[1].id;
 
-      const foundDish = this.cart.dishes.find(u => u.dish.id === this.dish.id);
-      if (foundDish) {
-        if (foundDish.dish.sideDishes.every(sideDish => this.dish.sideDishes.find(sideD => {
-          sideD == sideDish
-        })) ) {
 
+      let finalFlag = false;
+
+      const foundDishes = this.cart.dishes.filter(u => u.dish.id === this.dish.id);
+
+      if (foundDishes.length > 0) {
+        for (const foundDish of foundDishes) {
+          const a = foundDish.dish.sideDishes.slice();
+          const b = this.dish.sideDishes.slice();
+
+          if (a[0] === a[1]) {
+            a.pop();
+          }
+
+          if (b[0] === b[1]) {
+            b.pop()
+          }
+
+          let boolean;
+
+          if (a.length > b.length) {
+            boolean = a.every(a1 => {
+
+              if (b.find(b1 => b1 === a1)) {
+                return true;
+              }
+            });
+          } else {
+            boolean = b.every(b1 => {
+
+              if (a.find(a1 => a1 === b1)) {
+                return true;
+              }
+            });
+          }
+
+
+          if (boolean) {
+            finalFlag = true;
+            foundDish.quantity += 1;
+            break;
+          }
         }
-        foundDish.quantity += 1;
-      } else {
+      }
+
+      if (!finalFlag) {
         this.cart.dishes.push({
           dish: this.dish,
           quantity: 1
         });
       }
+
       this.cart.price += this.dish.price;
 
       clearTimeout(this.timer);
@@ -88,9 +123,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
           console.log(error.message);
         });
       }, 1500);
-
     }
+
+
   }
-
-
-}

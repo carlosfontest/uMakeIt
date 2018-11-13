@@ -28,10 +28,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   timer;
 
   constructor(
-    private dishService: DishService, 
-    private cartService: CartService, 
+    private dishService: DishService,
+    private cartService: CartService,
     private authService: AuthService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.typeDishShow = 'Pizzas';
@@ -40,16 +40,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.subscription = this.cartService.getCart(this.uid).subscribe(cart => {
       if (!cart) {
-        const newCart: Cart = {dishes: [], price: 0};
+        const newCart: Cart = { dishes: [], price: 0 };
         this.cartService.createCart(this.uid, newCart).then(() => {
-          console.log('Creado el carrito');
           this.cart = newCart;
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
         this.cart = cart;
-        console.log('habia carrito', this.cart);
       }
       // Le pedimos a Firestore los platos
       this.dishService.getDishes().subscribe(data => {
@@ -58,16 +56,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.showingDishes = this.allDishes.filter(item => item.type === this.typeDishShow);
         this.loaded = true;
       });
-      }
+    }
     );
   }
 
   // Cuando se cierra el componente
   ngOnDestroy() {
     clearTimeout(this.timer);
-    
+
     this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
-      console.log('updated cart');
     }).catch((error) => {
       console.log(error.message);
     });
@@ -83,15 +80,65 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   // Añadir un plato al carrito,
   addDishToCart(dish: Dish) {
-    const foundDish = this.cart.dishes.find(u => u.dish.id === dish.id);
-    if (foundDish) {
-      foundDish.quantity += 1;
-    } else {
+    let finalFlag = false;
+
+    const foundDishes = this.cart.dishes.filter(u => u.dish.id === dish.id);
+
+    if (foundDishes.length > 0) {
+      for (const foundDish of foundDishes) {
+
+        if (dish.sideDishes) {
+          const a = foundDish.dish.sideDishes.slice();
+          const b = dish.sideDishes.slice();
+
+          if (a[0] === a[1]) {
+            a.pop();
+          }
+
+          if (b[0] === b[1]) {
+            b.pop()
+          }
+
+          let boolean;
+
+          if (a.length > b.length) {
+            boolean = a.every(a1 => {
+
+              if (b.find(b1 => b1 === a1)) {
+                return true;
+              }
+            });
+          } else {
+            boolean = b.every(b1 => {
+
+              if (a.find(a1 => a1 === b1)) {
+                return true;
+              }
+            });
+          }
+
+
+          if (boolean) {
+            finalFlag = true;
+            foundDish.quantity += 1;
+            break;
+          }
+
+        } else {
+          finalFlag = true;
+          foundDish.quantity += 1;
+          break;
+        }
+      }
+    }
+
+    if (!finalFlag) {
       this.cart.dishes.push({
         dish: dish,
         quantity: 1
       });
     }
+
     this.cart.price += dish.price;
 
     clearTimeout(this.timer);
@@ -102,5 +149,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     }, 1500);
   }
-
 }
