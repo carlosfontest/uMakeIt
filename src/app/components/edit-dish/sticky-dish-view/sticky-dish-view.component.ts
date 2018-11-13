@@ -77,7 +77,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
           }
 
           if (b[0] === b[1]) {
-            b.pop()
+            b.pop();
           }
 
           let boolean;
@@ -124,6 +124,6 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
         });
       }, 1500);
     }
-
-
   }
+  
+}

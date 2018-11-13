@@ -8,26 +8,26 @@ import { DishService } from 'src/app/services/dish.service';
   providedIn: 'root'
 })
 export class StorageService {
-  storage= firebase.storage().ref();
+  storage = firebase.storage().ref();
   subjectEdit: Subject<File> = new Subject();
 
   constructor(private ds: DishService) { }
 
-  uploadFileEvent(event){
+  uploadFileEvent(event) {
     console.log(event, 'servicio dood');
     
-    if(event.target.id === 'noEditThumbnail' || event.target.id === 'editThumbnail'){
+    if (event.target.id === 'noEditThumbnail' || event.target.id === 'editThumbnail') {
       this.subjectEdit.next(event.target.files.item(0));
     }
   }
 
-  uploadNoEditable(file: File, dish: Dish){
+  uploadNoEditable(file: File, dish: Dish) {
     this.storage.child(`platos/noEditables/${file.name}`).put(file).then(snapshot => {
       snapshot.ref.getDownloadURL().then(link => {
         dish.thumbnail = link;
         this.ds.createDish(dish);
       });
+    });
   }
-
-
+  
 }

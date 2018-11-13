@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
 
           if (b[0] === b[1]) {
-            b.pop()
+            b.pop();
           }
 
           let boolean;

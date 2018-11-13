@@ -15,7 +15,7 @@ export class CartService {
     this.cartCollection = this.afs.collection('carts');
   }
 
-  getCart(uid: string){
+  getCart(uid: string)  {
     this.cartDoc = this.afs.doc<Cart>(`carts/${uid}`);
     
     return this.cartDoc.snapshotChanges().pipe(
@@ -29,13 +29,13 @@ export class CartService {
       }));
   }
 
-  createCart(uid: string, cart: Cart){
+  createCart(uid: string, cart: Cart) {
     this.cartDoc = this.afs.doc<Cart>(`carts/${uid}`);
     
     return this.cartDoc.set(cart);
   }
 
-  getCartDoc(uid: string){
+  getCartDoc(uid: string) {
     return this.afs.doc<Cart>(`carts/${uid}`);
   }
 
