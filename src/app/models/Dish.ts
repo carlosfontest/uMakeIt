@@ -1,6 +1,6 @@
 import { SideDish } from './SideDish';
 export interface Dish {
-  thumbnail: string;
+  thumbnail?: string;
   name: string;
   type: string;
   price: number;

@@ -111,7 +111,7 @@ label {
   background: transparent;
 }
 
-.btn-gray:hover {
+.btn-gray:hover:enabled {
   background: rgb(51, 49, 44);
   color: rgb(233, 223, 183);
   border-color: rgb(51, 49, 44);
@@ -122,10 +122,4 @@ label {
   -webkit-transition: none;
   -o-transition: color 0 ease-in;
   transition: none;
-}
-
-.disabled:hover{
-  color: rgb(51, 49, 44);
-  border-color: rgb(51, 49, 44);
-  background: transparent;
 }

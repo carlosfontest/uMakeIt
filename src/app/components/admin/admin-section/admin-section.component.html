@@ -1,4 +1,4 @@
-<accordion [closeOthers]="oneAtATime" (change)="uploadedFile($event)">
+<accordion [closeOthers]="oneAtATime" (change)="uploadedFileEvent($event)">
     <!-- Opciones para añadir un nuevo producto editable -->
     <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">

@@ -37,21 +37,13 @@ export class AddNonEditableProductComponent implements OnInit {
 
   uploadFile() {
     console.log('uploading...');
+    const dish = {} as Dish;
 
-    const storageRef = firebase.storage().ref();
+    dish.name = this.name;
+    dish.price = this.price;
+    dish.type = this.types[this.type];
 
-    storageRef.child(`platos/noEditables/${this.file.name}`).put(this.file).then(snapshot => {
-      snapshot.ref.getDownloadURL().then(link => {
-        const dish = {} as Dish;
-        dish.name = this.name;
-        dish.price = this.price;
-        dish.thumbnail = link;
-        dish.type = this.types[this.type];
-        this.ds.createNonEditableDish(dish);
-        console.log(dish);
-        
-      })
-    });
+    this.ss.uploadNoEditable(this.file, dish);
   }
 
   get name() {

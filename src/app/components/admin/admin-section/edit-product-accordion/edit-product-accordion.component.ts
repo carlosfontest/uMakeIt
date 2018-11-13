@@ -33,11 +33,13 @@ export class EditProductAccordionComponent implements OnInit {
   }
 
   buscarSideDish(id: string): string {
-    return this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoArriba;
+    const sideDish = this.sideDishes.find(sideDish => sideDish.id === id);
+    return sideDish? sideDish.thumbnailPlatoArriba : '';
   }
   
   buscarSideDishDoble(id: string): string {
-    return this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoDoble;
+    const sideDish = this.sideDishes.find(sideDish => sideDish.id === id);
+    return sideDish? sideDish.thumbnailPlatoDoble : '';
   }
 
 }

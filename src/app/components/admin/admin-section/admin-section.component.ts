@@ -25,7 +25,7 @@ export class AdminSectionComponent implements OnInit {
   }
 
   uploadedFile(event){
-    this.ss.uploadFile(event);
+    this.ss.uploadFileEvent(event);
   }
 
 }
