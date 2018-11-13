@@ -9,20 +9,21 @@ import { SideDish } from 'src/app/models/SideDish';
 export class SideDishCardComponent implements OnInit {
   @Input() sideDish: SideDish;
   @Input() cantSideDishSelected: number;
-  @Output() changeCant: EventEmitter<number> = new EventEmitter();
+  @Input() initialQuantity: number;
+  @Output() changeCant: EventEmitter<any> = new EventEmitter();
   cant: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.cant = 0;
+    this.cant = this.initialQuantity;
   }
 
   add() {
     // Aumentamos la cantidad del actual ingrediente y aumentamos el total en edit-dish
     if (this.cantSideDishSelected < 2) {
       this.cant++;
-      this.changeCant.emit(1);
+      this.changeCant.emit({num: 1, sideDish: this.sideDish});
     }
   }
 
@@ -30,7 +31,7 @@ export class SideDishCardComponent implements OnInit {
   substract() {
     if (this.cantSideDishSelected > 0 && this.cant > 0) {
       this.cant--;
-      this.changeCant.emit(-1);
+      this.changeCant.emit({num: -1, sideDish: this.sideDish});
     }
   }
 

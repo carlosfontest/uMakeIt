@@ -30,7 +30,7 @@
                   <ng-container *ngIf="loaded">
                     <ng-container *ngFor="let sideDish of sideDishes">
                       <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <app-side-dish-card [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
+                        <app-side-dish-card [initialQuantity]="obtenerCantidadInicial(sideDish)" [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
                       </div>
                     </ng-container>
                   </ng-container>
@@ -41,9 +41,29 @@
           </div>
           <!-- Vista del plato -->
           <div class="col-md-3 col-sm-12">
-              <app-sticky-dish-view></app-sticky-dish-view>
+              <app-sticky-dish-view [dish]="dish" [sideDishes]="dishSideDishes"></app-sticky-dish-view>
           </div>
         </div>
     </div>
   </div>      
 </ng-container>
+
+<!-- Modal que se abre con las instrucciones para editar un plato -->
+<ng-template #modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Instructions to Edit</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li><span class="iconList">»</span> You can select <span class="font-weight-bold font-italic">maximum</span> two different and <span class="font-weight-bold font-italic">minimum</span> one Side-Dishes.</li>
+      <li><span class="iconList">»</span> If you select only one Side-Dish, this will be of a <span class="font-weight-bold font-italic">greater proportion</span> than if you select two Side-Dishes.</li>
+      <li><span class="iconList">»</span> If you select two Side-Dishes, they will be distributed in two <span class="font-weight-bold font-italic">equal</span> parts.</li>
+    </ul>
+  </div>
+  <div class="modal-footer text-center">
+    <button type="button" class="btn btn-medium btn-gray btn-block" (click)="bsModalRef.hide()">I got it!</button>
+  </div>
+</ng-template>

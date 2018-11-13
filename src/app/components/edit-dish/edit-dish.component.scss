@@ -99,6 +99,41 @@ hr {
   margin: 0px;
 }
 
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.modal-title {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: rgb(179, 168, 127);
+  text-shadow: 1px 1px 1px #000000;
+}
+
+.modal-body, .modal-header, .modal-footer {
+  background: #535149;
+}
+
+.modal-body {
+  color: rgb(182, 173, 143);
+  padding: 26px 40px;
+  text-align: justify;
+}
+
+.iconList {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.font-italic {
+  color: rgb(202, 196, 176);
+}
+
 .col-md-9 {
   // padding-right: 0;
   // padding-left: 0;
@@ -147,6 +182,13 @@ hr {
   }
 }
 
+//  Cuando sea vista movil
+@media (max-width: 400px) {
+  .modal-title {
+    font-size: 32px;
+  }
+}
+
 //  Cuando sea máximo 992
 @media (max-width: 992px) {
   .row {
@@ -190,4 +232,41 @@ hr {
   .titleDish, .priceDish {
     font-size: 22px;
   }
+}
+
+// Estilos de los botones
+.btn {
+  display: inline-block;
+  outline: none;
+  *zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  border-width: 2.5px;
+}
+
+.btn-medium {
+  font-size: 1.3em;
+  padding: 12px 70px;
+}
+
+.btn-gray {
+  color: rgb(179, 168, 127);
+  border-color: rgb(179, 168, 127);
+  background: transparent;
+}
+
+.btn-gray:hover {
+  background: rgb(105, 102, 93);
+  color: rgb(233, 223, 183);
+  border-color: rgb(105, 102, 93);
 }

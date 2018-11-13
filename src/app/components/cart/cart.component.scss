@@ -175,6 +175,27 @@ thead tr th:nth-child(6) {
     -o-transform: scale(1.6);
 }
 
+.plato {
+    position: absolute;
+}
+
+.mainDish {
+position: absolute;
+}
+
+.dobleSide {
+position: relative;
+}
+
+.primerSide {
+position: absolute;
+}
+
+.segundoSide {
+position: relative;
+transform: rotate(90deg);
+}
+
 //  Cuando sea máximo 1224px
 @media (max-width: 1224px) {
     .container-fluid {

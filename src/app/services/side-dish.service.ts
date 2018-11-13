@@ -29,4 +29,23 @@ export class SideDishService {
 
     return this.sideDishes;
   }
+
+  getSideDishById(id: string) {
+    // Get dish with the ID
+    this.sideDishDoc = this.afs.doc<SideDish>(`sideDishes/${id}`);
+
+    const foundSideDish = this.sideDishDoc.snapshotChanges().pipe(
+      map(a => {
+        if (a.payload.exists === false) {
+          return null;
+        } else {
+          const sideDish = a.payload.data();
+          sideDish.id = a.payload.id;
+          return sideDish;
+        }
+      })
+    );
+
+    return foundSideDish;
+  }
 }

@@ -74,6 +74,16 @@ hr {
   -o-transform: scale(1.1);
 }
 
+.noDispon {
+  color: rgb(51, 46, 32);
+  cursor: default;
+  transition: 500s;
+}
+
+.noDispon:hover {
+  color: rgb(51, 46, 32);
+}
+
 .dishPrice {
   color: rgba(248, 200, 34, 1);
   text-shadow: 4px 4px 4px #000000;
@@ -83,6 +93,27 @@ hr {
   font-family: 'Fjalla One', sans-serif;
   padding: 5px;
   cursor: default;
+}
+
+.plato {
+  position: absolute;
+}
+
+.mainDish {
+  position: absolute;
+}
+
+.dobleSide {
+  position: relative;
+}
+
+.primerSide {
+  position: absolute;
+}
+
+.segundoSide {
+  position: relative;
+  transform: rotate(90deg);
 }
 
 //  Cuando sea vista movil
