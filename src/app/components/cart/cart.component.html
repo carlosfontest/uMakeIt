@@ -28,7 +28,7 @@
       
               <ng-container *ngFor="let item of cart.dishes; let i = index">
                 <tr>
-                  <td class="dishThumbnail text-center">
+                  <td class="dishThumbnail text-center position-relative">
                     
                     <ng-container *ngIf="!item.dish.sideDishes">
                         <img [src]="item.dish.thumbnail" alt="">
