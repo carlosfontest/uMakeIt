@@ -55,7 +55,7 @@ export class AddEditableProductAccordionComponent implements OnInit {
       this.sideDish1, this.sideDish2
     ], type: this.types[this.type] };
 
-    this.ds.createNonEditableDish(dish, this.file);
+    // this.ds.createNonEditableDish(dish, this.file);
   }
 
   get name() {
