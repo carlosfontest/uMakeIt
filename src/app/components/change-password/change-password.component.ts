@@ -32,22 +32,22 @@ export class ChangePasswordComponent implements OnInit {
     });
 
     this.formNew.valueChanges.subscribe(() => {
-      if(!this.boolConfirm){
+      if (!this.boolConfirm) {
         const {nativeElement: boton} = this.submit;
         this.renderer.removeClass(boton, 'btn-danger');
         this.renderer.addClass(boton, 'btn-secondary');
-        this.renderer.setProperty(boton,'value', 'Submit');
+        this.renderer.setProperty(boton, 'value', 'Submit');
         this.boolConfirm = true;
       }
     });
 
     console.log(this.as.currentUser);
-    ;
+    
   }
 
-  reAuth({value}){
+  reAuth({value}) {
     
-    if(!(value.length >= 6)){
+    if(!(value.length >= 6)) {
       this.flashMessage.show('The password minimum length should be 6', {
         cssClass: 'alert-danger', timeout: 4000
       });
@@ -63,8 +63,8 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-  changePassword({value}){
-    if(!(value.length >= 6)){
+  changePassword({value}) {
+    if (!(value.length >= 6)) {
       this.flashMessage.show('The password minimum length should be 6', {
         cssClass: 'alert-danger', timeout: 4000
       });
@@ -73,17 +73,17 @@ export class ChangePasswordComponent implements OnInit {
 
     const {nativeElement: boton} = this.submit;
 
-    if(this.boolConfirm){
-      this.renderer.removeClass(boton,'btn-secondary');
-      this.renderer.addClass(boton,'btn-danger');
-      this.renderer.setProperty(boton,'value','Are you Sure?');
+    if (this.boolConfirm) {
+      this.renderer.removeClass(boton, 'btn-secondary');
+      this.renderer.addClass(boton, 'btn-danger');
+      this.renderer.setProperty(boton, 'value', 'Are you Sure?');
       this.boolConfirm = false;
       return;
     }
 
     this.renderer.removeClass(boton, 'btn-danger');
     this.renderer.addClass(boton, 'btn-secondary');
-    this.renderer.setProperty(boton,'value', 'Submitted');
+    this.renderer.setProperty(boton, 'value', 'Submitted');
 
     this.as.changePassword(value).then(() => {
       this.password.disable;
