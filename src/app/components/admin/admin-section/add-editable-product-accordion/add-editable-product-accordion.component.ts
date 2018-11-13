@@ -51,11 +51,19 @@ export class AddEditableProductAccordionComponent implements OnInit {
   uploadFile() {
     console.log('uploading...');
 
-    const dish = {name: this.name, price: this.price, sideDishes: [
+    const dish: Dish = {name: this.name, price: this.price, sideDishes: [
       this.sideDish1, this.sideDish2
     ], type:this.types[this.type] };
 
-    this.ds.createNonEditableDish(dish, this.file);
+    this.ss.uploadEditable(this.file, dish);
+    
+    this.reset();
+  }
+  
+  reset(){
+    this.form.reset();
+    this.form.patchValue({ type: 'Choose type of Product' , sidedish1: 'Choose default sidedish 1', sidedish2: 'Choose default sidedish 2'});
+    this.file = null;
   }
 
   get name() {
