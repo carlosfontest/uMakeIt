@@ -110,8 +110,8 @@ hr {
 }
 
 
-// Estilos del botón
-a.btn,.btn {
+// Estilos de los botones
+.btn {
   display: inline-block;
   outline: none;
   *zoom: 1;
@@ -127,24 +127,21 @@ a.btn,.btn {
   font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 25px;
   font-weight: 800;
+  border-width: 1.8px;
 }
 
 .btn-medium {
-  font-size: 0.8125em;
-  padding: 10px;
-}
-
-.btn-block {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1.3em;
+  padding: 12px 70px;
 }
 
 .btn-yellow {
   color: #F8C822;
   border-color: #F8C822;
+  background: transparent;
 }
-.btn-yellow:hover {
+
+.btn-yellow:hover:enabled {
   background: #F8C822;
   color: rgb(37, 34, 28);
   border-color: #F8C822;

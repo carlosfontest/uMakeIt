@@ -27,17 +27,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // Timer for update
   timer;
 
-  constructor(private dishService: DishService, private cs: CartService, private as: AuthService) { }
+  constructor(
+    private dishService: DishService, 
+    private cartService: CartService, 
+    private authService: AuthService
+    ) { }
 
   ngOnInit() {
     this.typeDishShow = 'Pizzas';
     this.loaded = false;
-    this.uid = this.as.currentUser.uid;
+    this.uid = this.authService.currentUser.uid;
 
-    this.subscription = this.cs.getCart(this.uid).subscribe(cart => {
+    this.subscription = this.cartService.getCart(this.uid).subscribe(cart => {
       if (!cart) {
         const newCart: Cart = {dishes: [], price: 0};
-        this.cs.createCart(this.uid, newCart).then(() => {
+        this.cartService.createCart(this.uid, newCart).then(() => {
           console.log('Creado el carrito');
           this.cart = newCart;
         }).catch((error) => {
@@ -62,7 +66,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     clearTimeout(this.timer);
     
-    this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+    this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
       console.log('updated cart');
     }).catch((error) => {
       console.log(error.message);
@@ -92,11 +96,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+      this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
       }).catch((error) => {
         console.log(error.message);
       });
-    },1500);
+    }, 1500);
   }
 
 }
