@@ -27,7 +27,8 @@
           <input type="password" name="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password" required autocomplete="off">
         </div>  
         <!-- Button Submit -->
-        <button type="submit" class="btn btn-primary btn-block" popover="By clicking 'Register' you agree to our terms of service" triggers="mouseenter:mouseleave" placement="bottom">Register</button>
+        <ng-template #popTemplate><span class="pop">By clicking <span class="font-italic text-danger">REGISTER</span> you agree to our terms of service</span></ng-template> <!-- Template para el popover-->
+        <button type="submit" class="btn btn-primary btn-block" [popover]="popTemplate" triggers="mouseenter:mouseleave" placement="bottom">Register</button>
       </form>
     </div>
   </div>

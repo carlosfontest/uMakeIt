@@ -18,7 +18,9 @@
         </div>
     </div>
     <div class="d-flex justify-content-end">
-        <button class="btn btn-medium btn-yellow btn-block"(click)="addDishToCart()" [disabled]="this.cantSelected < 2">ADD<i class="fas fa-shopping-cart ml-3"></i></button>
+      <ng-template #popTemplate><span class="pop">Select <span class="popNum"> {{ 2 - this.cantSelected }} </span> more Side-Dish for continue</span></ng-template> <!-- Template para el popover-->
+      <button class="btn btn-medium btn-yellow btn-block disabled" *ngIf="this.cantSelected < 2" (click)="addDishToCart()" [popover]="popTemplate" triggers="mouseenter:mouseleave" placement="bottom">ADD<i class="fas fa-shopping-cart ml-3"></i></button>
+      <button class="btn btn-medium btn-yellow btn-block" *ngIf="this.cantSelected == 2" (click)="addDishToCart()">ADD<i class="fas fa-shopping-cart ml-3"></i></button>
     </div>
   </div>
 </div>
