@@ -1,41 +1,30 @@
 <accordion [closeOthers]="oneAtATime" (change)="uploadedFile($event)">
-    <!-- Opciones para añadir un nuevo producto editable -->
+    <!-- Opciones para añadir nuevos productos -->
     <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">ADD <span class="bold">EDITABLE</span> PRODUCT</p>
+            <p class="titleAccordion">ADD <span class="bold">NEW PRODUCTS</span></p>
             <span *ngIf="!newOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="newOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
 
-        <app-add-editable-product-accordion></app-add-editable-product-accordion>
+        <app-add-products-accordion></app-add-products-accordion>
     </accordion-group>
 
-    <!-- Opciones para añadir un nuevo producto no editable -->
+    <!-- Opciones para editar productos -->
     <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">ADD <span class="bold">NON-EDITABLE</span> PRODUCT</p>
-            <span *ngIf="!newOpen"><i class="fas fa-chevron-down"></i></span>
-            <span *ngIf="newOpen"><i class="fas fa-chevron-up"></i></span>
-        </div>
-
-        <app-add-non-editable-product-accordion></app-add-non-editable-product-accordion>
-    </accordion-group>
-
-    <!-- Opciones para editar producto existente -->
-    <accordion-group (isOpenChange)="editOpen = !editOpen" class="accordions" [panelClass]="customClass">
-        <div accordion-heading class="forFlex">
-            <p class="titleAccordion">EDIT PRODUCTS</p>
+            <p class="titleAccordion">EDIT <span class="bold">PRODUCTS</span></p>
             <span *ngIf="!editOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="editOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
 
-        <app-edit-product-accordion></app-edit-product-accordion>
+        <app-edit-products-accordion></app-edit-products-accordion>
     </accordion-group>
 
     <!-- Opciones para verificar y manejar órdenes pendientes -->
     <accordion-group (isOpenChange)="pendingOpen = !pendingOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion d-flex">PENDING ORDERS <span class="badge badge-secondary">8</span></p>
+            <p class="titleAccordion">PENDING <span class="bold">ORDERS</span> <span class="badge badge-secondary">8</span></p>
             <span *ngIf="!pendingOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="pendingOpen"><i class="fas fa-chevron-up"></i></span>
         </div>

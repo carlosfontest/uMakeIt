@@ -1,0 +1,72 @@
+<div class="container-fluid pt-3 pb-3 cont">
+    <form [formGroup]="form">
+        <div class="mb-5">
+            <app-title-banner [title]="'Add'" *ngIf="this.accordionOpen != ''"></app-title-banner>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text dolar"><i class="fas fa-file-signature"></i></span>
+            </div>
+            <input formControlName="name" type="text" class="form-control" placeholder="Product Name" aria-label="Product Name"
+                aria-describedby="basic-addon2">
+        </div>
+    
+        <div class="form-row mb-3 text-center">
+            <input type="file" name="fileMain" class="inputfile" id="cNEThumbnail">
+            <ng-container *ngIf="file">
+                <label for="cNEThumbnail"><i class="fas fa-upload mr-3"></i>
+                    <span class="bold">
+                        {{ file.name.split( '\\').pop() }}
+                    </span>
+                </label>
+            </ng-container>
+            <ng-container *ngIf="!file">
+                <label for="cNEThumbnail"><i class="fas fa-upload mr-3"></i>Dish <span class="bold">thumbnail</span></label>
+            </ng-container>
+        </div>
+    
+        <div class="form-row mb-3 text-center">
+            <input type="file" name="fileMain" class="inputfile" id="cNEThumbnail">
+            <ng-container *ngIf="file">
+                <label for="cNEThumbnail"><i class="fas fa-upload mr-3"></i>
+                    <span class="bold">
+                        {{ file.name.split( '\\').pop() }}
+                    </span>
+                </label>
+            </ng-container>
+            <ng-container *ngIf="!file">
+                <label for="cNEThumbnail"><i class="fas fa-upload mr-3"></i>Real Dish <span class="bold">thumbnail</span></label>
+            </ng-container>
+        </div>
+    
+        <div class="form-row text-center">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text dolar"><i class="fas fa-utensils"></i></span>
+                    </div>
+                    <select formControlName="type" class="custom-select" id="inputGroupSelect02">
+                        <option disabled>Choose type of Product</option>
+                        <option *ngFor="let option of types; let i = index;" [ngValue]="i">{{ option }}</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="col">
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text dolar">&nbsp;<i class="fas fa-dollar-sign"></i>&nbsp;</span>
+                    </div>
+                    <input formControlName="price" type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                        placeholder="Price of the Product">
+                </div>
+            </div>
+        </div>
+    
+        <div class="d-flex justify-content-center">
+            <div>
+                <input type="button" class="btn btn-medium btn-gray" [ngClass]="disableFlag? 'disabled' : ''" [disabled]="disableFlag" value="Add Product" (click)="uploadFile()">
+            </div>
+        </div>
+    </form>
+</div>

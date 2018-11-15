@@ -1,0 +1,14 @@
+<div class="container-fluid d-flex justify-content-around flex-wrap mt-3 mb-4">
+    <button class="btn btn-medium btn-gray" (click)="changeState('editable')" [ngClass]="{'select': this.accordionOpen == 'editable'}">ADD <span class="bold">EDITABLE</span> PRODUCT</button>
+    <button class="btn btn-medium btn-gray" (click)="changeState('non-editable')" [ngClass]="{'select': this.accordionOpen == 'non-editable'}">ADD <span class="bold">NON-EDITABLE</span> PRODUCT</button>
+    <button class="btn btn-medium btn-gray" (click)="changeState('side-dish')" [ngClass]="{'select': this.accordionOpen == 'side-dish'}">ADD <span class="bold">SIDE-DISH</span> PRODUCT</button>
+</div>
+
+<hr class="mt-4" *ngIf="this.accordionOpen != ''">
+
+
+
+<!-- Formularios -->
+<app-add-editable-product *ngIf="this.accordionOpen === 'editable'"></app-add-editable-product>
+<app-add-non-editable-product *ngIf="this.accordionOpen === 'non-editable'"></app-add-non-editable-product>
+<app-add-side-dish *ngIf="this.accordionOpen === 'side-dish'"></app-add-side-dish>

@@ -8,11 +8,11 @@ import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-product-accordion',
-  templateUrl: './edit-product-accordion.component.html',
-  styleUrls: ['./edit-product-accordion.component.scss']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.scss']
 })
-export class EditProductAccordionComponent implements OnInit {
+export class EditProductComponent implements OnInit {
   form: FormGroup;
   allDishes: Dish[];
   sideDishes: SideDish[];
@@ -86,12 +86,12 @@ export class EditProductAccordionComponent implements OnInit {
 
 
   buscarSideDish(id: string): string {
-    const sideDish = this.sideDishes.find(sideDish => sideDish.id === id);
+    const sideDish = this.sideDishes.find(sideD => sideD.id === id);
     return sideDish ? sideDish.thumbnailPlatoArriba : '';
   }
 
   buscarSideDishDoble(id: string): string {
-    const sideDish = this.sideDishes.find(sideDish => sideDish.id === id);
+    const sideDish = this.sideDishes.find(sideD => sideD.id === id);
     return sideDish ? sideDish.thumbnailPlatoDoble : '';
   }
 

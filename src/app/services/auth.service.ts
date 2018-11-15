@@ -48,29 +48,29 @@ export class AuthService {
     this.afa.auth.signOut();
   }
 
-  changePassword(password: string){
+  changePassword(password: string) {
     const user = this.afa.auth.currentUser;
     const newPassword = password;
 
     return user.updatePassword(newPassword);
   }
 
-  reAuth(password: string){
+  reAuth(password: string) {
     const user = this.afa.auth.currentUser;
     const credentials = firebase.auth.EmailAuthProvider.credential(user.email, password);
     
     return user.reauthenticateAndRetrieveDataWithCredential(credentials);
   }
 
-  passwordResetEmail(email: string){
+  passwordResetEmail(email: string) {
     return this.afa.auth.sendPasswordResetEmail(email);
   }
 
-  recoverPassword(code: string, newPassword: string){
+  recoverPassword(code: string, newPassword: string) {
     return this.afa.auth.confirmPasswordReset(code, newPassword);
   }
 
-  get currentUser(){
+  get currentUser() {
     return this.afa.auth.currentUser;
   }
 }

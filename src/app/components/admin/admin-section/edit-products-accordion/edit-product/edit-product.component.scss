@@ -1,3 +1,148 @@
+.titleBanner{
+  margin-bottom: 40px;
+}
+
+.input-group {
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(110, 105, 104);
+}
+
+.form-control, .custom-select {
+  border-radius: 0;
+  height: 45px;
+  border: inset;
+}
+
+.fotoPlato {
+  width: 150px;
+  padding: 15px;
+  transition: .4s;
+}
+
+.conjunto {
+  width: 150px;
+  height: 185px;
+  background: rgb(41, 40, 35);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fotoPlace:hover > img {
+  filter: blur(3px) brightness(50%);
+}
+
+.col-xl-2 {
+  margin-bottom: 20px;
+}
+
+.notch {
+  width: 150px;
+}
+
+.notchPlace {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.fotoPlace {
+  width: 150px;
+  height: 150px;
+}
+
+.dishName {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.message {
+  text-align: center;
+  font-size: 80px;
+  font-weight: 800;
+  color: rgb(179, 168, 127);
+  text-shadow: 3px 3px 3px #000000;
+  margin-bottom: 0px;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgb(41, 40, 35);
+  margin-top: 0;
+  margin-bottom: 30px;
+  width: 98%;
+}
+
+.plato, .mainDish, .dobleSide, .primerSide, .segundoSide {
+  width: 150px;
+  padding: 15px;
+  transition: .4s;
+}
+
+.plato {
+  position: absolute;
+}
+
+.mainDish {
+position: absolute;
+}
+
+.dobleSide {
+position: relative;
+}
+
+.primerSide {
+position: absolute;
+}
+
+.segundoSide {
+position: relative;
+transform: rotate(90deg);
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .col-xs {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .notch {
+    width: 100px;
+  }
+
+  .fotoPlato {
+    width: 100px;
+  }
+
+  .plato, .mainDish, .dobleSide, .primerSide, .segundoSide {
+    width: 100px;
+  }
+  
+  .conjunto {
+    width: 100px;
+    height: 125.672px;
+  }
+
+  .dishName {
+    font-size: 10px;
+    line-height: 10px;
+  }
+
+  .fotoPlace {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 .inputfile {
   width: 0.1px;
 	height: 0.1px;

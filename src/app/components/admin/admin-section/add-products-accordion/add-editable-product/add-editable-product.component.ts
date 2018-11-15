@@ -8,11 +8,11 @@ import { SideDishService } from 'src/app/services/side-dish.service';
 import { Dish } from 'src/app/models/Dish';
 
 @Component({
-  selector: 'app-add-editable-product-accordion',
-  templateUrl: './add-editable-product-accordion.component.html',
-  styleUrls: ['./add-editable-product-accordion.component.scss']
+  selector: 'app-add-editable-product',
+  templateUrl: './add-editable-product.component.html',
+  styleUrls: ['./add-editable-product.component.scss']
 })
-export class AddEditableProductAccordionComponent implements OnInit {
+export class AddEditableProductComponent implements OnInit {
   form: FormGroup;
   file: File;
   types: string[];
@@ -41,7 +41,7 @@ export class AddEditableProductAccordionComponent implements OnInit {
       sidedish2: ['', Validators.required]
     });
 
-    this.form.patchValue({ type: 'Choose type of Product' , sidedish1: 'Choose default sidedish 1', sidedish2: 'Choose default sidedish 2'});
+    this.form.patchValue({ type: 'Choose type of Product' , sidedish1: 'Choose 1° Side-Dish', sidedish2: 'Choose 2° Side-Dish'});
 
     this.ss.subjectCedit.subscribe(res => {
       this.file = res;

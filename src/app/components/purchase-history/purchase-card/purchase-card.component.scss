@@ -62,44 +62,6 @@ hr {
   cursor: default;
 }
 
-// Estilos del botón
-a.btn,.btn {
-  margin-top: .8rem;
-  margin-bottom: 1.4rem;
-  margin-right: 60px;
-  display: inline-block;
-  outline: none;
-  *zoom: 1;
-  text-align: center;
-  text-decoration: none;
-  font-weight: 300;
-  letter-spacing: 1px;
-  vertical-align: middle;
-  border: 1px solid;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
-  font-family: 'Ubuntu Condensed', sans-serif;
-}
-
-.btn-medium {
-  font-size: 1.1em;
-  padding: 15px;
-  width: 250px;
-}
-
-.btn-yellow {
-  color: #F8C822;
-  border-color: #F8C822;
-}
-.btn-yellow:hover {
-  background: #F8C822;
-  color: rgb(37, 34, 28);
-  border-color: #F8C822;
-}
-
-
-
 //  Cuando sea vista movil
 @media (max-width: 769px) {
   .btn-medium {
@@ -146,4 +108,40 @@ a.btn,.btn {
   .container {
     padding-left: 12px;
   }
+}
+
+// Estilos del botón
+a.btn,.btn {
+  margin-top: .8rem;
+  margin-bottom: 1.4rem;
+  margin-right: 60px;
+  display: inline-block;
+  outline: none;
+  *zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.btn-medium {
+  font-size: 1.1em;
+  padding: 15px;
+  width: 250px;
+}
+
+.btn-yellow {
+  color: #F8C822;
+  border-color: #F8C822;
+}
+.btn-yellow:hover {
+  background: #F8C822;
+  color: rgb(37, 34, 28);
+  border-color: #F8C822;
 }

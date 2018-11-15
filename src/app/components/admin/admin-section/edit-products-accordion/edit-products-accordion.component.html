@@ -1,0 +1,10 @@
+<div class="container-fluid d-flex justify-content-around flex-wrap mt-3 mb-4">
+  <button class="btn btn-medium btn-gray" (click)="changeState('dish')" [ngClass]="{'select': this.accordionOpen == 'dish'}">EDIT <span class="bold">DISH</span></button>
+  <button class="btn btn-medium btn-gray" (click)="changeState('side-dish')" [ngClass]="{'select': this.accordionOpen == 'side-dish'}">EDIT <span class="bold">SIDE-DISH</span></button>
+</div>
+
+<hr class="mt-4" *ngIf="this.accordionOpen != ''">
+
+<!-- Formularios -->
+<app-edit-product *ngIf="this.accordionOpen === 'dish'"></app-edit-product>
+<app-edit-side-dish *ngIf="this.accordionOpen === 'side-dish'"></app-edit-side-dish>

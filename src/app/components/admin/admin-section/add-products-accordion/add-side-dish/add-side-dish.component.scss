@@ -39,6 +39,12 @@
   font-style: oblique;
 }
 
+.cont{
+  background: rgb(204, 203, 198);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+}
+
 .input-group {
   font-family: 'Ubuntu', sans-serif;
   color: rgb(110, 105, 104);
@@ -122,4 +128,3 @@ label {
   -o-transition: color 0 ease-in;
   transition: none;
 }
-

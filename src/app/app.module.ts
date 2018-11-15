@@ -34,14 +34,18 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PurchaseCardComponent } from './components/purchase-history/purchase-card/purchase-card.component';
 import { RecoverPasswordModalComponent } from './components/shared/modals/recover-password-modal/recover-password-modal.component';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { AddNonEditableProductComponent } from './components/admin/admin-section/add-non-editable-product-accordion/add-non-editable-product-accordion.component';
 import { SideDishCardComponent } from './components/edit-dish/side-dish-card/side-dish-card.component';
 import { StatsSectionComponent } from './components/admin/stats-section/stats-section.component';
 import { StickyDishViewComponent } from './components/edit-dish/sticky-dish-view/sticky-dish-view.component';
 import { AdminSectionComponent } from './components/admin/admin-section/admin-section.component';
-import { AddEditableProductAccordionComponent } from './components/admin/admin-section/add-editable-product-accordion/add-editable-product-accordion.component';
-import { EditProductAccordionComponent } from './components/admin/admin-section/edit-product-accordion/edit-product-accordion.component';
 import { PendingOrdersAccordionComponent } from './components/admin/admin-section/pending-orders-accordion/pending-orders-accordion.component';
+import { EditProductsAccordionComponent } from './components/admin/admin-section/edit-products-accordion/edit-products-accordion.component';
+import { AddProductsAccordionComponent } from './components/admin/admin-section/add-products-accordion/add-products-accordion.component';
+import { EditSideDishComponent } from './components/admin/admin-section/edit-products-accordion/edit-side-dish/edit-side-dish.component';
+import { AddEditableProductComponent } from './components/admin/admin-section/add-products-accordion/add-editable-product/add-editable-product.component';
+import { AddNonEditableProductComponent } from './components/admin/admin-section/add-products-accordion/add-non-editable-product/add-non-editable-product.component';
+import { AddSideDishComponent } from './components/admin/admin-section/add-products-accordion/add-side-dish/add-side-dish.component';
+import { EditProductComponent } from './components/admin/admin-section/edit-products-accordion/edit-product/edit-product.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -71,13 +75,18 @@ import { StorageService } from './services/storage.service';
     StatsSectionComponent,
     StickyDishViewComponent,
     AdminSectionComponent,
-    AddEditableProductAccordionComponent,
-    EditProductAccordionComponent,
+    AddEditableProductComponent,
+    EditDishComponent,
     PendingOrdersAccordionComponent,
     RecoverPasswordModalComponent,
     RecoverPasswordComponent,
     PurchaseCardComponent,
-    AddNonEditableProductComponent
+    AddNonEditableProductComponent,
+    AddSideDishComponent,
+    EditProductsAccordionComponent,
+    AddProductsAccordionComponent,
+    EditSideDishComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

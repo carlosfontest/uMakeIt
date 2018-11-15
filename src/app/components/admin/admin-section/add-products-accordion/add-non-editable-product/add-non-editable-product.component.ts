@@ -3,12 +3,12 @@ import * as firebase from 'firebase';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
 import { DishService } from 'src/app/services/dish.service';
-import { Dish } from './../../../../models/Dish';
+import { Dish } from '../../../../../models/Dish';
 
 @Component({
-  selector: 'app-add-non-editable-product-accordion',
-  templateUrl: './add-non-editable-product-accordion.component.html',
-  styleUrls: ['./add-non-editable-product-accordion.component.scss']
+  selector: 'app-add-non-editable-product',
+  templateUrl: './add-non-editable-product.component.html',
+  styleUrls: ['./add-non-editable-product.component.scss']
 })
 export class AddNonEditableProductComponent implements OnInit {
   form: FormGroup;

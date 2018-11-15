@@ -12,24 +12,28 @@
 
 
                     <ng-container *ngIf="!dish.sideDishes">
-                        <img class="fotoPlato" [src]="dish.thumbnail" alt="">
+                        <div class="fotoPlace">
+                            <img class="fotoPlato" [src]="dish.thumbnail" alt="">
+                        </div>
                     </ng-container>
 
                     <ng-container *ngIf="dish.sideDishes">
-                        <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
-                        <img [src]="dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
-                        <!-- Si es ingrediente doble -->
-                        <ng-container *ngIf="dish.sideDishes[0] == dish.sideDishes[1]">
-                            <img [src]="buscarSideDishDoble(dish.sideDishes[0])" class="dobleSide">
-                            <!-- Foto del Side-Dish doble-->
-                        </ng-container>
-                        <!-- Si NO es ingrediente doble -->
-                        <ng-container *ngIf="dish.sideDishes[0] != dish.sideDishes[1]">
-                            <img [src]="buscarSideDish(dish.sideDishes[0])" class="primerSide">
-                            <!-- Foto del primer Side-Dish -->
-                            <img [src]="buscarSideDish(dish.sideDishes[1])" class="segundoSide">
-                            <!-- Foto del segundo Side-Dish -->
-                        </ng-container>
+                        <div class="fotoPlace">
+                            <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
+                            <img [src]="dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
+                            <!-- Si es ingrediente doble -->
+                            <ng-container *ngIf="dish.sideDishes[0] == dish.sideDishes[1]">
+                                <img [src]="buscarSideDishDoble(dish.sideDishes[0])" class="dobleSide">
+                                <!-- Foto del Side-Dish doble-->
+                            </ng-container>
+                            <!-- Si NO es ingrediente doble -->
+                            <ng-container *ngIf="dish.sideDishes[0] != dish.sideDishes[1]">
+                                <img [src]="buscarSideDish(dish.sideDishes[0])" class="primerSide">
+                                <!-- Foto del primer Side-Dish -->
+                                <img [src]="buscarSideDish(dish.sideDishes[1])" class="segundoSide">
+                                <!-- Foto del segundo Side-Dish -->
+                            </ng-container>
+                        </div>
                     </ng-container>
 
 
@@ -38,7 +42,6 @@
                         <span class="dishName">{{ dish.name }}</span>
                     </div>
                 </div>
-                <!-- Diferenciar entre si es un plato editable con uno que no es editable  TODO-->
             </div>
         </ng-container>
 

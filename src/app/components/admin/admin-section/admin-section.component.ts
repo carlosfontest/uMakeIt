@@ -24,7 +24,7 @@ export class AdminSectionComponent implements OnInit {
     this.customClass = 'accordionsClass';
   }
 
-  uploadedFile(event){
+  uploadedFile(event) {
     this.ss.uploadFileEvent(event);
   }
 
