@@ -31,7 +31,7 @@ export class EditProductAccordionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.files = [];
+    // this.files = [];
     // Le pedimos a Firestore los platos
     this.dishService.getDishes().subscribe(data => {
       this.allDishes = data;
@@ -51,37 +51,37 @@ export class EditProductAccordionComponent implements OnInit {
       this.sideDishes = data;
     });
 
-    this.types = ['Pizzas', 'Fishes', 'Soups', 'Pastas', 'Others'];
+    // this.types = ['Pizzas', 'Fishes', 'Soups', 'Pastas', 'Others'];
 
 
-    this.ss.subjectEdit.subscribe(file => {
-      this.files[0] = file;
-      this.form = this.fb.group({
-        name: ['', Validators.required],
-        type: ['', Validators.required],
-        price: ['', Validators.required],
-        sidedish1: ['', Validators.required],
-        sidedish2: ['', Validators.required]
-      });
+    // this.ss.subjectEdit.subscribe(file => {
+    //   this.files[0] = file;
+    //   this.form = this.fb.group({
+    //     name: ['', Validators.required],
+    //     type: ['', Validators.required],
+    //     price: ['', Validators.required],
+    //     sidedish1: ['', Validators.required],
+    //     sidedish2: ['', Validators.required]
+    //   });
       
-      const {name, type, price, sideDishes} = this.selectedDish;
+    //   const {name, type, price, sideDishes} = this.selectedDish;
 
-      // this.form.patchValue({ type: this.types.indexOf(type), sidedish1: this.sideDishes.indexOf(sideDishes[0]), sidedish2: sideDishes[2] })
-    });
+    //   // this.form.patchValue({ type: this.types.indexOf(type), sidedish1: this.sideDishes.indexOf(sideDishes[0]), sidedish2: sideDishes[2] })
+    // });
 
-    this.ss.subjectCNEdit.subscribe(res => {
-      this.form = this.fb.group({
-        name: ['', Validators.required],
-        type: ['', Validators.required],
-        price: ['', Validators.required]
-      });
+    // this.ss.subjectCNEdit.subscribe(res => {
+    //   this.form = this.fb.group({
+    //     name: ['', Validators.required],
+    //     type: ['', Validators.required],
+    //     price: ['', Validators.required]
+    //   });
 
-      const {name, type, price} = this.selectedDish;
+    //   const {name, type, price} = this.selectedDish;
 
-      this.form.patchValue({type: this.types.indexOf(type), name: name, price: price});
+    //   this.form.patchValue({type: this.types.indexOf(type), name: name, price: price});
 
-      this.files[1] = res;
-    });
+    //   this.files[1] = res;
+    // });
   }
 
 

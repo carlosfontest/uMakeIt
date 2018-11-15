@@ -125,5 +125,4 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
       }, 1500);
     }
   }
-  
 }
