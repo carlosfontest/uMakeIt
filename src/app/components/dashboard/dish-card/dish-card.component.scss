@@ -16,6 +16,27 @@ img {
   height: 100%;
 }
 
+.badge {
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  left: 72%;
+  top: 12%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  transition: .3s;
+}
+
+.badge:hover {
+  background: rgb(138, 113, 23);
+  color: rgb(187, 181, 153);
+}
+
+.platoReal {
+  position: relative;
+  border-radius: 100px;
+}
+
 .col-4, .col-8 {
   padding-left: 0;
   padding-right: 0;
@@ -123,8 +144,8 @@ hr {
     font-size: 100%;
   }
 
-  .fa {
-    font-size: 8.5vw;
+  .fa, .noDispon {
+    font-size: 8vw;
   }
 
   .dishPrice {
@@ -144,6 +165,39 @@ hr {
   .divFoto img {
     width: 65%;
   }
+
+  .badge {
+    font-size: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    left: 68%;
+    top: 13%;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 508px) {
+  .badge {
+    font-size: 15px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 420px) {
+  .badge {
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 360px) {
+  .badge {
+    font-size: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 }
 
 // Cuando sea mayor a 992px
@@ -152,7 +206,7 @@ hr {
     font-size: 170%;
   }
 
-  .fa {
+  .fa, .noDispon {
     font-size: 40px;
   }
 
@@ -163,11 +217,23 @@ hr {
   .divFoto img {
     width: 70%;
   }
+
+  .divFoto {
+    height: 127.98px;
+  }
+
+  .badge {
+    font-size: 18px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    left: 64%;
+    top: 10%;
+  }
 }
 
 // Cuando sea mayor a 768px y menor a 992px
 @media (min-width: 768px) and (max-width: 992px) {
-  .fa {
+  .fa, .noDispon {
     font-size: 34px;
   }
 
@@ -179,11 +245,23 @@ hr {
   .nameDish {
     font-size: 145%;
   }
+
+  .divFoto {
+    height: 110px;
+  }
+
+  .badge {
+    font-size: 13px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    left: 64%;
+    top: 10%;
+  }
 }
 
 // Cuando sea mayor a 1200px y menor a 1500px
 @media (min-width: 1200px) and (max-width: 1500px) {
-  .fa {
+  .fa, .noDispon {
     font-size: 44px;
   }
 
@@ -199,11 +277,15 @@ hr {
   .divFoto img {
     width: 72%;
   }
+
+  .divFoto {
+    height: 152.39px;
+  }
 }
 
 // Cuando sea mayor a 575px y menor a 768px
 @media (max-width: 768px) and (min-width: 575px) {
-  .fa {
+  .fa, .noDispon {
     font-size: 44px;
   }
 
@@ -218,11 +300,23 @@ hr {
   .divFoto img {
     width: 70%;
   }
+
+  .divFoto {
+    height: 141.98px;
+  }
+
+  .badge {
+    font-size: 17px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    left: 65%;
+    top: 10%;
+  }
 }
 
 // Cuando sea mayor a 1500px y menor a 2000px
 @media (min-width: 1500px) and (max-width: 2000px) {
-  .fa {
+  .fa, .noDispon {
     font-size: 5vw;
   }
 
@@ -233,11 +327,21 @@ hr {
   .nameDish {
     font-size: 250%;
   }
+
+  .divFoto {
+    height: 196.36px;
+  }
+
+  .badge {
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 // Cuando sea mayor a 2000px
 @media (min-width: 2000px) {
-  .fa {
+  .fa, .noDispon {
     font-size: 90px;
   }
 
@@ -247,5 +351,17 @@ hr {
 
   .nameDish {
     font-size: 300%;
+  }
+
+  .badge {
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    left: 68%;
+    top: 10%;
+  }
+
+  .divFoto {
+    height: 249.33px;
   }
 }

@@ -13,6 +13,7 @@ export class DishCardComponent implements OnInit {
   @Input() dish: Dish;
   @Output() cartEvent: EventEmitter<Dish> = new EventEmitter();
   sideDishes: SideDish[];
+  showReal: boolean;
 
   constructor(
     private router: Router,
@@ -20,6 +21,7 @@ export class DishCardComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.showReal = false;
     this.sideDishes = [];
     // Obtenemos los Side-Dishes del plato en caso de que sea editable
     if (this.dish.sideDishes) {
@@ -48,5 +50,9 @@ export class DishCardComponent implements OnInit {
 
   buscarSideDish(id: string): string {
     return '';
+  }
+
+  changePic() {
+    this.showReal = !this.showReal;
   }
 }

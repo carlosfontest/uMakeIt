@@ -49,7 +49,10 @@
                     </ng-container>
 
                   </td>
-                  <td class="dishName">{{ item.dish.name }}</td>
+                  <!-- Si no tiene side-dishes -->
+                  <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
+                  <!-- Si tiene sideDishes -->
+                  <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
                   <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
                   <td>
                     <div class="quantity d-flex justify-content-around">
