@@ -3,7 +3,7 @@
     <p class="titleDish">YOUR DISH</p>
     <hr>
     <div class="dishView">
-        <div class="divFoto" *ngIf="dish.sideDishes">
+        <div class="divFoto" *ngIf="dish.sideDishes && !this.showReal">
           <img src="../../../../assets/images/platos/Plato.png" class="plato">  <!-- Foto del plato -->
           <img [src]="dish.thumbnail" class="mainDish" [ngClass]="{ 'position-relative': (!sideDishes[1] && !sideDishes[0]) }">  <!-- Foto del Main-Dish -->
           <!-- Si es ingrediente doble -->
@@ -15,6 +15,11 @@
             <img src="{{ sideDishes[0]?.thumbnailPlatoArriba }}" class="primerSide" [ngClass]="{ 'position-relative': (!sideDishes[1] && sideDishes[0]) }">  <!-- Foto del primer Side-Dish -->
             <img src="{{ sideDishes[1]?.thumbnailPlatoArriba }}" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
           </ng-container>
+          <span class="badge badge-warning" (click)="changePic()"><i class="fas fa-retweet"></i></span>
+        </div>
+        <div class="divFoto" *ngIf="this.showReal">
+            <img [src]="dish.thumbnailReal" class="platoReal">  <!-- Foto del plato real -->
+            <span class="badge badge-warning" (click)="changePic()"><i class="fas fa-retweet"></i></span>
         </div>
     </div>
     <div class="d-flex justify-content-end">

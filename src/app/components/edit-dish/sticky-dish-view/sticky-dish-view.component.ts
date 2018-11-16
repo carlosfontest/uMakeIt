@@ -20,6 +20,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   subscription;
   timer;
   dishes: Dish[];
+  showReal: boolean;
 
   constructor(
     private sideDishService: SideDishService,
@@ -28,6 +29,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.showReal = false;
     this.uid = this.authService.currentUser.uid;
 
     // Obtenemos el carrito del usuario actuals
@@ -124,5 +126,9 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
         });
       }, 1500);
     }
+  }
+
+  changePic() {
+    this.showReal = !this.showReal;
   }
 }
