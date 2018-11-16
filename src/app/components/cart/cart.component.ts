@@ -129,4 +129,8 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.sideDishes.find(sideDish => sideDish.id === id) ? this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoDoble : '';
   }
 
+  buscarNombreSideDish(id: string): string {
+    return this.sideDishes.find(sideDish => sideDish.id === id) ? this.sideDishes.find(sideDish => sideDish.id === id).name : '';
+  }
+
 }

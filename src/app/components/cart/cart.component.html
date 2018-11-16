@@ -49,10 +49,12 @@
                     </ng-container>
 
                   </td>
-                  <!-- Si no tiene side-dishes -->
+                  <!-- Si NO tiene side-dishes -->
                   <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
-                  <!-- Si tiene sideDishes -->
-                  <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
+                  <!-- Si tiene sideDishes y es doble -->
+                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] == item.dish.sideDishes[1])">{{ item.dish.name }} <br> <span class="nombreIngredientes">[ {{ buscarNombreSideDish(item.dish.sideDishes[0]) }} x2 ]</span></td>
+                  <!-- Si tiene sideDishes y NO es doble -->
+                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] != item.dish.sideDishes[1])">{{ item.dish.name }} <br> <span class="nombreIngredientes">[ {{ buscarNombreSideDish(item.dish.sideDishes[0]) }} x1 - {{ buscarNombreSideDish(item.dish.sideDishes[1]) }} x1 ]</span></td>
                   <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
                   <td>
                     <div class="quantity d-flex justify-content-around">

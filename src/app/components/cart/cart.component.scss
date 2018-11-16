@@ -175,6 +175,16 @@ thead tr th:nth-child(6) {
     -o-transform: scale(1.6);
 }
 
+.nombreIngredientes {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.dishName {
+    line-height: 22px;
+}
+
 .plato {
     position: absolute;
 }
@@ -296,6 +306,13 @@ transform: rotate(90deg);
         font-weight: 900;
         color: rgb(179, 168, 127);
         text-shadow: 2px 2px 2px #000000;
+    }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 370px) {
+    a.btn,.btn {
+        font-size: 0.64em;
     }
 }
 
