@@ -104,6 +104,7 @@ import { StorageService } from './services/storage.service';
       theme: 'material',
       behaviour: {
         stacking: 1,
+        showDismissButton: false,
         autoHide: 3000
       },
       animations: {
@@ -114,11 +115,11 @@ import { StorageService } from './services/storage.service';
       position: {
         horizontal: {
           position: 'left',
-          distance: 20
+          distance: 12
         },
         vertical: {
           position: 'bottom',
-          distance: 20,
+          distance: 12,
           gap: 12
         }
       }
