@@ -95,11 +95,11 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   getTaxes(): number {
-    return this.cart.price * this.tax;
+    return this.cart.price - this.getSubtotal();
   }
 
-  getTotal(): number {
-    return this.cart.price * (1 + this.tax);
+  getSubtotal(): number {
+    return this.cart.price / (1 + this.tax);
   }
   
   eraseDish(i: number) {
