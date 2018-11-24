@@ -5,9 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
-// import { FlashMessagesModule } from 'angular2-flash-messages';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
+import { NotifierModule } from 'angular-notifier';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -98,10 +97,32 @@ import { StorageService } from './services/storage.service';
     AngularFireModule.initializeApp(environment.firebase, 'umakeit-crr'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot(),
     PasswordStrengthBarModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NotifierModule.withConfig({
+      theme: 'material',
+      behaviour: {
+        stacking: 1,
+        autoHide: 3000
+      },
+      animations: {
+        hide: {
+          preset: 'slide',
+        }
+      },
+      position: {
+        horizontal: {
+          position: 'left',
+          distance: 20
+        },
+        vertical: {
+          position: 'bottom',
+          distance: 20,
+          gap: 12
+        }
+      }
+    })
   ],
   providers: [
     AuthService,

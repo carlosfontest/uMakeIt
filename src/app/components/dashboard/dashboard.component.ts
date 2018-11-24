@@ -4,7 +4,7 @@ import { DishService } from 'src/app/services/dish.service';
 import { CartService } from './../../services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Cart } from 'src/app/models/Cart';
-import { log } from 'util';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,7 +30,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private dishService: DishService,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private notifierService: NotifierService
   ) { }
 
   ngOnInit() {
@@ -148,5 +149,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log(error.message);
       });
     }, 1500);
+
+    this.notifierService.notify('success', `${dish.name} has been successfully added to the cart`);
   }
 }

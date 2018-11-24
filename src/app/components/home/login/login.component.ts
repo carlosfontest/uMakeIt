@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { RecoverPasswordModalComponent } from '../../shared/modals/recover-password-modal/recover-password-modal.component';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService,
+    private notifierService: NotifierService,
     private modalService: BsModalService
   ) { }
 
@@ -30,19 +30,14 @@ export class LoginComponent implements OnInit {
     // Loggeamos al user, redirigimos al dashboard y mostramos el mensaje de loggeo satisfactorio
     this.authService.login(this.email, this.password)
       .then(res => {
-        this.flashMessage.show('You are now logged in', {
-          cssClass: 'alert-success', timeout: 2000
-        });
         this.router.navigate(['/']);
       })
         .catch(err => {
-          this.flashMessage.show(err.message, {
-            cssClass: 'alert-danger', timeout: 2000
-          });
+          this.notifierService.notify('error', err);
         });
   }
 
-  recoverPasswordModal(){
+  recoverPasswordModal() {
     const initialState = {
       title: 'Recover your Password'
     };
