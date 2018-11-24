@@ -79,7 +79,7 @@ export class RecoverPasswordComponent implements OnInit {
       }, 1500);
     }).catch(error => {
       this.snotifyService.error(error.message, 'Error', {
-        timeout: 2000,
+        timeout: 4000,
         showProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
