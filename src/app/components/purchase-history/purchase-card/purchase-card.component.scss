@@ -32,6 +32,7 @@
 .bloque {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .precio {
@@ -107,6 +108,16 @@ hr {
 
   .container {
     padding-left: 12px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 379px) {
+  .precio {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 50px;
   }
 }
 
