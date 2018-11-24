@@ -13,5 +13,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('hola mama');
     firebase.initializeApp(environment.firebase);
+    
   }
 }

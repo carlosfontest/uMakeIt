@@ -6,7 +6,7 @@ import { Cart } from 'src/app/models/Cart';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { NotifierService } from 'angular-notifier';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-sticky-dish-view',
@@ -28,7 +28,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
     private sideDishService: SideDishService,
     private cartService: CartService,
     private authService: AuthService,
-    private notifierService: NotifierService,
+    private snotifyService: SnotifyService,
     private router: Router
   ) { }
 
@@ -129,8 +129,13 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
           console.log(error.message);
         });
       }, 1500);
-
-      this.notifierService.notify('success', `${this.dish.name} has been successfully added to the cart`);
+      this.snotifyService.success(`${this.dish.name} has been successfully added to the cart`, {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
       this.router.navigate(['/']);
     }
   }

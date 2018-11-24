@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { RecoverPasswordModalComponent } from '../../shared/modals/recover-password-modal/recover-password-modal.component';
-import { NotifierService } from 'angular-notifier';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private notifierService: NotifierService,
+    private snotifyService: SnotifyService,
     private modalService: BsModalService
   ) { }
 
@@ -33,7 +33,13 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       })
         .catch(err => {
-          this.notifierService.notify('error', err);
+          this.snotifyService.error(err, {
+            timeout: 2000,
+            showProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: 'leftBottom'
+          });
         });
   }
 

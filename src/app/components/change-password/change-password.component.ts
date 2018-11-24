@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, Renderer2 } from '@angular
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-change-password',
@@ -21,7 +21,7 @@ export class ChangePasswordComponent implements OnInit {
     private fb: FormBuilder, 
     private renderer: Renderer2, 
     private router: Router, 
-    private notifierService: NotifierService
+    private snotifyService: SnotifyService
     ) { }
 
   ngOnInit() {
@@ -54,20 +54,38 @@ export class ChangePasswordComponent implements OnInit {
   reAuth({value}) {
     
     if (!(value.length >= 6)) {
-      this.notifierService.notify('error', 'The password minimum length should be 6');
+      this.snotifyService.error('The password minimum length should be 6', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
       return;
     }
 
     this.as.reAuth(value).then(() => {
       this.credentials = true;
     }).catch(error => {
-      this.notifierService.notify('error', error.message);
+      this.snotifyService.error(error.message, {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
     });
   }
 
   changePassword({value}) {
     if (!(value.length >= 6)) {
-      this.notifierService.notify('error', 'The password minimum length should be 6');
+      this.snotifyService.error('The password minimum length should be 6', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
       return;
     }
 
@@ -90,10 +108,22 @@ export class ChangePasswordComponent implements OnInit {
       this.confirm.disable();
       setTimeout(() => {
         this.router.navigate(['/dashboard']);
-        this.notifierService.notify('error', 'The password has been successfully changed');
+        this.snotifyService.success('The password has been successfully changed', {
+          timeout: 2000,
+          showProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: 'leftBottom'
+        });
       }, 1500);
     }).catch(error => {
-      this.notifierService.notify('error', error.message);
+      this.snotifyService.error(error.message, {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
     });
   }
 

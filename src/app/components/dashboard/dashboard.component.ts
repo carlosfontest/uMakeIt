@@ -4,7 +4,7 @@ import { DishService } from 'src/app/services/dish.service';
 import { CartService } from './../../services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Cart } from 'src/app/models/Cart';
-import { NotifierService } from 'angular-notifier';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,24 +14,18 @@ import { NotifierService } from 'angular-notifier';
 export class DashboardComponent implements OnInit, OnDestroy {
   uid: string;
   cart: Cart;
-  // Tipo de plato que el user quiere que se muestre
   typeDishShow: string;
-  // Array de los platos que se muestran en el menú
   showingDishes: Dish[];
-  // Arrays de los diferentes tipos de platos
   allDishes: Dish[];
-  // Para saber si ya se cargo la info de la base de datos
   loaded: boolean;
-  // Subscription 
   subscription;
-  // Timer for update
   timer;
 
   constructor(
     private dishService: DishService,
     private cartService: CartService,
     private authService: AuthService,
-    private notifierService: NotifierService
+    private snotifyService: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -150,6 +144,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     }, 1500);
 
-    this.notifierService.notify('success', `${dish.name} has been successfully added to the cart`);
+    this.snotifyService.success(`${dish.name} has been successfully added to the cart`, 'Cart', {
+      timeout: 2000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      position: 'leftBottom'
+    });
   }
 }

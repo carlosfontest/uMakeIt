@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
+import { SnotifyService } from 'ng-snotify';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
-    private notifierService: NotifierService
+    private snotifyService: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -35,7 +35,13 @@ export class RegisterComponent implements OnInit {
           lastName: this.lastName,
           isAdmin: this.isAdmin
         }, this.email, this.password).catch(err => {
-          this.notifierService.notify('error', err);
+          this.snotifyService.error(err, {
+            timeout: 2000,
+            showProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: 'leftBottom'
+          });
         });
       this.router.navigate(['/']);
   }

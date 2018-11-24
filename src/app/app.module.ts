@@ -6,7 +6,7 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
-import { NotifierModule } from 'angular-notifier';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -100,37 +100,16 @@ import { StorageService } from './services/storage.service';
     PasswordStrengthBarModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    NotifierModule.withConfig({
-      theme: 'material',
-      behaviour: {
-        stacking: 1,
-        showDismissButton: false,
-        autoHide: 3000
-      },
-      animations: {
-        hide: {
-          preset: 'slide',
-        }
-      },
-      position: {
-        horizontal: {
-          position: 'left',
-          distance: 12
-        },
-        vertical: {
-          position: 'bottom',
-          distance: 12,
-          gap: 12
-        }
-      }
-    })
+    SnotifyModule
   ],
   providers: [
     AuthService,
     DishService,
     UserService,
     SideDishService,
-    StorageService
+    StorageService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ],
   bootstrap: [AppComponent],
   entryComponents: [RecoverPasswordModalComponent]
