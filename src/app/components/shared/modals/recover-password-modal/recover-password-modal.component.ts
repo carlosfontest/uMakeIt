@@ -29,7 +29,7 @@ export class RecoverPasswordModalComponent implements OnInit {
   recoverPassword() {
     const {value} = this.email;
     this.authService.passwordResetEmail(value).then(() => {
-      this.snotifyService.warning('Email has been sent. Check your inbox!', {
+      this.snotifyService.warning('Email has been sent. Check your inbox!', 'Check!', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,
@@ -38,7 +38,7 @@ export class RecoverPasswordModalComponent implements OnInit {
       });
       this.bsModalRef.hide();
     }).catch((error) => {
-      this.snotifyService.error(error, {
+      this.snotifyService.error(error.message, 'Error', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,

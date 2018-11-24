@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       })
         .catch(err => {
-          this.snotifyService.error(err, {
+          this.snotifyService.error(err.message, 'Error', {
             timeout: 2000,
             showProgressBar: true,
             closeOnClick: true,

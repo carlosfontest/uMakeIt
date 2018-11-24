@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
           lastName: this.lastName,
           isAdmin: this.isAdmin
         }, this.email, this.password).catch(err => {
-          this.snotifyService.error(err, {
+          this.snotifyService.error(err.message, 'Error', {
             timeout: 2000,
             showProgressBar: true,
             closeOnClick: true,

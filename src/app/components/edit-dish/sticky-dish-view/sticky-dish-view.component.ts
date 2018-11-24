@@ -129,7 +129,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
           console.log(error.message);
         });
       }, 1500);
-      this.snotifyService.success(`${this.dish.name} has been successfully added to the cart`, {
+      this.snotifyService.success(`${this.dish.name} has been successfully added to the cart`, 'Cart', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,

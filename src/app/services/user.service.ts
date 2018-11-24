@@ -48,7 +48,7 @@ export class UserService {
       this.afa.auth.createUserWithEmailAndPassword(email, password)
         .then(credential =>
           this.afs.doc(`users/${credential.user.uid}`).set(newUser).then(success => {
-            this.snotifyService.success('You have succesfully registered', {
+            this.snotifyService.success('You have succesfully registered', 'Register', {
               timeout: 2000,
               showProgressBar: true,
               closeOnClick: true,
@@ -58,7 +58,7 @@ export class UserService {
           })
         )
         .catch(err => {
-          this.snotifyService.error(err, {
+          this.snotifyService.error(err.message, 'Error', {
             timeout: 2000,
             showProgressBar: true,
             closeOnClick: true,

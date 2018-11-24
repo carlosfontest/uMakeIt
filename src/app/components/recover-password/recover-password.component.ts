@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotifierService } from 'angular-notifier';
+import { SnotifyService } from 'ng-snotify';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class RecoverPasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
-    private notifierService: NotifierService, 
+    private snotifyService: SnotifyService, 
     private renderer: Renderer2,
     private as: AuthService,
     private router: Router) { }
@@ -50,7 +50,13 @@ export class RecoverPasswordComponent implements OnInit {
 
   changePassword({value}) {
     if (!(value.length >= 6)) {
-      this.notifierService.notify('error', 'The password minimum length should be 6');
+      this.snotifyService.error('The password minimum length should be 6', 'Error', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
     }
 
     const {nativeElement: boton} = this.submit;
@@ -72,7 +78,13 @@ export class RecoverPasswordComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }, 1500);
     }).catch(error => {
-      this.notifierService.notify('error', error.message);
+      this.snotifyService.error(error.message, 'Error', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
     });
   }
 

@@ -54,7 +54,7 @@ export class ChangePasswordComponent implements OnInit {
   reAuth({value}) {
     
     if (!(value.length >= 6)) {
-      this.snotifyService.error('The password minimum length should be 6', {
+      this.snotifyService.error('The password minimum length should be 6', 'Error', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,
@@ -67,7 +67,7 @@ export class ChangePasswordComponent implements OnInit {
     this.as.reAuth(value).then(() => {
       this.credentials = true;
     }).catch(error => {
-      this.snotifyService.error(error.message, {
+      this.snotifyService.error(error.message, 'Error', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,
@@ -79,7 +79,7 @@ export class ChangePasswordComponent implements OnInit {
 
   changePassword({value}) {
     if (!(value.length >= 6)) {
-      this.snotifyService.error('The password minimum length should be 6', {
+      this.snotifyService.error('The password minimum length should be 6', 'Error', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,
@@ -108,7 +108,7 @@ export class ChangePasswordComponent implements OnInit {
       this.confirm.disable();
       setTimeout(() => {
         this.router.navigate(['/dashboard']);
-        this.snotifyService.success('The password has been successfully changed', {
+        this.snotifyService.success('The password has been successfully changed', 'Change Password', {
           timeout: 2000,
           showProgressBar: true,
           closeOnClick: true,
@@ -117,7 +117,7 @@ export class ChangePasswordComponent implements OnInit {
         });
       }, 1500);
     }).catch(error => {
-      this.snotifyService.error(error.message, {
+      this.snotifyService.error(error.message, 'Error', {
         timeout: 2000,
         showProgressBar: true,
         closeOnClick: true,
