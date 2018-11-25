@@ -4,5 +4,6 @@ export interface Order {
     dishes: OrderDish[],
     price: number,
     date: string,
-    uid: string
+    uid: string,
+    name: string
 }
