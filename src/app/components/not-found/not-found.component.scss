@@ -1,0 +1,222 @@
+.container-fluid {
+  width: 80%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.cont {
+  width: 100%;
+  height: 65vh;
+  background: rgb(51, 49, 44);
+  padding: 20px;
+  color: rgb(233, 223, 183);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 25px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 2px #000000;
+  border-radius: 3px;
+  cursor: default;
+  margin: 0 auto;
+}
+
+img {
+  height: 350px;
+  margin: auto 0; 
+}
+
+.foto {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  height: 65vh;
+}
+
+.p1 {
+  text-align: center;
+  font-size: 68px;
+  font-weight: 900;
+  color: rgba(248, 200, 34, 1);
+  text-shadow: 5px 5px 5px #000000;
+}
+
+.p2 {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 900;
+  color: rgb(179, 168, 127);
+  text-shadow: 2px 2px 2px #000000;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 992px) {
+  img {
+    height: 400px;
+  }
+
+  .p1 {
+    font-size: 90px;
+    margin-top: 60px;
+  }
+  
+  .p2 {
+    font-size: 60px;
+  }
+
+  .container-fluid {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .cont {
+    height: 600px;
+  }
+
+  .foto {
+    height: 570px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 767px) {
+  img {
+    height: 340px;
+  }
+
+  .cont {
+    height: 700px;
+  }
+
+  .message {
+    height: 220px;
+  }
+
+  .foto {
+    height: 380px;
+  }
+
+  .p1 {
+    font-size: 60px;
+    margin-top: 20px;
+  }
+  
+  .p2 {
+    font-size: 40px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 671px) {
+  img {
+    height: 320px;
+  }
+
+  .message {
+    height: 260px;
+  }
+
+  .foto {
+    height: 380px;
+  }
+
+  .p1 {
+    font-size: 60px;
+    margin-top: 20px;
+  }
+  
+  .p2 {
+    font-size: 40px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 466px) {
+  img {
+    height: 320px;
+  }
+
+  .message {
+    height: 270px;
+  }
+
+  .foto {
+    height: 320px;
+  }
+
+  .cont {
+    height: 618px;
+  }
+
+  .p1 {
+    font-size: 46px;
+    margin-top: 20px;
+  }
+  
+  .p2 {
+    font-size: 35px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 400px) {
+  img {
+    height: 300px;
+  }
+
+  .message {
+    height: 230px;
+  }
+
+  .foto {
+    height: 290px;
+  }
+
+  .cont {
+    height: 540px;
+  }
+
+  .p1 {
+    font-size: 40px;
+    margin-top: 20px;
+  }
+  
+  .p2 {
+    font-size: 30px;
+  }
+}
+
+//  Cuando sea vista movil
+@media (max-width: 350px) {
+  img {
+    height: 290px;
+  }
+
+  .message {
+    height: 210px;
+  }
+
+  .foto {
+    height: 280px;
+  }
+
+  .p1 {
+    font-size: 36px;
+    margin-top: 20px;
+  }
+  
+  .p2 {
+    font-size: 27px;
+  }
+}
