@@ -78,10 +78,10 @@
     
         <!-- Montos totales -->
         <div class="totals up">
-          <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ subtotal() | currency:'USD' }}</span>
+          <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ subtotal | currency:'USD' }}</span>
         </div>
         <div class="totals up">
-          <span class="infoTotals ml-4">TAXES</span> <span class="mr-4">{{ taxes() | currency:'USD' }}</span>
+          <span class="infoTotals ml-4">TAXES</span> <span class="mr-4">{{ taxes | currency:'USD' }}</span>
         </div>
         <div class="totals">
           <span class="infoTotals ml-4 inTot">TOTAL</span> <span class="mr-4 tot">{{ cart.price | currency:'USD' }}</span>
