@@ -311,8 +311,8 @@ transform: rotate(90deg);
 
 //  Cuando sea vista movil
 @media (max-width: 370px) {
-    a.btn,.btn {
-        font-size: 0.64em;
+    .btn {
+        font-size: 16px !important;
     }
 }
 

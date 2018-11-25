@@ -2,17 +2,30 @@
   <h4 class="modal-title mx-auto">Your Bill</h4>
 </div>
 
-<div class="divHR">
+<!-- <div class="divHR">
   <hr>
+</div> -->
+
+<div class="modal-body pt-4 pb-4">
+      <div class="titulo">
+        <span>PRODUCT</span>
+        <span>PRICE</span>
+      </div>
+      <ng-container *ngFor="let dish of cart; let i = index">
+        <div class="producto" [ngClass]="{noBorder: i + 1 == cart?.length}">
+            <span>{{ dish.dish.name }} <span class="quantity">x{{ dish.quantity }}</span></span>
+            <span class="price">{{ dish.dish.price * dish.quantity | currency : "USD" }}</span>
+        </div>
+      </ng-container>
+      <div class="titulo totales">
+        <span>TOTAL</span>
+        <span class="price">{{ precioTotal | currency : "USD" }}</span>
+      </div>
 </div>
 
-<div class="modal-body">
-      
-</div>
-
-<div class="divHR">
+<!-- <div class="divHR">
   <hr>
-</div>
+</div> -->
 
 <div class="modal-footer d-flex justify-content-between">
   <button type="button" class="btn btn-sm btn-gray" (click)="bsModalRef.hide()">Close</button>

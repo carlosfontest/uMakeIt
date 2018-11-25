@@ -10,7 +10,7 @@
 
 .modal-body {
   color: rgb(182, 173, 143);
-  padding: 26px 40px;
+  padding: 26px 0px;
   text-align: justify;
 }
 
@@ -34,6 +34,57 @@ hr {
   background: #ece5c6;
 }
 
+.titulo {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  text-shadow: 1px 1px 1px #000000;
+  font-weight: 400;
+  font-size: 25px;
+  color: #201d1d;
+  padding-right: 35px;
+  padding-left: 35px;
+  display: flex;
+  justify-content: space-between; 
+  height: 40px;
+  background: rgb(219, 210, 177);
+  width: 100%;
+  border-top: 1px solid rgb(173, 166, 143);
+  border-bottom: 1px solid rgb(173, 166, 143);
+}
+
+.totales {
+  text-shadow: .5px .5px .5px #000000;
+  background: rgb(202, 184, 118);
+  color: #3b3939;
+  border-top: 2px solid rgb(165, 149, 92);
+  border-bottom: 2px solid rgb(165, 149, 92);
+}
+
+.producto {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 21px;
+  color: #363333;
+  padding-right: 35px;
+  padding-left: 35px;
+  display: flex;
+  justify-content: space-between; 
+  height: 35px;
+  width: 100%;
+  border-bottom: 1px dotted rgb(173, 166, 143);
+}
+
+.noBorder {
+  border: none;
+}
+
+.price {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.quantity {
+  font-family: 'Fjalla One', sans-serif;
+  color: #423030;
+  font-size: 24px;
+}
 
 
 
