@@ -6,11 +6,20 @@ import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { SnotifyService } from 'ng-snotify';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sticky-dish-view',
   templateUrl: './sticky-dish-view.component.html',
-  styleUrls: ['./sticky-dish-view.component.scss']
+  styleUrls: ['./sticky-dish-view.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ opacity: 0}),
+        animate(600)
+      ])
+    ])
+  ]
 })
 export class StickyDishViewComponent implements OnInit, OnDestroy {
   @Input() dish: Dish;

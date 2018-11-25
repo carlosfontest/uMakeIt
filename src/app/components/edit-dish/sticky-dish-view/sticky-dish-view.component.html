@@ -4,21 +4,21 @@
     <hr>
     <div class="dishView">
         <div class="divFoto" *ngIf="dish.sideDishes && !this.showReal">
-          <img src="../../../../assets/images/platos/Plato.png" class="plato">  <!-- Foto del plato -->
-          <img [src]="dish.thumbnail" class="mainDish" [ngClass]="{ 'position-relative': (!sideDishes[1] && !sideDishes[0]) }">  <!-- Foto del Main-Dish -->
+          <img @fade src="../../../../assets/images/platos/Plato.png" class="plato">  <!-- Foto del plato -->
+          <img @fade [src]="dish.thumbnail" class="mainDish" [ngClass]="{ 'position-relative': (!sideDishes[1] && !sideDishes[0]) }">  <!-- Foto del Main-Dish -->
           <!-- Si es ingrediente doble -->
           <ng-container *ngIf="sideDishes[0]?.id == sideDishes[1]?.id">
-            <img src="{{ sideDishes[0]?.thumbnailPlatoDoble }}" class="dobleSide">  <!-- Foto del Side-Dish doble-->
+            <img @fade src="{{ sideDishes[0]?.thumbnailPlatoDoble }}" class="dobleSide">  <!-- Foto del Side-Dish doble-->
           </ng-container>
           <!-- Si NO es ingrediente doble -->
           <ng-container *ngIf="sideDishes[0]?.id != sideDishes[1]?.id">
-            <img src="{{ sideDishes[0]?.thumbnailPlatoArriba }}" class="primerSide" [ngClass]="{ 'position-relative': (!sideDishes[1] && sideDishes[0]) }">  <!-- Foto del primer Side-Dish -->
-            <img src="{{ sideDishes[1]?.thumbnailPlatoArriba }}" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
+            <img @fade src="{{ sideDishes[0]?.thumbnailPlatoArriba }}" class="primerSide" [ngClass]="{ 'position-relative': (!sideDishes[1] && sideDishes[0]) }">  <!-- Foto del primer Side-Dish -->
+            <img @fade src="{{ sideDishes[1]?.thumbnailPlatoArriba }}" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
           </ng-container>
           <span class="badge badge-warning" (click)="changePic()"><i class="fas fa-retweet"></i></span>
         </div>
         <div class="divFoto" *ngIf="this.showReal">
-            <img [src]="dish.thumbnailReal" class="platoReal">  <!-- Foto del plato real -->
+            <img @fade [src]="dish.thumbnailReal" class="platoReal">  <!-- Foto del plato real -->
             <span class="badge badge-warning" (click)="changePic()"><i class="fas fa-retweet"></i></span>
         </div>
     </div>
