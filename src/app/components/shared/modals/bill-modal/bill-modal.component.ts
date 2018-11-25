@@ -16,7 +16,7 @@ export class BillModalComponent implements OnInit {
   cart: OrderDish[];
   payPalConfig?: PayPalConfig;
   allDirections: string[];
-  directionToDeliver: string;
+  directionToDeliver: string[];
   config: Object;
 
   constructor(
@@ -28,6 +28,8 @@ export class BillModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.directionToDeliver = [];
+
     this.config = {
       displayKey: 'descripción',
       search: true
@@ -95,7 +97,10 @@ export class BillModalComponent implements OnInit {
           // onsole.log('onClick');
         },
         validate: (actions) => {
-          // console.log(actions);
+          if (this.directionToDeliver.length === 0) {
+            return true;
+          }
+          return false;
         },
         experience: {
           noShipping: true,
@@ -126,5 +131,6 @@ export class BillModalComponent implements OnInit {
     );
 
   }
+
 
 }

@@ -27,9 +27,13 @@
   <hr>
 </div> -->
 
-<ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [(value)]="directionToDeliver" [config]="config" [options]="allDirections"></ngx-select-dropdown>
+<div class="direcciones">
+    <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [(value)]="directionToDeliver" [config]="config" [options]="allDirections"></ngx-select-dropdown>
+</div>
 
 <div class="modal-footer d-flex justify-content-between">
   <button type="button" class="btn btn-sm btn-gray" (click)="bsModalRef.hide()">Close</button>
-  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  <ng-container *ngIf="directionToDeliver?.length !== 0">
+    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+  </ng-container>
 </div>

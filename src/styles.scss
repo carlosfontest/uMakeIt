@@ -51,3 +51,11 @@ body {
 .clickable:hover{
   cursor: pointer;
 };
+
+.ngx-dropdown-list-container {
+  margin-bottom: 50px;
+}
+
+.available-items li:hover {
+  background: #ccc6c6;
+}
