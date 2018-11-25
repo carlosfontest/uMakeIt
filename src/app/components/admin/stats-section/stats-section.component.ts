@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-stats-section',
@@ -11,9 +12,16 @@ export class StatsSectionComponent implements OnInit {
   ordersDone: number;
   pendingOrders: number;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+    // Obtenemos la cantidad de users registrados
+    this.userService.getUsers().subscribe(users => {
+      this.userCount = users.length;
+    });
+    //
   }
 
 }

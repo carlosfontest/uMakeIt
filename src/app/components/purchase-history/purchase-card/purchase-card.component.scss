@@ -203,7 +203,7 @@ hr {
 }
 
 // Estilos del botón
-a.btn,.btn {
+.btn {
   margin-top: .8rem;
   margin-bottom: 1.4rem;
   margin-right: 60px;
@@ -231,6 +231,7 @@ a.btn,.btn {
 .btn-yellow {
   color: #F8C822;
   border-color: #F8C822;
+  background: transparent;
 }
 .btn-yellow:hover {
   background: #F8C822;

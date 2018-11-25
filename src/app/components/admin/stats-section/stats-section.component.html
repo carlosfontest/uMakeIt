@@ -6,7 +6,7 @@
     </div>
     <div class="info">
       <p class="statTitle">Total Sales</p>
-      <p class="numberInfo sales">$2589.6</p>
+      <p class="numberInfo sales">{{ totalSales | currency:'USD' }}</p>
     </div>
   </div>
   <!-- Cantidad de usuarios registrados en la aplicación -->
@@ -16,7 +16,7 @@
     </div>
     <div class="info">
       <p class="statTitle">Users Count</p>
-      <p class="numberInfo">#168</p>
+      <p class="numberInfo">#{{ userCount }}</p>
     </div>
   </div>
   <!-- Cantidad de ordenes hechas -->
@@ -26,7 +26,7 @@
     </div>
     <div class="info">
       <p class="statTitle">Orders Done</p>
-      <p class="numberInfo">#39</p>
+      <p class="numberInfo">#{{ ordersDone }}</p>
     </div>
   </div>
   <!-- Cantidad de ordenes pendientes -->
@@ -36,7 +36,7 @@
     </div>
     <div class="info">
       <p class="statTitle">Pending Orders</p>
-      <p class="numberInfo">#12</p>
+      <p class="numberInfo">#{{ pendingOrders }}</p>
     </div>
   </div>
 

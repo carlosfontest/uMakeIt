@@ -129,7 +129,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     if (!finalFlag) {
-      if(dish.sideDishes){
+      if (dish.sideDishes) {
         this.cart.push({
           dish: dish.id,
           sideDishes: dish.sideDishes,
