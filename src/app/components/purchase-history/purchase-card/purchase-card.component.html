@@ -1,9 +1,14 @@
 <div class="container">
   <div class="divCard">
     <!-- Nombre de la orden -->
-    <div class="purchaseName d-flex justify-content-between align-items-center">
-      <span>{{ purchase.name }}</span>
-      <i popover="Edit name" triggers="mouseenter:mouseleave" placement="top" class="far fa-edit"></i>
+    <div class="purchaseName d-flex justify-content-between align-items-center" *ngIf="!editState">
+      <span class="name">{{ purchase.name }}</span>
+      <i popover="Edit name" triggers="mouseenter:mouseleave" placement="top" class="far fa-edit" (click)="editState = !editState"></i>
+    </div>
+    <!-- Editar nombre de la orden -->
+    <div class="purchaseNameEdit d-flex justify-content-between align-items-center" *ngIf="editState">
+      <input type="text" class="form-control" [(ngModel)]="purchase.name">
+      <i popover="Save name" triggers="mouseenter:mouseleave" placement="top" class="far fa-save" (click)="saveName()"></i>
     </div>
 
     <hr>
@@ -13,7 +18,7 @@
       <div class="bloque">
         <div class="botones">
           <a class="btn btn-medium btn-yellow" href="" popover="Edit & re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-pencil-alt"></i></a>
-          <a class="btn btn-medium btn-yellow" href="" popover="Re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-redo-alt"></i></a>
+          <a class="btn btn-medium btn-yellow sec" href="" popover="Re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-redo-alt"></i></a>
         </div>
         <span class="precio">{{ purchase.totalPrice | currency:'USD' }}</span>
       </div>

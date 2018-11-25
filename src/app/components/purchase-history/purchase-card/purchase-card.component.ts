@@ -8,10 +8,17 @@ import { Purchase } from 'src/app/models/Purchase';
 })
 export class PurchaseCardComponent implements OnInit {
   @Input() purchase: Purchase;
+  editState: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.editState = false;
+  }
+
+  saveName() {
+    this.editState = !this.editState; 
+    // Guardar en nuevo nombre en firestore TODO
   }
 
 }

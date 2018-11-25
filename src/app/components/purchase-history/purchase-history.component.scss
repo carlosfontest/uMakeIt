@@ -17,17 +17,18 @@
 
 //  Cuando sea vista movil
 @media (max-width: 575px) {
-
-}
-
-//  Cuando sea máximo 992
-@media (max-width: 992px) {
     .title {
         margin: 0;
     }
 
     .container {
-        margin: 0;
+        margin-bottom: 0;
+    }
+}
+
+//  Cuando sea máximo 991
+@media (max-width: 991px) {
+    .container {
         margin-left: auto;
         margin-right: auto;
     }

@@ -92,7 +92,11 @@ export class EditDishComponent implements OnInit {
   }
 
   abrirModalInstrucciones() {
-    this.bsModalRef = this.modalService.show(EditInstructionsModalComponent);
+    let cont = 0;
+    if (cont === 0) {
+      this.bsModalRef = this.modalService.show(EditInstructionsModalComponent);
+      cont++;
+    }
   }
 
   obtenerCantidadInicial(sideDish: SideDish) {

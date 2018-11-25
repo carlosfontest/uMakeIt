@@ -9,7 +9,7 @@
 .container {
   margin-top: 15px;
   margin-bottom: 15px;
-  padding-left: 30px;
+  padding-left: 15px;
   padding-right: 0px;
 }
 
@@ -20,12 +20,12 @@
 .far {
   margin-right: 26px;
   transition: .3s;
-  font-size: 39px;
+  font-size: 36px;
   cursor: pointer;
 }
 
 .far:hover {
-  font-size: 44px;
+  font-size: 40px;
   color: rgb(165, 159, 136);
 }
 
@@ -56,11 +56,51 @@ hr {
   width: 98%;
 }
 
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  padding-right: 4px;
+  -webkit-transition: 1.6s;
+  -moz-transition: 1.6s;
+  transition: 1.6s;     
+  
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
+.name:hover {
+  margin-left: -200px;
+}
+
 .purchaseName {
-  margin-left: 18px;
+  margin-left: 12px;
+  padding-left: 1px; 
   font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 35px;
   cursor: default;
+  overflow: hidden;
+}
+
+.purchaseNameEdit {
+  margin-left: 12px;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 35px;
+  cursor: default;
+}
+
+.form-control {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  border-radius: 5px;
+  border-color: rgb(66, 64, 56); 
+  background: transparent; 
+  color: rgb(233, 223, 183);
+  text-shadow: 4px 4px 4px #000000;
+  font-size: 35px;
+  padding: 25px 0;
+  width: 74%;
 }
 
 //  Cuando sea vista movil
@@ -94,9 +134,25 @@ hr {
     font-size: 26px;
   }
 
+  .form-control {
+    text-shadow: 4px 4px 4px #000000;
+    font-size: 26px;
+    padding: 18px 0;
+  }
+
   .btn-medium {
     font-size: 0.9em;
-    width: 45px;
+    width: 50vw !important;
+    margin-right: 10px !important;
+  }
+
+  .botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sec {
     margin-right: 10px !important;
   }
 
@@ -118,6 +174,31 @@ hr {
     width: 100%;
     margin-bottom: 10px;
     font-size: 50px;
+  }
+}
+
+//  Cuando sea máximo 991
+@media (max-width: 991px) {
+  .precio {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 60px;
+  }
+
+  .btn-medium {
+    width: 50vw !important;
+  }
+
+  .sec {
+    margin-right: 10px !important;
+  }
+  
+
+  .botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
