@@ -66,13 +66,17 @@
 }
 
 .btn-success {
-  background: rgb(53, 90, 43);
+  background: rgb(62, 133, 43);
   border: 0;
 }
 
 .btn-danger {
-  background: rgb(93, 41, 41);
+  background: rgb(131, 31, 31);
   border: 0;
+}
+
+.btn-success:disabled, .btn-danger:disabled {
+  background: rgba(166, 168, 166, 0.144);
 }
 
 .form-control {
