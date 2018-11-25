@@ -10,7 +10,9 @@ import { DishService } from 'src/app/services/dish.service';
 export class StorageService {
   storage = firebase.storage().ref();
   subjectCedit: Subject<File> = new Subject();
+  subjectCRedit: Subject<File> = new Subject();
   subjectCNEdit: Subject<File> = new Subject();
+  subjectCNREdit: Subject<File> = new Subject();
   subjectEdit: Subject<File> = new Subject();
   subjectNoEdit: Subject<File> = new Subject();
 
@@ -25,27 +27,40 @@ export class StorageService {
       this.subjectEdit.next(event.target.files.item(0));
     } else if (event.target.id === 'cNEThumbnail') {
       this.subjectCNEdit.next(event.target.files.item(0));
+    } else if (event.target.id === 'cNERThumbnail') {
+      this.subjectCNREdit.next(event.target.files.item(0));
     } else if (event.target.id === 'cEThumbnail') {
       this.subjectCedit.next(event.target.files.item(0));
+    } else if (event.target.id === 'cERThumbnail') {
+      this.subjectCRedit.next(event.target.files.item(0));
     }
   }
 
-  uploadNoEditable(file: File, dish: Dish) {
+  uploadNoEditable(file: File, fileR: File, dish: Dish) {
     this.storage.child(`platos/noEditables/${file.name}`).put(file).then(snapshot => {
       snapshot.ref.getDownloadURL().then(link => {
-        dish.thumbnail = link;
-        this.ds.createDish(dish);
+        this.storage.child(`platos/noEditables/fotoReal/${fileR.name}`).put(fileR).then(snapshotR => {
+          snapshotR.ref.getDownloadURL().then(linkR => {
+            dish.thumbnail = link;
+            dish.thumbnailReal = linkR;
+            this.ds.createDish(dish);
+          })
+        });
       });
     });
-  }
+    }
 
-  uploadEditable(file: File, dish: Dish) {
+  uploadEditable(file: File, fileR: File, dish: Dish) {
     this.storage.child(`principal/${file.name}`).put(file).then(snapshot => {
       snapshot.ref.getDownloadURL().then(link => {
-        dish.thumbnail = link;
-        this.ds.createDish(dish);
-      });
+        this.storage.child(`principal/fotoReal/${fileR.name}`).put(fileR).then(snapshotR => {
+          snapshotR.ref.getDownloadURL().then(linkR => {
+            dish.thumbnail = link;
+            dish.thumbnailReal = linkR;
+            this.ds.createDish(dish);
+          });
+        });
+      })
     });
   }
-  
 }

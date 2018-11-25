@@ -14,6 +14,7 @@ export class AddNonEditableProductComponent implements OnInit {
   form: FormGroup;
   file: File;
   types: string[];
+  fileR: File;
 
   constructor(private fb: FormBuilder,
     private ss: StorageService,
@@ -33,6 +34,10 @@ export class AddNonEditableProductComponent implements OnInit {
     this.ss.subjectCNEdit.subscribe(res => {
       this.file = res;
     });
+
+    this.ss.subjectCNREdit.subscribe(res => {
+      this.fileR = res;
+    });
   }
 
   uploadFile() {
@@ -43,7 +48,10 @@ export class AddNonEditableProductComponent implements OnInit {
     dish.price = this.price;
     dish.type = this.types[this.type];
 
-    this.ss.uploadNoEditable(this.file, dish);
+    this.ss.uploadNoEditable(this.file, this.fileR, dish);
+
+    // Snackbar de upload
+
     this.reset();
   }
 

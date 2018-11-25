@@ -5,7 +5,7 @@
   </div>
   
   <!-- En caso de que hayan items en el carrito -->
-  <ng-container *ngIf="cart.dishes[0]">
+  <ng-container *ngIf="cart.length !== 0">
     <div class="container-fluid">
       <div class="contTable">
         <div class="mt-2 mb-4">
@@ -26,7 +26,7 @@
             </thead>
             <tbody>
       
-              <ng-container *ngFor="let item of cart.dishes; let i = index">
+              <ng-container *ngFor="let item of cartDisplay; let i = index">
                 <tr>
                   <td class="dishThumbnail text-center position-relative">
                     
@@ -39,12 +39,12 @@
                       <img [src]="item.dish.thumbnail" class="mainDish">  <!-- Foto del Main-Dish -->
                       <!-- Si es ingrediente doble -->
                       <ng-container *ngIf="item.dish.sideDishes[0] == item.dish.sideDishes[1]">
-                        <img [src]="buscarSideDishDoble(item.dish.sideDishes[0])" class="dobleSide">  <!-- Foto del Side-Dish doble-->
+                        <img [src]="item.sideDishes[0].thumbnailPlatoDoble" class="dobleSide">  <!-- Foto del Side-Dish doble-->
                       </ng-container>
                       <!-- Si NO es ingrediente doble -->
                       <ng-container *ngIf="item.dish.sideDishes[0] != item.dish.sideDishes[1]">
-                        <img [src]="buscarSideDish(item.dish.sideDishes[0])" class="primerSide">  <!-- Foto del primer Side-Dish -->
-                        <img [src]="buscarSideDish(item.dish.sideDishes[1])" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
+                        <img [src]="item.sideDishes[0].thumbnailPlatoArriba" class="primerSide">  <!-- Foto del primer Side-Dish -->
+                        <img [src]="item.sideDishes[1].thumbnailPlatoArriba" class="segundoSide">  <!-- Foto del segundo Side-Dish -->
                       </ng-container>
                     </ng-container>
 
@@ -52,15 +52,15 @@
                   <!-- Si NO tiene side-dishes -->
                   <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
                   <!-- Si tiene sideDishes y es doble -->
-                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] == item.dish.sideDishes[1])">{{ item.dish.name }} <br> <span class="nombreIngredientes">[ {{ buscarNombreSideDish(item.dish.sideDishes[0]) }} x2 ]</span></td>
+                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] == item.dish.sideDishes[1])">{{ item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x2 ]</span></td>
                   <!-- Si tiene sideDishes y NO es doble -->
-                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] != item.dish.sideDishes[1])">{{ item.dish.name }} <br> <span class="nombreIngredientes">[ {{ buscarNombreSideDish(item.dish.sideDishes[0]) }} x1 - {{ buscarNombreSideDish(item.dish.sideDishes[1]) }} x1 ]</span></td>
+                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] != item.dish.sideDishes[1])">{{ item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x1 - {{ item.sideDishes[1].name }} x1 ]</span></td>
                   <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
                   <td>
                     <div class="quantity d-flex justify-content-around">
-                      <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i, item.dish)"></i>
+                      <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i)"></i>
                         <span class="textQuantity">{{ item.quantity }}</span>
-                      <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i, item.dish)"></i>
+                      <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i)"></i>
                     </div>
                   </td>
                   <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
@@ -78,13 +78,13 @@
     
         <!-- Montos totales -->
         <div class="totals up">
-          <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ cart.price | currency:'USD' }}</span>
+          <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ subtotal | currency:'USD' }}</span>
         </div>
         <div class="totals up">
-          <span class="infoTotals ml-4">TAXES</span> <span class="mr-4">{{ getTaxes() | currency:'USD' }}</span>
+          <span class="infoTotals ml-4">TAXES</span> <span class="mr-4">{{ taxes | currency:'USD' }}</span>
         </div>
         <div class="totals">
-          <span class="infoTotals ml-4 inTot">TOTAL</span> <span class="mr-4 tot">{{ getTotal() | currency:'USD' }}</span>
+          <span class="infoTotals ml-4 inTot">TOTAL</span> <span class="mr-4 tot">{{ price | currency:'USD' }}</span>
         </div>
     
         <div class="d-flex justify-content-end">
@@ -95,7 +95,7 @@
   </ng-container> 
 
   <!-- En caso de que no haya nada en el carrito -->
-  <ng-container *ngIf="!cart.dishes[0]">
+  <ng-container *ngIf="cart.length === 0">
     <div class="container-fluid">
       <div class="contTable text-center">
         <img src="../../../assets/images/cartEmpty4.png" alt="">

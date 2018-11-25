@@ -17,6 +17,7 @@ export class AddEditableProductComponent implements OnInit {
   file: File;
   types: string[];
   sideDishes: SideDish[];
+  fileR: File;
 
   constructor(private fb: FormBuilder,
     private ss: StorageService,
@@ -29,6 +30,8 @@ export class AddEditableProductComponent implements OnInit {
 
     this.sds.getSideDishes().subscribe(data => {
       this.sideDishes = data;
+      console.log(data);
+      
     });
 
     this.types = ['Pizzas', 'Fishes', 'Soups', 'Pastas', 'Others'];
@@ -46,6 +49,10 @@ export class AddEditableProductComponent implements OnInit {
     this.ss.subjectCedit.subscribe(res => {
       this.file = res;
     });
+
+    this.ss.subjectCRedit.subscribe(res => {
+      this.fileR = res;
+    });
   }
 
   uploadFile() {
@@ -55,7 +62,9 @@ export class AddEditableProductComponent implements OnInit {
       this.sideDish1, this.sideDish2
     ], type: this.types[this.type] };
 
-    this.ss.uploadEditable(this.file, dish);
+    this.ss.uploadEditable(this.file, this.fileR, dish);
+
+    // Snackbar de upload
     
     this.reset();
   }

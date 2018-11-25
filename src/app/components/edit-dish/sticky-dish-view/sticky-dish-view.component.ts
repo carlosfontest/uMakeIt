@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Dish } from 'src/app/models/Dish';
 import { SideDish } from 'src/app/models/SideDish';
 import { SideDishService } from 'src/app/services/side-dish.service';
-import { Cart } from 'src/app/models/Cart';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { CartDish } from '../../../models/CartDish';
 
 @Component({
   selector: 'app-sticky-dish-view',
@@ -15,7 +15,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   @Input() dish: Dish;
   @Input() sideDishes: SideDish[];
   @Input() cantSelected: number;
-  cart: Cart;
+  cart: CartDish[];
   uid: string;
   subscription;
   timer;
@@ -23,7 +23,6 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   showReal: boolean;
 
   constructor(
-    private sideDishService: SideDishService,
     private cartService: CartService,
     private authService: AuthService
   ) { }
@@ -35,14 +34,13 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
     // Obtenemos el carrito del usuario actuals
     this.subscription = this.cartService.getCart(this.uid).subscribe(cart => {
       if (!cart) {
-        const newCart: Cart = { dishes: [], price: 0 };
-        this.cartService.createCart(this.uid, newCart).then(() => {
-          this.cart = newCart;
+        this.cartService.createCart(this.uid, {dishes: []}).then(() => {
+          this.cart = [];
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
-        this.cart = cart;
+        this.cart = cart.dishes;
       }
     });
   }
@@ -51,7 +49,7 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     clearTimeout(this.timer);
 
-    this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
+    this.cartService.getCartDoc(this.uid).update({dishes: this.cart}).then(() => {
     }).catch((error) => {
       console.log(error.message);
     });
@@ -67,11 +65,11 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
 
       let finalFlag = false;
 
-      const foundDishes = this.cart.dishes.filter(u => u.dish.id === this.dish.id);
+      const foundDishes = this.cart.filter(u => u.dish === this.dish.id);
 
       if (foundDishes.length > 0) {
         for (const foundDish of foundDishes) {
-          const a = foundDish.dish.sideDishes.slice();
+          const a = foundDish.sideDishes.slice();
           const b = this.dish.sideDishes.slice();
 
           if (a[0] === a[1]) {
@@ -110,17 +108,16 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
       }
 
       if (!finalFlag) {
-        this.cart.dishes.push({
-          dish: this.dish,
+        this.cart.push({
+          dish: this.dish.id,
+          sideDishes: this.sideDishes.map(side => side.id),
           quantity: 1
         });
       }
 
-      this.cart.price += this.dish.price;
-
       clearTimeout(this.timer);
       this.timer = setTimeout(() => {
-        this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
+        this.cartService.getCartDoc(this.uid).update({dishes: this.cart}).then(() => {
         }).catch((error) => {
           console.log(error.message);
         });

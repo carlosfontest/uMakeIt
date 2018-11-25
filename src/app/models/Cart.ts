@@ -1,6 +1,5 @@
-import { Dish } from './Dish';
+import { CartDish } from "./CartDish";
 
 export interface Cart {
-  dishes: {dish: Dish, quantity: number}[];
-  price: number;
+    dishes: CartDish[]
 }

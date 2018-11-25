@@ -1,9 +1,13 @@
 import { Component, OnInit, OnDestroy, HostListener, Renderer2 } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Cart } from 'src/app/models/Cart';
 import { SideDish } from 'src/app/models/SideDish';
 import { SideDishService } from 'src/app/services/side-dish.service';
+import { OrderDish } from '../../models/OrderDish';
+import { DishService } from 'src/app/services/dish.service';
+import { Cart } from 'src/app/models/Cart';
+import { CartDish } from './../../models/CartDish';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +16,8 @@ import { SideDishService } from 'src/app/services/side-dish.service';
 })
 export class CartComponent implements OnInit, OnDestroy {
   uid: string;
-  cart: Cart;
+  cart: CartDish[];
+  cartDisplay: OrderDish[];
   loading: boolean;
   subscription;
   clicked: number;
@@ -21,44 +26,68 @@ export class CartComponent implements OnInit, OnDestroy {
   sideDishes: SideDish[];
 
   constructor(
-    private cs: CartService, 
-    private as: AuthService, 
-    private renderer: Renderer2,
-    private sideDishService: SideDishService
-    ) { }
+    private cs: CartService,
+    private as: AuthService,
+    private ds: DishService,
+    private sds: SideDishService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.tax = 0.15;
     this.clicked = -1;
     this.loading = true;
     this.uid = this.as.currentUser.uid;
-    this.subscription = this.cs.getCart(this.uid).subscribe(cart => {
+    this.subscription = this.cartSubscribe();
+  }
+
+  cartSubscribe(): Subscription {
+    return this.cs.getCart(this.uid).subscribe(cart => {
       if (!cart) {
-        const newCart: Cart = {dishes: [], price: 0};
-        this.cs.createCart(this.uid, newCart).then(() => {
-          this.cart = newCart;
+        this.cs.createCart(this.uid, { dishes: [] }).then(() => {
+          this.cart = [];
+          this.loading = false;
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
-        this.cart = cart;
+        this.cart = cart.dishes;
+
+        if (cart.dishes.length !== 0) {
+          const newDisplay: OrderDish[] = [];
+          for (const item of cart.dishes) {
+            this.ds.getDishById(item.dish).subscribe(dish => {
+              this.sds.getSideDishById(item.sideDishes[0]).subscribe(sideDish1 => {
+                if (item.sideDishes[0] == item.sideDishes[1]) {
+                  newDisplay.push({
+                    dish: dish,
+                    sideDishes: [sideDish1, sideDish1],
+                    quantity: item.quantity
+                  });
+                  this.cartDisplay = newDisplay;
+                  this.loading = false;
+                } else {
+                  this.sds.getSideDishById(item.sideDishes[1]).subscribe(sideDish2 => {
+                    newDisplay.push({
+                      dish: dish,
+                      sideDishes: [sideDish1, sideDish2],
+                      quantity: item.quantity
+                    });
+                    this.cartDisplay = newDisplay;
+                    this.loading = false;
+                  });
+                }
+              });
+            });
+          }
+        }
       }
-      this.loading = false;
     });
-
-    // Cargamos todos los Side-Dishes
-    this.sideDishes = [];
-
-    this.sideDishService.getSideDishes().subscribe(data => {
-      this.sideDishes = data;
-    });
-
   }
 
   ngOnDestroy() {
     clearTimeout(this.timer);
 
-    this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+    this.cs.getCartDoc(this.uid).update({ dishes: this.cart }).then(() => {
     }).catch((error) => {
       console.log(error.message);
     });
@@ -66,14 +95,14 @@ export class CartComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  reduceQuantity(i: number, {price}) {
-    if (this.cart.dishes[i].quantity >= 2) {
-      this.cart.dishes[i].quantity--;
-      this.cart.price -= price;
+  reduceQuantity(i: number) {
+    if (this.cart[i].quantity >= 2) {
+      this.cart[i].quantity--;
+      this.cartDisplay[i].quantity--;
     }
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+      this.cs.getCartDoc(this.uid).update({ dishes: this.cart }).then(() => {
 
       }).catch((error) => {
         console.log(error.message);
@@ -81,12 +110,12 @@ export class CartComponent implements OnInit, OnDestroy {
     }, 1500);
   }
 
-  increaseQuantity(i: number, {price}) {
-    this.cart.dishes[i].quantity++;
-    this.cart.price += price;
+  increaseQuantity(i: number) {
+    this.cart[i].quantity++;
+    this.cartDisplay[i].quantity++;
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+      this.cs.getCartDoc(this.uid).update({ dishes: this.cart }).then(() => {
 
       }).catch((error) => {
         console.log(error.message);
@@ -94,43 +123,48 @@ export class CartComponent implements OnInit, OnDestroy {
     }, 1500);
   }
 
-  getTaxes(): number {
-    return this.cart.price * this.tax;
+  get taxes(): number {
+    return this.price - this.subtotal;
   }
 
-  getTotal(): number {
-    return this.cart.price * (1 + this.tax);
+  get subtotal(): number {
+    return this.price / (1 + this.tax);
   }
-  
+
   eraseDish(i: number) {
     if (this.clicked === i) {
-      const item = this.cart.dishes[i];
-      this.cart.price -= (item.quantity * item.dish.price);
-      this.cart.dishes.splice(i, 1);
+      const item = this.cart[i];
+      this.cart.splice(i, 1);
       this.clicked = -1;
     } else {
       this.clicked = i;
     }
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      this.cs.getCartDoc(this.uid).update(this.cart).then(() => {
+      this.cs.getCartDoc(this.uid).update({ dishes: this.cart }).then(() => {
 
       }).catch((error) => {
         console.log(error.message);
       });
     }, 1500);
   }
-
-  buscarSideDish(id: string): string {
-    return this.sideDishes.find(sideDish => sideDish.id === id) ? this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoArriba : '';
-  }
-  
   buscarSideDishDoble(id: string): string {
     return this.sideDishes.find(sideDish => sideDish.id === id) ? this.sideDishes.find(sideDish => sideDish.id === id).thumbnailPlatoDoble : '';
   }
 
   buscarNombreSideDish(id: string): string {
     return this.sideDishes.find(sideDish => sideDish.id === id) ? this.sideDishes.find(sideDish => sideDish.id === id).name : '';
+  }
+
+  get price() {
+
+    // Se calcula el precio y se retorna
+    let price = 0;
+    for (const item of this.cartDisplay) {
+      price += item.dish.price * item.quantity;
+    }
+
+    return price;
   }
 
 }

@@ -3,8 +3,8 @@ import { Dish } from '../../models/Dish';
 import { DishService } from 'src/app/services/dish.service';
 import { CartService } from './../../services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { CartDish } from '../../models/CartDish';
 import { Cart } from 'src/app/models/Cart';
-import { log } from 'util';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +13,7 @@ import { log } from 'util';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   uid: string;
-  cart: Cart;
+  cart: CartDish[];
   // Tipo de plato que el user quiere que se muestre
   typeDishShow: string;
   // Array de los platos que se muestran en el menú
@@ -40,14 +40,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.subscription = this.cartService.getCart(this.uid).subscribe(cart => {
       if (!cart) {
-        const newCart: Cart = { dishes: [], price: 0 };
-        this.cartService.createCart(this.uid, newCart).then(() => {
-          this.cart = newCart;
+        this.cartService.createCart(this.uid, {dishes: []}).then(() => {
+          this.cart = [];
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
-        this.cart = cart;
+        this.cart = cart.dishes;
       }
       // Le pedimos a Firestore los platos
       this.dishService.getDishes().subscribe(data => {
@@ -64,7 +63,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     clearTimeout(this.timer);
 
-    this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
+    this.cartService.getCartDoc(this.uid).update({dishes: this.cart}).then(() => {
     }).catch((error) => {
       console.log(error.message);
     });
@@ -82,13 +81,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   addDishToCart(dish: Dish) {
     let finalFlag = false;
 
-    const foundDishes = this.cart.dishes.filter(u => u.dish.id === dish.id);
+    const foundDishes = this.cart.filter(u => u.dish === dish.id);
 
     if (foundDishes.length > 0) {
       for (const foundDish of foundDishes) {
 
         if (dish.sideDishes) {
-          const a = foundDish.dish.sideDishes.slice();
+          const a = foundDish.sideDishes.slice();
           const b = dish.sideDishes.slice();
 
           if (a[0] === a[1]) {
@@ -133,17 +132,30 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     if (!finalFlag) {
-      this.cart.dishes.push({
-        dish: dish,
-        quantity: 1
-      });
+      if(dish.sideDishes){
+        this.cart.push({
+          dish: dish.id,
+          sideDishes: dish.sideDishes,
+          quantity: 1
+        });
+      } else {
+        this.cart.push({
+          dish: dish.id,
+          quantity: 1
+        });
+      }
+      
     }
 
-    this.cart.price += dish.price;
-
     clearTimeout(this.timer);
+
+    const cart: Cart = {dishes: this.cart};
+
+    console.log(cart);
+    
+
     this.timer = setTimeout(() => {
-      this.cartService.getCartDoc(this.uid).update(this.cart).then(() => {
+      this.cartService.getCartDoc(this.uid).update(cart).then(() => {
       }).catch((error) => {
         console.log(error.message);
       });

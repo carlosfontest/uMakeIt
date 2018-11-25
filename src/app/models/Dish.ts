@@ -1,4 +1,3 @@
-import { SideDish } from './SideDish';
 export interface Dish {
   thumbnail?: string;
   thumbnailReal?: string;

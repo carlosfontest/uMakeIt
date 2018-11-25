@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Cart } from '../models/Cart';
 import { map } from 'rxjs/operators';
+import { Cart } from './../models/Cart';
 
 @Injectable({
   providedIn: 'root'
