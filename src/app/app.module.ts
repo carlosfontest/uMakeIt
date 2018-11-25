@@ -54,6 +54,7 @@ import { DishService } from './services/dish.service';
 import { UserService } from './services/user.service';
 import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
+import { EditInstructionsModalComponent } from './components/shared/modals/edit-instructions-modal/edit-instructions-modal.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { StorageService } from './services/storage.service';
     AddProductsAccordionComponent,
     EditSideDishComponent,
     EditProductComponent,
-    BillModalComponent
+    BillModalComponent,
+    EditInstructionsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +120,8 @@ import { StorageService } from './services/storage.service';
   bootstrap: [AppComponent],
   entryComponents: [
     RecoverPasswordModalComponent,
-    BillModalComponent
+    BillModalComponent,
+    EditInstructionsModalComponent
   ]
 })
 export class AppModule { }

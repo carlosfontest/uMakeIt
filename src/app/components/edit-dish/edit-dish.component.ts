@@ -5,6 +5,7 @@ import { SideDishService } from 'src/app/services/side-dish.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dish } from './../../models/Dish';
 import { DishService } from 'src/app/services/dish.service';
+import { EditInstructionsModalComponent } from '../shared/modals/edit-instructions-modal/edit-instructions-modal.component';
 
 @Component({
   selector: 'app-edit-dish',
@@ -16,7 +17,6 @@ export class EditDishComponent implements OnInit {
   dishSideDishes: SideDish[];
   sideDishes: SideDish[];
   cantSideDishSelected: number;
-  @ViewChild('modal') modal: TemplateRef<any>;
   bsModalRef: BsModalRef;
   // Para saber si ya se cargo la info de la base de datos
   loaded: boolean;
@@ -92,7 +92,7 @@ export class EditDishComponent implements OnInit {
   }
 
   abrirModalInstrucciones() {
-    this.bsModalRef = this.modalService.show(this.modal);
+    this.bsModalRef = this.modalService.show(EditInstructionsModalComponent);
   }
 
   obtenerCantidadInicial(sideDish: SideDish) {
