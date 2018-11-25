@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -106,7 +107,8 @@ import { EditInstructionsModalComponent } from './components/shared/modals/edit-
     ReactiveFormsModule,
     ModalModule.forRoot(),
     SnotifyModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPayPalModule
   ],
   providers: [
     AuthService,

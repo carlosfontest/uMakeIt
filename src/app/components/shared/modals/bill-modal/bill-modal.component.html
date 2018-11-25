@@ -29,5 +29,5 @@
 
 <div class="modal-footer d-flex justify-content-between">
   <button type="button" class="btn btn-sm btn-gray" (click)="bsModalRef.hide()">Close</button>
-  <input type="submit" class="btn btn-sm btn-yellow sm1" value="PayPal">
+  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
 </div>

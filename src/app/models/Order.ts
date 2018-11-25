@@ -6,4 +6,6 @@ export interface Order {
     date: string;
     uid: string;
     name: string;
+    direction: string;
+    pending: boolean;
 }

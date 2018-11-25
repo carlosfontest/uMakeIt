@@ -4,4 +4,5 @@ export interface User {
   lastName: string;
   isAdmin: boolean;
   uid?: string;
+  directions?: string[];
 }
