@@ -35,7 +35,6 @@ export class CartComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.tax = 0.15;
     this.clicked = -1;
-    this.loading = true;
     this.uid = this.as.currentUser.uid;
     this.subscription = this.cartSubscribe();
   }
@@ -43,9 +42,9 @@ export class CartComponent implements OnInit, OnDestroy {
   cartSubscribe(): Subscription {
     return this.cs.getCart(this.uid).subscribe(cart => {
       if (!cart) {
+        this.cart = [];
+        this.loading = false;
         this.cs.createCart(this.uid, { dishes: [] }).then(() => {
-          this.cart = [];
-          this.loading = false;
         }).catch((error) => {
           console.log(error.message);
         });
@@ -56,29 +55,35 @@ export class CartComponent implements OnInit, OnDestroy {
           const newDisplay: OrderDish[] = [];
           for (const item of cart.dishes) {
             this.ds.getDishById(item.dish).subscribe(dish => {
-              this.sds.getSideDishById(item.sideDishes[0]).subscribe(sideDish1 => {
-                if (item.sideDishes[0] == item.sideDishes[1]) {
-                  newDisplay.push({
-                    dish: dish,
-                    sideDishes: [sideDish1, sideDish1],
-                    quantity: item.quantity
-                  });
-                  this.cartDisplay = newDisplay;
-                  this.loading = false;
-                } else {
-                  this.sds.getSideDishById(item.sideDishes[1]).subscribe(sideDish2 => {
+              if (dish.sideDishes.length !== 0) {
+                this.sds.getSideDishById(item.sideDishes[0]).subscribe(sideDish1 => {
+                  if (item.sideDishes[0] == item.sideDishes[1]) {
                     newDisplay.push({
                       dish: dish,
-                      sideDishes: [sideDish1, sideDish2],
+                      sideDishes: [sideDish1, sideDish1],
                       quantity: item.quantity
                     });
                     this.cartDisplay = newDisplay;
                     this.loading = false;
-                  });
-                }
-              });
+                  } else {
+                    this.sds.getSideDishById(item.sideDishes[1]).subscribe(sideDish2 => {
+                      newDisplay.push({
+                        dish: dish,
+                        sideDishes: [sideDish1, sideDish2],
+                        quantity: item.quantity
+                      });
+                      this.cartDisplay = newDisplay;
+                      this.loading = false;
+                    });
+                  }
+                });
+              } else {
+                this.loading = false;
+              }
             });
           }
+        } else {
+          this.loading = false;
         }
       }
     });
@@ -113,6 +118,7 @@ export class CartComponent implements OnInit, OnDestroy {
   increaseQuantity(i: number) {
     this.cart[i].quantity++;
     this.cartDisplay[i].quantity++;
+
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.cs.getCartDoc(this.uid).update({ dishes: this.cart }).then(() => {
