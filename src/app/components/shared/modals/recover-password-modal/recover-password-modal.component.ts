@@ -14,7 +14,8 @@ export class RecoverPasswordModalComponent implements OnInit {
   title: string;
   form: FormGroup;
 
-  constructor(public bsModalRef: BsModalRef, 
+  constructor(
+    public bsModalRef: BsModalRef, 
     private formBuilder: FormBuilder, 
     private authService: AuthService, 
     private snotifyService: SnotifyService

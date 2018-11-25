@@ -317,7 +317,7 @@ transform: rotate(90deg);
 }
 
 // Estilos del botón
-a.btn,.btn {
+.btn {
     margin-top: 1.5rem;
     margin-right: 30px;
     display: inline-block;
@@ -342,7 +342,8 @@ a.btn,.btn {
 
 .btn-yellow {
 	color: #F8C822;
-	border-color: #F8C822;
+    border-color: #F8C822;
+    background: transparent;
 }
 .btn-yellow:hover {
     background: #F8C822;

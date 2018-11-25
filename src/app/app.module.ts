@@ -45,6 +45,7 @@ import { AddEditableProductComponent } from './components/admin/admin-section/ad
 import { AddNonEditableProductComponent } from './components/admin/admin-section/add-products-accordion/add-non-editable-product/add-non-editable-product.component';
 import { AddSideDishComponent } from './components/admin/admin-section/add-products-accordion/add-side-dish/add-side-dish.component';
 import { EditProductComponent } from './components/admin/admin-section/edit-products-accordion/edit-product/edit-product.component';
+import { BillModalComponent } from './components/shared/modals/bill-modal/bill-modal.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -85,7 +86,8 @@ import { StorageService } from './services/storage.service';
     EditProductsAccordionComponent,
     AddProductsAccordionComponent,
     EditSideDishComponent,
-    EditProductComponent
+    EditProductComponent,
+    BillModalComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +114,9 @@ import { StorageService } from './services/storage.service';
     SnotifyService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [RecoverPasswordModalComponent]
+  entryComponents: [
+    RecoverPasswordModalComponent,
+    BillModalComponent
+  ]
 })
 export class AppModule { }
