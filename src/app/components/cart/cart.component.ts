@@ -38,6 +38,8 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loading = true;
+    this.cartDisplay = [];
+    this.cart = [];
     this.tax = 0.15;
     this.clicked = -1;
     this.uid = this.as.currentUser.uid;
@@ -47,15 +49,12 @@ export class CartComponent implements OnInit, OnDestroy {
   cartSubscribe(): Subscription {
     return this.cs.getCart(this.uid).subscribe(cart => {
       if (!cart) {
-        this.cart = [];
-        this.cartDisplay = [];
         this.loading = false;
         this.cs.createCart(this.uid, { dishes: [] }).then(() => {
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
-        this.cartDisplay = [];
         this.cart = cart.dishes;
         if (cart.dishes.length !== 0) {
           const newDisplay: OrderDish[] = [];
