@@ -99,11 +99,11 @@ export class CartComponent implements OnInit, OnDestroy {
     }, 1500);
   }
 
-  getTaxes(): number {
-    return this.cart.price - this.getSubtotal();
+  get taxes(): number {
+    return this.cart.price - this.subtotal;
   }
 
-  getSubtotal(): number {
+  get subtotal(): number {
     return this.cart.price / (1 + this.tax);
   }
   

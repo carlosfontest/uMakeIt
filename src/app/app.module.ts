@@ -7,6 +7,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -102,7 +103,8 @@ import { StorageService } from './services/storage.service';
     PasswordStrengthBarModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    SnotifyModule
+    SnotifyModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
