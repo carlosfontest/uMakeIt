@@ -1,5 +1,11 @@
 .modal-body, .modal-header, .modal-footer {
-  background: #535149;
+  background: #ece5c6;
+  border: none;
+}
+
+.modal-header {
+  padding-bottom: 4px;
+  padding-top: 4px;
 }
 
 .modal-body {
@@ -10,36 +16,25 @@
 
 .modal-title {
   font-family: 'Ubuntu Condensed', sans-serif;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 900;
   color: rgb(179, 168, 127);
-  text-shadow: 1px 1px 1px #000000;
+  text-shadow: 2px 2px 2px #000000;
 }
 
-.form-control {
-  font-family: 'Ubuntu Condensed', sans-serif;
-  border-radius: 5px; 
-  border-color: rgb(47, 45, 38);
-  text-align: center;
-  background: rgb(47, 45, 38); 
-  color: rgb(233, 223, 183);
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
-  font-size: 20px;
-  height: 55px;
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgb(139, 136, 126);
+  border-bottom: 1px solid rgb(139, 136, 126);
+  margin: 0px;
 }
 
-.label {
-  font-family: 'Ubuntu Condensed', sans-serif;
-  font-size: 18px;
-  color: rgb(233, 223, 183);
-  margin-bottom: 10px;
-  text-align: center;
+.divHR {
+  background: #ece5c6;
 }
 
-.invalid-feedback {
-  font-family: 'Ubuntu Condensed', sans-serif;
-  font-size: 13px;
-}
+
 
 
 // Estilos de los botones
@@ -59,7 +54,7 @@
   font-family: 'Ubuntu Condensed', sans-serif;
   font-size: 25px;
   font-weight: 800;
-  border-width: 2.5px;
+  border-width: 1.5px;
 }
 
 .btn-medium {
@@ -80,15 +75,15 @@
 }
 
 .btn-yellow {
-	color: #F8C822;
-  border-color: #F8C822;
+	color: rgb(216, 175, 27);
+  border-color: rgb(216, 175, 27);
   background: transparent;
 }
 
 .btn-yellow:hover {
-    background: #F8C822;
-    color: rgb(37, 34, 28);
-    border-color: #F8C822;
+    background: rgb(216, 175, 27);
+    color: #ece5c6;
+    border-color: rgb(216, 175, 27);
 }
 
 .btn-sm {

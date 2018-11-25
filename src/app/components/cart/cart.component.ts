@@ -5,9 +5,11 @@ import { SideDish } from 'src/app/models/SideDish';
 import { SideDishService } from 'src/app/services/side-dish.service';
 import { OrderDish } from '../../models/OrderDish';
 import { DishService } from 'src/app/services/dish.service';
-import { Cart } from 'src/app/models/Cart';
 import { CartDish } from './../../models/CartDish';
 import { Subscription } from 'rxjs';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BillModalComponent } from '../shared/modals/bill-modal/bill-modal.component';
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +17,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit, OnDestroy {
+  bsModalRef: BsModalRef;
   uid: string;
   cart: CartDish[];
   cartDisplay: OrderDish[];
@@ -29,7 +32,9 @@ export class CartComponent implements OnInit, OnDestroy {
     private cs: CartService,
     private as: AuthService,
     private ds: DishService,
-    private sds: SideDishService) { }
+    private sds: SideDishService,
+    private modalService: BsModalService
+  ) { }
 
   ngOnInit() {
     this.loading = true;
@@ -171,6 +176,13 @@ export class CartComponent implements OnInit, OnDestroy {
     }
 
     return price;
+
   }
 
+  openBill() {
+    const initialState = {
+      cart: this.cart
+    };
+    this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
+  }
 }

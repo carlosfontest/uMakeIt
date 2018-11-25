@@ -3,11 +3,20 @@ import { Dish } from '../../../models/Dish';
 import { Router } from '@angular/router';
 import { SideDishService } from 'src/app/services/side-dish.service';
 import { SideDish } from 'src/app/models/SideDish';
+import { trigger, transition, state, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-dish-card',
   templateUrl: './dish-card.component.html',
-  styleUrls: ['./dish-card.component.scss']
+  styleUrls: ['./dish-card.component.scss'],
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ opacity: 0}),
+        animate(600)
+      ])
+    ])
+  ]
 })
 export class DishCardComponent implements OnInit {
   @Input() dish: Dish;

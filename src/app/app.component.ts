@@ -10,8 +10,9 @@ import * as firebase from 'firebase';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  ngOnInit(){
+  ngOnInit() {
     console.log('hola mama');
     firebase.initializeApp(environment.firebase);
+    
   }
 }

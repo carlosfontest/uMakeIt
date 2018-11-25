@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stats-section.component.scss']
 })
 export class StatsSectionComponent implements OnInit {
+  userCount: number;
+  totalSales: number;
+  ordersDone: number;
+  pendingOrders: number;
 
   constructor() { }
 

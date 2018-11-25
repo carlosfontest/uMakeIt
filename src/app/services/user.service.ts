@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { SnotifyService } from 'ng-snotify';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class UserService {
   constructor(
     private afs: AngularFirestore,
     private afa: AngularFireAuth,
-    private flashMessage: FlashMessagesService
+    private snotifyService: SnotifyService
     ) { 
     this.usersCollection = this.afs.collection('users', ref => ref.orderBy('lastName', 'asc'));
   }
@@ -48,14 +48,22 @@ export class UserService {
       this.afa.auth.createUserWithEmailAndPassword(email, password)
         .then(credential =>
           this.afs.doc(`users/${credential.user.uid}`).set(newUser).then(success => {
-            this.flashMessage.show('You have succesfully registered', {
-              cssClass: 'alert-success', timeout: 2000
+            this.snotifyService.success('You have succesfully registered', 'Register', {
+              timeout: 2000,
+              showProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              position: 'leftBottom'
             });
           })
         )
         .catch(err => {
-          this.flashMessage.show(err.message, {
-            cssClass: 'alert-danger', timeout: 2000
+          this.snotifyService.error(err.message, 'Error', {
+            timeout: 2000,
+            showProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: 'leftBottom'
           });
         });
     });

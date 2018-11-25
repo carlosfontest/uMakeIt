@@ -2,11 +2,12 @@
 <app-navbar></app-navbar>
 
     <div class="main-container">
-        <!-- Mensages de error y advertencias -->
-        <flash-messages></flash-messages>
         <!-- Outlet de todos los links de la App -->
         <router-outlet></router-outlet>
+        <!-- Mensages de error y advertencias -->
+        <ng-snotify></ng-snotify>
     </div>
-
+    
+    
 <!-- Footer que estará en todos los componentes [shared] -->
 <app-footer></app-footer>

@@ -93,7 +93,7 @@
 }
 
 .totals.up {
-    border-bottom: solid 1px rgb(39, 37, 33);
+    border-bottom: solid 1px rgb(59, 57, 53);
 }
 
 .infoTotals {
@@ -176,7 +176,7 @@ thead tr th:nth-child(6) {
 }
 
 .nombreIngredientes {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     font-family: 'Ubuntu Condensed', sans-serif;
 }
@@ -317,7 +317,7 @@ transform: rotate(90deg);
 }
 
 // Estilos del botón
-a.btn,.btn {
+.btn {
     margin-top: 1.5rem;
     margin-right: 30px;
     display: inline-block;
@@ -342,7 +342,8 @@ a.btn,.btn {
 
 .btn-yellow {
 	color: #F8C822;
-	border-color: #F8C822;
+    border-color: #F8C822;
+    background: transparent;
 }
 .btn-yellow:hover {
     background: #F8C822;

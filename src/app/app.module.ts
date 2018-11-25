@@ -5,9 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
-// import { FlashMessagesModule } from 'angular2-flash-messages';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -46,6 +46,7 @@ import { AddEditableProductComponent } from './components/admin/admin-section/ad
 import { AddNonEditableProductComponent } from './components/admin/admin-section/add-products-accordion/add-non-editable-product/add-non-editable-product.component';
 import { AddSideDishComponent } from './components/admin/admin-section/add-products-accordion/add-side-dish/add-side-dish.component';
 import { EditProductComponent } from './components/admin/admin-section/edit-products-accordion/edit-product/edit-product.component';
+import { BillModalComponent } from './components/shared/modals/bill-modal/bill-modal.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -86,7 +87,8 @@ import { StorageService } from './services/storage.service';
     EditProductsAccordionComponent,
     AddProductsAccordionComponent,
     EditSideDishComponent,
-    EditProductComponent
+    EditProductComponent,
+    BillModalComponent
   ],
   imports: [
     BrowserModule,
@@ -98,19 +100,25 @@ import { StorageService } from './services/storage.service';
     AngularFireModule.initializeApp(environment.firebase, 'umakeit-crr'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot(),
     PasswordStrengthBarModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SnotifyModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
     DishService,
     UserService,
     SideDishService,
-    StorageService
+    StorageService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [RecoverPasswordModalComponent]
+  entryComponents: [
+    RecoverPasswordModalComponent,
+    BillModalComponent
+  ]
 })
 export class AppModule { }

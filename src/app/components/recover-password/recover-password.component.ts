@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { SnotifyService } from 'ng-snotify';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class RecoverPasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
-    private flashMessage: FlashMessagesService, 
+    private snotifyService: SnotifyService, 
     private renderer: Renderer2,
     private as: AuthService,
     private router: Router) { }
@@ -50,10 +50,13 @@ export class RecoverPasswordComponent implements OnInit {
 
   changePassword({value}) {
     if (!(value.length >= 6)) {
-      this.flashMessage.show('The password minimum length should be 6', {
-        cssClass: 'alert-danger', timeout: 4000
+      this.snotifyService.error('The password minimum length should be 6', 'Error', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
       });
-      return;
     }
 
     const {nativeElement: boton} = this.submit;
@@ -75,8 +78,12 @@ export class RecoverPasswordComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }, 1500);
     }).catch(error => {
-      this.flashMessage.show(error.message, {
-        cssClass: 'alert-danger', timeout: 4000
+      this.snotifyService.error(error.message, 'Error', {
+        timeout: 4000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
       });
     });
   }

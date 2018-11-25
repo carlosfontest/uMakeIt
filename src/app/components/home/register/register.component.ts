@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { SnotifyService } from 'ng-snotify';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private router: Router,
-    private flashMessage: FlashMessagesService
+    private snotifyService: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -35,8 +35,12 @@ export class RegisterComponent implements OnInit {
           lastName: this.lastName,
           isAdmin: this.isAdmin
         }, this.email, this.password).catch(err => {
-          this.flashMessage.show(err.message, {
-            cssClass: 'alert-danger', timeout: 2000
+          this.snotifyService.error(err.message, 'Error', {
+            timeout: 2000,
+            showProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: 'leftBottom'
           });
         });
       this.router.navigate(['/']);
