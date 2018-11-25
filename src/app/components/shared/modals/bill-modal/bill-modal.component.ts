@@ -4,6 +4,8 @@ import { OrderDish } from 'src/app/models/OrderDish';
 import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-paypal';
 import { SnotifyService } from 'ng-snotify';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-bill-modal',
@@ -13,15 +15,34 @@ import { Router } from '@angular/router';
 export class BillModalComponent implements OnInit {
   cart: OrderDish[];
   payPalConfig?: PayPalConfig;
+  allDirections: string[];
+  directionToDeliver: string;
+  config: Object;
 
   constructor(
     public bsModalRef: BsModalRef,
     private snotifyService: SnotifyService,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    this.config = {
+      displayKey: 'descripción',
+      search: true
+    };
+    // Iniciamos PayPal
     this.initConfig();
+    // Obtenemos todas las direcciones de envío
+    this.userService.getUsers().subscribe(users => {
+      for (const user of users) {
+        if (user.email === this.authService.currentUser.email) {
+          this.allDirections = user.directions;
+          console.log(this.allDirections);
+        }
+      }
+    });
   }
 
   get precioTotal() {

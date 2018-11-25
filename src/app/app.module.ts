@@ -9,6 +9,7 @@ import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap'
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -108,7 +109,8 @@ import { EditInstructionsModalComponent } from './components/shared/modals/edit-
     ModalModule.forRoot(),
     SnotifyModule,
     BrowserAnimationsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    SelectDropDownModule
   ],
   providers: [
     AuthService,

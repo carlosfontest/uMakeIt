@@ -33,6 +33,7 @@
     "ng2-password-strength-bar": "^1.2.1",
     "ngx-bootstrap": "^3.0.1",
     "ngx-paypal": "^4.0.1",
+    "ngx-select-dropdown": "^0.8.1",
     "rxjs": "^6.0.0",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26",
