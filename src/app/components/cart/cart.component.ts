@@ -163,6 +163,7 @@ export class CartComponent implements OnInit, OnDestroy {
     if (this.clicked === i) {
       const item = this.cart[i];
       this.cart.splice(i, 1);
+      this.cartDisplay.splice(i, 1);
       this.clicked = -1;
     } else {
       this.clicked = i;
