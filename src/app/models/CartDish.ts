@@ -1,5 +1,5 @@
 export interface CartDish {
-  dish: string,
-  sideDishes?: string[],
-  quantity: number
+  dish: string;
+  sideDishes?: string[];
+  quantity: number;
 }

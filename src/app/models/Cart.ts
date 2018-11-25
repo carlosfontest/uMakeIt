@@ -1,5 +1,5 @@
-import { CartDish } from "./CartDish";
+import { CartDish } from './CartDish';
 
 export interface Cart {
-    dishes: CartDish[]
+    dishes: CartDish[];
 }

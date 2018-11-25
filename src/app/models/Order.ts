@@ -1,9 +1,9 @@
-import { OrderDish } from "./OrderDish";
+import { OrderDish } from './OrderDish';
 
 export interface Order {
-    dishes: OrderDish[],
-    price: number,
-    date: string,
-    uid: string,
-    name: string
+    dishes: OrderDish[];
+    price: number;
+    date: string;
+    uid: string;
+    name: string;
 }

@@ -62,7 +62,7 @@ export class CartComponent implements OnInit, OnDestroy {
             this.ds.getDishById(item.dish).subscribe(dish => {
               if (dish.sideDishes) {
                 this.sds.getSideDishById(item.sideDishes[0]).subscribe(sideDish1 => {
-                  if (item.sideDishes[0] == item.sideDishes[1]) {
+                  if (item.sideDishes[0] === item.sideDishes[1]) {
                     newDisplay.push({
                       dish: dish,
                       sideDishes: [sideDish1, sideDish1],
@@ -86,7 +86,7 @@ export class CartComponent implements OnInit, OnDestroy {
                 newDisplay.push({
                   dish: dish,
                   quantity: item.quantity
-                })
+                });
                 this.cartDisplay = newDisplay;
                 this.loading = false;
               }
