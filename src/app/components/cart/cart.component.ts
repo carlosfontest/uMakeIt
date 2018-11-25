@@ -48,19 +48,20 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.cs.getCart(this.uid).subscribe(cart => {
       if (!cart) {
         this.cart = [];
+        this.cartDisplay = [];
         this.loading = false;
         this.cs.createCart(this.uid, { dishes: [] }).then(() => {
         }).catch((error) => {
           console.log(error.message);
         });
       } else {
+        this.cartDisplay = [];
         this.cart = cart.dishes;
-
         if (cart.dishes.length !== 0) {
           const newDisplay: OrderDish[] = [];
           for (const item of cart.dishes) {
             this.ds.getDishById(item.dish).subscribe(dish => {
-              if (dish.sideDishes.length !== 0) {
+              if (dish.sideDishes) {
                 this.sds.getSideDishById(item.sideDishes[0]).subscribe(sideDish1 => {
                   if (item.sideDishes[0] == item.sideDishes[1]) {
                     newDisplay.push({
@@ -83,6 +84,11 @@ export class CartComponent implements OnInit, OnDestroy {
                   }
                 });
               } else {
+                newDisplay.push({
+                  dish: dish,
+                  quantity: item.quantity
+                })
+                this.cartDisplay = newDisplay;
                 this.loading = false;
               }
             });
@@ -134,6 +140,18 @@ export class CartComponent implements OnInit, OnDestroy {
     }, 1500);
   }
 
+  get price() {
+
+    // Se calcula el precio y se retorna
+    let price = 0;
+    for (const item of this.cartDisplay) {
+      price += item.dish.price * item.quantity;
+    }
+
+    return price;
+
+  }
+
   get taxes(): number {
     return this.price - this.subtotal;
   }
@@ -167,21 +185,9 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.sideDishes.find(sideDish => sideDish.id === id) ? this.sideDishes.find(sideDish => sideDish.id === id).name : '';
   }
 
-  get price() {
-
-    // Se calcula el precio y se retorna
-    let price = 0;
-    for (const item of this.cartDisplay) {
-      price += item.dish.price * item.quantity;
-    }
-
-    return price;
-
-  }
-
   openBill() {
     const initialState = {
-      cart: this.cart
+      cart: this.cartDisplay
     };
     this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
   }
