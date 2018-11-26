@@ -8,6 +8,8 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AddDirectionModalComponent } from '../add-direction-modal/add-direction-modal.component';
 import { of } from 'rxjs';
+import { User } from 'src/app/models/User';
+import { CartService } from 'src/app/services/cart.service';
 
 declare let paypal: any;
 
@@ -23,6 +25,7 @@ export class BillModalComponent implements OnInit  {
   directionToDeliver: string[];
   config: Object;
   addScript = false;
+  user: User;
 
   
 
@@ -32,7 +35,8 @@ export class BillModalComponent implements OnInit  {
     private router: Router,
     private userService: UserService,
     private authService: AuthService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
@@ -49,8 +53,10 @@ export class BillModalComponent implements OnInit  {
       for (const user of users) {
         if (user.email === this.authService.currentUser.email) {
           if (user.directions) {
+            this.user = user;
             this.allDirections = user.directions;
           } else {
+            this.user = user;
             this.allDirections = [];
           }
           this.initConfig();
@@ -99,9 +105,9 @@ export class BillModalComponent implements OnInit  {
             position: 'leftBottom'
           });
           this.router.navigate(['']);
-          // Borrar el carrito
-          // TODO
-          // Enviar la orden
+          
+          // Generamos la orden
+          this.afterPurchase();
 
         },
         onCancel: (data, actions) => {
@@ -143,6 +149,13 @@ export class BillModalComponent implements OnInit  {
     };
     this.modalService.show(AddDirectionModalComponent, {initialState}); 
     this.bsModalRef.hide();
+  }
+
+  afterPurchase() {
+    // Borrar el carrito
+    this.cartService.deleteCart(this.user.uid);
+    // TODO
+    // Enviar la orden
   }
 
 }

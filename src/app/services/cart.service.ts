@@ -39,6 +39,11 @@ export class CartService {
     return this.afs.doc<Cart>(`carts/${uid}`);
   }
 
+  deleteCart(id: string) {
+    this.cartDoc = this.afs.doc<Cart>(`carts/${id}`);
+    this.cartDoc.delete();
+  }
+
 
   
 }
