@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BillModalComponent } from '../shared/modals/bill-modal/bill-modal.component';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
@@ -22,11 +23,12 @@ export class CartComponent implements OnInit, OnDestroy {
   cart: CartDish[];
   cartDisplay: OrderDish[];
   loading: boolean;
-  subscription;
+  subscription: Subscription;
   clicked: number;
   timer;
   tax: number;
   sideDishes: SideDish[];
+  cartFlag: boolean;
 
   constructor(
     private cs: CartService,
@@ -43,12 +45,24 @@ export class CartComponent implements OnInit, OnDestroy {
     this.tax = 0.15;
     this.clicked = -1;
     this.uid = this.as.currentUser.uid;
+    this.cs.deleteCartSubject.subscribe(bool => {
+      if(bool){
+        this.cart = [];
+        this.cartDisplay = [];
+        this.cartFlag = false;
+        this.loading = false;
+        this.subscription.unsubscribe();
+        this.subscription = this.subscription;
+      }
+    });
     this.subscription = this.cartSubscribe();
+    this.cartFlag = false;
   }
 
   cartSubscribe(): Subscription {
     return this.cs.getCart(this.uid).subscribe(cart => {
       if (!cart) {
+        this.cartFlag = true;
         this.loading = false;
         this.cs.createCart(this.uid, { dishes: [] }).then(() => {
         }).catch((error) => {
@@ -56,50 +70,89 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       } else {
         this.cart = cart.dishes;
-        if (cart.dishes.length !== 0) {
+        let { length } = this.cart;
+        console.log(length, 'length');
+        
+        let index = 0;
+        if (length !== 0) {
           const newDisplay: OrderDish[] = [];
+
           for (const item of cart.dishes) {
             this.ds.getDishById(item.dish).subscribe(dish => {
-              if (dish.sideDishes) {
-                this.sds.getSideDishById(item.sideDishes[0]).subscribe(sideDish1 => {
-                  if (item.sideDishes[0] === item.sideDishes[1]) {
-                    newDisplay.push({
-                      dish: dish,
-                      sideDishes: [sideDish1, sideDish1],
-                      quantity: item.quantity
-                    });
-                    this.cartDisplay = newDisplay;
-                    console.log(this.cartDisplay);
-                    this.loading = false;
-                  } else {
-                    this.sds.getSideDishById(item.sideDishes[1]).subscribe(sideDish2 => {
+              if (this.cartFlag) {
+                console.log('this flaggeronni');
+                
+                this.updateCart();
+                return;
+              } else {
+                if (dish.sideDishes) {
+                  this.sds.getSideDishById(item.sideDishes[0]).pipe(take(1)).subscribe(sideDish1 => {
+                    if (item.sideDishes[0] === item.sideDishes[1]) {
                       newDisplay.push({
                         dish: dish,
-                        sideDishes: [sideDish1, sideDish2],
+                        sideDishes: [sideDish1, sideDish1],
                         quantity: item.quantity
                       });
-                      this.cartDisplay = newDisplay;
-                      console.log(this.cartDisplay);
-                      this.loading = false;
-                    });
+
+                      if (index === (length - 1)) {
+                        console.log('this works fine length',length, 'and index', index);
+                        
+                        this.cartDisplay = newDisplay;
+                        this.cartFlag = true;
+                        this.loading = false;
+                      } else {
+                        index++;
+                      }
+                    } else {
+                      this.sds.getSideDishById(item.sideDishes[1]).pipe(take(1)).subscribe(sideDish2 => {
+                        newDisplay.push({
+                          dish: dish,
+                          sideDishes: [sideDish1, sideDish2],
+                          quantity: item.quantity
+                        });
+                        if (index === (length - 1)) {
+                          console.log('this works fine length',length, 'and index', index);
+                          
+                          this.cartDisplay = newDisplay;
+                          this.cartFlag = true;
+                          this.loading = false;
+                        } else {
+                          index++;
+                        }
+                      });
+                    }
+                  });
+                } else {
+                  newDisplay.push({
+                    dish: dish,
+                    quantity: item.quantity
+                  });
+                  if (index === (length - 1)) {
+                    console.log('this works fine length',length, 'and index', index);
+                    
+                    this.cartDisplay = newDisplay;
+                    this.cartFlag = true;
+                    this.loading = false;
+                  } else {
+                    index++;
                   }
-                });
-              } else {
-                newDisplay.push({
-                  dish: dish,
-                  quantity: item.quantity
-                });
-                this.cartDisplay = newDisplay;
-                console.log(this.cartDisplay);
-                this.loading = false;
+                }
               }
             });
           }
         } else {
+          this.cartFlag = true;
           this.loading = false;
         }
       }
     });
+  }
+
+  updateCart(): any {
+    this.subscription.unsubscribe();
+    this.cartFlag = false;
+    this.loading = true;
+    this.subscription = this.cartSubscribe();
   }
 
   ngOnDestroy() {
