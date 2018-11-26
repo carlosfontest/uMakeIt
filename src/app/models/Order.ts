@@ -5,6 +5,7 @@ export interface Order {
     price: number;
     date: string;
     uid: string;
+    id?: string;
     name: string;
     direction: string;
     pending: boolean;
