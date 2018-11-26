@@ -3,85 +3,86 @@
   <app-title-banner [title]="'Cart'"></app-title-banner>
 </div>
 
-<ng-container *ngIf="!loading">
-  <!-- En caso de que hayan items en el carrito -->
-  <ng-container *ngIf="cartDisplay.length !== 0">
-    <div class="container-fluid">
-      <div class="contTable">
-        <div class="mt-2 mb-4">
-          <app-title-banner [title]="'Content'"></app-title-banner>
-        </div>
-        <!-- Tabla de todos los productos -->
-        <div class="table-responsive">
-          <table class="table">
-            <thead class="thead">
+<div class="container-fluid">
+  <div class="contTable" *ngIf="!loading && cartDisplay.length !== 0" >
+    <!-- Tabla de todos los productos -->
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th scope="col" class="text-center"><i class="fas fa-utensils"></i></th>
+            <th scope="col" class="products">PRODUCT</th>
+            <th scope="col">PRICE</th>
+            <th scope="col" class="quantityHeader">QUANTITY</th>
+            <th scope="col" class="totalPri">TOTAL</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- En caso de que hayan items en el carrito -->
+            <ng-container *ngFor="let item of cartDisplay; let i = index">
               <tr>
-                <th scope="col" class="text-center"><i class="fas fa-utensils"></i></th>
-                <th scope="col" class="products">PRODUCT</th>
-                <th scope="col">PRICE</th>
-                <th scope="col" class="quantityHeader">QUANTITY</th>
-                <th scope="col" class="totalPri">TOTAL</th>
-                <th scope="col"></th>
+                <td class="dishThumbnail text-center position-relative">
+
+                  <ng-container *ngIf="!item.dish.sideDishes">
+                    <img [src]="item.dish.thumbnail" alt="">
+                  </ng-container>
+
+                  <ng-container *ngIf="item.dish.sideDishes">
+                    <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
+                    <img [src]="item.dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
+                    <!-- Si es ingrediente doble -->
+                    <ng-container *ngIf="item.sideDishes[0].id == item.sideDishes[1].id">
+                      <img [src]="item.sideDishes[0].thumbnailPlatoDoble" class="dobleSide">
+                      <!-- Foto del Side-Dish doble-->
+                    </ng-container>
+                    <!-- Si NO es ingrediente doble -->
+                    <ng-container *ngIf="item.sideDishes[0].id != item.sideDishes[1].id">
+                      <img [src]="item.sideDishes[0].thumbnailPlatoArriba" class="primerSide">
+                      <!-- Foto del primer Side-Dish -->
+                      <img [src]="item.sideDishes[1].thumbnailPlatoArriba" class="segundoSide">
+                      <!-- Foto del segundo Side-Dish -->
+                    </ng-container>
+                  </ng-container>
+
+                </td>
+                <!-- Si NO tiene side-dishes -->
+                <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
+                <!-- Si tiene sideDishes y es doble -->
+                <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id == item.sideDishes[1].id)">{{
+                  item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x2 ]</span></td>
+                <!-- Si tiene sideDishes y NO es doble -->
+                <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id != item.sideDishes[1].id)">{{
+                  item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x1 - {{
+                    item.sideDishes[1].name }} x1 ]</span></td>
+                <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
+                <td>
+                  <div class="quantity d-flex justify-content-around">
+                    <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i)"></i>
+                    <span class="textQuantity">{{ item.quantity }}</span>
+                    <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i)"></i>
+                  </div>
+                </td>
+                <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
+                <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)"
+                    [class.confirm-danger]="i === clicked"></i></td>
               </tr>
-            </thead>
-            <tbody>
-
-              <ng-container *ngFor="let item of cartDisplay; let i = index">
-                <tr>
-                  <td class="dishThumbnail text-center position-relative">
-
-                    <ng-container *ngIf="!item.dish.sideDishes">
-                      <img [src]="item.dish.thumbnail" alt="">
-                    </ng-container>
-
-                    <ng-container *ngIf="item.dish.sideDishes">
-                      <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
-                      <img [src]="item.dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
-                      <!-- Si es ingrediente doble -->
-                      <ng-container *ngIf="item.sideDishes[0].id == item.sideDishes[1].id">
-                        <img [src]="item.sideDishes[0].thumbnailPlatoDoble" class="dobleSide">
-                        <!-- Foto del Side-Dish doble-->
-                      </ng-container>
-                      <!-- Si NO es ingrediente doble -->
-                      <ng-container *ngIf="item.sideDishes[0].id != item.sideDishes[1].id">
-                        <img [src]="item.sideDishes[0].thumbnailPlatoArriba" class="primerSide">
-                        <!-- Foto del primer Side-Dish -->
-                        <img [src]="item.sideDishes[1].thumbnailPlatoArriba" class="segundoSide">
-                        <!-- Foto del segundo Side-Dish -->
-                      </ng-container>
-                    </ng-container>
-
-                  </td>
-                  <!-- Si NO tiene side-dishes -->
-                  <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
-                  <!-- Si tiene sideDishes y es doble -->
-                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id == item.sideDishes[1].id)">{{
-                    item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x2 ]</span></td>
-                  <!-- Si tiene sideDishes y NO es doble -->
-                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id != item.sideDishes[1].id)">{{
-                    item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x1 - {{
-                      item.sideDishes[1].name }} x1 ]</span></td>
-                  <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
-                  <td>
-                    <div class="quantity d-flex justify-content-around">
-                      <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i)"></i>
-                      <span class="textQuantity">{{ item.quantity }}</span>
-                      <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i)"></i>
-                    </div>
-                  </td>
-                  <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
-                  <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)"
-                      [class.confirm-danger]="i === clicked"></i></td>
-                </tr>
-              </ng-container>
-            </tbody>
-          </table>
-        </div>
-
+            </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <!-- Loading items -->
+    <div class="d-flex justify-content-center" *ngIf="loading">
+      <div class="text-center">
+        <h4 class="display-4">LOADING</h4>
+        <img src="../../../assets/images/loading.gif" class="mb-2">
+      </div>
+    </div>
+    <ng-container *ngIf="!loading">
+      <ng-container *ngIf="cartDisplay.length !== 0">
         <div class="mt-4 mb-4">
-          <app-title-banner [title]="'Totals'"></app-title-banner>
+          <app-title-banner [title]="'Pricing'"></app-title-banner>
         </div>
-
         <!-- Montos totales -->
         <div class="totals up">
           <span class="infoTotals ml-4">SUBTOTAL</span> <span class="mr-4">{{ subtotal | currency:'USD' }}</span>
@@ -96,13 +97,12 @@
         <div class="d-flex justify-content-end">
           <button class="btn btn-medium btn-yellow" href="#" (click)="openBill()">PROCEED TO CHECKOUT<i class="fas fa-file-invoice-dollar ml-3"></i></button>
         </div>
-      </div>
-    </div>
-  </ng-container>
-
+      </ng-container>
+    </ng-container>
+  </div>
   <!-- En caso de que no haya nada en el carrito -->
   <ng-container *ngIf="cartDisplay.length === 0">
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <div class="contTable text-center">
         <img src="../../../assets/images/cartEmpty4.png" alt="">
         <p>Your cart is empty</p>
@@ -110,5 +110,4 @@
       </div>
     </div>
   </ng-container>
-
-</ng-container>
+</div>

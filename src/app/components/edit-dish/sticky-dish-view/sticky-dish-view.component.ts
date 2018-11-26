@@ -42,9 +42,19 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.showReal = false;
     this.uid = this.authService.currentUser.uid;
-
+    this.cartService.deleteCartSubject.subscribe(bool => {
+      if(bool){
+        this.cart = [];
+        this.subscription.unsubscribe();
+        this.subscription = this.getCart();
+      }
+    });
     // Obtenemos el carrito del usuario actuals
-    this.subscription = this.cartService.getCart(this.uid).subscribe(cart => {
+    this.subscription = this.getCart();
+  }
+
+  getCart(){
+    return this.cartService.getCart(this.uid).subscribe(cart => {
       if (!cart) {
         this.cartService.createCart(this.uid, {dishes: []}).then(() => {
           this.cart = [];

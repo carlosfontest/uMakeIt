@@ -34,8 +34,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.typeDishShow = 'Pizzas';
     this.loaded = false;
     this.uid = this.authService.currentUser.uid;
+    this.cartService.deleteCartSubject.subscribe(bool => {
+      if(bool){
+        this.cart = [];
+        this.subscription.unsubscribe();
+        this.subscription = this.subscribe();
+      }
+    });
+    this.subscription = this.subscribe();
+  }
 
-    this.subscription = this.cartService.getCart(this.uid).subscribe(cart => {
+  subscribe(){
+    return this.cartService.getCart(this.uid).subscribe(cart => {
       if (!cart) {
         this.cartService.createCart(this.uid, {dishes: []}).then(() => {
           this.cart = [];
