@@ -29,6 +29,7 @@
 
 <div class="direcciones">
     <ngx-select-dropdown (change)="selectionChanged($event)" [multiple]="false" [(value)]="directionToDeliver" [config]="config" [options]="allDirections"></ngx-select-dropdown>
+    <span class="badge badge-warning" (click)="addDirection()"><i class="fas fa-plus"></i></span>
 </div>
 
 <div class="modal-footer d-flex justify-content-between">

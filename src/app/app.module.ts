@@ -57,6 +57,7 @@ import { UserService } from './services/user.service';
 import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
 import { EditInstructionsModalComponent } from './components/shared/modals/edit-instructions-modal/edit-instructions-modal.component';
+import { AddDirectionModalComponent } from './components/shared/modals/add-direction-modal/add-direction-modal.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { EditInstructionsModalComponent } from './components/shared/modals/edit-
     EditSideDishComponent,
     EditProductComponent,
     BillModalComponent,
-    EditInstructionsModalComponent
+    EditInstructionsModalComponent,
+    AddDirectionModalComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +127,8 @@ import { EditInstructionsModalComponent } from './components/shared/modals/edit-
   entryComponents: [
     RecoverPasswordModalComponent,
     BillModalComponent,
-    EditInstructionsModalComponent
+    EditInstructionsModalComponent,
+    AddDirectionModalComponent
   ]
 })
 export class AppModule { }

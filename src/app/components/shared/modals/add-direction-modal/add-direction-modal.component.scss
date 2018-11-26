@@ -1,0 +1,116 @@
+.modal-body, .modal-header, .modal-footer {
+  background: #aaa48a;
+  border: none;
+}
+
+.modal-header {
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+
+.modal-body {
+  color: rgb(182, 173, 143);
+  padding: 26px 0px;
+  text-align: justify;
+}
+
+.modal-title {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  color: rgb(104, 98, 79);
+  text-shadow: 2px 2px 2px #000000;
+}
+
+.form-control {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  border-radius: 5px; 
+  border-color: rgb(47, 45, 38);
+  text-align: center;
+  background: rgb(47, 45, 38); 
+  color: rgb(233, 223, 183);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  height: 55px;
+  width: 75%;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgb(184, 183, 179);
+  border-bottom: 1px solid rgb(184, 183, 179);
+  margin: 0px;
+}
+
+.divHR {
+  background: #ece5c6;
+}
+
+
+
+
+// Estilos de los botones
+.btn {
+  display: inline-block;
+  outline: none;
+  *zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  border-width: 1.5px;
+  margin-bottom: 14px; 
+}
+
+.btn-medium {
+  font-size: 1.3em;
+  padding: 12px 70px;
+}
+
+.btn-gray {
+  color: rgb(51, 49, 44);
+  border-color: rgb(51, 49, 44);
+  background: transparent;
+}
+
+.btn-gray:hover:enabled {
+  background: rgb(51, 49, 44);
+  color: rgb(233, 223, 183);
+  border-color: rgb(51, 49, 44);
+}
+
+.btn-yellow {
+	color: rgb(241, 200, 49);
+  border-color: rgb(241, 200, 49);
+  background: transparent;
+}
+
+.btn-yellow:hover {
+    background: rgb(241, 200, 49);
+    color: #cec9b4;
+    border-color: rgb(241, 200, 49);
+}
+
+.btn-sm {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.md2 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.md1 {
+  padding-left: 30px;
+  padding-right: 30px;
+}

@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title mx-auto">Add Direction</h4>
+</div>
+
+<div class="divHR">
+  <hr>
+</div>
+
+<div class="modal-body">
+  <input type="text" class="form-control mx-auto mb-4" placeholder="Enter one direction" [(ngModel)]="direction">
+  
+  <div class="d-flex justify-content-around">
+    <button type="button" class="btn btn-sm btn-gray md1" (click)="bsModalRef.hide()">Close</button>
+    <button type="button" class="btn btn-md btn-yellow md2" (click)="addDirection()">Add</button>
+  </div>
+</div>

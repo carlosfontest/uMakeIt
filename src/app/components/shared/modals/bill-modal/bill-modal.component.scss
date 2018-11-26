@@ -87,11 +87,31 @@ hr {
 }
 
 .direcciones {
+  display: flex;
+  justify-content: space-between;
   background: #ece5c6;
   padding-left: 16px;
   padding-right: 16px;
 }
 
+ngx-select-dropdown {
+  width: 90%;
+}
+
+.badge {
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  transition: .3s;
+}
+
+.badge:hover {
+  background: rgb(138, 113, 23);
+  color: rgb(218, 214, 198);
+}
 
 
 // Estilos de los botones

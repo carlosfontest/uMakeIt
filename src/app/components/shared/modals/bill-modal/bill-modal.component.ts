@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { OrderDish } from 'src/app/models/OrderDish';
 import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-paypal';
 import { SnotifyService } from 'ng-snotify';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AddDirectionModalComponent } from '../add-direction-modal/add-direction-modal.component';
 
 @Component({
   selector: 'app-bill-modal',
@@ -24,7 +25,8 @@ export class BillModalComponent implements OnInit {
     private snotifyService: SnotifyService,
     private router: Router,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -40,8 +42,11 @@ export class BillModalComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       for (const user of users) {
         if (user.email === this.authService.currentUser.email) {
-          this.allDirections = user.directions;
-          console.log(this.allDirections);
+          if (user.directions) {
+            this.allDirections = user.directions;
+          } else {
+            this.allDirections = [];
+          }
         }
       }
     });
@@ -132,5 +137,12 @@ export class BillModalComponent implements OnInit {
 
   }
 
+  addDirection() {
+    const initialState = {
+      cart: this.cart
+    };
+    this.modalService.show(AddDirectionModalComponent, {initialState}); 
+    this.bsModalRef.hide();
+  }
 
 }

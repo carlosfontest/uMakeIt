@@ -68,4 +68,9 @@ export class UserService {
         });
     });
   }
+
+  updateUser(user: User) {
+    this.userDoc = this.afs.doc<User>(`users/${user.uid}`);
+    this.userDoc.update(user);
+  }
 }
