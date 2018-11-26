@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
 import { BillModalComponent } from '../bill-modal/bill-modal.component';
 import { OrderDish } from 'src/app/models/OrderDish';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-add-direction-modal',
@@ -20,6 +21,7 @@ export class AddDirectionModalComponent implements OnInit {
     public bsModalRef: BsModalRef,
     private userService: UserService,
     private authService: AuthService,
+    private snotifyService: SnotifyService,
     private modalService: BsModalService
   ) { }
 
@@ -30,7 +32,8 @@ export class AddDirectionModalComponent implements OnInit {
   }
 
   addDirection() {
-    if (this.direction !== '') {
+    if (this.direction !== undefined) {
+      console.log(this.direction);
       const newUser = {
         firstName: '',
         lastName: '',
@@ -58,6 +61,13 @@ export class AddDirectionModalComponent implements OnInit {
           this.userService.updateUser(newUser);
 
           // Abrimos el modal del Bill
+          this.snotifyService.success(`The address was successfully added`, 'New Address', {
+            timeout: 3000,
+            showProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            position: 'leftBottom'
+          });
           const initialState = {
             cart: this.cart
           };
@@ -67,6 +77,14 @@ export class AddDirectionModalComponent implements OnInit {
 
       }
     }
+  }
+
+  close() {
+    const initialState = {
+      cart: this.cart
+    };
+    this.modalService.show(BillModalComponent, {initialState});
+    this.bsModalRef.hide();
   }
 
 }
