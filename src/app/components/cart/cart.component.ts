@@ -69,6 +69,7 @@ export class CartComponent implements OnInit, OnDestroy {
                       quantity: item.quantity
                     });
                     this.cartDisplay = newDisplay;
+                    console.log(this.cartDisplay);
                     this.loading = false;
                   } else {
                     this.sds.getSideDishById(item.sideDishes[1]).subscribe(sideDish2 => {
@@ -78,6 +79,7 @@ export class CartComponent implements OnInit, OnDestroy {
                         quantity: item.quantity
                       });
                       this.cartDisplay = newDisplay;
+                      console.log(this.cartDisplay);
                       this.loading = false;
                     });
                   }
@@ -88,6 +90,7 @@ export class CartComponent implements OnInit, OnDestroy {
                   quantity: item.quantity
                 });
                 this.cartDisplay = newDisplay;
+                console.log(this.cartDisplay);
                 this.loading = false;
               }
             });

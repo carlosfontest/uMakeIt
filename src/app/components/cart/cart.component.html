@@ -38,12 +38,12 @@
                       <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
                       <img [src]="item.dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
                       <!-- Si es ingrediente doble -->
-                      <ng-container *ngIf="item.dish.sideDishes[0] == item.dish.sideDishes[1]">
+                      <ng-container *ngIf="item.dish.sideDishes[0].id == item.dish.sideDishes[1].id">
                         <img [src]="item.sideDishes[0].thumbnailPlatoDoble" class="dobleSide">
                         <!-- Foto del Side-Dish doble-->
                       </ng-container>
                       <!-- Si NO es ingrediente doble -->
-                      <ng-container *ngIf="item.dish.sideDishes[0] != item.dish.sideDishes[1]">
+                      <ng-container *ngIf="item.dish.sideDishes[0].id != item.dish.sideDishes[1].id">
                         <img [src]="item.sideDishes[0].thumbnailPlatoArriba" class="primerSide">
                         <!-- Foto del primer Side-Dish -->
                         <img [src]="item.sideDishes[1].thumbnailPlatoArriba" class="segundoSide">
@@ -55,10 +55,10 @@
                   <!-- Si NO tiene side-dishes -->
                   <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
                   <!-- Si tiene sideDishes y es doble -->
-                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] == item.dish.sideDishes[1])">{{
+                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0].id == item.dish.sideDishes[1].id)">{{
                     item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x2 ]</span></td>
                   <!-- Si tiene sideDishes y NO es doble -->
-                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0] != item.dish.sideDishes[1])">{{
+                  <td class="dishName" *ngIf="item.dish.sideDishes && (item.dish.sideDishes[0].id != item.dish.sideDishes[1].id)">{{
                     item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x1 - {{
                       item.sideDishes[1].name }} x1 ]</span></td>
                   <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
