@@ -26,6 +26,7 @@ export class BillModalComponent implements OnInit  {
   config: Object;
   addScript = false;
   user: User;
+  orderName: string;
 
   
 
@@ -40,6 +41,7 @@ export class BillModalComponent implements OnInit  {
   ) { }
 
   ngOnInit() {
+    this.orderName = '';
     
     this.directionToDeliver = [];
     
@@ -154,8 +156,25 @@ export class BillModalComponent implements OnInit  {
   afterPurchase() {
     // Borrar el carrito
     this.cartService.deleteCart(this.user.uid);
-    // TODO
     // Enviar la orden
+    
+  }
+
+  // Método Auxiliar
+  completeOrder() {
+    // El pago se hizo efectivo
+    this.bsModalRef.hide();
+    this.snotifyService.success(`The payment for $${this.precioTotal} was successfully completed. Your order will come to you soon!`, 'Payment', {
+      timeout: 4000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      position: 'leftBottom'
+    });
+    this.router.navigate(['']);
+    
+    // Generamos la orden
+    this.afterPurchase();
   }
 
 }

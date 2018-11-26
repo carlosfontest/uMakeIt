@@ -39,16 +39,20 @@
 </div> -->
 
 <div class="deliveryDiv">
-    <span class="delivery">Select the address for delivery</span>
+    <span class="delivery">Select the address for delivery and the order name</span>
 </div>
 <div class="direcciones">
     <ngx-select-dropdown [multiple]="false" [(value)]="directionToDeliver" [config]="config" [options]="allDirections"></ngx-select-dropdown>
     <span class="badge badge-warning" (click)="addDirection()" popover="New Address" triggers="mouseenter:mouseleave" placement="left"><i class="fas fa-plus"></i></span>
+    <span *ngIf="directionToDeliver?.length !== 0 && orderName.length <= 25 && orderName.length >= 1" class="badge badge-danger aux" (click)="completeOrder()" popover="AUX Complete Order" triggers="mouseenter:mouseleave" placement="left"><i class="fas fa-file-invoice"></i></span>
+</div>
+<div class="divName">
+  <input type="text" class="form-control mx-auto mb-4" placeholder="Name of the order (25 characters MAX)" [(ngModel)]="orderName">
 </div>
 
 <div class="modal-footer d-flex justify-content-between">
   <button type="button" class="btn btn-sm btn-gray mt-3" (click)="bsModalRef.hide()">Close</button>
-  <ng-container *ngIf="directionToDeliver?.length !== 0">
+  <ng-container *ngIf="directionToDeliver?.length !== 0 && orderName.length <= 25 && orderName.length >= 1">
     <ngx-paypal class="mt-3" [config]="payPalConfig"></ngx-paypal>
   </ng-container>
 </div>
