@@ -141,7 +141,6 @@ export class StickyDishViewComponent implements OnInit, OnDestroy {
         pauseOnHover: true,
         position: 'leftBottom'
       });
-      this.router.navigate(['/']);
     }
   }
 
