@@ -99,18 +99,28 @@ ngx-select-dropdown {
 }
 
 .badge {
-  font-size: 16px;
+  font-size: 22px;
   cursor: pointer;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-top: 6px;
-  padding-bottom: 6px;
   transition: .3s;
 }
 
 .badge:hover {
   background: rgb(138, 113, 23);
-  color: rgb(218, 214, 198);
+  color: rgb(255, 255, 255);
+}
+
+.delivery {
+  background: #ece5c6;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 21px;
+  color: #363333;
+  text-shadow: .3px .3px .3px #000000;
+}
+
+.deliveryDiv {
+  background: #ece5c6;
+  padding-left: 30px; 
+  padding-bottom: 2px; 
 }
 
 

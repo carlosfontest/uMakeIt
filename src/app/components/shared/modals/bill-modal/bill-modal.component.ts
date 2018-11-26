@@ -94,18 +94,18 @@ export class BillModalComponent implements OnInit {
           });
           this.router.navigate(['']);
           // Borrar el carrito
-
+          // TODO
           // Enviar la orden
 
         },
         onCancel: (data, actions) => {
-          console.log('OnCancel');
+          // console.log('OnCancel');
         },
         onError: err => {
           console.log(err.message);
         },
         onClick: () => {
-          console.log('onClick');
+          // console.log('onClick');
         },
         validate: (actions) => {
           if (this.directionToDeliver.length === 0) {

@@ -27,9 +27,12 @@
   <hr>
 </div> -->
 
+<div class="deliveryDiv">
+    <span class="delivery">Select the address for delivery</span>
+</div>
 <div class="direcciones">
     <ngx-select-dropdown [multiple]="false" [(value)]="directionToDeliver" [config]="config" [options]="allDirections"></ngx-select-dropdown>
-    <span class="badge badge-warning" (click)="addDirection()"><i class="fas fa-plus"></i></span>
+    <span class="badge badge-warning" (click)="addDirection()" popover="New Address" triggers="mouseenter:mouseleave" placement="left"><i class="fas fa-plus"></i></span>
 </div>
 
 <div class="modal-footer d-flex justify-content-between">
