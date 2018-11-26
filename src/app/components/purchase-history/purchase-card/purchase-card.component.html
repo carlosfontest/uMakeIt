@@ -2,7 +2,7 @@
   <div class="divCard">
     <!-- Nombre de la orden -->
     <div class="purchaseName d-flex justify-content-between align-items-center" *ngIf="!editState">
-      <span class="name">{{ purchase.name }}</span>
+      <span class="name">{{ order.name }}</span>
       <i popover="Edit name" triggers="mouseenter:mouseleave" placement="top" class="far fa-edit" (click)="editName()"></i>
     </div>
     <!-- Editar nombre de la orden -->
@@ -20,7 +20,7 @@
           <button class="btn btn-medium btn-yellow" popover="Edit & re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-pencil-alt"></i></button>
           <button class="btn btn-medium btn-yellow sec" popover="Re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-redo-alt"></i></button>
         </div>
-        <span class="precio">{{ purchase.totalPrice | currency:'USD' }}</span>
+        <span class="precio">{{ order.price | currency:'USD' }}</span>
       </div>
 
     </div>

@@ -4,10 +4,10 @@
 
 <div class="container">
   <!-- Todas las compras del usuario -->
-  <ng-container *ngFor="let purchase of purchases">
+  <ng-container *ngFor="let order of userOrders">
     <div class="row">
         <div class="col-sm-12">
-            <app-purchase-card [purchase]="purchase"></app-purchase-card>
+            <app-purchase-card [order]="order"></app-purchase-card>
         </div>
     </div>
   </ng-container>

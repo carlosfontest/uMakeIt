@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Purchase } from 'src/app/models/Purchase';
 import { SnotifyService } from 'ng-snotify';
+import { Order } from 'src/app/models/Order';
 
 @Component({
   selector: 'app-purchase-card',
@@ -8,7 +8,7 @@ import { SnotifyService } from 'ng-snotify';
   styleUrls: ['./purchase-card.component.scss']
 })
 export class PurchaseCardComponent implements OnInit {
-  @Input() purchase: Purchase;
+  @Input() order: Order;
   editState: boolean;
   nameAux: string;
 
@@ -23,13 +23,13 @@ export class PurchaseCardComponent implements OnInit {
   editName() {
     this.editState = !this.editState;
     // Guardamos el nombre actual
-    this.nameAux = this.purchase.name;
+    this.nameAux = this.order.name;
   }
 
   saveName() {
     this.editState = !this.editState; 
 
-    if (this.purchase.name !== this.nameAux) {
+    if (this.order.name !== this.nameAux) {
       this.snotifyService.success('The name of the purchase has changed successfully', 'Purchases', {
         timeout: 2500,
         showProgressBar: true,

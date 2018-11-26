@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Purchase } from 'src/app/models/Purchase';
+import { Order } from 'src/app/models/Order';
 
 @Component({
   selector: 'app-purchase-history',
@@ -7,25 +7,14 @@ import { Purchase } from 'src/app/models/Purchase';
   styleUrls: ['./purchase-history.component.scss']
 })
 export class PurchaseHistoryComponent implements OnInit {
-  purchases: Purchase[] = [];
+  allOrders: Order[];
+  userOrders: Order[];
 
   constructor() { }
 
   ngOnInit() {
-    this.purchases = [
-      {
-        name: 'Office for five employees',
-        totalPrice: 62
-      },
-      {
-        name: 'Office for three employees',
-        totalPrice: 35
-      },
-      {
-        name: 'Dinner for the family',
-        totalPrice: 102
-      },
-    ];
+    // Obtengo todas las ordenes para luego filtrar las que son del user
+    this.allOrders = [];
   }
 
 }
