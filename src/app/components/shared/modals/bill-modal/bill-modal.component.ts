@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AddDirectionModalComponent } from '../add-direction-modal/add-direction-modal.component';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-bill-modal',
@@ -36,8 +37,7 @@ export class BillModalComponent implements OnInit {
       displayKey: 'descripción',
       search: true
     };
-    // Iniciamos PayPal
-    this.initConfig();
+    
     // Obtenemos todas las direcciones de envío
     this.userService.getUsers().subscribe(users => {
       for (const user of users) {
@@ -47,6 +47,8 @@ export class BillModalComponent implements OnInit {
           } else {
             this.allDirections = [];
           }
+          // Iniciamos PayPal
+          this.initConfig();
         }
       }
     });
@@ -76,6 +78,10 @@ export class BillModalComponent implements OnInit {
           shape: 'rect',
           color:  'blue'
         },
+        onAuthorize: (data, actions) => {
+          console.log('Authorize');
+          return of(undefined);
+        },
         onPaymentComplete: (data, actions) => {
           // El pago se hizo efectivo
           this.bsModalRef.hide();
@@ -93,13 +99,13 @@ export class BillModalComponent implements OnInit {
 
         },
         onCancel: (data, actions) => {
-          // console.log('OnCancel');
+          console.log('OnCancel');
         },
         onError: err => {
-          // console.log('OnError');
+          console.log(err.message);
         },
         onClick: () => {
-          // onsole.log('onClick');
+          console.log('onClick');
         },
         validate: (actions) => {
           if (this.directionToDeliver.length === 0) {
@@ -116,19 +122,7 @@ export class BillModalComponent implements OnInit {
             amount: {
               total: this.precioTotal,
               currency: 'USD'
-            },
-            item_list: {
-              shipping_address: {
-                recipient_name: 'Brian Robinson',
-                line1: '4th Floor',
-                line2: 'Unit #34',
-                city: 'San Jose',
-                country_code: 'US',
-                postal_code: '95131',
-                phone: '011862212345678',
-                state: 'CA'
-              },
-            },
+            }
           }
         ],
         note_to_payer: 'Contact us if you have troubles processing payment'
