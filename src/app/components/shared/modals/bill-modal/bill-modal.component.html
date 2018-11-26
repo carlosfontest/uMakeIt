@@ -13,8 +13,19 @@
       </div>
       <ng-container *ngFor="let dish of cart; let i = index">
         <div class="producto" [ngClass]="{noBorder: i + 1 == cart?.length}">
+          <!-- Si NO tiene sideDishes -->
+          <ng-container *ngIf="!dish.sideDishes">
             <span>{{ dish.dish.name }} <span class="quantity">x{{ dish.quantity }}</span></span>
-            <span class="price">{{ dish.dish.price * dish.quantity | currency : "USD" }}</span>
+          </ng-container>
+          <!-- Si tiene sideDishes diferentes -->
+          <ng-container *ngIf="dish.sideDishes && dish.sideDishes[0]?.id != dish.sideDishes[1]?.id">
+            <span>{{ dish.dish.name }} <span class="sideDishes">[{{ dish.sideDishes[0].name }}x1 {{ dish.sideDishes[1].name }}x1]</span> <span class="quantity"> x{{ dish.quantity }}</span></span>
+          </ng-container>
+          <!-- Si tiene sideDishes iguales -->
+          <ng-container *ngIf="dish.sideDishes && dish.sideDishes[0]?.id == dish.sideDishes[1]?.id">
+            <span>{{ dish.dish.name }} <span class="sideDishes">[{{ dish.sideDishes[0].name }}x2]</span> <span class="quantity"> x{{ dish.quantity }}</span></span>
+          </ng-container>
+          <span class="price">{{ dish.dish.price * dish.quantity | currency : "USD" }}</span>
         </div>
       </ng-container>
       <div class="titulo totales">
@@ -36,8 +47,8 @@
 </div>
 
 <div class="modal-footer d-flex justify-content-between">
-  <button type="button" class="btn btn-sm btn-gray" (click)="bsModalRef.hide()">Close</button>
+  <button type="button" class="btn btn-sm btn-gray mt-3" (click)="bsModalRef.hide()">Close</button>
   <ng-container *ngIf="directionToDeliver?.length !== 0">
-    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    <ngx-paypal class="mt-3" [config]="payPalConfig"></ngx-paypal>
   </ng-container>
 </div>
