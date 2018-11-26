@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { OrderDish } from 'src/app/models/OrderDish';
 import { PayPalConfig, PayPalEnvironment, PayPalIntegrationType } from 'ngx-paypal';
@@ -9,17 +9,22 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AddDirectionModalComponent } from '../add-direction-modal/add-direction-modal.component';
 import { of } from 'rxjs';
 
+declare let paypal: any;
+
 @Component({
   selector: 'app-bill-modal',
   templateUrl: './bill-modal.component.html',
   styleUrls: ['./bill-modal.component.scss']
 })
-export class BillModalComponent implements OnInit {
+export class BillModalComponent implements OnInit  {
   cart: OrderDish[];
   payPalConfig?: PayPalConfig;
   allDirections: string[];
   directionToDeliver: string[];
   config: Object;
+  addScript = false;
+
+  
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -31,8 +36,9 @@ export class BillModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
     this.directionToDeliver = [];
-
+    
     this.config = {
       displayKey: 'descripción',
       search: true
@@ -47,7 +53,6 @@ export class BillModalComponent implements OnInit {
           } else {
             this.allDirections = [];
           }
-          // Iniciamos PayPal
           this.initConfig();
         }
       }
@@ -59,7 +64,8 @@ export class BillModalComponent implements OnInit {
     for (let i = 0; i < this.cart.length; i++) {
       price += this.cart[i].dish.price * this.cart[i].quantity;
     }
-    return price;
+    const priceAux = parseFloat(price.toString()).toFixed(2);
+    return priceAux;
   }
 
   private initConfig(): void {
@@ -69,7 +75,7 @@ export class BillModalComponent implements OnInit {
       {
         commit: true,
         client: {
-          sandbox: 'ARxvFavAbTRBjgG4gJ7FfUi4QD7XHCMfHtn_G7RFDD5c1Te5McsyATHU4yJW8rtKPYmcIU-oP8FNNYtx'
+          sandbox: 'Ae1mb0B48UmyFUcXAKABq0-fRx5CSm08VmrPOljawWs-FGG9GN3FXfvbwvZrEX2OebeffRRxIB-pK2Dc'
         },
         button: {
           label: 'paypal',
@@ -120,7 +126,7 @@ export class BillModalComponent implements OnInit {
         transactions: [
           {
             amount: {
-              total: this.precioTotal,
+              total: parseFloat(this.precioTotal),
               currency: 'USD'
             }
           }

@@ -190,7 +190,8 @@ export class CartComponent implements OnInit, OnDestroy {
 
   openBill() {
     const initialState = {
-      cart: this.cartDisplay
+      cart: this.cartDisplay,
+      price: this.price
     };
     this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
   }
