@@ -26,6 +26,6 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="es.isSelected === 'sideDish'">
+<ng-container *ngIf="isSelected === 'sideDish'">
   <app-add-side-dish [sideDish]="selectedSideDish" (destroyEvent)="reset()"></app-add-side-dish>
 </ng-container>

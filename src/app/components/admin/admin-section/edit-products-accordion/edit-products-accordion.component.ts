@@ -28,4 +28,8 @@ export class EditProductsAccordionComponent implements OnInit, OnDestroy {
   resetEdit(){
     this.es.setSelected(null);
   }
+
+  get isSelected(){
+    return this.es.isSelected;
+  }
 }

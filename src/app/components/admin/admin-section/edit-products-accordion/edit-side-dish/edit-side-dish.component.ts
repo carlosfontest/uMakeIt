@@ -33,4 +33,8 @@ export class EditSideDishComponent implements OnInit {
     this.selectedSideDish = null;
   }
 
+  get isSelected(){
+    return this.es.isSelected;
+  }
+
 }

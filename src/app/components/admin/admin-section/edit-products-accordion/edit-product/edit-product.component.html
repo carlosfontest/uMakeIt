@@ -51,7 +51,7 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="es.isSelected === 'dish'">
+<ng-container *ngIf="isSelected === 'dish'">
     <ng-container *ngIf="editable">
         <app-add-editable-product [dish]="selectedDish" (destroyEvent)="selectedDish = null" ></app-add-editable-product>
     </ng-container>

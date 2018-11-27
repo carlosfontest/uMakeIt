@@ -67,4 +67,8 @@ export class EditProductComponent implements OnInit {
     this.es.setSelected('dish');
   }
 
+  get isSelected(){
+    return this.es.isSelected;
+  }
+
 }
