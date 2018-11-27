@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StorageService } from './../../../services/storage.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { StorageService } from './../../../services/storage.service';
   styleUrls: ['./admin-section.component.scss']
 })
 export class AdminSectionComponent implements OnInit {
+  @Input() pendingOrders: any;
   newOpen: boolean;
   editOpen: boolean;
   pendingOpen: boolean;

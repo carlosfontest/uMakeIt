@@ -1,14 +1,14 @@
-<div class="container-fluid">
-  <ng-container *ngFor="let order of ordersPending">
-    <div class="row">
+<div class="container-fluid" *ngIf="!isLoading">
+  <ng-container *ngFor="let order of pendingOrders; let i = index">
+    <div class="row" [ngClass]="(i !== pendingOrders.length-1)? 'border' : '' ">
       <div class="col-8">
-        <span class="userName">Nombre Apellido</span>
+        <span class="userName"> {{ names[i] }} </span>
       </div>
       <div class="col-2">
-        <span class="botonOrder"><i class="fas fa-utensils"></i></span>
+        <span class="botonOrder" (click)="mostrarOrdenModal(orden)" ><i class="fas fa-utensils"></i></span>
       </div>
       <div class="col-2">
-        <span class="botonDelivered"><i class="fas fa-check-double"></i></span>
+        <span class="botonDelivered" (click)="deliverOrden(order)" ><i class="fas fa-check-double"></i></span>
       </div>
     </div>
   </ng-container>

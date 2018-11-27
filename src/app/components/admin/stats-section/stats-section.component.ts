@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { OrderService } from 'src/app/services/order.service';
+import { Order } from 'src/app/models/Order';
 
 @Component({
   selector: 'app-stats-section',
@@ -8,6 +9,7 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./stats-section.component.scss']
 })
 export class StatsSectionComponent implements OnInit {
+  @Output() newPending: EventEmitter<Order[]> = new EventEmitter;
   userCount: number;
   totalSales: number;
   ordersDone: number;
@@ -35,7 +37,13 @@ export class StatsSectionComponent implements OnInit {
       }
       this.totalSales = totalPrice;
       this.ordersDone = doneOrders;
-      this.pendingOrders = orders.length - this.ordersDone;
+
+      const pendingOrders = orders.filter(order => !order.delivered);
+
+      this.newPending.emit(pendingOrders);
+
+      this.pendingOrders = pendingOrders.length;
+
     }); 
 
   }

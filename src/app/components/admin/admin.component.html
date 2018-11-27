@@ -1,16 +1,13 @@
-<div *ngIf="!isLoading">
-    <div class="titleBanner">
-        <app-title-banner [title]="'Admin Menu'"></app-title-banner>
-    </div>   
+<div class="titleBanner">
+    <app-title-banner [title]="'Admin Menu'"></app-title-banner>
+</div>
 
-    <!-- Info de importancia para el admin -->
-    <div class="container-fluid">
-        <app-stats-section></app-stats-section>
-    </div>
+<!-- Info de importancia para el admin -->
+<div class="container-fluid">
+    <app-stats-section (newPending)="updatePending($event)"></app-stats-section>
+</div>
 
-    <!-- Todas las opciones del administrador -->
-    <div class="container">
-        <app-admin-section></app-admin-section>
-    </div>
-
+<!-- Todas las opciones del administrador -->
+<div class="container" *ngIf="!isLoading">
+    <app-admin-section [pendingOrders]="pendingOrders"></app-admin-section>
 </div>

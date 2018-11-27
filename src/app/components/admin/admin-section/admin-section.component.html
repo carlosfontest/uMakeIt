@@ -35,10 +35,11 @@
     <!-- Opciones para verificar y manejar órdenes pendientes -->
     <accordion-group (isOpenChange)="pendingOpen = !pendingOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
-            <p class="titleAccordion">PENDING <span class="bold">ORDERS</span> <span class="badge badge-secondary">8</span></p>
+            <p class="titleAccordion">PENDING <span class="bold">ORDERS</span> <span class="badge badge-secondary">{{
+                    pendingOrders.length }}</span></p>
             <span *ngIf="!pendingOpen"><i class="fas fa-chevron-down"></i></span>
             <span *ngIf="pendingOpen"><i class="fas fa-chevron-up"></i></span>
         </div>
-        <app-pending-orders-accordion></app-pending-orders-accordion>
+        <app-pending-orders-accordion [pendingOrders]="pendingOrders"></app-pending-orders-accordion>
     </accordion-group>
 </accordion>
