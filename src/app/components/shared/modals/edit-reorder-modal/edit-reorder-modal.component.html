@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Edit and Re-order</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <ng-template #itemTemplate let-item="item" let-index="index"><span>{{index}}: {{item.value}}</span></ng-template>
+
+
+
+
+</div>
+
+<div class="modal-footer text-center">
+  <div class="d-flex justify-content-between w-100">
+    <button type="button" class="btn btn-medium btn-gray" (click)="bsModalRef.hide()">Close</button>
+    <button type="button" class="btn btn-medium btn-yellow" (click)="proceed()">PROCEED TO CHECKOUT<i class="fas fa-file-invoice-dollar ml-3"></i></button>
+  </div>
+</div>

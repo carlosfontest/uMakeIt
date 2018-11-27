@@ -61,6 +61,7 @@ import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
 import { OrderService } from './services/order.service';
 import { MomentDatesService } from './services/moment-dates.service';
+import { EditReorderModalComponent } from './components/shared/modals/edit-reorder-modal/edit-reorder-modal.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     BillModalComponent,
     EditInstructionsModalComponent,
     AddDirectionModalComponent,
-    DisableProductsAccordionComponent
+    DisableProductsAccordionComponent,
+    EditReorderModalComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +136,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     RecoverPasswordModalComponent,
     BillModalComponent,
     EditInstructionsModalComponent,
-    AddDirectionModalComponent
+    AddDirectionModalComponent,
+    EditReorderModalComponent
   ]
 })
 export class AppModule { }

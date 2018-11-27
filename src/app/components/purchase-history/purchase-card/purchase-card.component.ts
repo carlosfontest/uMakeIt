@@ -5,6 +5,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { take } from 'rxjs/operators';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { BillModalComponent } from '../../shared/modals/bill-modal/bill-modal.component';
+import { EditReorderModalComponent } from '../../shared/modals/edit-reorder-modal/edit-reorder-modal.component';
 
 @Component({
   selector: 'app-purchase-card',
@@ -72,6 +73,13 @@ export class PurchaseCardComponent implements OnInit {
       price: this.order.price
     };
     this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
+  }
+
+  editAndReorder() {
+    const initialState = {
+      cart: this.order.dishes
+    };
+    this.bsModalRef = this.modalService.show(EditReorderModalComponent, { initialState });
   }
 
 }
