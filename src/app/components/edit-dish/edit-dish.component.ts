@@ -54,10 +54,8 @@ export class EditDishComponent implements OnInit {
       } else {
         this.router.navigate(['**']);
       }
-
-      this.abrirModalInstrucciones();
-
     });
+    this.abrirModalInstrucciones();
   }
 
   onChangeCant(n: any) {
