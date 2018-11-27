@@ -11,7 +11,7 @@
         <div class="conjunto" (click)="selectDish(dish)">
 
           <ng-container *ngIf="!dish.sideDishes">
-            <div class="fotoPlace">
+            <div class="fotoPlace" [ngClass]="dish.disabled? 'disabledDish' : ''">
               <img class="fotoPlato" [src]="dish.thumbnail" alt="">
             </div>
           </ng-container>

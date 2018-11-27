@@ -19,15 +19,15 @@
 <div class="container">
   <div class="divMenu">
     <!-- Si no se han cargado los platos -->
-    <div *ngIf="!loaded" class="text-center"> 
+    <div *ngIf="!loaded" class="text-center">
       <h4 class="display-4">LOADING</h4>
       <img src="../../../assets/images/loading.gif" class="mb-2">
     </div>
     <!-- Platos del menú -->
     <div class="row text-center">
       <ng-container *ngFor="let dish of showingDishes">
-        <div class="col-lg-6 col-md-6 col-sm-12">
-          <app-dish-card [dish]="dish" (cartEvent)="addDishToCart($event)" ></app-dish-card>
+        <div class="col-lg-6 col-md-6 col-sm-12" *ngIf="!dish.disabled">
+          <app-dish-card [dish]="dish" (cartEvent)="addDishToCart($event)"></app-dish-card>
         </div>
       </ng-container>
       <div *ngIf="loaded && !showingDishes[0]" class="w-100 noDish">
