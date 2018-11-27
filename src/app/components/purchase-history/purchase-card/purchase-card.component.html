@@ -16,7 +16,7 @@
     <div class="container">
       <div class="bloque">
         <div class="botones">
-          <button class="btn btn-medium btn-yellow" popover="Edit & re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-pencil-alt"></i></button>
+          <button class="btn btn-medium btn-yellow" (click)="editAndReorder()" popover="Edit & re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-pencil-alt"></i></button>
           <button class="btn btn-medium btn-yellow sec" (click)="reorder()" popover="Re-order" triggers="mouseenter:mouseleave" placement="bottom"><i class="fas fa-redo-alt"></i></button>
         </div>
         <span class="precio">{{ order.price | currency:'USD' }}</span>

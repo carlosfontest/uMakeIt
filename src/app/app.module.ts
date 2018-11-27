@@ -10,6 +10,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
+import { SortableModule } from 'ngx-bootstrap/sortable';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -52,6 +53,7 @@ import { BillModalComponent } from './components/shared/modals/bill-modal/bill-m
 import { EditInstructionsModalComponent } from './components/shared/modals/edit-instructions-modal/edit-instructions-modal.component';
 import { AddDirectionModalComponent } from './components/shared/modals/add-direction-modal/add-direction-modal.component';
 import { DisableProductsAccordionComponent } from './components/admin/admin-section/disable-products-accordion/disable-products-accordion.component';
+import { EditReorderModalComponent } from './components/shared/modals/edit-reorder-modal/edit-reorder-modal.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -98,7 +100,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     BillModalComponent,
     EditInstructionsModalComponent,
     AddDirectionModalComponent,
-    DisableProductsAccordionComponent
+    DisableProductsAccordionComponent,
+    EditReorderModalComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +119,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     SnotifyModule,
     BrowserAnimationsModule,
     NgxPayPalModule,
-    SelectDropDownModule
+    SelectDropDownModule,
+    SortableModule.forRoot()
   ],
   providers: [
     AuthService,
@@ -134,7 +138,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     RecoverPasswordModalComponent,
     BillModalComponent,
     EditInstructionsModalComponent,
-    AddDirectionModalComponent
+    AddDirectionModalComponent,
+    EditReorderModalComponent
   ]
 })
 export class AppModule { }

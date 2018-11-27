@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Edit and Re-order</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3">
+      <bs-sortable
+        [(ngModel)]="dishesInOldCart"
+        fieldName="dish.name"
+        itemClass="sortable-item"
+        itemActiveClass="sortable-item-active"
+        placeholderItem="Drag here"
+        placeholderClass="sortable-item"
+        wrapperClass="sortable-wrapper"
+      ></bs-sortable>
+    </div>
+    <div class="col-xs-6 col-6 col-md-5 col-lg-3">
+      <bs-sortable
+        [(ngModel)]="dishesInNewCart"
+        fieldName="dish.name"
+        itemClass="sortable-item"
+        itemActiveClass="sortable-item-active"
+        placeholderItem="Drag here"
+        placeholderClass="sortable-item"
+        wrapperClass="sortable-wrapper"
+      ></bs-sortable>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer text-center">
+  <div class="d-flex justify-content-between w-100">
+    <button type="button" class="btn btn-medium btn-gray" (click)="bsModalRef.hide()">Close</button>
+    <button type="button" class="btn btn-medium btn-yellow" (click)="proceed()">PROCEED TO CHECKOUT<i class="fas fa-file-invoice-dollar ml-3"></i></button>
+  </div>
+</div>
