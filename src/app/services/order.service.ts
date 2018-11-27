@@ -8,18 +8,18 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class OrderService {
-  purchasesCollection: AngularFirestoreCollection<Order>;
-  purchaseDoc: AngularFirestoreDocument<Order>;
-  purchases: Observable<Order[]>;
-  purchase: Observable<Order>;
+  ordersCollection: AngularFirestoreCollection<Order>;
+  orderDoc: AngularFirestoreDocument<Order>;
+  orders: Observable<Order[]>;
+  order: Observable<Order>;
 
   constructor(private afs: AngularFirestore) { 
-    this.purchasesCollection = this.afs.collection('orders');
+    this.ordersCollection = this.afs.collection('orders');
   }
 
   getOrders(): Observable<Order[]> {
     // Get orders with the ID
-    this.purchases = this.purchasesCollection.snapshotChanges().pipe(
+    this.orders = this.ordersCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const order = a.payload.doc.data() as Order;
         order.id = a.payload.doc.id;
@@ -27,14 +27,14 @@ export class OrderService {
       }))
     );
 
-    return this.purchases;
+    return this.orders;
   }
 
   getOrderById(id: string) {
     // Get order with the ID
-    this.purchaseDoc = this.afs.doc<Order>(`orders/${id}`);
+    this.orderDoc = this.afs.doc<Order>(`orders/${id}`);
 
-    const foundOrder = this.purchaseDoc.snapshotChanges().pipe(
+    const foundOrder = this.orderDoc.snapshotChanges().pipe(
       map(a => {
         if (a.payload.exists === false) {
           return null;
@@ -47,5 +47,14 @@ export class OrderService {
     );
 
     return foundOrder;
+  }
+
+  createOrder(order: Order) {
+    this.ordersCollection.add(order);
+  }
+
+  updateOrder(order: Order) {
+    this.orderDoc = this.afs.doc<Order>(`orders/${order.id}`);
+    this.orderDoc.update(order);
   }
 }

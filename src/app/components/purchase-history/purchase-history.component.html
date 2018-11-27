@@ -15,7 +15,7 @@
   </ng-container>
 
   <!-- En caso de que no hayan ordenes-->
-  <ng-container *ngIf="!(userOrders?.length !== 0)">
+  <ng-container *ngIf="userOrders?.length === 0">
     <div class="contTable text-center">
       <img src="../../../assets/images/orderImage.png" alt="">
       <p>Your Purchase History is Empty</p>

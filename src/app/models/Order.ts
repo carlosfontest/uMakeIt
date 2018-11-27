@@ -8,5 +8,5 @@ export interface Order {
     id?: string;
     name: string;
     direction: string;
-    pending: boolean;
+    delivered: boolean;
 }

@@ -59,6 +59,7 @@ import { UserService } from './services/user.service';
 import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
 import { OrderService } from './services/order.service';
+import { MomentDatesService } from './services/moment-dates.service';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { OrderService } from './services/order.service';
     StorageService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
-    OrderService
+    OrderService,
+    MomentDatesService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

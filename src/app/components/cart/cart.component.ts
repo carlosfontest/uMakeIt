@@ -46,7 +46,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.clicked = -1;
     this.uid = this.as.currentUser.uid;
     this.cs.deleteCartSubject.subscribe(bool => {
-      if(bool){
+      if (bool) {
         this.cart = [];
         this.cartDisplay = [];
         this.cartFlag = false;
@@ -70,7 +70,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       } else {
         this.cart = cart.dishes;
-        let { length } = this.cart;
+        const { length } = this.cart;
         console.log(length, 'length');
         
         let index = 0;
@@ -95,7 +95,7 @@ export class CartComponent implements OnInit, OnDestroy {
                       });
 
                       if (index === (length - 1)) {
-                        console.log('this works fine length',length, 'and index', index);
+                        console.log('this works fine length', length, 'and index', index);
                         
                         this.cartDisplay = newDisplay;
                         this.cartFlag = true;
@@ -111,7 +111,7 @@ export class CartComponent implements OnInit, OnDestroy {
                           quantity: item.quantity
                         });
                         if (index === (length - 1)) {
-                          console.log('this works fine length',length, 'and index', index);
+                          console.log('this works fine length', length, 'and index', index);
                           
                           this.cartDisplay = newDisplay;
                           this.cartFlag = true;
@@ -128,7 +128,7 @@ export class CartComponent implements OnInit, OnDestroy {
                     quantity: item.quantity
                   });
                   if (index === (length - 1)) {
-                    console.log('this works fine length',length, 'and index', index);
+                    console.log('this works fine length', length, 'and index', index);
                     
                     this.cartDisplay = newDisplay;
                     this.cartFlag = true;
