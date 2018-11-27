@@ -9,7 +9,7 @@ import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap'
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -49,6 +49,9 @@ import { AddNonEditableProductComponent } from './components/admin/admin-section
 import { AddSideDishComponent } from './components/admin/admin-section/add-products-accordion/add-side-dish/add-side-dish.component';
 import { EditProductComponent } from './components/admin/admin-section/edit-products-accordion/edit-product/edit-product.component';
 import { BillModalComponent } from './components/shared/modals/bill-modal/bill-modal.component';
+import { EditInstructionsModalComponent } from './components/shared/modals/edit-instructions-modal/edit-instructions-modal.component';
+import { AddDirectionModalComponent } from './components/shared/modals/add-direction-modal/add-direction-modal.component';
+import { DisableProductsAccordionComponent } from './components/admin/admin-section/disable-products-accordion/disable-products-accordion.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -56,9 +59,8 @@ import { DishService } from './services/dish.service';
 import { UserService } from './services/user.service';
 import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
-import { EditInstructionsModalComponent } from './components/shared/modals/edit-instructions-modal/edit-instructions-modal.component';
-import { AddDirectionModalComponent } from './components/shared/modals/add-direction-modal/add-direction-modal.component';
-import { DisableProductsAccordionComponent } from './components/admin/admin-section/disable-products-accordion/disable-products-accordion.component';
+import { OrderService } from './services/order.service';
+import { MomentDatesService } from './services/moment-dates.service';
 
 @NgModule({
   declarations: [
@@ -123,7 +125,9 @@ import { DisableProductsAccordionComponent } from './components/admin/admin-sect
     SideDishService,
     StorageService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    OrderService,
+    MomentDatesService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

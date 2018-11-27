@@ -70,7 +70,7 @@ export class CartComponent implements OnInit, OnDestroy {
         });
       } else {
         this.cart = cart.dishes;
-        let { length } = this.cart;
+        const { length } = this.cart;
         console.log(length, 'length');
 
         let index = 0;

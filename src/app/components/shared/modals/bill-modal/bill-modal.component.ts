@@ -10,6 +10,9 @@ import { AddDirectionModalComponent } from '../add-direction-modal/add-direction
 import { of } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { CartService } from 'src/app/services/cart.service';
+import { MomentDatesService } from 'src/app/services/moment-dates.service';
+import { Order } from 'src/app/models/Order';
+import { OrderService } from 'src/app/services/order.service';
 
 declare let paypal: any;
 
@@ -26,6 +29,7 @@ export class BillModalComponent implements OnInit  {
   config: Object;
   addScript = false;
   user: User;
+  orderName: string;
 
   
 
@@ -36,10 +40,13 @@ export class BillModalComponent implements OnInit  {
     private userService: UserService,
     private authService: AuthService,
     private modalService: BsModalService,
-    private cartService: CartService
+    private cartService: CartService,
+    private momentDatesService: MomentDatesService,
+    private orderService: OrderService
   ) { }
 
   ngOnInit() {
+    this.orderName = '';
     
     this.directionToDeliver = [];
     
@@ -154,8 +161,34 @@ export class BillModalComponent implements OnInit  {
   afterPurchase() {
     // Borrar el carrito
     this.cartService.deleteCart(this.user.uid);
-    // TODO
     // Enviar la orden
+    const newOrder: Order = {
+      dishes: this.cart,
+      price: parseFloat(this.precioTotal),
+      date: this.momentDatesService.formatDate(new Date),
+      uid: this.authService.currentUser.uid,
+      name: this.orderName,
+      direction: this.directionToDeliver[0],
+      delivered: false
+    };
+    this.orderService.createOrder(newOrder);
+  }
+
+  // Método Auxiliar
+  completeOrder() {
+    // El pago se hizo efectivo
+    this.bsModalRef.hide();
+    this.snotifyService.success(`The payment for $${this.precioTotal} was successfully completed. Your order will come to you soon!`, 'Payment', {
+      timeout: 4000,
+      showProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      position: 'leftBottom'
+    });
+    this.router.navigate(['']);
+    
+    // Generamos la orden
+    this.afterPurchase();
   }
 
 }

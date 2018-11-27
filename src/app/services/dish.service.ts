@@ -47,7 +47,7 @@ export class DishService {
     return foundDish;
   }
 
-  createDish(dish: Dish){
+  createDish(dish: Dish) {
     this.dishesCollection.add(dish);
   }
 

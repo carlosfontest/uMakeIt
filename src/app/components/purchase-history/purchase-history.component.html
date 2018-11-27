@@ -4,11 +4,22 @@
 
 <div class="container">
   <!-- Todas las compras del usuario -->
-  <ng-container *ngFor="let purchase of purchases">
-    <div class="row">
+  <ng-container *ngIf="userOrders?.length !== 0">
+    <ng-container *ngFor="let order of userOrders">
+      <div class="row">
         <div class="col-sm-12">
-            <app-purchase-card [purchase]="purchase"></app-purchase-card>
+          <app-purchase-card [order]="order"></app-purchase-card>
         </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- En caso de que no hayan ordenes-->
+  <ng-container *ngIf="userOrders?.length === 0">
+    <div class="contTable text-center">
+      <img src="../../../assets/images/orderImage.png" alt="">
+      <p>Your Purchase History is Empty</p>
+      <p>You have not realized any Purchase. Go to the Dashboard and check our menu!</p>
     </div>
   </ng-container>
 

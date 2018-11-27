@@ -99,14 +99,22 @@ hr {
   font-size: 13px;
 }
 
+.aux {
+  color: #241c1c;
+  font-size: 13px;
+}
+
 ngx-select-dropdown {
-  width: 90%;
+  width: 75%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  border: 0px;
 }
 
 .badge {
   font-size: 22px;
   cursor: pointer;
   transition: .3s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
 .badge:hover {
@@ -114,10 +122,15 @@ ngx-select-dropdown {
   color: rgb(255, 255, 255);
 }
 
+.aux:hover {
+  background: rgb(128, 9, 9);
+  color: rgb(212, 208, 208);
+}
+
 .delivery {
   background: #ece5c6;
   font-family: 'Ubuntu', sans-serif;
-  font-size: 21px;
+  font-size: 19px;
   color: #363333;
   text-shadow: .3px .3px .3px #000000;
 }
@@ -126,6 +139,34 @@ ngx-select-dropdown {
   background: #ece5c6;
   padding-left: 30px; 
   padding-bottom: 2px; 
+}
+
+.form-control {
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 5px; 
+  border-color: rgb(255, 255, 255);
+  text-align: center;
+  background: rgb(255, 255, 255); 
+  color: rgb(49, 48, 46);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  font-size: 17px;
+  height: 35px;
+  margin-bottom: 0px !important;
+}
+
+.divName {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 15px;
+  padding-bottom: 7px;
+  background: #ece5c6;
+}
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .delivery {
+    font-size: 15px;
+  }
 }
 
 
