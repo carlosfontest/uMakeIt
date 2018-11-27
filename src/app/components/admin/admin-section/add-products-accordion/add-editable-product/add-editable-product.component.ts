@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { DishService } from 'src/app/services/dish.service';
 import { StorageService } from 'src/app/services/storage.service';
-import * as firebase from 'firebase'; 
+import * as firebase from 'firebase';
 import { SideDish } from 'src/app/models/SideDish';
 import { SideDishService } from 'src/app/services/side-dish.service';
 import { Dish } from 'src/app/models/Dish';
+import { EditService } from 'src/app/services/edit.service';
 
 @Component({
   selector: 'app-add-editable-product',
   templateUrl: './add-editable-product.component.html',
   styleUrls: ['./add-editable-product.component.scss']
 })
-export class AddEditableProductComponent implements OnInit {
+export class AddEditableProductComponent implements OnInit, OnDestroy {
+  @Output() destroyEvent: EventEmitter<boolean> = new EventEmitter();
+  @Input() dish: Dish;
   form: FormGroup;
   file: File;
   types: string[];
@@ -21,8 +24,8 @@ export class AddEditableProductComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private ss: StorageService,
-    private ds: DishService,
-    private sds: SideDishService) { }
+    private sds: SideDishService,
+    private es: EditService) { }
 
   ngOnInit() {
     // Cargamos todos los Side-Dishes
@@ -30,8 +33,6 @@ export class AddEditableProductComponent implements OnInit {
 
     this.sds.getSideDishes().subscribe(data => {
       this.sideDishes = data;
-      console.log(data);
-      
     });
 
     this.types = ['Pizzas', 'Fishes', 'Soups', 'Pastas', 'Others'];
@@ -44,7 +45,18 @@ export class AddEditableProductComponent implements OnInit {
       sidedish2: ['', Validators.required]
     });
 
-    this.form.patchValue({ type: 'Choose type of Product' , sidedish1: 'Choose 1° Side-Dish', sidedish2: 'Choose 2° Side-Dish'});
+    if (this.dish) {
+      this.form.patchValue({
+        name: this.dish.name,
+        type: this.types.indexOf(this.dish.type),
+        price: this.dish.price,
+        sidedish1: this.dish.sideDishes[0],
+        sidedish2: this.dish.sideDishes[1]
+      });
+    } else {
+      this.form.patchValue({ type: 'Choose type of Product', sidedish1: 'Choose 1° Side-Dish', sidedish2: 'Choose 2° Side-Dish' });
+    }
+
 
     this.ss.subjectCedit.subscribe(res => {
       this.file = res;
@@ -55,24 +67,35 @@ export class AddEditableProductComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.destroyEvent.emit(true);
+  }
+
   uploadFile() {
     console.log('uploading...');
 
-    const dish: Dish = {name: this.name, price: this.price, sideDishes: [
-      this.sideDish1, this.sideDish2
-    ], type: this.types[this.type] };
+    const dish: Dish = {
+      name: this.name, price: this.price, sideDishes: [
+        this.sideDish1, this.sideDish2
+      ], type: this.types[this.type]
+    };
 
-    this.ss.uploadEditable(this.file, this.fileR, dish);
+    if(this.dish){
+      this.ss.uploadEditable(this.file, this.fileR, dish, this.dish.id);
+    } else {
+      this.ss.uploadEditable(this.file, this.fileR, dish, null);
+    }
 
     // Snackbar de upload
-    
+
     this.reset();
   }
-  
+
   reset() {
     this.form.reset();
-    this.form.patchValue({ type: 'Choose type of Product' , sidedish1: 'Choose default sidedish 1', sidedish2: 'Choose default sidedish 2'});
+    this.form.patchValue({ type: 'Choose type of Product', sidedish1: 'Choose default sidedish 1', sidedish2: 'Choose default sidedish 2' });
     this.file = null;
+    this.es.setSelected(null);
   }
 
   get name() {
@@ -96,7 +119,11 @@ export class AddEditableProductComponent implements OnInit {
   }
 
   get disableFlag() {
-    return (this.form.invalid || !this.file);
+    return this.dish? (this.form.invalid && !this.file && !this.fileR) : (this.form.invalid || !this.file || !this.fileR);
+  }
+
+  get action() {
+    return this.dish ? 'Edit' : 'Add';
   }
 
 }

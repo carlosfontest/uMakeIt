@@ -11,4 +11,4 @@
 <!-- Formularios -->
 <app-add-editable-product *ngIf="this.accordionOpen === 'editable'"></app-add-editable-product>
 <app-add-non-editable-product *ngIf="this.accordionOpen === 'non-editable'"></app-add-non-editable-product>
-<app-add-side-dish *ngIf="this.accordionOpen === 'side-dish'"></app-add-side-dish>
+<app-add-side-dish *ngIf="this.accordionOpen === 'side-dish'" [sideDish]="null"></app-add-side-dish>

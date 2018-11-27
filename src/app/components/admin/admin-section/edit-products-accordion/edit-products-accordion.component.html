@@ -1,6 +1,9 @@
-<div class="container-fluid d-flex justify-content-around flex-wrap mt-3 mb-4">
+<div class="container-fluid d-flex justify-content-around flex-wrap mt-3 mb-4" *ngIf="!es.isSelected">
   <button class="btn btn-medium btn-gray" (click)="changeState('dish')" [ngClass]="{'select': this.accordionOpen == 'dish'}">EDIT <span class="bold">DISH</span></button>
   <button class="btn btn-medium btn-gray" (click)="changeState('side-dish')" [ngClass]="{'select': this.accordionOpen == 'side-dish'}">EDIT <span class="bold">SIDE-DISH</span></button>
+</div>
+<div class="container-fluid d-flex justify-content-center flex-wrap mt-3 mb-4" *ngIf="es.isSelected">
+  <button class="btn btn-medium btn-gray" (click)="resetEdit()"><span class="text-center"><i class="fas fa-arrow-left"></i> GO BACK</span></button>
 </div>
 
 <hr class="mt-4" *ngIf="this.accordionOpen != ''">

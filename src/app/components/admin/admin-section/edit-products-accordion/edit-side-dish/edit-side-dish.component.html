@@ -1,26 +1,31 @@
-<div class="titleBanner">
-  <app-title-banner [title]="'Select'"></app-title-banner>
-</div>
-
-<div class="allDishesToShow">
-  <div class="row text-center">
-    <!-- Card de cada SideDish -->
-    <ng-container *ngFor="let sideDish of allSideDishes">
-      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs">
-        <div class="conjunto">
-
-          <div class="fotoPlace">
-            <img class="fotoSideDish" [src]="sideDish.thumbnailVista" alt="">
-          </div>
-          
-          <div class="notchPlace">
-            <img class="notch" src="../../../../../assets/images/notch.png" alt="">
-            <span class="sideDishName">{{ sideDish.name }}</span>
-          </div>
-
-        </div>
-      </div>
-    </ng-container>
-
+<ng-container *ngIf="!selectedSideDish">
+  <div class="titleBanner">
+    <app-title-banner [title]="'Select'"></app-title-banner>
   </div>
-</div>
+
+  <div class="allDishesToShow">
+    <div class="row text-center">
+      <!-- Card de cada SideDish -->
+      <ng-container *ngFor="let sideDish of allSideDishes">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs" (click)="selectSideDish(sideDish)">
+          <div class="conjunto">
+
+            <div class="fotoPlace">
+              <img class="fotoSideDish" [src]="sideDish.thumbnailVista" alt="">
+            </div>
+
+            <div class="notchPlace">
+              <img class="notch" src="../../../../../assets/images/notch.png" alt="">
+              <span class="sideDishName">{{ sideDish.name }}</span>
+            </div>
+
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="es.isSelected === 'sideDish'">
+  <app-add-side-dish [sideDish]="selectedSideDish" (destroyEvent)="reset()"></app-add-side-dish>
+</ng-container>

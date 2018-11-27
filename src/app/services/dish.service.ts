@@ -50,4 +50,8 @@ export class DishService {
   createDish(dish: Dish){
     this.dishesCollection.add(dish);
   }
+
+  updateDish(dish: Dish, id: string): any {
+    this.afs.doc<Dish>(`dishes/${id}`).update(dish);
+  }
 }

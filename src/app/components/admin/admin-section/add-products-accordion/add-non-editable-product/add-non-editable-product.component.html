@@ -1,7 +1,7 @@
 <div class="container-fluid pt-3 pb-3 cont">
     <form [formGroup]="form">
         <div class="mb-5">
-            <app-title-banner [title]="'Add'" *ngIf="this.accordionOpen != ''"></app-title-banner>
+            <app-title-banner [title]="action" *ngIf="this.accordionOpen != ''"></app-title-banner>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -26,7 +26,7 @@
         </div>
     
         <div class="form-row mb-3 text-center">
-            <input type="fileR" name="fileMain" class="inputfile" id="cNERThumbnail">
+            <input type="file" name="fileReal" class="inputfile" id="cNERThumbnail">
             <ng-container *ngIf="fileR">
                 <label for="cNERThumbnail"><i class="fas fa-upload mr-3"></i>
                     <span class="bold">
@@ -65,7 +65,7 @@
     
         <div class="d-flex justify-content-center">
             <div>
-                <input type="button" class="btn btn-medium btn-gray" [ngClass]="disableFlag? 'disabled' : ''" [disabled]="disableFlag" value="Add Product" (click)="uploadFile()">
+                <input type="button" class="btn btn-medium btn-gray" [ngClass]="disableFlag? 'disabled' : ''" [disabled]="disableFlag" [value]="action + ' Dish'" (click)="uploadFile()">
             </div>
         </div>
     </form>

@@ -1,7 +1,7 @@
 <div class="container-fluid pt-3 pb-3 cont">
     <form [formGroup]="form">
         <div class="mb-5">
-            <app-title-banner [title]="'Add'" *ngIf="this.accordionOpen != ''"></app-title-banner>
+            <app-title-banner [title]="action" *ngIf="this.accordionOpen != ''"></app-title-banner>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -11,49 +11,49 @@
         </div>
     
         <div class="form-row text-center my-3">
-            <input type="file" name="fileMain" class="inputfile" id="cEThumbnail">
-            <ng-container *ngIf="file">
-                <label for="cEThumbnail"><i class="fas fa-upload mr-3"></i>
+            <input type="file" name="fileMain" class="inputfile" id="cSideView">
+            <ng-container *ngIf="fileView">
+                <label for="cSideView"><i class="fas fa-upload mr-3"></i>
                     <span class="bold">
-                        {{ file.name.split( '\\').pop() }}
+                        {{ fileView.name.split( '\\').pop() }}
                     </span>
                 </label>
             </ng-container>
-            <ng-container *ngIf="!file">
-                <label for="cEThumbnail"><i class="fas fa-upload mr-3"></i>Side-Dish View <span class="bold">thumbnail</span></label>
+            <ng-container *ngIf="!fileView">
+                <label for="cSideView"><i class="fas fa-upload mr-3"></i>Side-Dish View <span class="bold">thumbnail</span></label>
             </ng-container>
         </div>
     
         <div class="form-row text-center my-3">
-            <input type="file" name="fileMain" class="inputfile" id="cEThumbnail">
-            <ng-container *ngIf="file">
-                <label for="cEThumbnail"><i class="fas fa-upload mr-3"></i>
+            <input type="file" name="fileMain" class="inputfile" id="cSideUp">
+            <ng-container *ngIf="fileUp">
+                <label for="cSideUp"><i class="fas fa-upload mr-3"></i>
                     <span class="bold">
-                        {{ file.name.split( '\\').pop() }}
+                        {{ fileUp.name.split( '\\').pop() }}
                     </span>
                 </label>
             </ng-container>
-            <ng-container *ngIf="!file">
-                <label for="cEThumbnail"><i class="fas fa-upload mr-3"></i>Side-Dish Upper <span class="bold">thumbnail</span></label>
+            <ng-container *ngIf="!fileUp">
+                <label for="cSideUp"><i class="fas fa-upload mr-3"></i>Side-Dish Upper <span class="bold">thumbnail</span></label>
             </ng-container>
         </div>
     
         <div class="form-row text-center my-3">
-            <input type="file" name="fileMain" class="inputfile" id="cEThumbnail">
-            <ng-container *ngIf="file">
-                <label for="cEThumbnail"><i class="fas fa-upload mr-3"></i>
+            <input type="file" name="fileMain" class="inputfile" id="cSideDouble">
+            <ng-container *ngIf="fileDouble">
+                <label for="cSideDouble"><i class="fas fa-upload mr-3"></i>
                     <span class="bold">
-                        {{ file.name.split( '\\').pop() }}
+                        {{ fileDouble.name.split( '\\').pop() }}
                     </span>
                 </label>
             </ng-container>
-            <ng-container *ngIf="!file">
-                <label for="cEThumbnail"><i class="fas fa-upload mr-3"></i>Side-Dish Double <span class="bold">thumbnail</span></label>
+            <ng-container *ngIf="!fileDouble">
+                <label for="cSideDouble"><i class="fas fa-upload mr-3"></i>Side-Dish Double <span class="bold">thumbnail</span></label>
             </ng-container>
         </div>
     
         <div class="d-flex justify-content-center">
-            <input type="button" class="btn btn-medium btn-gray" [ngClass]="disableFlag? 'disabled' : ''" [disabled]="disableFlag" value="Add Product" (click)="uploadFile()">
+            <input type="button" class="btn btn-medium btn-gray" [ngClass]="disableFlag? 'disabled' : ''" [disabled]="disableFlag" [value]="action + ' Side Dish'" (click)="uploadFile()">
         </div>
     </form>
 </div>

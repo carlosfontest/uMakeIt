@@ -48,4 +48,13 @@ export class SideDishService {
 
     return foundSideDish;
   }
+
+  createSideDish(sideDish: SideDish){
+    this.sideDishesCollection.add(sideDish);
+  }
+
+  
+  updateSideDish(sideDish: SideDish, id: string): any {
+    this.afs.doc<SideDish>(`sideDishes/${id}`).update(sideDish);
+  }
 }

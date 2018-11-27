@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageService } from 'src/app/services/storage.service';
-import { DishService } from 'src/app/services/dish.service';
 import { Dish } from '../../../../../models/Dish';
+import { EditService } from 'src/app/services/edit.service';
 
 @Component({
   selector: 'app-add-non-editable-product',
   templateUrl: './add-non-editable-product.component.html',
   styleUrls: ['./add-non-editable-product.component.scss']
 })
-export class AddNonEditableProductComponent implements OnInit {
+export class AddNonEditableProductComponent implements OnInit, OnDestroy {
+  @Output() destroyEvent: EventEmitter<boolean> = new EventEmitter();
+  @Input() dish: Dish;
   form: FormGroup;
   file: File;
   types: string[];
@@ -18,10 +19,11 @@ export class AddNonEditableProductComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private ss: StorageService,
-    private ds: DishService) { }
+    private es: EditService) { }
 
   ngOnInit() {
     this.types = ['Pizzas', 'Fishes', 'Soups', 'Pastas', 'Others'];
+
 
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -29,7 +31,16 @@ export class AddNonEditableProductComponent implements OnInit {
       price: ['', Validators.required]
     });
 
-    this.form.patchValue({ type: 'Choose type of Product' });
+    if (this.dish) {
+      this.form.patchValue({
+        name: this.dish.name,
+        type: this.types.indexOf(this.dish.type),
+        price: this.dish.price
+      });
+    } else {
+      this.form.patchValue({ type: 'Choose type of Product' });
+    }
+
 
     this.ss.subjectCNEdit.subscribe(res => {
       this.file = res;
@@ -40,6 +51,10 @@ export class AddNonEditableProductComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.destroyEvent.emit(true);
+  }
+
   uploadFile() {
     console.log('uploading...');
     const dish = {} as Dish;
@@ -48,7 +63,11 @@ export class AddNonEditableProductComponent implements OnInit {
     dish.price = this.price;
     dish.type = this.types[this.type];
 
-    this.ss.uploadNoEditable(this.file, this.fileR, dish);
+    if (this.dish) {
+      this.ss.uploadNoEditable(this.file, this.fileR, dish, this.dish.id);
+    } else {
+      this.ss.uploadNoEditable(this.file, this.fileR, dish, null);
+    }
 
     // Snackbar de upload
 
@@ -59,6 +78,7 @@ export class AddNonEditableProductComponent implements OnInit {
     this.file = null;
     this.form.reset();
     this.form.patchValue({ type: 'Choose type of Product' });
+    this.es.setSelected(null);
   }
 
   get name() {
@@ -74,7 +94,11 @@ export class AddNonEditableProductComponent implements OnInit {
   }
 
   get disableFlag() {
-    return (this.form.invalid || !this.file);
+    return this.dish ? (this.form.invalid && !this.file && !this.fileR) : (this.form.invalid || !this.file || !this.fileR);
+  }
+
+  get action(){
+    return this.dish? 'Edit' : 'Add';
   }
 
 }

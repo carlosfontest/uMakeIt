@@ -95,8 +95,6 @@ export class CartComponent implements OnInit, OnDestroy {
                       });
 
                       if (index === (length - 1)) {
-                        console.log('this works fine length',length, 'and index', index);
-                        
                         this.cartDisplay = newDisplay;
                         this.cartFlag = true;
                         this.loading = false;
@@ -111,8 +109,6 @@ export class CartComponent implements OnInit, OnDestroy {
                           quantity: item.quantity
                         });
                         if (index === (length - 1)) {
-                          console.log('this works fine length',length, 'and index', index);
-                          
                           this.cartDisplay = newDisplay;
                           this.cartFlag = true;
                           this.loading = false;
@@ -128,8 +124,6 @@ export class CartComponent implements OnInit, OnDestroy {
                     quantity: item.quantity
                   });
                   if (index === (length - 1)) {
-                    console.log('this works fine length',length, 'and index', index);
-                    
                     this.cartDisplay = newDisplay;
                     this.cartFlag = true;
                     this.loading = false;

@@ -31,7 +31,6 @@ export class EditDishComponent implements OnInit {
   ngOnInit() {
     this.loaded = false;
     this.dishSideDishes = [];
-
     this.dishService.getDishById(this.ar.snapshot.queryParams.id).subscribe(dish => {
       this.loaded = false;
       this.dish = dish;
@@ -48,7 +47,6 @@ export class EditDishComponent implements OnInit {
                 this.dishSideDishes[1] = data3;
                 this.cantSideDishSelected = this.dishSideDishes.length;
                 this.loaded = true;
-                this.abrirModalInstrucciones();
               });
             });
           }
@@ -56,6 +54,8 @@ export class EditDishComponent implements OnInit {
       } else {
         this.router.navigate(['**']);
       }
+
+      this.abrirModalInstrucciones();
 
     });
   }
