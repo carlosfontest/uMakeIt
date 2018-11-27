@@ -3,6 +3,7 @@ import { Dish } from 'src/app/models/Dish';
 import { SideDishService } from 'src/app/services/side-dish.service';
 import { DishService } from 'src/app/services/dish.service';
 import { SideDish } from 'src/app/models/SideDish';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-disable-products-accordion',
@@ -19,7 +20,8 @@ export class DisableProductsAccordionComponent implements OnInit {
 
   constructor(
     private dishService: DishService,
-    private sds: SideDishService
+    private sds: SideDishService,
+    private snotifyService: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -62,6 +64,24 @@ export class DisableProductsAccordionComponent implements OnInit {
     const sendDish: Dish = JSON.parse(JSON.stringify(dish));
 
     delete sendDish.id;
+
+    if(dish.disabled){
+      this.snotifyService.warning(`${dish.name} has been disabled`, 'Disabled', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    } else {
+      this.snotifyService.success(`${dish.name} has been enabled`, 'Enabled', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    }
 
     this.dishService.updateDish(sendDish, dish.id);
   }

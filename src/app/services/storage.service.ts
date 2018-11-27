@@ -5,6 +5,7 @@ import { Dish } from '../models/Dish';
 import { DishService } from 'src/app/services/dish.service';
 import { SideDish } from './../models/SideDish';
 import { SideDishService } from 'src/app/services/side-dish.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class StorageService {
   subjectCSideDouble: Subject<File> = new Subject();
 
 
-  constructor(private ds: DishService, private sds: SideDishService) { }
+  constructor(private ds: DishService, private sds: SideDishService, private snotifyService: SnotifyService) { }
 
   uploadFileEvent(event) {
     console.log(event, 'servicio dood');
@@ -49,6 +50,23 @@ export class StorageService {
   }
 
   async uploadNoEditable(file: File, fileR: File, dish: Dish, id: string) {
+    if (id) {
+      this.snotifyService.success(`${dish.name} has been edited`, 'Edit', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    } else {
+      this.snotifyService.success(`${dish.name} has been added`, 'Add', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    }
 
     let snapshot;
     let snapshotR;
@@ -63,6 +81,7 @@ export class StorageService {
       dish.thumbnailReal = await snapshotR.ref.getDownloadURL()
     }
 
+
     if (id) {
       this.ds.updateDish(dish, id);
     } else {
@@ -71,6 +90,24 @@ export class StorageService {
   }
 
   async uploadEditable(file: File, fileR: File, dish: Dish, id: string) {
+    if (id) {
+      this.snotifyService.success(`${dish.name} has been edited`, 'Edit', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    } else {
+      this.snotifyService.success(`${dish.name} has been added`, 'Add', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    }
+
     let snapshot;
     let snapshotR;
 
@@ -93,6 +130,24 @@ export class StorageService {
   }
 
   async uploadSideDish(fileView: File, fileUp: File, fileDouble: File, sideDish: SideDish, id: string) {
+    if (id) {
+      this.snotifyService.success(`${sideDish.name} has been edited`, 'Edit', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    } else {
+      this.snotifyService.success(`${sideDish.name} has been added`, 'Add', {
+        timeout: 2000,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    }
+
 
     let snapshotV;
     let snapshotU;
@@ -107,7 +162,7 @@ export class StorageService {
       snapshotU = await this.storage.child(`ingredientes/platoArriba/${sideDish.name}/`).put(fileUp);
       sideDish.thumbnailPlatoArriba = await snapshotU.ref.getDownloadURL();
     }
-    
+
     if (fileDouble) {
       snapshotD = await this.storage.child(`ingredientes/platoDoble/${sideDish.name}/`).put(fileDouble);
       sideDish.thumbnailPlatoDoble = await snapshotD.ref.getDownloadURL();
