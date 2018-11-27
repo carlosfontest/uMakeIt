@@ -29,8 +29,8 @@
     <div class="container">
       <div class="datos">
         <span class="fecha">{{ order.date }}</span>
-        <ng-container *ngIf="order.delivered === true"><span class="delivered">¡Delivered!</span></ng-container>
-        <ng-container *ngIf="order.delivered === false"><span class="notDelivered">¡On the way!</span></ng-container>
+        <ng-container *ngIf="order.delivered === true"><span class="delivered"><i class="fas fa-plane-arrival"></i> Delivered!</span></ng-container>
+        <ng-container *ngIf="order.delivered === false"><span class="notDelivered"><i class="fas fa-plane-departure"></i> On the way!</span></ng-container>
       </div>
     </div>
 

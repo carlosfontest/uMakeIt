@@ -105,7 +105,7 @@ hr {
 }
 
 ngx-select-dropdown {
-  width: 80%;
+  width: 75%;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
   border: 0px;
 }
@@ -161,6 +161,14 @@ ngx-select-dropdown {
   padding-bottom: 7px;
   background: #ece5c6;
 }
+
+//  Cuando sea vista movil
+@media (max-width: 575px) {
+  .delivery {
+    font-size: 15px;
+  }
+}
+
 
 // Estilos de los botones
 .btn {
