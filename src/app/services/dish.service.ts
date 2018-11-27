@@ -48,6 +48,7 @@ export class DishService {
   }
 
   createDish(dish: Dish) {
+    dish.disabled = false;
     this.dishesCollection.add(dish);
   }
 

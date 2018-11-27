@@ -57,13 +57,12 @@ export class AddSideDishComponent implements OnInit, OnDestroy {
     const sideDish = {} as SideDish;
     sideDish.name = this.name;
 
+    
     if(this.sideDish){
       this.ss.uploadSideDish(this.fileView, this.fileUp, this.fileDouble, sideDish, this.sideDish.id);
     } else {
       this.ss.uploadSideDish(this.fileView, this.fileUp, this.fileDouble, sideDish, null);
     }
-
-    // Snackbar de upload
 
     this.reset();
   }

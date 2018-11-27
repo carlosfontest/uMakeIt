@@ -68,9 +68,7 @@ export class AddNonEditableProductComponent implements OnInit, OnDestroy {
     } else {
       this.ss.uploadNoEditable(this.file, this.fileR, dish, null);
     }
-
-    // Snackbar de upload
-
+    
     this.reset();
   }
 
