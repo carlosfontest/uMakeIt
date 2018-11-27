@@ -1,0 +1,51 @@
+[debug] [2018-11-27T15:03:20.961Z] ----------------------------------------------------------------------
+[debug] [2018-11-27T15:03:20.963Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\risy1\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2018-11-27T15:03:20.964Z] CLI Version:   6.1.1
+[debug] [2018-11-27T15:03:20.964Z] Platform:      win32
+[debug] [2018-11-27T15:03:20.964Z] Node Version:  v10.10.0
+[debug] [2018-11-27T15:03:20.965Z] Time:          Tue Nov 27 2018 11:03:20 GMT-0400 (Venezuela Time)
+[debug] [2018-11-27T15:03:20.965Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-27T15:03:20.975Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-27T15:03:20.975Z] > authorizing via signed-in user
+[debug] [2018-11-27T15:03:20.975Z] [iam] checking project umakeit-crr for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2018-11-27T15:03:20.977Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-27T15:03:20.977Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-27T15:03:21.839Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-27T15:03:21.845Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/umakeit-crr:testIamPermissions  
+
+[debug] [2018-11-27T15:03:22.720Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-27T15:03:22.721Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/umakeit-crr  
+ 
+[debug] [2018-11-27T15:03:23.590Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'umakeit-crr'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2018-11-27T15:03:23.595Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/umakeit-crr:test  
+
+[debug] [2018-11-27T15:03:24.379Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2018-11-27T15:03:24.381Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/umakeit-crr/versions  
+
+[debug] [2018-11-27T15:03:25.920Z] <<< HTTP RESPONSE 200
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2018-11-27T15:03:25.922Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/umakeit-crr/rulesets  
+
+[debug] [2018-11-27T15:03:25.922Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/umakeit-crr/databases/(default)/indexes  
+ 
+[debug] [2018-11-27T15:03:26.472Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-27T15:03:26.472Z] [rules] created ruleset projects/umakeit-crr/rulesets/3f8b8bab-69cb-4b09-9bc7-f5281af85798
+[debug] [2018-11-27T15:03:26.509Z] <<< HTTP RESPONSE 200
+[info] i  hosting[umakeit-crr]: beginning deploy...
+[info] i  hosting[umakeit-crr]: found 44 files in dist/umakeit-crr
+[debug] [2018-11-27T15:03:26.533Z] [hosting] hash cache [ZGlzdFx1bWFrZWl0LWNycg] load error: lines is not defined
+[debug] [2018-11-27T15:03:26.777Z] [hosting] hash cache [ZGlzdFx1bWFrZWl0LWNycg] stored for 44 files
+[debug] [2018-11-27T15:03:26.778Z] [hosting][hash queue][FINAL]
+[debug] [2018-11-27T15:03:26.778Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/umakeit-crr/versions/3399105c5c2ade73:populateFiles  
+ <request body omitted>
+[debug] [2018-11-27T15:03:28.258Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-27T15:03:28.260Z] [hosting][populate queue][FINAL]
+[debug] [2018-11-27T15:03:28.260Z] [hosting] uploads queued: 2

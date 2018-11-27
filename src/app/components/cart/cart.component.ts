@@ -109,7 +109,7 @@ export class CartComponent implements OnInit, OnDestroy {
                           quantity: item.quantity
                         });
                         if (index === (length - 1)) {
-                          newDisplay = newDisplay.filter(item => !item.dish.disabled);
+                          this.filtrarNoDisponibles(newDisplay);
                           this.cartDisplay = newDisplay;
                           this.cartFlag = true;
                           this.loading = false;
@@ -125,6 +125,7 @@ export class CartComponent implements OnInit, OnDestroy {
                     quantity: item.quantity
                   });
                   if (index === (length - 1)) {
+                    this.filtrarNoDisponibles(newDisplay);
                     this.cartDisplay = newDisplay;
                     this.cartFlag = true;
                     this.loading = false;
@@ -242,5 +243,15 @@ export class CartComponent implements OnInit, OnDestroy {
       price: this.price
     };
     this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
+  }
+
+  filtrarNoDisponibles(orders :OrderDish[]){
+    for (let i = 0; i < orders.length; i++) {
+      if(orders[i].dish.disabled){
+        this.cart.splice(i,1);
+        orders.splice(i,1);
+        i--;
+      }
+    }
   }
 }

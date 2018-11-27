@@ -14,7 +14,7 @@ import { ProductsModalComponent } from 'src/app/components/shared/modals/product
 export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
   @Input() pendingOrders: Order[];
   isLoading = true;
-  names: string[];
+  names: any[];
 
 
   constructor(
@@ -35,6 +35,10 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
       let index = 0;
       for (const order of orders.currentValue) {
         this.userService.getUserById(order.uid).pipe(take(1)).subscribe(user => {
+          const object = {id: order.uid, name: `${user.firstName} ${user.lastName}`};
+          if(!this.names.find(a => a.id === object.id)){
+            this.names.push(object);
+          }
           this.names.push(`${user.firstName} ${user.lastName}`);
           if (index === orders.currentValue.length - 1) {
             this.isLoading = false;
@@ -64,5 +68,7 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
     this.ordersService.updateOrder(orden);
   }
 
-
+  findName({uid}){
+    return this.names.find(a => a.id === uid).name;
+  }
 }
