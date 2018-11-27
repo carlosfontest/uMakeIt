@@ -9,8 +9,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 })
 export class EditReorderModalComponent implements OnInit {
   cart: OrderDish[];
-  dishesInOldCart: OrderDish[];
-  dishesInNewCart: OrderDish[];
+  dishesInOldCart: OrderDish[] = this.cart;
+  dishesInNewCart: OrderDish[] = this.cart;
 
   constructor(
     public bsModalRef: BsModalRef
@@ -18,8 +18,6 @@ export class EditReorderModalComponent implements OnInit {
 
   ngOnInit() {
     // Inicializamos los dos lados del sortable
-    this.dishesInOldCart = this.cart;
-    this.dishesInNewCart = [];
   }
 
   proceed() {
