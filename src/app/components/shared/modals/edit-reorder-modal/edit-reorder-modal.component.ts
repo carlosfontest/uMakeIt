@@ -28,7 +28,7 @@ export class EditReorderModalComponent implements OnInit {
 
   ngOnInit() {
     // Inicializamos los dos lados del sortable
-    this.dishesInOldCart = this.cart;
+    this.dishesInOldCart = this.cart.slice();
     this.dishesInNewCart = [];
   }
 
