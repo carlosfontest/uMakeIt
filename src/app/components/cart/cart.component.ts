@@ -75,7 +75,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
         let index = 0;
         if (length !== 0) {
-          const newDisplay: OrderDish[] = [];
+          let newDisplay: OrderDish[] = [];
 
           for (const item of cart.dishes) {
             this.ds.getDishById(item.dish).subscribe(dish => {
@@ -109,6 +109,7 @@ export class CartComponent implements OnInit, OnDestroy {
                           quantity: item.quantity
                         });
                         if (index === (length - 1)) {
+                          newDisplay = newDisplay.filter(item => !item.dish.disabled);
                           this.cartDisplay = newDisplay;
                           this.cartFlag = true;
                           this.loading = false;

@@ -4,7 +4,14 @@
 </div>
 
 <div class="container-fluid">
-  <div class="contTable" *ngIf="!loading && cartDisplay.length !== 0" >
+  <!-- Loading items -->
+  <div class=" contTable d-flex justify-content-center" *ngIf="loading">
+    <div class="text-center">
+      <h4 class="display-4">LOADING</h4>
+      <img src="../../../assets/images/loading.gif" class="mb-2">
+    </div>
+  </div>
+  <div class="contTable" *ngIf="!loading && cartDisplay.length !== 0">
     <!-- Tabla de todos los productos -->
     <div class="table-responsive">
       <table class="table">
@@ -20,63 +27,56 @@
         </thead>
         <tbody>
           <!-- En caso de que hayan items en el carrito -->
-            <ng-container *ngFor="let item of cartDisplay; let i = index">
-              <tr>
-                <td class="dishThumbnail text-center position-relative">
+          <ng-container *ngFor="let item of cartDisplay; let i = index">
+            <tr>
+              <td class="dishThumbnail text-center position-relative">
 
-                  <ng-container *ngIf="!item.dish.sideDishes">
-                    <img [src]="item.dish.thumbnail" alt="">
+                <ng-container *ngIf="!item.dish.sideDishes">
+                  <img [src]="item.dish.thumbnail" alt="">
+                </ng-container>
+
+                <ng-container *ngIf="item.dish.sideDishes">
+                  <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
+                  <img [src]="item.dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
+                  <!-- Si es ingrediente doble -->
+                  <ng-container *ngIf="item.sideDishes[0].id == item.sideDishes[1].id">
+                    <img [src]="item.sideDishes[0].thumbnailPlatoDoble" class="dobleSide">
+                    <!-- Foto del Side-Dish doble-->
                   </ng-container>
-
-                  <ng-container *ngIf="item.dish.sideDishes">
-                    <img src="../../../../assets/images/platos/Plato.png" class="plato"> <!-- Foto del plato -->
-                    <img [src]="item.dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
-                    <!-- Si es ingrediente doble -->
-                    <ng-container *ngIf="item.sideDishes[0].id == item.sideDishes[1].id">
-                      <img [src]="item.sideDishes[0].thumbnailPlatoDoble" class="dobleSide">
-                      <!-- Foto del Side-Dish doble-->
-                    </ng-container>
-                    <!-- Si NO es ingrediente doble -->
-                    <ng-container *ngIf="item.sideDishes[0].id != item.sideDishes[1].id">
-                      <img [src]="item.sideDishes[0].thumbnailPlatoArriba" class="primerSide">
-                      <!-- Foto del primer Side-Dish -->
-                      <img [src]="item.sideDishes[1].thumbnailPlatoArriba" class="segundoSide">
-                      <!-- Foto del segundo Side-Dish -->
-                    </ng-container>
+                  <!-- Si NO es ingrediente doble -->
+                  <ng-container *ngIf="item.sideDishes[0].id != item.sideDishes[1].id">
+                    <img [src]="item.sideDishes[0].thumbnailPlatoArriba" class="primerSide">
+                    <!-- Foto del primer Side-Dish -->
+                    <img [src]="item.sideDishes[1].thumbnailPlatoArriba" class="segundoSide">
+                    <!-- Foto del segundo Side-Dish -->
                   </ng-container>
+                </ng-container>
 
-                </td>
-                <!-- Si NO tiene side-dishes -->
-                <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
-                <!-- Si tiene sideDishes y es doble -->
-                <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id == item.sideDishes[1].id)">{{
-                  item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x2 ]</span></td>
-                <!-- Si tiene sideDishes y NO es doble -->
-                <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id != item.sideDishes[1].id)">{{
-                  item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x1 - {{
-                    item.sideDishes[1].name }} x1 ]</span></td>
-                <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
-                <td>
-                  <div class="quantity d-flex justify-content-around">
-                    <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i)"></i>
-                    <span class="textQuantity">{{ item.quantity }}</span>
-                    <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i)"></i>
-                  </div>
-                </td>
-                <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
-                <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)"
-                    [class.confirm-danger]="i === clicked"></i></td>
-              </tr>
-            </ng-container>
+              </td>
+              <!-- Si NO tiene side-dishes -->
+              <td class="dishName" *ngIf="!item.dish.sideDishes">{{ item.dish.name }}</td>
+              <!-- Si tiene sideDishes y es doble -->
+              <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id == item.sideDishes[1].id)">{{
+                item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x2 ]</span></td>
+              <!-- Si tiene sideDishes y NO es doble -->
+              <td class="dishName" *ngIf="item.dish.sideDishes && (item.sideDishes[0].id != item.sideDishes[1].id)">{{
+                item.dish.name }} <br> <span class="nombreIngredientes">[ {{ item.sideDishes[0].name }} x1 - {{
+                  item.sideDishes[1].name }} x1 ]</span></td>
+              <td class="dishPrice">{{ item.dish.price | currency:'USD' }}</td>
+              <td>
+                <div class="quantity d-flex justify-content-around">
+                  <i class="fas fa-angle-left flecha" (click)="reduceQuantity(i)"></i>
+                  <span class="textQuantity">{{ item.quantity }}</span>
+                  <i class="fas fa-angle-right flecha" (click)="increaseQuantity(i)"></i>
+                </div>
+              </td>
+              <td class="totalPrice">{{ item.dish.price * item.quantity | currency:'USD' }}</td>
+              <td scope="row" class="deleteItem"><i class="far fa-trash-alt" (click)="eraseDish(i)"
+                  [class.confirm-danger]="i === clicked"></i></td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
-    </div>
-    <!-- Loading items -->
-    <div class="d-flex justify-content-center" *ngIf="loading">
-      <div class="text-center">
-        <h4 class="display-4">LOADING</h4>
-        <img src="../../../assets/images/loading.gif" class="mb-2">
-      </div>
     </div>
     <ng-container *ngIf="!loading">
       <ng-container *ngIf="cartDisplay.length !== 0">
@@ -101,7 +101,7 @@
     </ng-container>
   </div>
   <!-- En caso de que no haya nada en el carrito -->
-  <ng-container *ngIf="cartDisplay.length === 0">
+  <ng-container *ngIf="cartDisplay.length === 0 && !loading">
     <div class="container-fluid p-0">
       <div class="contTable text-center">
         <img src="../../../assets/images/cartEmpty4.png" alt="">
