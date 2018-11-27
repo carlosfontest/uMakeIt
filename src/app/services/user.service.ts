@@ -73,4 +73,23 @@ export class UserService {
     this.userDoc = this.afs.doc<User>(`users/${user.uid}`);
     this.userDoc.update(user);
   }
+
+  getUserById(id: string) {
+    // Get user with the ID
+    this.userDoc = this.afs.doc<User>(`users/${id}`);
+
+    const foundUser = this.userDoc.snapshotChanges().pipe(
+      map(a => {
+        if (a.payload.exists === false) {
+          return null;
+        } else {
+          const user = a.payload.data();
+          user.uid = a.payload.id;
+          return user;
+        }
+      })
+    );
+
+    return foundUser;
+  }
 }
