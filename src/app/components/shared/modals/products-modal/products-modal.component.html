@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <h4 class="modal-title mx-auto">Order Details</h4>
+  </div>
+  
+  <!-- <div class="divHR">
+    <hr>
+  </div> -->
+  
+  <div class="modal-body pt-4 pb-4">
+      <p class="orderName text-center">{{ name }}</p>
+        <div class="titulo">
+          <span>PRODUCT</span>
+          <span>PRICE</span>
+        </div>
+        <ng-container *ngFor="let dish of cart; let i = index">
+          <div class="producto" [ngClass]="{noBorder: i + 1 == cart?.length}">
+            <!-- Si NO tiene sideDishes -->
+            <ng-container *ngIf="!dish.sideDishes">
+              <span>{{ dish.dish.name }} <span class="quantity">x{{ dish.quantity }}</span></span>
+            </ng-container>
+            <!-- Si tiene sideDishes diferentes -->
+            <ng-container *ngIf="dish.sideDishes && dish.sideDishes[0]?.id != dish.sideDishes[1]?.id">
+              <span>{{ dish.dish.name }} <span class="sideDishes">[{{ dish.sideDishes[0].name }}x1 {{ dish.sideDishes[1].name }}x1]</span> <span class="quantity"> x{{ dish.quantity }}</span></span>
+            </ng-container>
+            <!-- Si tiene sideDishes iguales -->
+            <ng-container *ngIf="dish.sideDishes && dish.sideDishes[0]?.id == dish.sideDishes[1]?.id">
+              <span>{{ dish.dish.name }} <span class="sideDishes">[{{ dish.sideDishes[0].name }}x2]</span> <span class="quantity"> x{{ dish.quantity }}</span></span>
+            </ng-container>
+            <span class="price">{{ dish.dish.price * dish.quantity | currency : "USD" }}</span>
+          </div>
+        </ng-container>
+        <div class="titulo totales">
+          <span>TOTAL</span>
+          <span class="price">{{ price | currency : "USD" }}</span>
+        </div>
+        <p class="text-center direction">To: {{ direction }}</p>
+  </div>
+  
+  <!-- <div class="divHR">
+    <hr>
+  </div> -->
+  <div class="modal-footer d-flex justify-content-between">
+    <button type="button" class="btn btn-sm btn-gray mt-3" (click)="bsModalRef.hide()">Close</button>
+  </div>

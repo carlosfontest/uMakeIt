@@ -1,11 +1,51 @@
 .container-fluid {
   background: #242222;
-  color: #c7bdbd;
+  color: #dfd2d2;
   padding-right: 20px;
   padding-bottom: 8px;
   padding-top: 8px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
 }
 
 .border {
   border-bottom: 1px solid rgb(71, 69, 69)
+}
+
+.noOrders {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 30px;
+}
+
+.userName {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.botonOrder {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.botonDelivered {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.botonOrder:hover {
+  color: #686060;
+}
+
+.botonDelivered:hover {
+  color: #1e921a;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgb(92, 91, 88);
+  margin-top: 0;
+  margin-bottom: 5px;
+  width: 100%;
 }
