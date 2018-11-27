@@ -10,7 +10,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
-import { SortableModule } from 'ngx-bootstrap/sortable';
+import { SortablejsModule } from 'angular-sortablejs';
 
 // Firebase and Firestore
 import { environment } from '../environments/environment';
@@ -104,8 +104,9 @@ import { MomentDatesService } from './services/moment-dates.service';
     EditReorderModalComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     FormsModule,
+    SortablejsModule,
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),
     AccordionModule.forRoot(),
@@ -120,7 +121,7 @@ import { MomentDatesService } from './services/moment-dates.service';
     BrowserAnimationsModule,
     NgxPayPalModule,
     SelectDropDownModule,
-    SortableModule.forRoot()
+    SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [
     AuthService,
