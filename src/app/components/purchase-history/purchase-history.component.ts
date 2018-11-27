@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PurchaseHistoryComponent implements OnInit {
   allOrders: Order[];
   userOrders: Order[];
+  loading: boolean;
 
   constructor(
     private orderService: OrderService,
@@ -19,9 +20,11 @@ export class PurchaseHistoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = true;
     this.userOrders = [];
     // Obtengo todas las ordenes para luego filtrar las que son del user
     this.orderService.getOrders().subscribe(orders => {
+      this.loading = true;
       this.allOrders = orders;
       // Filtro las ordenes que son del cliente
       for (let i = 0; i < this.allOrders.length; i++) {
@@ -35,6 +38,7 @@ export class PurchaseHistoryComponent implements OnInit {
           }
         }
       }
+      this.loading = false;
     });
 
   }

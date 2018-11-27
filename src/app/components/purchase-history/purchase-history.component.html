@@ -3,24 +3,33 @@
 </div>
 
 <div class="container">
-  <!-- Todas las compras del usuario -->
-  <ng-container *ngIf="userOrders?.length !== 0">
-    <ng-container *ngFor="let order of userOrders">
-      <div class="row">
-        <div class="col-sm-12">
-          <app-purchase-card [order]="order"></app-purchase-card>
+  <!-- Loading items -->
+  <div class=" contTable d-flex justify-content-center" *ngIf="loading">
+    <div class="text-center">
+      <h4 class="display-4">LOADING</h4>
+      <img src="../../../assets/images/loading.gif" class="mb-2">
+    </div>
+  </div>
+  <ng-container *ngIf="!loading">
+    <!-- Todas las compras del usuario -->
+    <ng-container *ngIf="userOrders?.length !== 0">
+      <ng-container *ngFor="let order of userOrders">
+        <div class="row">
+          <div class="col-sm-12">
+            <app-purchase-card [order]="order"></app-purchase-card>
+          </div>
         </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- En caso de que no hayan ordenes-->
+    <ng-container *ngIf="userOrders?.length === 0">
+      <div class="contTable text-center">
+        <img src="../../../assets/images/orderImage.png" alt="">
+        <p>Your Purchase History is Empty</p>
+        <p>You have not realized any Purchase. Go to the Dashboard and check our menu!</p>
       </div>
     </ng-container>
-  </ng-container>
-
-  <!-- En caso de que no hayan ordenes-->
-  <ng-container *ngIf="userOrders?.length === 0">
-    <div class="contTable text-center">
-      <img src="../../../assets/images/orderImage.png" alt="">
-      <p>Your Purchase History is Empty</p>
-      <p>You have not realized any Purchase. Go to the Dashboard and check our menu!</p>
-    </div>
   </ng-container>
 
 </div>

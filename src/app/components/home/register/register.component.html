@@ -7,28 +7,36 @@
   <!-- Form de registro -->
   <div>
     <div class="container">
-      <form (submit)="onSubmit()">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-row mb-4">
           <!-- FirstName -->
           <div class="col">
-            <input type="text" name="firstName" class="form-control junto" id="firstName" placeholder="First Name" [(ngModel)]="firstName" required>
-          </div> 
+            <input type="text" name="firstName" class="form-control junto" id="firstName" placeholder="First Name"
+              formControlName="firstName" required>
+          </div>
           <!-- LastName -->
           <div class="col">
-            <input type="text" name="lastName" class="form-control junto" id="lastName" placeholder="Last Name" [(ngModel)]="lastName" required>
+            <input type="text" name="lastName" class="form-control junto" id="lastName" placeholder="Last Name"
+              formControlName="lastName" required>
           </div>
         </div>
         <!-- Email -->
         <div class="form-group mt-4">
-          <input type="email" name="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="email" required autocomplete="off">
+          <input type="email" name="email" class="form-control" id="email" placeholder="Email" formControlName="email"
+            required autocomplete="off">
         </div>
         <!-- Password -->
         <div class="form-group mt-4">
-          <input type="password" name="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password" required autocomplete="off">
-        </div>  
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password"
+            formControlName="password" required autocomplete="off">
+        </div>
         <!-- Button Submit -->
-        <ng-template #popTemplate><span class="pop">By clicking <span class="font-italic text-danger">REGISTER</span> you agree to our terms of service</span></ng-template> <!-- Template para el popover-->
-        <button type="submit" class="btn btn-primary btn-block" [popover]="popTemplate" triggers="mouseenter:mouseleave" placement="bottom">Register</button>
+        <ng-template #popTemplate>
+          <span class="pop">By clicking <span class="font-italic text-danger">REGISTER</span> you agree to our terms of
+            service</span>
+        </ng-template> <!-- Template para el popover-->
+        <button type="submit" class="btn btn-primary btn-block" [popover]="popTemplate" triggers="mouseenter:mouseleave"
+          placement="bottom">Register</button>
       </form>
     </div>
   </div>
