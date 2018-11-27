@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-stats-section',
@@ -13,7 +14,8 @@ export class StatsSectionComponent implements OnInit {
   pendingOrders: number;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private orderService: OrderService
   ) { }
 
   ngOnInit() {
@@ -21,7 +23,21 @@ export class StatsSectionComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       this.userCount = users.length;
     });
-    //
+    
+    this.orderService.getOrders().subscribe(orders => {
+      let doneOrders = 0;
+      let totalPrice = 0;
+      for (const order of orders) {
+        if(order.delivered){
+          doneOrders++;
+        }
+        totalPrice += order.price;
+      }
+      this.totalSales = totalPrice;
+      this.ordersDone = doneOrders;
+      this.pendingOrders = orders.length - this.ordersDone;
+    }); 
+
   }
 
 }
