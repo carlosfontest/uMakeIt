@@ -7,10 +7,10 @@
 </div>
 
 <div class="modal-body">
-  <input type="text" class="form-control mx-auto mb-4" placeholder="Enter one direction" [(ngModel)]="direction">
+  <input #direccion type="text" class="form-control mx-auto mb-4" placeholder="Enter one direction" [(ngModel)]="direction">
   
   <div class="d-flex justify-content-around">
     <button type="button" class="btn btn-sm btn-gray md1" (click)="close()">Close</button>
-    <button type="button" class="btn btn-md btn-yellow md2" (click)="addDirection()">Add</button>
+    <button type="button" class="btn btn-md btn-yellow md2" (click)="addDirection()" [disabled]="!direccion.value">Add</button>
   </div>
 </div>
