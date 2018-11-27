@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { AppRoutingModule } from './app-routing.module';
 import { BsDropdownModule, PopoverModule, AccordionModule } from 'ngx-bootstrap';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
@@ -63,6 +63,7 @@ import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
 import { OrderService } from './services/order.service';
 import { MomentDatesService } from './services/moment-dates.service';
+import { ProductsModalComponent } from './components/shared/modals/products-modal/products-modal.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     EditInstructionsModalComponent,
     AddDirectionModalComponent,
     DisableProductsAccordionComponent,
-    EditReorderModalComponent
+    EditReorderModalComponent,
+    ProductsModalComponent
   ],
   imports: [
   BrowserModule,
@@ -132,7 +134,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
     OrderService,
-    MomentDatesService
+    MomentDatesService,
+    BsModalRef
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -140,7 +143,8 @@ import { MomentDatesService } from './services/moment-dates.service';
     BillModalComponent,
     EditInstructionsModalComponent,
     AddDirectionModalComponent,
-    EditReorderModalComponent
+    EditReorderModalComponent,
+    ProductsModalComponent
   ]
 })
 export class AppModule { }

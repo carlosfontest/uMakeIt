@@ -1,15 +1,22 @@
-<div class="container-fluid" *ngIf="!isLoading">
-  <ng-container *ngFor="let order of pendingOrders; let i = index">
-    <div class="row" [ngClass]="(i !== pendingOrders.length-1)? 'border' : '' ">
-      <div class="col-8">
-        <span class="userName"> {{ names[i] }} </span>
+<ng-container *ngIf="pendingOrders?.length != 0">
+  <div class="container-fluid" *ngIf="!isLoading">
+    <ng-container *ngFor="let order of pendingOrders; let i = index">
+      <div class="row pl-2 pr-2">
+        <div class="col-8">
+          <span class="userName"> {{ names[i] }} </span>
+        </div>
+        <div class="col-2">
+          <span class="botonOrder" popover="View Products" triggers="mouseenter:mouseleave" placement="left" (click)="mostrarOrdenModal(order)"><i class="fas fa-utensils"></i></span>
+        </div>
+        <div class="col-2">
+          <span class="botonDelivered" popover="Order Delivered" triggers="mouseenter:mouseleave" placement="left" (click)="deliverOrden(order)"><i class="fas fa-check-double"></i></span>
+        </div>
       </div>
-      <div class="col-2">
-        <span class="botonOrder" (click)="mostrarOrdenModal(orden)" ><i class="fas fa-utensils"></i></span>
-      </div>
-      <div class="col-2">
-        <span class="botonDelivered" (click)="deliverOrden(order)" ><i class="fas fa-check-double"></i></span>
-      </div>
-    </div>
-  </ng-container>
-</div>
+      <hr *ngIf="pendingOrders?.length != i + 1">
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="pendingOrders?.length == 0">
+  <p class="noOrders text-center">There is no pending orders!</p>
+</ng-container>

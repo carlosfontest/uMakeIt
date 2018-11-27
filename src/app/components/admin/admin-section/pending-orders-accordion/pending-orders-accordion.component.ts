@@ -3,6 +3,8 @@ import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/Order';
 import { UserService } from 'src/app/services/user.service';
 import { take } from 'rxjs/operators';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { ProductsModalComponent } from 'src/app/components/shared/modals/products-modal/products-modal.component';
 
 @Component({
   selector: 'app-pending-orders-accordion',
@@ -17,6 +19,8 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
 
   constructor(
     private ordersService: OrderService,
+    public bsModalRef: BsModalRef,
+    private modalService: BsModalService,
     private userService: UserService
   ) { }
 
@@ -42,14 +46,21 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
 
   }
 
-  mostrarOrdenModal(orden: Order){
-    alert('lanzate el modal, fuengo?');
+  mostrarOrdenModal(orden: Order) {
+    const initialState = {
+      cart: orden.dishes,
+      price: orden.price,
+      direction: orden.direction,
+      name: orden.name
+    };
+    this.modalService.show(ProductsModalComponent, {initialState}); 
+    this.bsModalRef.hide();
   }
 
-  deliverOrden(orden: Order){
+  deliverOrden(orden: Order) {
     const index = this.pendingOrders.indexOf(orden);
     orden.delivered = !orden.delivered;
-    this.pendingOrders.slice(index,1);
+    this.pendingOrders.slice(index, 1);
     this.ordersService.updateOrder(orden);
   }
 
