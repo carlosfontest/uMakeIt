@@ -46,7 +46,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.clicked = -1;
     this.uid = this.as.currentUser.uid;
     this.cs.deleteCartSubject.subscribe(bool => {
-      if(bool){
+      if (bool) {
         this.cart = [];
         this.cartDisplay = [];
         this.cartFlag = false;
@@ -72,7 +72,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.cart = cart.dishes;
         let { length } = this.cart;
         console.log(length, 'length');
-        
+
         let index = 0;
         if (length !== 0) {
           const newDisplay: OrderDish[] = [];
@@ -81,7 +81,7 @@ export class CartComponent implements OnInit, OnDestroy {
             this.ds.getDishById(item.dish).subscribe(dish => {
               if (this.cartFlag) {
                 console.log('this flaggeronni');
-                
+
                 this.updateCart();
                 return;
               } else {

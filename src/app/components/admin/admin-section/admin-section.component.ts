@@ -12,6 +12,7 @@ export class AdminSectionComponent implements OnInit {
   pendingOpen: boolean;
   customClass: string;
   oneAtATime: boolean;
+  disableOpen: boolean;
 
   constructor(private ss: StorageService) { }
 
@@ -19,6 +20,7 @@ export class AdminSectionComponent implements OnInit {
     this.newOpen = false;
     this.editOpen = false;
     this.pendingOpen = false;
+    this.disableOpen = false;
     this.oneAtATime = true;
     // Estilos que están en styles.css
     this.customClass = 'accordionsClass';

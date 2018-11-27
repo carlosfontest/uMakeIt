@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
-import { Dish } from 'src/app/models/Dish';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { DishService } from 'src/app/services/dish.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { SideDish } from 'src/app/models/SideDish';
 import { EditService } from 'src/app/services/edit.service';

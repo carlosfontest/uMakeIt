@@ -21,6 +21,17 @@
         <app-edit-products-accordion></app-edit-products-accordion>
     </accordion-group>
 
+    <!-- Opciones para desabilitar productos -->
+    <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
+        <div accordion-heading class="forFlex">
+            <p class="titleAccordion">DISABLE <span class="bold">PRODUCTS</span></p>
+            <span *ngIf="!disableOpen"><i class="fas fa-chevron-down"></i></span>
+            <span *ngIf="disableOpen"><i class="fas fa-chevron-up"></i></span>
+        </div>
+
+        <app-disable-products-accordion></app-disable-products-accordion>
+    </accordion-group>
+
     <!-- Opciones para verificar y manejar órdenes pendientes -->
     <accordion-group (isOpenChange)="pendingOpen = !pendingOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">

@@ -74,19 +74,17 @@ export class AddEditableProductComponent implements OnInit, OnDestroy {
   uploadFile() {
     console.log('uploading...');
 
-    const dish: Dish = {
-      name: this.name, price: this.price, sideDishes: [
-        this.sideDish1, this.sideDish2
-      ], type: this.types[this.type]
-    };
+    const dish: Dish = {} as Dish;
+    dish.name = this.name;
+    dish.price = this.price;
+    dish.sideDishes = [this.sideDish1, this.sideDish2];
+    dish.type = this.types[this.type];
 
-    if(this.dish){
+    if (this.dish) {
       this.ss.uploadEditable(this.file, this.fileR, dish, this.dish.id);
     } else {
       this.ss.uploadEditable(this.file, this.fileR, dish, null);
     }
-
-    // Snackbar de upload
 
     this.reset();
   }
@@ -119,7 +117,7 @@ export class AddEditableProductComponent implements OnInit, OnDestroy {
   }
 
   get disableFlag() {
-    return this.dish? (this.form.invalid && !this.file && !this.fileR) : (this.form.invalid || !this.file || !this.fileR);
+    return this.dish ? (this.form.invalid && !this.file && !this.fileR) : (this.form.invalid || !this.file || !this.fileR);
   }
 
   get action() {

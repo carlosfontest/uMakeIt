@@ -1,0 +1,49 @@
+<div class="titleBanner">
+  <app-title-banner [title]="'Disable'"></app-title-banner>
+</div>
+
+<!-- <div class="allDishesToShow" *ngIf="!selectedDish"> -->
+<div class="allDishesToShow">
+  <div class="row text-center">
+    <!-- Card de cada Dish -->
+    <ng-container *ngFor="let dish of allDishes">
+      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs">
+        <div class="conjunto" (click)="selectDish(dish)" [ngClass]="dish.disabled? 'darkClass' : ''">
+
+          <ng-container *ngIf="!dish.sideDishes">
+            <div class="fotoPlace">
+              <img class="fotoPlato" [src]="dish.thumbnail" alt="">
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="dish.sideDishes">
+            <div class="fotoPlace">
+              <img src="../../../../assets/images/platos/Plato.png" class="plato">
+              <!-- Foto del plato -->
+              <img [src]="dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
+              <!-- Si es ingrediente doble -->
+              <ng-container *ngIf="dish.sideDishes[0] == dish.sideDishes[1]">
+                <img [src]="buscarSideDishDoble(dish.sideDishes[0])" class="dobleSide">
+                <!-- Foto del Side-Dish doble-->
+              </ng-container>
+              <!-- Si NO es ingrediente doble -->
+              <ng-container *ngIf="dish.sideDishes[0] != dish.sideDishes[1]">
+                <img [src]="buscarSideDish(dish.sideDishes[0])" class="primerSide">
+                <!-- Foto del primer Side-Dish -->
+                <img [src]="buscarSideDish(dish.sideDishes[1])" class="segundoSide">
+                <!-- Foto del segundo Side-Dish -->
+              </ng-container>
+            </div>
+          </ng-container>
+
+
+          <div class="notchPlace">
+            <img class="notch" src="../../../../../assets/images/notch.png" alt="">
+            <span class="dishName">{{ dish.name }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</div>

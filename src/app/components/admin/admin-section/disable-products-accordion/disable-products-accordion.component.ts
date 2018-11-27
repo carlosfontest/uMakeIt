@@ -1,16 +1,15 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Dish } from 'src/app/models/Dish';
+import { SideDishService } from 'src/app/services/side-dish.service';
 import { DishService } from 'src/app/services/dish.service';
 import { SideDish } from 'src/app/models/SideDish';
-import { SideDishService } from 'src/app/services/side-dish.service';
-import { EditService } from 'src/app/services/edit.service';
 
 @Component({
-  selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.scss']
+  selector: 'app-disable-products-accordion',
+  templateUrl: './disable-products-accordion.component.html',
+  styleUrls: ['./disable-products-accordion.component.scss']
 })
-export class EditProductComponent implements OnInit {
+export class DisableProductsAccordionComponent implements OnInit {
   allDishes: Dish[];
   sideDishes: SideDish[];
   selectedDish: Dish;
@@ -20,8 +19,7 @@ export class EditProductComponent implements OnInit {
 
   constructor(
     private dishService: DishService,
-    private sds: SideDishService,
-    private es: EditService
+    private sds: SideDishService
   ) { }
 
   ngOnInit() {
@@ -58,13 +56,13 @@ export class EditProductComponent implements OnInit {
   }
 
   selectDish(dish: Dish) {
-    if (dish.sideDishes) {
-      this.editable = true;
-    } else {
-      this.editable = false;
-    }
-    this.selectedDish = dish;
-    this.es.setSelected('dish');
-  }
+    dish.disabled = !dish.disabled;
 
+    // Se crea un Dish sin id
+    const sendDish: Dish = JSON.parse(JSON.stringify(dish));
+
+    delete sendDish.id;
+
+    this.dishService.updateDish(sendDish, dish.id);
+  }
 }

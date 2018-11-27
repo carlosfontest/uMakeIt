@@ -6,4 +6,5 @@ export interface Dish {
   price: number;
   id?: string;
   sideDishes?: string[];
+  disabled?: boolean;
 }

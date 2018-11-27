@@ -58,6 +58,7 @@ import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
 import { EditInstructionsModalComponent } from './components/shared/modals/edit-instructions-modal/edit-instructions-modal.component';
 import { AddDirectionModalComponent } from './components/shared/modals/add-direction-modal/add-direction-modal.component';
+import { DisableProductsAccordionComponent } from './components/admin/admin-section/disable-products-accordion/disable-products-accordion.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { AddDirectionModalComponent } from './components/shared/modals/add-direc
     EditProductComponent,
     BillModalComponent,
     EditInstructionsModalComponent,
-    AddDirectionModalComponent
+    AddDirectionModalComponent,
+    DisableProductsAccordionComponent
   ],
   imports: [
     BrowserModule,
