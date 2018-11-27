@@ -8,7 +8,7 @@
     <!-- Card de cada Dish -->
     <ng-container *ngFor="let dish of allDishes">
       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs">
-        <div class="conjunto" (click)="selectDish(dish)" [ngClass]="dish.disabled? 'darkClass' : ''">
+        <div class="conjunto" (click)="selectDish(dish)">
 
           <ng-container *ngIf="!dish.sideDishes">
             <div class="fotoPlace">
@@ -17,7 +17,7 @@
           </ng-container>
 
           <ng-container *ngIf="dish.sideDishes">
-            <div class="fotoPlace">
+            <div class="fotoPlace" [ngClass]="dish.disabled? 'disabledDish' : ''">
               <img src="../../../../assets/images/platos/Plato.png" class="plato">
               <!-- Foto del plato -->
               <img [src]="dish.thumbnail" class="mainDish"> <!-- Foto del Main-Dish -->
