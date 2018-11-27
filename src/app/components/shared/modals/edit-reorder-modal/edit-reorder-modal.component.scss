@@ -1,5 +1,4 @@
 ul {
-  list-style: none;
   margin-left: 0;
   padding-left: 1em;
   text-indent: -1em;
@@ -22,6 +21,32 @@ ul {
   color: rgb(182, 173, 143);
   padding: 26px 40px;
   text-align: justify;
+}
+
+.sortable {
+  background: #eee;
+  border-radius: 0.25rem;
+  min-height: 40px;
+}
+
+.sideD {
+  font-size: 11px;
+}
+
+li {
+  color: rgb(68, 66, 62);
+}
+
+.titulo {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: rgb(211, 206, 191);
+  font-size: 24px;
+  text-shadow: 1px 1px 1px #000000;
+  font-weight: 600;
+}
+
+.list-group-item{
+  cursor: move;
 }
 
 
