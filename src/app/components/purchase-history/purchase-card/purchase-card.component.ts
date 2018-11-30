@@ -6,6 +6,8 @@ import { take } from 'rxjs/operators';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { BillModalComponent } from '../../shared/modals/bill-modal/bill-modal.component';
 import { EditReorderModalComponent } from '../../shared/modals/edit-reorder-modal/edit-reorder-modal.component';
+import { DishService } from 'src/app/services/dish.service';
+import { Dish } from 'src/app/models/Dish';
 
 @Component({
   selector: 'app-purchase-card',
@@ -17,15 +19,20 @@ export class PurchaseCardComponent implements OnInit {
   bsModalRef: BsModalRef;
   editState: boolean;
   nameAux: string;
+  dishes: Dish[];
 
   constructor(
     private snotifyService: SnotifyService,
     private orderService: OrderService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private dishService: DishService
   ) { }
 
   ngOnInit() {
     this.editState = false;
+    this.dishService.getDishes().subscribe(dishes => {
+      this.dishes = dishes;
+    });
   }
 
   editName() {
@@ -68,11 +75,31 @@ export class PurchaseCardComponent implements OnInit {
   }
 
   reorder() {
-    const initialState = {
-      cart: this.order.dishes,
-      price: this.order.price
-    };
-    this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
+    const newCart = [];
+
+    // Verificamos si el dish está deshabilitado
+    for (const dish of this.order.dishes) {
+      if (!this.dishes.find(a => a.id === dish.dish.id).disabled) {
+        newCart.push(dish);
+      }
+    }
+    
+    console.log(newCart);
+    if (newCart.length !== 0) {
+      const initialState = {
+        cart: this.order.dishes,
+        price: this.order.price
+      };
+      this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
+    } else {
+      this.snotifyService.warning('All the dishes in this purchase ara disabled', 'Re-order', {
+        timeout: 2500,
+        showProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        position: 'leftBottom'
+      });
+    }
   }
 
   editAndReorder() {
