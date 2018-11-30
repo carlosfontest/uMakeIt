@@ -11,4 +11,8 @@ export class MomentDatesService {
   formatDate(date: Date): string {
     return moment(date).format('LL');
   }
+
+  formatDateShort(date: Date): string {
+    return moment(date).format('MMMM Do');
+  }
 }

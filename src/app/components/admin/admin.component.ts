@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
     this.isLoading = true;
   }
 
-  updatePending(orders: Order[]){
+  updatePending(orders: Order[]) {
     this.pendingOrders = orders;
     this.isLoading = false;
   }

@@ -88,3 +88,11 @@
   outline: 0;
   font-family: 'Fjalla One', sans-serif;
 }
+
+
+//  Cuando sea maximo 480px
+@media (max-width: 480px) {
+  .badge {
+    font-size: 20px;
+  }
+}

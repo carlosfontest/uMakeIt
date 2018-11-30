@@ -29,7 +29,7 @@
                   <!-- Mostrar todos los SideDish  -->
                   <ng-container *ngIf="loaded">
                     <ng-container *ngFor="let sideDish of sideDishes">
-                      <div class="col-xl-3 col-lg-4 col-sm-6">
+                      <div class="col-xl-3 col-lg-4 col-sm-6 col-xs">
                         <app-side-dish-card [initialQuantity]="obtenerCantidadInicial(sideDish)" [sideDish]="sideDish" [cantSideDishSelected]="cantSideDishSelected" (changeCant)="onChangeCant($event)"></app-side-dish-card>
                       </div>
                     </ng-container>
