@@ -169,6 +169,22 @@ ngx-select-dropdown {
   }
 }
 
+//  Cuando sea vista movil
+@media (max-width: 401px) {
+  .btn-sm {
+    width: 100%;
+  }
+
+  .modal-footer {
+    justify-content: center;
+  }
+
+  ngx-paypal {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
 
 // Estilos de los botones
 .btn {
