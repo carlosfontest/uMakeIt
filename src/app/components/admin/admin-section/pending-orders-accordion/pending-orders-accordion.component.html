@@ -1,6 +1,6 @@
 <ng-container *ngIf="pendingOrders?.length != 0">
   <div class="container-fluid" *ngIf="!isLoading">
-    <ng-container *ngFor="let order of pendingOrders; let i = index">
+    <!-- <ng-container *ngFor="let order of pendingOrders; let i = index">
       <div class="row pl-2 pr-2">
         <div class="col-8">
           <span class="userName"> {{ names[i] }} </span>
@@ -13,7 +13,29 @@
         </div>
       </div>
       <hr *ngIf="pendingOrders?.length != i + 1">
-    </ng-container>
+    </ng-container> -->
+    <table class="table mt-3">
+      <thead class="thead">
+        <tr>
+          <th scope="col" class="date">DATE</th>
+          <th scope="col" class="name">USER NAME</th>
+          <th scope="col" class="bill text-center"><i class="fas fa-file-invoice-dollar"></i></th>
+          <th scope="col" class="deliver text-center">DELIVERED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- En caso de que hayan ordenes pendientes -->
+        <ng-container *ngFor="let order of pendingOrders; let i = index">
+          <tr>
+            <td class="dateColumn">{{ getDate(order.date) }}</td>
+            <td class="nameColumn">{{ names[i] }}</td>
+            <td class="billColumn text-center"><button class="btn btn-medium btn-gray" (click)="mostrarOrdenModal(order)"><span class="text-center">SHOW BILL</span></button></td>
+            <td class="deliveredColumn text-center"><button class="btn btn-medium btn-green" (click)="deliverOrden(order)"><span class="text-center">DELIVERED <i class="fas fa-plane-arrival"></i></span></button></td>
+          </tr>
+        </ng-container>
+
+      </tbody>
+    </table>
   </div>
 </ng-container>
 

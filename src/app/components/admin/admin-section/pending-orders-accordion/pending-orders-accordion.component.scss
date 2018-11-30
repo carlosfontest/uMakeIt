@@ -1,11 +1,11 @@
 .container-fluid {
-  background: #242222;
+  background: #3b3a3a;
   color: #dfd2d2;
   padding-right: 20px;
   padding-bottom: 8px;
   padding-top: 8px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
-  border-radius: 3px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
 }
 
 .border {
@@ -48,4 +48,107 @@ hr {
   margin-top: 0;
   margin-bottom: 5px;
   width: 100%;
+}
+
+.thead {
+  background: rgb(34, 32, 26);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 27px;
+  box-shadow: 0 8px 7px -6px black;
+  color: rgb(233, 223, 183);
+}
+
+.thead tr th {
+  border: none;
+}
+
+tr td {
+  border-top: 0;
+  border-bottom: solid 1px rgb(41, 39, 35);
+  vertical-align: middle;
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(204, 199, 178);
+  font-weight: 500;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  font-size: 24px;
+}
+
+thead tr th:nth-child(1) {
+  border-radius: 5px 0 0 5px;
+}
+
+thead tr th:nth-child(4) {
+  border-radius: 0 5px 5px 0;
+}
+
+.date {
+  min-width: 220px;
+}
+
+.name {
+  min-width: 350px;
+}
+
+.bill {
+  min-width: 150px;
+}
+
+.deliver {
+  min-width: 220px;
+}
+
+.dateColumn{
+  font-weight: 100 !important;
+  color: rgb(158, 154, 139) !important;
+  font-size: 19px !important;
+}
+
+
+// Estilos del botón
+.btn {
+  display: inline-block;
+  outline: none;
+  *zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-weight: 800;
+  border-width: 2.5px;
+  width: 160px;
+}
+
+.btn-medium {
+  font-size: 17px;
+  padding: 8px 6px;
+}
+
+.btn-gray {
+  color: rgb(233, 223, 183);
+  border-color: rgb(233, 223, 183);
+  background: transparent;
+}
+
+.btn-gray:hover {
+  background: rgb(233, 223, 183);
+  color: rgb(34, 32, 26);
+  border-color: rgb(233, 223, 183);
+}
+
+.btn-green {
+  color: rgb(18, 131, 56);
+  border-color: rgb(18, 131, 56);
+  background: transparent;
+}
+
+.btn-green:hover, .btn-green:focus {
+  background: rgb(18, 131, 56);
+  color: rgb(233, 223, 183);
+  border-color: rgb(18, 131, 56);
 }
