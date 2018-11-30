@@ -41,6 +41,20 @@ export class EditReorderModalComponent implements OnInit {
   }
 
   proceed() {
+    for (const dish of this.dishesInNewCart) {
+      // Si se encuenta algun dish que esta disabled
+      if (this.dishes.find(a => a.id === dish.dish.id).disabled) {
+        this.snotifyService.error('Some dish in the New Order is disabled', 'Re-order', {
+          timeout: 2500,
+          showProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          position: 'leftBottom'
+        });
+        return;
+      }
+    }
+
     if (this.dishesInNewCart.length !== 0) {
       console.log(this.dishesInNewCart);
       const initialState = {

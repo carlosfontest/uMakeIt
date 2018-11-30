@@ -64,6 +64,13 @@ li {
   }
 }
 
+//  Cuando sea vista movil
+@media (max-width: 408px) {
+  .btn-medium {
+    font-size: 13px !important;
+  }
+}
+
 // Estilos de los botones
 .btn {
   display: inline-block;
