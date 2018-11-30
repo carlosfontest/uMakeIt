@@ -35,7 +35,8 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
     const orders: SimpleChange = changes.pendingOrders;
 
     if (orders.currentValue && orders.currentValue.length !== 0) {
-      // this.names = [];
+      this.names = [];
+      
       let index = 0;
       for (const order of orders.currentValue) {
         this.userService.getUserById(order.uid).pipe(take(1)).subscribe(user => {
@@ -43,7 +44,6 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
           if (!this.names.find(a => a.id === object.id)) {
             this.names.push(object);
           }
-          this.names.push(`${user.firstName} ${user.lastName}`);
           if (index === orders.currentValue.length - 1) {
             this.isLoading = false;
           }
@@ -72,7 +72,7 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
   }
 
   findName({uid}) {
-    return this.names.find(a => a.id === uid).name;
+    return this.names.find(a => a.id === uid) ? this.names.find(a => a.id === uid).name : '';
   }
 
   getDate(date: Date) {
