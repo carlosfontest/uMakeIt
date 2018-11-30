@@ -49,6 +49,12 @@ li {
   cursor: move;
 }
 
+.noMove {
+  -webkit-user-drag: none;
+  cursor: default;
+  background: rgb(153, 80, 80);
+  color: whitesmoke;
+}
 
 
 //  Cuando sea vista movil

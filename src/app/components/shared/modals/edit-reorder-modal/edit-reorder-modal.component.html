@@ -13,9 +13,9 @@
       <ul class="list-group sortable" [sortablejs]="dishesInOldCart" [sortablejsOptions]="normalOptions">
         <ng-container *ngFor="let item of dishesInOldCart">
           <!-- Si hay side dishes -->
-          <li *ngIf="item.sideDishes" class="list-group-item" >{{ item.dish.name }} x{{ item.quantity }}<br><span class="sideD">[{{ item.sideDishes[0].name }}x1 {{ item.sideDishes[1].name }}x1]</span></li>
+          <li *ngIf="item.sideDishes" class="list-group-item" [ngClass]="{noMove: isDisabled(item.dish.id)}">{{ item.dish.name }} x{{ item.quantity }}<br><span class="sideD">[{{ item.sideDishes[0].name }}x1 {{ item.sideDishes[1].name }}x1]</span></li>
           <!-- Si NO hay side dishes -->
-          <li *ngIf="!item.sideDishes" class="list-group-item" >{{ item.dish.name }} x{{ item.quantity }}</li>
+          <li *ngIf="!item.sideDishes" class="list-group-item" [ngClass]="{noMove: isDisabled(item.dish.id)}">{{ item.dish.name }} x{{ item.quantity }}</li>
         </ng-container>
       </ul>
     </div>

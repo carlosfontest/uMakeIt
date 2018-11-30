@@ -35,8 +35,6 @@ export class PendingOrdersAccordionComponent implements OnInit, OnChanges {
     const orders: SimpleChange = changes.pendingOrders;
 
     if (orders.currentValue && orders.currentValue.length !== 0) {
-      this.names = [];
-      
       let index = 0;
       for (const order of orders.currentValue) {
         this.userService.getUserById(order.uid).pipe(take(1)).subscribe(user => {

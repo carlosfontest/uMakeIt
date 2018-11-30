@@ -5,6 +5,9 @@ import { SortablejsOptions } from 'angular-sortablejs';
 import { BillModalComponent } from '../bill-modal/bill-modal.component';
 import { SnotifyService } from 'ng-snotify';
 import { Router } from '@angular/router';
+import { DishService } from 'src/app/services/dish.service';
+import { Dish } from 'src/app/models/Dish';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-reorder-modal',
@@ -15,6 +18,7 @@ export class EditReorderModalComponent implements OnInit {
   cart: OrderDish[];
   dishesInOldCart: OrderDish[];
   dishesInNewCart: OrderDish[];
+  dishes: Dish[];
   normalOptions: SortablejsOptions = {
     group: 'normal-group'
   };
@@ -23,13 +27,17 @@ export class EditReorderModalComponent implements OnInit {
     public bsModalRef: BsModalRef,
     private modalService: BsModalService,
     private snotifyService: SnotifyService,
-    private router: Router
+    private router: Router,
+    private dishService: DishService
   ) { }
 
   ngOnInit() {
     // Inicializamos los dos lados del sortable
     this.dishesInOldCart = this.cart.slice();
     this.dishesInNewCart = [];
+    this.dishService.getDishes().subscribe(dishes => {
+      this.dishes = dishes;
+    });
   }
 
   proceed() {
@@ -60,6 +68,12 @@ export class EditReorderModalComponent implements OnInit {
     }
     console.log(price);
     return price;
+  }
+
+  isDisabled(id: string) {
+    if (this.dishes) {
+      return this.dishes.find(a => a.id === id).disabled;
+    }
   }
 
 }
