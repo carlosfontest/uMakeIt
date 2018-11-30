@@ -76,18 +76,19 @@ export class PurchaseCardComponent implements OnInit {
 
   reorder() {
     const newCart = [];
+    let price = 0;
 
     // Verificamos si el dish está deshabilitado
     for (const dish of this.order.dishes) {
       if (!this.dishes.find(a => a.id === dish.dish.id).disabled) {
         newCart.push(dish);
+        price += dish.quantity * dish.dish.price;
       }
     }
     
-    console.log(newCart);
     if (newCart.length !== 0) {
       const initialState = {
-        cart: this.order.dishes,
+        cart: newCart,
         price: this.order.price
       };
       this.bsModalRef = this.modalService.show(BillModalComponent, { initialState });
