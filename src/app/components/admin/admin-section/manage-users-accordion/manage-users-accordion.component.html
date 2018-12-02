@@ -1,0 +1,50 @@
+<ng-container *ngIf="pendingOrders?.length != 0">
+    <div class="container-fluid" *ngIf="!isLoading">
+      <!-- <ng-container *ngFor="let order of pendingOrders; let i = index">
+        <div class="row pl-2 pr-2">
+          <div class="col-8">
+            <span class="userName"> {{ findName(order) }} </span>
+          </div>
+          <div class="col-2">
+            <span class="botonOrder" popover="View Products" triggers="mouseenter:mouseleave" placement="left" (click)="mostrarOrdenModal(order)"><i class="fas fa-utensils"></i></span>
+          </div>
+          <div class="col-2">
+            <span class="botonDelivered" popover="Order Delivered" triggers="mouseenter:mouseleave" placement="left" (click)="deliverOrden(order)"><i class="fas fa-check-double"></i></span>
+          </div>
+        </div>
+        <hr *ngIf="pendingOrders?.length != i + 1">
+      </ng-container> -->
+      <div class="table-responsive">
+        <table class="table mt-3">
+          <thead class="thead">
+            <tr>
+              <th scope="col" class="first">FirstName</th>
+              <th scope="col" class="last">LastName</th>
+              <th scope="col" class="email">Email</th>
+              <th scope="col" class="admin">Role</th>
+              <th scope="col" class="delete"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- En caso de que hayan ordenes pendientes -->
+            <ng-container *ngFor="let user of users; let i = index">
+              <tr>
+                <td class="firstColumn">{{ user.firstName }}</td>
+                <td class="lastColumn">{{ user.lastName }}</td>
+                <td class="emailColumn">{{ user.email }}</td>
+                <td class="adminColumn text-center" *ngIf="user.isAdmin && !user.deleted"><button class="btn btn-medium btn-yellow" (click)="toggleAdmin(user)"><span class="text-center">ADMIN <i class="fas fa-lock-open"></i></span></button></td>
+                <td class="adminColumn text-center" *ngIf="!user.isAdmin && !user.deleted"><button class="btn btn-medium btn-whitesmoke" (click)="toggleAdmin(user)"><span class="text-center">NO-ADMIN <i class="fas fa-lock"></i></span></button></td>
+                <td class="adminColumn text-center" *ngIf="user.deleted"><button class="btn btn-medium btn-red" (click)="desBan(user)"><span class="text-center">BANNED <i class="fas fa-user-times"></i></span></button></td>
+                <td class="deleteColumn text-center"><i class="fas fa-user-slash" (click)="eraseUser(i, user)" [class.confirm-danger]="i === clicked"></i></td>
+              </tr>
+            </ng-container>
+  
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngIf="users?.length == 0">
+    <p class="noUsers text-center">There is no users!</p>
+  </ng-container>

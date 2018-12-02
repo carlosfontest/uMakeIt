@@ -53,13 +53,14 @@ hr {
 .thead {
   background: rgb(34, 32, 26);
   font-family: 'Ubuntu Condensed', sans-serif;
-  font-size: 27px;
+  font-size: 20px;
   box-shadow: 0 8px 7px -6px black;
   color: rgb(233, 223, 183);
 }
 
 .thead tr th {
   border: none;
+  padding: 6px 12px;
 }
 
 tr td {

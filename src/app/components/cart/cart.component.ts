@@ -75,7 +75,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
         let index = 0;
         if (length !== 0) {
-          let newDisplay: OrderDish[] = [];
+          const newDisplay: OrderDish[] = [];
 
           for (const item of cart.dishes) {
             this.ds.getDishById(item.dish).subscribe(dish => {

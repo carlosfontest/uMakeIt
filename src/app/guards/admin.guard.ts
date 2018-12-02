@@ -12,7 +12,12 @@ import { UserService } from './../services/user.service';
 })
 export class AdminGuard implements CanActivate {
 
-  constructor(private auth: AuthService, private afs: AngularFirestore, private router: Router, private us: UserService) {}
+  constructor(
+    private auth: AuthService, 
+    private afs: AngularFirestore, 
+    private router: Router, 
+    private us: UserService
+    ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,

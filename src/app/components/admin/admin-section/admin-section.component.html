@@ -11,7 +11,7 @@
     </accordion-group>
 
     <!-- Opciones para editar productos -->
-    <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
+    <accordion-group (isOpenChange)="editOpen = !editOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
             <p class="titleAccordion">EDIT <span class="bold">PRODUCTS</span></p>
             <span *ngIf="!editOpen"><i class="fas fa-chevron-down"></i></span>
@@ -22,7 +22,7 @@
     </accordion-group>
 
     <!-- Opciones para desabilitar productos -->
-    <accordion-group (isOpenChange)="newOpen = !newOpen" class="accordions" [panelClass]="customClass">
+    <accordion-group (isOpenChange)="disableOpen = !disableOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
             <p class="titleAccordion">DISABLE <span class="bold">PRODUCTS</span></p>
             <span *ngIf="!disableOpen"><i class="fas fa-chevron-down"></i></span>
@@ -32,6 +32,16 @@
         <app-disable-products-accordion></app-disable-products-accordion>
     </accordion-group>
 
+    <!-- Opciones para manejar a los usuarios -->
+    <accordion-group (isOpenChange)="manageOpen = !manageOpen" class="accordions" [panelClass]="customClass">
+        <div accordion-heading class="forFlex">
+            <p class="titleAccordion">MANAGE <span class="bold">USERS</span></p>
+            <span *ngIf="!manageOpen"><i class="fas fa-chevron-down"></i></span>
+            <span *ngIf="manageOpen"><i class="fas fa-chevron-up"></i></span>
+        </div>
+        <app-manage-users-accordion></app-manage-users-accordion>
+    </accordion-group>
+    
     <!-- Opciones para verificar y manejar órdenes pendientes -->
     <accordion-group (isOpenChange)="pendingOpen = !pendingOpen" class="accordions" [panelClass]="customClass">
         <div accordion-heading class="forFlex">
@@ -42,4 +52,5 @@
         </div>
         <app-pending-orders-accordion [pendingOrders]="pendingOrders"></app-pending-orders-accordion>
     </accordion-group>
+
 </accordion>

@@ -20,7 +20,7 @@ export class UserService {
     private afa: AngularFireAuth,
     private snotifyService: SnotifyService
     ) { 
-    this.usersCollection = this.afs.collection('users', ref => ref.orderBy('lastName', 'asc'));
+    this.usersCollection = this.afs.collection('users', ref => ref.orderBy('firstName', 'asc'));
   }
 
   // Método para obtener todos los users del collection

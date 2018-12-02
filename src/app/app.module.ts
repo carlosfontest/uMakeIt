@@ -54,6 +54,8 @@ import { EditInstructionsModalComponent } from './components/shared/modals/edit-
 import { AddDirectionModalComponent } from './components/shared/modals/add-direction-modal/add-direction-modal.component';
 import { DisableProductsAccordionComponent } from './components/admin/admin-section/disable-products-accordion/disable-products-accordion.component';
 import { EditReorderModalComponent } from './components/shared/modals/edit-reorder-modal/edit-reorder-modal.component';
+import { ProductsModalComponent } from './components/shared/modals/products-modal/products-modal.component';
+import { ManageUsersAccordionComponent } from './components/admin/admin-section/manage-users-accordion/manage-users-accordion.component';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -63,7 +65,6 @@ import { SideDishService } from './services/side-dish.service';
 import { StorageService } from './services/storage.service';
 import { OrderService } from './services/order.service';
 import { MomentDatesService } from './services/moment-dates.service';
-import { ProductsModalComponent } from './components/shared/modals/products-modal/products-modal.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { ProductsModalComponent } from './components/shared/modals/products-moda
     AddDirectionModalComponent,
     DisableProductsAccordionComponent,
     EditReorderModalComponent,
-    ProductsModalComponent
+    ProductsModalComponent,
+    ManageUsersAccordionComponent
   ],
   imports: [
   BrowserModule,

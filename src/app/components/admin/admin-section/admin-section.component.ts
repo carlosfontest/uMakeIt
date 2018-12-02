@@ -12,6 +12,7 @@ export class AdminSectionComponent implements OnInit {
   editOpen: boolean;
   pendingOpen: boolean;
   customClass: string;
+  manageOpen: boolean;
   oneAtATime: boolean;
   disableOpen: boolean;
 
@@ -22,6 +23,7 @@ export class AdminSectionComponent implements OnInit {
     this.editOpen = false;
     this.pendingOpen = false;
     this.disableOpen = false;
+    this.manageOpen = false;
     this.oneAtATime = true;
     // Estilos que están en styles.css
     this.customClass = 'accordionsClass';

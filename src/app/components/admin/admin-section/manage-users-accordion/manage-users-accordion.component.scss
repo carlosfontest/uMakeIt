@@ -1,0 +1,188 @@
+.container-fluid {
+    background: #3b3a3a;
+    color: #dfd2d2;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+
+.border {
+    border-bottom: 1px solid rgb(71, 69, 69)
+}
+
+.noUsers {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 30px;
+}
+
+.userName {
+    font-size: 22px;
+    margin-bottom: 2px;
+}
+
+.botonOrder {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.botonDelivered {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.botonOrder:hover {
+    color: #686060;
+}
+
+.botonDelivered:hover {
+    color: #1e921a;
+}
+
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgb(92, 91, 88);
+    margin-top: 0;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.thead {
+    background: rgb(34, 32, 26);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 20px;
+    box-shadow: 0 8px 7px -6px black;
+    color: rgb(233, 223, 183);
+}
+
+.thead tr th {
+    border: none;
+    padding: 6px 12px;
+}
+
+tr td {
+    border-top: 0;
+    border-bottom: solid 1px rgb(41, 39, 35);
+    vertical-align: middle;
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(204, 199, 178);
+    font-weight: 500;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    font-size: 18px;
+}
+
+thead tr th:nth-child(1) {
+    border-radius: 5px 0 0 5px;
+}
+
+thead tr th:nth-child(5) {
+    border-radius: 0 5px 5px 0;
+}
+
+.first {
+    min-width: 150px;
+}
+
+.last {
+    min-width: 150px;
+}
+
+.email {
+    min-width: 400px;
+}
+
+.admin {
+    min-width: 110px;
+    text-align: center;
+}
+
+.delete {
+    min-width: 80px;
+}
+
+.dateColumn {
+    font-weight: 100 !important;
+    color: rgb(158, 154, 139) !important;
+    font-size: 19px !important;
+}
+
+.confirm-danger{
+    color: rgb(153, 7, 7);
+    transform: scale(1.6);
+    -ms-transform: scale(1.6);
+    -moz-transform: scale(1.6);
+    -webkit-transform: scale(1.6);
+    -o-transform: scale(1.6);
+}
+
+.fa-user-slash {
+    color: rgb(182, 52, 52);
+}
+
+.deleteColumn {
+    cursor: pointer;
+}
+
+// Estilos del botón
+.btn {
+    display: inline-block;
+    outline: none;
+    *zoom: 1;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 300;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.01);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight: 800;
+    border-width: 2.5px;
+    width: 160px;
+}
+
+.btn-medium {
+    font-size: 17px;
+    padding: 8px 6px;
+}
+
+.btn-yellow {
+    color: rgb(241, 199, 30);
+    border-color: rgb(241, 199, 30);
+    background: transparent;
+}
+
+.btn-yellow:hover {
+    background: rgb(241, 199, 30);
+    color: rgb(34, 32, 26);
+    border-color: rgb(241, 199, 30);
+}
+
+.btn-whitesmoke {
+    color: rgb(192, 192, 171);
+    border-color: rgb(192, 192, 171);
+    background: transparent;
+}
+
+.btn-whitesmoke:hover {
+    background: rgb(192, 192, 171);
+    color: rgb(233, 223, 183);
+    border-color: rgb(192, 192, 171);
+}
+
+.btn-red {
+    color: rgb(197, 44, 30);
+    border-color: rgb(197, 44, 30);
+    background: transparent;
+}
+
+.btn-red:hover {
+    background: rgb(197, 44, 30);
+    color: rgb(233, 223, 183);
+    border-color: rgb(197, 44, 30);
+}

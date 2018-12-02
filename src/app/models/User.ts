@@ -5,4 +5,5 @@ export interface User {
   isAdmin: boolean;
   uid?: string;
   directions?: string[];
+  deleted?: boolean;
 }
